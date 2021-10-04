@@ -11,7 +11,7 @@ export const Home = () => {
 		<div className="container">
 			<div className="row">
 				<div className="col text-center mt-4">
-					<h1>Work From Home - WFH</h1>
+					<h1>Working From Home - WFH</h1>
 				</div>
 			</div>
 			<div className="row">
