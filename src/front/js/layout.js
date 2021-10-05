@@ -6,6 +6,8 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { VistaHomeEmp } from "./pages/vista_home_emp";
+import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -24,6 +26,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/vista_home_emp">
+							<VistaHomeEmp />
+						</Route>
+						<Route exact path="/vista_ofertas_publi">
+							<VistaOfertasPubli />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
