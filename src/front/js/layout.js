@@ -10,6 +10,8 @@ import { CandidatosInscritos } from "./pages/empresaCandidatosInscritos";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { VistaHomeEmp } from "./pages/vista_home_emp";
+import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -29,7 +31,10 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/usuarioHomeSinLoguear">
+						<Route exact path="/vista_home_emp">
+							<VistaHomeEmp />
+						</Route>
+              <Route exact path="/usuarioHomeSinLoguear">
 							<HomeUsuarioSinLoguear />
 						</Route>
 						<Route exact path="/detalleOferta">
