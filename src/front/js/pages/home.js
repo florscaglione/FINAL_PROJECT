@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import cardSelector from "../../img/paginaInicio/card-selector.png";
 import infoInicio from "../../img/paginaInicio/info-inicio.jpg";
 import "../../styles/home.scss";
+import { NavegacionDev } from "../component/navegacionDev";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -10,6 +11,7 @@ export const Home = () => {
 	return (
 		<div className="container">
 			<div className="row">
+				<NavegacionDev />
 				<div className="col text-center mt-4">
 					<h1>Working From Home - WFH</h1>
 				</div>
