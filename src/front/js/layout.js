@@ -34,7 +34,7 @@ const Layout = () => {
 						<Route exact path="/vista_home_emp">
 							<VistaHomeEmp />
 						</Route>
-              <Route exact path="/usuarioHomeSinLoguear">
+						<Route exact path="/usuarioHomeSinLoguear">
 							<HomeUsuarioSinLoguear />
 						</Route>
 						<Route exact path="/detalleOferta">
