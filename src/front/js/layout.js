@@ -11,7 +11,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { VistaHomeEmp } from "./pages/vista_home_emp";
-import { VistaOfertasPubli } from "./pages/vistaOfertasPubli";
+import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
