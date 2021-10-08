@@ -5,7 +5,7 @@ export const NavegacionDev = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
 
 	return (
-		<nav className="navbar sticky-top navbar-light bg-light mb-3">
+		<nav className="navbar-light bg-light mb-3">
 			<div className="container d-flex justify-content-center">
 				<div className="d-flex justify-content-center">
 					<Link to="/">
