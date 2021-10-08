@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Company
 from api.utils import generate_sitemap, APIException
 import bcrypt
 from api.encrypted import check_password_hash, encrypted_pass
@@ -63,7 +63,6 @@ def signup_user():
     return jsonify(user.serialize()), 200
 
 
-
 ## COMPANY:
 
 # route for loging company in
@@ -106,7 +105,10 @@ def signup_company():
     contact = body.get("contact")
     phone = body.get("phone")
 
-    company = Company(name=name, email=email, password=password, cif=cif, contact=contact, phone=phone) # creamos la empresa
+    pass_encrypt = encrypted_pass(password)
+    print(pass_encrypt)
+
+    company = Company(name=name, email=email, password=pass_encrypt, cif=cif, contact=contact, phone=phone) # creamos la empresa
 
     company.save()  # llamo a la función "save" (está en los modelos) para guardar la empresa en la BBDD
 

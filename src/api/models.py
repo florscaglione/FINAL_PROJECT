@@ -57,6 +57,10 @@ class Company(db.Model):
             "phone": self.phone
         }
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
+
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
