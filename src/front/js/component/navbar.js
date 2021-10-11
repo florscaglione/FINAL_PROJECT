@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
 import { UserRegister } from "../../js/component/userRegister";
 import { UserRegisterCV } from "../../js/component/userRegisterCV";
+import { UserLogin } from "../../js/component/userLogin";
 
 export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
@@ -12,7 +13,8 @@ export const Navbar = () => {
 				<a className="navbar-brand" href="/">
 					<img src={logoWfh} width="180" alt="starwars logo" />
 				</a>
-				<div className="d-flex justify-content-end">
+				<div className="d-flex justify-content-end ">
+					<UserLogin />
 					<UserRegister />
 					<UserRegisterCV />
 				</div>

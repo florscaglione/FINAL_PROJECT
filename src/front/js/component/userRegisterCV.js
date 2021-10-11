@@ -19,6 +19,7 @@ export const UserRegisterCV = () => {
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
+							<h5>Rellene su curriculum</h5>
 							<div className="mb-3">
 								<label forHTML="professionInput" className="form-label">
 									Perfil profesional
