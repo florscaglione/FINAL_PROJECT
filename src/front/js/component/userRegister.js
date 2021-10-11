@@ -1,10 +1,29 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 import { UserRegisterCV } from "../../js/component/userRegisterCV";
 
 export const UserRegister = () => {
+	const [user, setUser] = useState({
+		email: "",
+		password: "",
+		passwordConfirm: "",
+		name: "",
+		lastname: "",
+		phone: "",
+		birthDate: ""
+	});
+
+	const handleChange = event => {
+		setUser({ ...user, [event.target.name]: event.target.value });
+		console.log(user);
+	};
+	const handleRegister = event => {
+		event.preventDefault();
+		console.log("USER", user);
+	};
+
 	return (
-		<>
+		<form onChange={handleChange} onSubmit={handleRegister}>
 			<button
 				type="button"
 				className="btn btn-primary mx-1"
@@ -43,6 +62,8 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="example@domain.com"
 											aria-describedby="emailHelp"
+											name="email"
+											//value={user.email}
 										/>
 									</div>
 									<div className="mb-3">
@@ -54,6 +75,8 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="8 - 16 carácteres"
 											id="exampleInputPassword1"
+											name="password"
+											//value={user.password}
 										/>
 									</div>
 									<div className="mb-3">
@@ -65,6 +88,8 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="Repetir password"
 											id="exampleInputPassword1"
+											name="passwordConfirm"
+											//value={user.passwordConfirm}
 										/>
 									</div>
 								</div>
@@ -78,6 +103,9 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="Nombre"
 											aria-describedby="textName"
+											required
+											name="name"
+											//value={user.name}
 										/>
 									</div>
 									<div className="mb-3">
@@ -89,6 +117,9 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="Apellidos"
 											aria-describedby="textLastname"
+											required
+											name="lastname"
+											//value={user.lastname}
 										/>
 									</div>
 									<div className="mb-3">
@@ -100,6 +131,9 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="34 123 456 789"
 											aria-describedby="textPhone"
+											required
+											name="phone"
+											//value={user.phone}
 										/>
 									</div>
 									<div className="mb-3">
@@ -111,6 +145,8 @@ export const UserRegister = () => {
 											className="form-control"
 											placeholder="DD / MM / YYYY"
 											aria-describedby="textBirthDate"
+											name="birthdate"
+											//value={user.birthdate}
 										/>
 									</div>
 								</div>
@@ -120,17 +156,13 @@ export const UserRegister = () => {
 							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
 								Cerrar
 							</button>
-							<button
-								type="button"
-								className="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#userRegisterCV">
+							<button type="submit" className="btn btn-primary">
 								Siguiente
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
-		</>
+		</form>
 	);
 };
