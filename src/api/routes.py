@@ -51,12 +51,11 @@ def signup_user():
     lastname = body.get("lastname")
     phone = body.get("phone")
     birth_date = body.get("birth_date")
-    skill = body.get("skill")
 
     pass_encrypt = encrypted_pass(password)
     print(pass_encrypt)
 
-    user = User(email=email, password=pass_encrypt, name=name, lastname=lastname, phone=phone, birth_date=birth_date, skill=skill) # creamos el usuario: significa que llene la columna email (1er "email") con lo que se haya escrito como email (2o email), y lo mismo con el password
+    user = User(email=email, password=pass_encrypt, name=name, lastname=lastname, phone=phone, birth_date=birth_date) # creamos el usuario: significa que llene la columna email (1er "email") con lo que se haya escrito como email (2o email), y lo mismo con el password
 
     user.save()  # llamo a la función "save" (está en los modelos) para guardar el usuario en la BBDD
 
