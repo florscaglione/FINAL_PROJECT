@@ -19,6 +19,7 @@ class User(db.Model):
     professionUsers = db.relationship('ProfessionUser', backref=db.backref('user', lazy=True))
 
 
+
     def __repr__(self):
         return '<User %r>' % self.id
 
@@ -32,7 +33,7 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "phone": self.phone,
-            "birth_date": self.birth_date,
+            "birth_date": self.birth_date
         }
         
     def save(self):

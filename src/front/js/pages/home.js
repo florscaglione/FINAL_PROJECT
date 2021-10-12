@@ -4,6 +4,7 @@ import cardSelector from "../../img/paginaInicio/card-selector.png";
 import infoInicio from "../../img/paginaInicio/info-inicio.jpg";
 import "../../styles/home.scss";
 import { NavegacionDev } from "../component/navegacionDev";
+import { UserRegister } from "../../js/component/userRegister";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
