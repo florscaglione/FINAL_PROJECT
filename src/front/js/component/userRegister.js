@@ -23,7 +23,6 @@ export const UserRegister = () => {
 	};
 
 	return (
-
 		<form onChange={handleChange} onSubmit={handleRegister}>
 			<button
 				type="button"

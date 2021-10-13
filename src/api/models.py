@@ -57,7 +57,6 @@ class Company(db.Model):
             "id": self.id,
             "name": self.name,
             "email": self.email,
-            "password": self.password,
             "cif": self.cif,
             "contact": self.contact,
             "phone": self.phone
