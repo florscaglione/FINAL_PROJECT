@@ -48,8 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch(`${process.env.BACKEND_URL}/api/login-user`, options
-					);
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/login-user`, options);
 					if (resp.status !== 200) {
 						alert("There was been some error");
 						return false;

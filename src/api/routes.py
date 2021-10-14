@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Company
+from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining
 from api.utils import generate_sitemap, APIException
 import bcrypt
 from api.encrypted import check_password_hash, encrypted_pass
@@ -64,14 +64,19 @@ def login():
         return jsonify({"access_token": access_token}), 200
 
 
-# Obtener la información de un usuario, después de loguearse:
-@api.route('/users/<int:user_id>', methods=['GET'])
+# Obtener la información de un usuario:
+@api.route('/user-info/<int:userId>', methods=['GET'])
 # @jwt_required
-def show_user(user_id):
-    user = User.query.get(user_id)      # lo cogemos de la BBDD con el get
-    userSerialized = user.serialize()   # creo una vble. para guardar el user serializado
+def show_user_info(userId):
+    user = User.query.get(userId)      # le pasamos el ID del user, lo buscamos en la BBDD y lo cogemos con el get
+    professions = ProfessionUser.query.filter_by(user_id=userId) # "professions" es un array 
 
-    return jsonify(userSerialized), 200
+    professions_names = list(map(lambda profession: Profession.query.get(profession.profession_id).name, professions)) # "profession" no es la profesion en si, sino cada fila que veo en el backend con la relación (ej: User1--Profession4)
+    academic_trainings = list(map(lambda training: training.serialize(), AcademicTraining.query.filter_by(user_id=userId)))
+    experiences = list(map(lambda experience: experience.serialize(), Experience.query.filter_by(user_id=userId)))
+
+    return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
+
 
 
 

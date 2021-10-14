@@ -151,9 +151,9 @@ class Profession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
     
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+   # user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
 
-    user = db.relationship('User', backref=db.backref('profession', lazy=True))
+    #user = db.relationship('User', backref=db.backref('profession', lazy=True))
 
     professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
 
@@ -164,7 +164,7 @@ class Profession(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "user_id": self.user_id
+          #  "user_id": self.user_id
         }
 
 
