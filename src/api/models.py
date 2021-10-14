@@ -10,8 +10,15 @@ class User(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(15), unique=False, nullable=False)
-    birth_date = db.Column(db.DateTime, unique=False, nullable=True)
-    skill = db.Column(db.String(50), unique=False, nullable=False)
+    birth_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
+
+    inscriptions = db.relationship('Inscription', backref=db.backref('user', lazy=True))
+
+    favoriteOffers = db.relationship('FavoriteOffer', backref=db.backref('user', lazy=True))
+
+    professionUsers = db.relationship('ProfessionUser', backref=db.backref('user', lazy=True))
+
+
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -26,8 +33,7 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "phone": self.phone,
-            "birth_date": self.birth_date,
-            "skill": self.skill
+            "birth_date": self.birth_date
         }
         
     def save(self):
@@ -51,7 +57,6 @@ class Company(db.Model):
             "id": self.id,
             "name": self.name,
             "email": self.email,
-            "password": self.password,
             "cif": self.cif,
             "contact": self.contact,
             "phone": self.phone
@@ -72,7 +77,11 @@ class Offer(db.Model):
     offer_description = db.Column(db.String(80), unique=False, nullable=False)
     social_benefit = db.Column(db.String(80), unique=False, nullable=True)
 
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
+    inscriptions = db.relationship('Inscription', backref=db.backref('offer', lazy=True))
+
+    favoriteOffers = db.relationship('FavoriteOffer', backref=db.backref('offer', lazy=True))
+
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id', ondelete='CASCADE'), nullable=False)
 
     company = db.relationship('Company', backref=db.backref('offer', lazy=True))
 
@@ -142,9 +151,11 @@ class Profession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
     
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
 
     user = db.relationship('User', backref=db.backref('profession', lazy=True))
+
+    professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
 
     def __repr__(self):
         return '<Profession %r>' % self.id
@@ -166,7 +177,7 @@ class AcademicTraining(db.Model):
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
     is_academic = db.Column(db.Boolean, default=False, nullable=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
 
     user = db.relationship('User', backref=db.backref('academicTraining', lazy=True))
 
@@ -193,7 +204,7 @@ class Experience(db.Model):
     end_date = db.Column(db.DateTime, unique=False, nullable=True)
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
 
     user = db.relationship('User', backref=db.backref('experience', lazy=True))
 
