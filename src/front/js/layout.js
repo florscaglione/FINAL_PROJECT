@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { HomeUsuarioSinLoguear } from "./pages/usuarioHomeSinLoguear";
+import { NewCV } from "./pages/newCV";
 import { DetalleOferta } from "./pages/usuarioDetalleOferta";
 import { CandidatosInscritos } from "./pages/empresaCandidatosInscritos";
 
@@ -36,6 +37,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/usuarioHomeSinLoguear">
 							<HomeUsuarioSinLoguear />
+						</Route>
+						<Route exact path="/new-CV">
+							<NewCV />
 						</Route>
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />
