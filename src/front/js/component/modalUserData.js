@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 export const ModalUserData = ({ info }) => {
 	const [userUpdate, setUserUpdate] = useState({
-		name: info.name,
-		lastname: info.lastname,
-		birth_date: info.birth_date,
-		email: info.email,
-		phone: info.phone
+		name: "",
+		lastname: "",
+		birth_date: "",
+		email: "",
+		phone: ""
 	});
 
 	const handleChange = event => {
@@ -19,10 +19,10 @@ export const ModalUserData = ({ info }) => {
 		event.preventDefault();
 
 		/* console.log("USER", user); */
-		const url = `${process.env.BACKEND_URL}/api/user-info/${info.id}`;
+		const url = `${process.env.BACKEND_URL}api/user-info/${info.id}/edit`;
 
 		const response = await fetch(url, {
-			method: "POST",
+			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
 			},
@@ -89,6 +89,7 @@ export const ModalUserData = ({ info }) => {
 											defaultValue={info.email}
 											name="email"
 											aria-describedby="professionHelp"
+											disabled
 										/>
 										<input
 											type="text"
