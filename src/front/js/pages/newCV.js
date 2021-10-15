@@ -14,7 +14,7 @@ export const NewCV = () => {
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 	console.log(info);
 	const getAllUserInfo = async id => {
-		const url = "https://3001-beige-galliform-xo392btg.ws-eu17.gitpod.io/api/user-info/" + id;
+		const url = "https://3001-beige-galliform-xo392btg.ws-eu17.gitpod.io/api/user-info/" + id + "/get";
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
