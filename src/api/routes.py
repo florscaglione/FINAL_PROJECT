@@ -66,7 +66,7 @@ def login():
         return jsonify({"access_token": access_token}), 200
 
 
-# Crear la información de CV de un usuario: (INTENTADO.... REVISAR, CORREGIR Y PROBAR!!!!)
+# Crear la información de CV de un usuario: (INTENTADO sola.... REVISAR, CORREGIR Y PROBAR!!!!)
 @api.route('/user-info/<int:userId>/create', methods=['POST'])
 def create_user_info(userId):
 
@@ -115,33 +115,32 @@ def show_user_info(userId):
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
 
-# Modificar la información de CV de un usuario: (NO FUNCIONA AUN)
+# Modificar la información de CV de un usuario: (Empezado con Mari, NO FUNCIONA AUN)
 @api.route('/user-info/<int:userId>/edit', methods=['PUT'])
 # @jwt_required
 def update_user_info(userId):
    # user = User.query.get(userId) 
+    body = request.get_json()
 
-    name = request.json.get('name', None)
+    name = body.get('name', None)
     lastname = request.json.get('lastname', None)
     phone = request.json.get('phone', None)
     birth_date = request.json.get('birth_date', None)
 
-    user = User.query.filter_by(user_id=userId).first()
+    user = User.query.filter_by(id=userId).first()
 
-    body = request.get_json()
-
-    if name != "" in body:
+    if name:    # similar a   if name != "" and name is not None:
         setattr(user,"name", name)
     # SIMILAR A ESTO:
     # if "name" in body:
     #     name = body["name"]
     # else:
     #     name = None    
-    if lastname != "" in body:
+    if lastname:
         setattr(user,"lastname", lastname)
-    if phone != "" in body:
+    if phone:
         setattr(user,"phone", phone)
-    if birth_date != "" in body:
+    if birth_date:
         setattr(user,"birth_date", birth_date)
 
     user.save()
