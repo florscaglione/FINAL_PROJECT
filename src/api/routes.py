@@ -66,39 +66,60 @@ def login():
         return jsonify({"access_token": access_token}), 200
 
 
-# Crear la información de CV de un usuario: (INTENTADO sola.... REVISAR, CORREGIR Y PROBAR!!!!)
-@api.route('/user-info/<int:userId>/create', methods=['POST'])
-def create_user_info(userId):
+# Crear la información de CV de un usuario (profesión,formación,experiencia): (REVISAR, CORREGIR Y PROBAR!!!!)
+@api.route('/user-info-profession/<int:userId>/create', methods=['POST'])
+def create_user_info_profession(userId):
 
     body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar a qué usuario estamos creando el CV
 
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
 
-    profession = body.get("profession") # cogemos la profesion QUE HA INTRODUCIDO el usuario (lo mismo con el resto)
-    academic_degree = body.get("academic_degree")
+    profession = body.get("profession") # cogemos la profesion QUE HA INTRODUCIDO el usuario 
+   
+    profession = Profession(name=profession) # creamos la profesion: significa que llene la columna name con lo que se haya escrito como profession
+    profession.save()  # llamo a la función "save" (está en los modelos) para guardar la profesion en la BBDD
+
+    return jsonify({"profession": profession}), 200 
+
+@api.route('/user-info-training/<int:userId>/create', methods=['POST'])
+def create_user_info_training(userId):
+
+    body = request.get_json()      
+
+    if body is None:    
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
+
+    academic_degree = body.get("academic_degree") # body.get() es igual a request.json.get(), verdad???
     study_center = body.get("study_center")
     study_start_date = body.get("study_start_date")
     study_end_date = body.get("study_end_date")
     study_in_progress = body.get("study_in_progress")
     is_academic = body.get("is_academic")
+
+    academic_training = AcademicTraining(academic_degree=academic_degree, study_center=study_center, start_date=study_start_date, end_date=study_end_date, in_progress=study_in_progress, is_academic=is_academic)
+    academicTraining.save() 
+
+    return jsonify({"training": academic_training}), 200 
+
+@api.route('/user-info-experience/<int:userId>/create', methods=['POST'])
+def create_user_info_experience(userId):
+
+    body = request.get_json()      
+
+    if body is None:   
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
+
     experience_title = body.get("experience_title")
     experience_description = body.get("experience_description")
     experience_start_date = body.get("experience_start_date")
     experience_end_date = body.get("experience_end_date")
     experience_in_progress = body.get("experience_in_progress")
 
-    profession = Profession(name=profession) # creamos la profesion: significa que llene la columna name con lo que se haya escrito como profession
-    profession.save()  # llamo a la función "save" (está en los modelos) para guardar la profesion en la BBDD
-
-    academic_training = AcademicTraining(academic_degree=academic_degree, study_center=study_center, start_date=study_start_date, end_date=study_end_date, in_progress=study_in_progress, is_academic=is_academic)
-    academicTraining.save() 
-
     experience = Experience(title=experience_title, description=experience_description, start_date=experience_start_date, end_date=experience_end_date, in_progress=experience_in_progress)     
     experience.save()  
 
-    return jsonify({"profession": profession, "training": academic_training, "experience": experience}), 200 # TIENE SENTIDO???
-
+    return jsonify({"experience": experience}), 200 
 
 
 # Obtener la información de CV de un usuario: (FUNCIONA)
@@ -108,22 +129,22 @@ def show_user_info(userId):
     user = User.query.get(userId)      # le pasamos el ID del user, lo buscamos en la BBDD y lo cogemos con el get
     professions = ProfessionUser.query.filter_by(user_id=userId) # "professions" es un array 
 
-    professions_names = list(map(lambda profession: Profession.query.get(profession.profession_id).name, professions)) # "profession" no es la profesion en si, sino cada fila que veo en el backend con la relación (ej: User1--Profession4)
+    professions_names = list(map(lambda profession: Profession.query.get(profession.profession_id).name, professions)) # "profession" no es la profesion en si, sino cada fila que veo en el backend (admin) con la relación (ej: User1--Profession4)
     academic_trainings = list(map(lambda training: training.serialize(), AcademicTraining.query.filter_by(user_id=userId)))
     experiences = list(map(lambda experience: experience.serialize(), Experience.query.filter_by(user_id=userId)))
 
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
 
-# Modificar la información de CV de un usuario: (Empezado con Mari, NO FUNCIONA AUN)
+# Modificar la información de CV de un usuario: ( FUNCIONA ) ### DOMINGO 17: ME DA ERROR EN POSTMAN, REVISAR !!!
 @api.route('/user-info/<int:userId>/edit', methods=['PUT'])
 # @jwt_required
 def update_user_info(userId):
    # user = User.query.get(userId) 
     body = request.get_json()
 
-    name = body.get('name', None)
-    lastname = request.json.get('lastname', None)
+    name = body.get('name', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    lastname = request.json.get('lastname', None) 
     phone = request.json.get('phone', None)
     birth_date = request.json.get('birth_date', None)
 
