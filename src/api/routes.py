@@ -40,6 +40,18 @@ def signup_user():
 
     return jsonify(user.serialize()), 200
 
+# Eliminar usuario:  (PROBADO EN POSTMAN Y OK!)
+@api.route('/user/<int:userId>', methods=['DELETE'])
+def delete_user(userId):
+
+    user = User.query.get(userId)
+    if not user: 
+        return jsonify({"fail": "Usuario no encontrado"}), 404
+
+    user.delete()
+
+    return jsonify({"success": "Usuario borrado"}), 200     
+
 # Login usuario:
 @api.route('/login-user', methods=['POST'])
 def login():
