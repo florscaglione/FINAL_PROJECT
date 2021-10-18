@@ -1,7 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 export const ModalUserData = ({ info }) => {
+	const { store, actions } = useContext(Context);
+
 	const [userUpdate, setUserUpdate] = useState({
 		name: "",
 		lastname: "",
@@ -15,10 +18,13 @@ export const ModalUserData = ({ info }) => {
 		console.log(userUpdate);
 	};
 
-	const handleUserUpdate = async event => {
+	const handleUserUpdate = event => {
+		actions.userUpdate(event, info.id, userUpdate);
+	};
+
+	/* const handleUserUpdate = async event => {
 		event.preventDefault();
 
-		/* console.log("USER", user); */
 		const url = `${process.env.BACKEND_URL}api/user-info/${info.id}/edit`;
 
 		const response = await fetch(url, {
@@ -27,17 +33,19 @@ export const ModalUserData = ({ info }) => {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(userUpdate)
+		}).catch(error => {
+			console.log(error);
 		});
-	};
+	};  */
 
 	return (
 		<form onChange={handleChange} onSubmit={handleUserUpdate}>
 			<button
 				type="button"
-				className="btn btn-primary mx-1"
+				className="btn btn-outline-primary mx-1"
 				data-bs-toggle="modal"
 				data-bs-target="#ModalUserData">
-				Editar Usuario
+				<i className="fas fa-edit" />
 			</button>
 
 			<div

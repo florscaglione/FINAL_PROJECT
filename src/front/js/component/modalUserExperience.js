@@ -6,10 +6,10 @@ export const ModalUserExperience = () => {
 		<>
 			<button
 				type="button"
-				className="btn btn-primary mx-1"
+				className="btn btn-outline-primary"
 				data-bs-toggle="modal"
 				data-bs-target="#ModalUserExperience">
-				Editar Experiencia
+				<i className="fas fa-edit" />
 			</button>
 
 			<div
@@ -29,7 +29,7 @@ export const ModalUserExperience = () => {
 						<div className="modal-body">
 							<div className="row">
 								<div className="col-8">
-									<h4>Añadir / editar experiencia laboral</h4>
+									<h4>Editar experiencia laboral</h4>
 								</div>
 
 								<div className="row mt-2">
@@ -58,12 +58,17 @@ export const ModalUserExperience = () => {
 											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
 										/>
-										<input
-											type="text"
-											className="mt-2 form-control"
-											placeholder="Actualmente en curso"
-											aria-describedby="professionHelp"
-										/>
+										<div className="form-check mt-2">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckChecked"
+											/>
+											<label className="form-check-label" forHTML="flexCheckChecked">
+												Actualmente en curso
+											</label>
+										</div>
 									</div>
 								</div>
 							</div>
