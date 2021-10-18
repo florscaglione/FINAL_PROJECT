@@ -76,7 +76,7 @@ export const UserRegister = () => {
 						<div className="modal-content">
 							<div className="modal-header">
 								<h2 className="modal-title" id="exampleModalLabel">
-									Registro - paso 1
+									Registro - paso 1.
 								</h2>
 								<button
 									type="button"
