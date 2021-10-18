@@ -1,9 +1,38 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 
-export const ModalUserAcademic = () => {
+export const ModalUserAcademic = ({ info }) => {
+	const [userAcademic, setUserAcademic] = useState({
+		academic_degree: "",
+		study_center: "",
+		start_date: "",
+		end_date: "",
+		in_progress: null,
+		is_academic: null
+	});
+
+	const handleChange = event => {
+		setUserAcademic({ ...userAcademic, [event.target.name]: event.target.value });
+		console.log(userAcademic);
+	};
+
+	const handleUserUpdate = async event => {
+		event.preventDefault();
+
+		/* console.log("USER", user); */
+		/* const url = `${process.env.BACKEND_URL}api/user-info-training/${info.id}/create`;
+
+		const response = await fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(userAcademic)
+		}); */
+	};
+
 	return (
-		<>
+		<form onChange={handleChange} onSubmit={handleUserUpdate}>
 			<button
 				type="button"
 				className="btn btn-outline-primary"
@@ -37,30 +66,40 @@ export const ModalUserAcademic = () => {
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={info.academic_degree}
+											name="academic_degree"
 											placeholder="Título"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={info.study_center}
+											name="study_center"
 											placeholder="Centro de estudios"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={info.start_date}
+											name="start_date"
 											placeholder="Fecha de inicio"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={info.end_date}
+											name="end_date"
 											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
 										/>
 										<div className="form-check mt-2">
 											<input
 												className="form-check-input"
+												defaultValue={info.in_progress}
+												name="in_progress"
 												type="checkbox"
 												value=""
 												id="flexCheckDefault"
@@ -72,6 +111,8 @@ export const ModalUserAcademic = () => {
 										<div className="form-check">
 											<input
 												className="form-check-input"
+												defaultValue={info.is_academic}
+												name="is_academic"
 												type="checkbox"
 												value=""
 												id="flexCheckChecked"
@@ -95,6 +136,10 @@ export const ModalUserAcademic = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</form>
 	);
+};
+
+ModalUserAcademic.propTypes = {
+	info: PropTypes.object
 };

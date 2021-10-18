@@ -9,7 +9,7 @@ export const NewCV = () => {
 	// viene del componente userRegister al pulsar sobre siguiente
 	const { store, actions } = useContext(Context);
 
-	const [info, setInfo] = useState(); //Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
+	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
 		actions.userGet(15);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
@@ -148,14 +148,13 @@ export const NewCV = () => {
 												<h4>Título educativo</h4>
 											</div>
 											<div className="d-flex justify-content-end">
-												<ModalUserAcademic />
+												<ModalUserAcademic info={store.userInfo} />
 											</div>
 										</div>
 									</div>
 									<div className="row p-2 mb-4">
 										<div className="col">
 											<h5 className="card-title">Centro de estudios:</h5>
-											<h5 className="card-title">Descripción:</h5>
 											<h5 className="card-title">Fecha inicio:</h5>
 											<h5 className="card-title">Fecha fin:</h5>
 											<h5 className="card-title">Estudios reglados:</h5>
