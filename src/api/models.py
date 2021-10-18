@@ -70,6 +70,10 @@ class Company(db.Model):
         db.session.add(self)   
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()    
+
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -141,6 +145,8 @@ class ProfessionUser(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE')) # ondelete: permite eliminar datos de las tablas secundarias automáticamente cuando elimina los datos de la tabla principal
     profession_id = db.Column(db.Integer(), db.ForeignKey('profession.id', ondelete='CASCADE'))
 
+    professionUsers = db.relationship('Profession', backref=db.backref('professionUser'))
+
     def __repr__(self):
         return '<ProfessionUser %r>' % self.id
 
@@ -149,6 +155,10 @@ class ProfessionUser(db.Model):
             "user_id": self.user_id,
             "profession_id": self.profession_id
         }
+    
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()    
 
 
 class Profession(db.Model):
@@ -159,7 +169,7 @@ class Profession(db.Model):
 
     #user = db.relationship('User', backref=db.backref('profession', lazy=True))
 
-    professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
+   # professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
 
     def __repr__(self):
         return '<Profession %r>' % self.id
@@ -170,7 +180,10 @@ class Profession(db.Model):
             "name": self.name,
           #  "user_id": self.user_id
         }
-
+        
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
 
 class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -200,6 +213,10 @@ class AcademicTraining(db.Model):
             "user_id": self.user_id
         }
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()   
+
 class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
@@ -225,3 +242,7 @@ class Experience(db.Model):
             "in_progress": self.in_progress,
             "user_id": self.user_id
         }
+
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()           
