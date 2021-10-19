@@ -1,3 +1,29 @@
 /* 
     General Styles
 */
+
+/* .card{
+    background-image: url("../img/paginaInicio/6612.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-color:transparent;
+} */
+
+.container  {
+    padding: 15px;
+
+}
+.navbar  {
+    background: white;
+    padding:0;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus, .btn-primary:active:focus {
+    background-color:#907FA4;
+    border-color:#907FA4
+}
+.navbar, .row {
+    padding:0;
+}

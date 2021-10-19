@@ -11,7 +11,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light mb-3">
 			<div className="container d-flex justify-content-between">
 				<a className="navbar-brand" href="/">
-					<img src={logoWfh} width="180" alt="starwars logo" />
+					<img src={logoWfh} width="350" alt="starwars logo" />
 				</a>
 				<div className="d-flex justify-content-end ">
 					<UserLogin />
