@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			userInfo: [],
+			userInfo: null,
 			message: null,
 			demo: [
 				{
@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				const data = await response.json();
-				setStore({ userInfo: data.user_basic });
+				setStore({ userInfo: data });
 			},
 
 			userUpdate: async (event, id, userUpdate) => {

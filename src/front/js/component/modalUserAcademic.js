@@ -1,15 +1,27 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 export const ModalUserAcademic = ({ info }) => {
+	const { store, actions } = useContext(Context);
+
 	const [userAcademic, setUserAcademic] = useState({
 		academic_degree: "",
 		study_center: "",
 		start_date: "",
 		end_date: "",
-		in_progress: null,
-		is_academic: null
+		in_progress: false,
+		is_academic: false
 	});
+
+	useEffect(
+		() => {
+			if (info) {
+				setUserAcademic(info);
+			}
+		},
+		[info]
+	);
 
 	const handleChange = event => {
 		setUserAcademic({ ...userAcademic, [event.target.name]: event.target.value });
@@ -17,10 +29,10 @@ export const ModalUserAcademic = ({ info }) => {
 	};
 
 	const handleUserUpdate = async event => {
-		event.preventDefault();
+		event.preventDefault(); // Para evitar que se lance el evento del submit al cargar la página
 
 		/* console.log("USER", user); */
-		/* const url = `${process.env.BACKEND_URL}api/user-info-training/${info.id}/create`;
+		const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
 
 		const response = await fetch(url, {
 			method: "POST",
@@ -28,7 +40,7 @@ export const ModalUserAcademic = ({ info }) => {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(userAcademic)
-		}); */
+		});
 	};
 
 	return (
@@ -66,7 +78,7 @@ export const ModalUserAcademic = ({ info }) => {
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.academic_degree}
+											defaultValue={userAcademic.academic_degree}
 											name="academic_degree"
 											placeholder="Título"
 											aria-describedby="professionHelp"
@@ -74,23 +86,23 @@ export const ModalUserAcademic = ({ info }) => {
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.study_center}
+											defaultValue={userAcademic.study_center}
 											name="study_center"
 											placeholder="Centro de estudios"
 											aria-describedby="professionHelp"
 										/>
 										<input
-											type="text"
+											type="date"
 											className="mt-2 form-control"
-											defaultValue={info.start_date}
+											defaultValue={userAcademic.start_date}
 											name="start_date"
 											placeholder="Fecha de inicio"
 											aria-describedby="professionHelp"
 										/>
 										<input
-											type="text"
+											type="date"
 											className="mt-2 form-control"
-											defaultValue={info.end_date}
+											defaultValue={userAcademic.end_date}
 											name="end_date"
 											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
@@ -98,10 +110,10 @@ export const ModalUserAcademic = ({ info }) => {
 										<div className="form-check mt-2">
 											<input
 												className="form-check-input"
-												defaultValue={info.in_progress}
+												defaultChecked={userAcademic.in_progress}
 												name="in_progress"
 												type="checkbox"
-												value=""
+												value={false}
 												id="flexCheckDefault"
 											/>
 											<label className="form-check-label " forHTML="flexCheckDefault">
@@ -111,10 +123,10 @@ export const ModalUserAcademic = ({ info }) => {
 										<div className="form-check">
 											<input
 												className="form-check-input"
-												defaultValue={info.is_academic}
+												defaultChecked={userAcademic.is_academic}
 												name="is_academic"
 												type="checkbox"
-												value=""
+												value={false}
 												id="flexCheckChecked"
 											/>
 											<label className="form-check-label" forHTML="flexCheckChecked">
@@ -129,7 +141,7 @@ export const ModalUserAcademic = ({ info }) => {
 							<button type="button" className="btn btn-outline-danger">
 								Eliminar
 							</button>
-							<button type="button" className="btn btn-primary">
+							<button type="submit" className="btn btn-primary">
 								Guardar
 							</button>
 						</div>

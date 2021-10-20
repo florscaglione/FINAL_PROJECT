@@ -1,9 +1,49 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
-export const ModalUserExperience = () => {
+export const ModalUserExperience = ({ info }) => {
+	const { store, actions } = useContext(Context);
+
+	const [userExperience, setUserExperience] = useState({
+		title: "",
+		description: "",
+		start_date: "",
+		end_date: "",
+		in_progress: false
+	});
+
+	useEffect(
+		() => {
+			if (info) {
+				setUserExperience(info);
+			}
+		},
+		[info]
+	);
+
+	const handleChange = event => {
+		setUserExperience({ ...userExperience, [event.target.name]: event.target.value });
+		console.log(userExperience);
+	};
+
+	const handleUserUpdate = async event => {
+		event.preventDefault();
+
+		/* console.log("USER", user); */
+		const url = `${process.env.BACKEND_URL}api/user-info-experience/${info.id}/create`;
+
+		const response = await fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(userExperience)
+		});
+	};
+
 	return (
-		<>
+		<form onChange={handleChange} onSubmit={handleUserUpdate}>
 			<button
 				type="button"
 				className="btn btn-outline-primary"
@@ -37,30 +77,40 @@ export const ModalUserExperience = () => {
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={userExperience.title}
+											name="title"
 											placeholder="Título"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={userExperience.description}
+											name="description"
 											placeholder="Descripción"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={userExperience.start_date}
+											name="start_date"
 											placeholder="Fecha de inicio"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
+											defaultValue={userExperience.end_date}
+											name="end_date"
 											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
 										/>
 										<div className="form-check mt-2">
 											<input
 												className="form-check-input"
+												defaultValue={userExperience.in_progress}
+												name="in_progress"
 												type="checkbox"
 												value=""
 												id="flexCheckChecked"
@@ -77,13 +127,17 @@ export const ModalUserExperience = () => {
 							<button type="button" className="btn btn-outline-danger">
 								Eliminar
 							</button>
-							<button type="button" className="btn btn-primary">
+							<button type="submit" className="btn btn-primary">
 								Guardar
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
-		</>
+		</form>
 	);
+};
+
+ModalUserExperience.propTypes = {
+	info: PropTypes.object
 };

@@ -13,7 +13,6 @@ export const NewCV = () => {
 	useEffect(() => {
 		actions.userGet(15);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
-	console.log("store", store.userInfo.name);
 
 	/* const getAllUserInfo = async id => {
 		const url = "https://3001-beige-galliform-xo392btg.ws-eu17.gitpod.io/api/user-info/" + id + "/get";
@@ -37,25 +36,25 @@ export const NewCV = () => {
 							<div className="card m-2">
 								<div className="card-header d-flex justify-content-between">
 									<h4>Datos personales</h4>
-									<ModalUserData info={store.userInfo} />
+									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
 								<div className="card-body">
-									<h5 className="card-title">Nombre: {store.userInfo.name}</h5>
+									<h5 className="card-title">Nombre: {store.userInfo.user_basic.name}</h5>
 									<h5 className="">
 										Apellidos:
-										{store.userInfo.lastname}
+										{store.userInfo.user_basic.lastname}
 									</h5>
 									<h5 className="">
 										Fecha nacimiento:
-										{store.userInfo.birth_date}
+										{store.userInfo.user_basic.birth_date}
 									</h5>
 									<h5 className="">
 										Email:
-										{store.userInfo.email}
+										{store.userInfo.user_basic.email}
 									</h5>
 									<h5 className="">
 										Teléfono:
-										{store.userInfo.phone}
+										{store.userInfo.user_basic.phone}
 									</h5>
 								</div>
 							</div>
@@ -76,7 +75,7 @@ export const NewCV = () => {
 
 								<div className="card-body">
 									<div>
-										<h4 className="card-title">Seleccione perfil:</h4>
+										<h5 className="card-title">Seleccione perfil:</h5>
 										<div className="row mt-2">
 											<div className="d-flex justify-content-start">
 												<div className="btn-group w-100">
@@ -113,7 +112,7 @@ export const NewCV = () => {
 										</div>
 									</div>
 									<div>
-										<h4 className="card-title">Nuevo perfil:</h4>
+										<h5 className="card-title mt-2">Nuevo perfil:</h5>
 										<div className="row mt-2">
 											<div className="d-flex justify-content-start">
 												<input
@@ -136,30 +135,49 @@ export const NewCV = () => {
 										<h4>Formación</h4>
 									</div>
 									<div className="d-flex justify-content-end">
-										<button type="button" className="btn btn-outline-primary mx-1">
-											<i className="fas fa-plus" />
-										</button>
+										<ModalUserAcademic info={null} />
 									</div>
 								</div>
 								<div className="card-body">
-									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-										<div className="d-flex justify-content-between">
-											<div className="d-flex justify-content-start">
-												<h4>Título educativo</h4>
-											</div>
-											<div className="d-flex justify-content-end">
-												<ModalUserAcademic info={store.userInfo} />
-											</div>
+									<div className="row">
+										<div className="col-12">
+											{store.userInfo.trainings && store.userInfo.trainings.length > 0
+												? store.userInfo.trainings.map((training, index) => {
+														return (
+															<div key={index} className="row mb-4">
+																<div className="col-10">
+																	<h5 className="card-title">
+																		Titulación:
+																		{training.academic_degree}
+																	</h5>
+																	<h5 className="card-title">
+																		Centro de estudios:
+																		{training.study_center}
+																	</h5>
+																	<h5 className="card-title">
+																		Fecha inicio: {training.start_date}
+																	</h5>
+																	<h5 className="card-title">
+																		Fecha fin: {training.end_date}
+																	</h5>
+																	<h5 className="card-title">
+																		En curso: {training.in_progress}
+																	</h5>
+																	<h5 className="card-title">
+																		Estudios reglados: {training.is_academic}
+																	</h5>
+																</div>
+																<div className="col-2 d-flex justify-content-end">
+																	<ModalUserAcademic info={training} />
+																</div>
+															</div>
+														);
+												  })
+												: ""}
 										</div>
 									</div>
-									<div className="row p-2 mb-4">
-										<div className="col">
-											<h5 className="card-title">Centro de estudios:</h5>
-											<h5 className="card-title">Fecha inicio:</h5>
-											<h5 className="card-title">Fecha fin:</h5>
-											<h5 className="card-title">Estudios reglados:</h5>
-											<h5 className="card-title">En curso:</h5>
-										</div>
+									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
+										<div className="d-flex justify-content-between" />
 									</div>
 								</div>
 							</div>
@@ -169,30 +187,46 @@ export const NewCV = () => {
 										<h4>Experiencia</h4>
 									</div>
 									<div className="d-flex justify-content-end">
-										<button type="button" className="btn btn-outline-primary mx-1">
-											<i className="fas fa-plus" />
-										</button>
+										<ModalUserExperience info={null} />
 									</div>
 								</div>
 								<div className="card-body">
-									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-										<div className="d-flex justify-content-between">
-											<div className="d-flex justify-content-start">
-												<h4>Título experiencia</h4>
-											</div>
-											<div className="d-flex justify-content-end">
-												<ModalUserExperience />
-											</div>
+									<div className="row">
+										<div className="col-12">
+											{store.userInfo.experiences && store.userInfo.experiences.length > 0
+												? store.userInfo.experiences.map((experience, index) => {
+														return (
+															<div key={index} className="row mb-4">
+																<div className="col-10">
+																	<h5 className="card-title">
+																		Titulación:
+																		{experience.title}
+																	</h5>
+																	<h5 className="card-title">
+																		Descripción:
+																		{experience.description}
+																	</h5>
+																	<h5 className="card-title">
+																		Fecha inicio: {experience.start_date}
+																	</h5>
+																	<h5 className="card-title">
+																		Fecha fin: {experience.end_date}
+																	</h5>
+																	<h5 className="card-title">
+																		En curso: {experience.in_progress}
+																	</h5>
+																</div>
+																<div className="col-2 d-flex justify-content-end">
+																	<ModalUserExperience info={experience} />
+																</div>
+															</div>
+														);
+												  })
+												: ""}
 										</div>
 									</div>
-									<div className="row p-2 mb-4">
-										<div className="col">
-											<h5 className="card-title">Título:</h5>
-											<h5 className="card-title">Descripción</h5>
-											<h5 className="card-title">Fecha inicio:</h5>
-											<h5 className="card-title">Fecha fin:</h5>
-											<h5 className="card-title">En curso:</h5>
-										</div>
+									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
+										<div className="d-flex justify-content-between" />
 									</div>
 								</div>
 							</div>
