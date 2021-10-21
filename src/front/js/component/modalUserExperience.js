@@ -23,6 +23,10 @@ export const ModalUserExperience = ({ info }) => {
 	);
 
 	const handleChange = event => {
+		if (event.target.checked) {
+			userExperience.in_progress == true;
+			setUserExperience(userExperience);
+		}
 		setUserExperience({ ...userExperience, [event.target.name]: event.target.value });
 		console.log(userExperience);
 	};
@@ -31,7 +35,7 @@ export const ModalUserExperience = ({ info }) => {
 		event.preventDefault();
 
 		/* console.log("USER", user); */
-		const url = `${process.env.BACKEND_URL}api/user-info-experience/${info.id}/create`;
+		const url = `${process.env.BACKEND_URL}api/user-info-experience/${store.userInfo.user_basic.id}/create`;
 
 		const response = await fetch(url, {
 			method: "POST",
@@ -91,7 +95,7 @@ export const ModalUserExperience = ({ info }) => {
 											aria-describedby="professionHelp"
 										/>
 										<input
-											type="text"
+											type="date"
 											className="mt-2 form-control"
 											defaultValue={userExperience.start_date}
 											name="start_date"
@@ -99,7 +103,7 @@ export const ModalUserExperience = ({ info }) => {
 											aria-describedby="professionHelp"
 										/>
 										<input
-											type="text"
+											type="date"
 											className="mt-2 form-control"
 											defaultValue={userExperience.end_date}
 											name="end_date"

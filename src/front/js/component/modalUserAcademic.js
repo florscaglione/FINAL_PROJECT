@@ -30,7 +30,7 @@ export const ModalUserAcademic = ({ info }) => {
 
 	const handleUserUpdate = async event => {
 		event.preventDefault(); // Para evitar que se lance el evento del submit al cargar la página
-
+		console.log("*********", userAcademic);
 		/* console.log("USER", user); */
 		const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
 
@@ -45,7 +45,7 @@ export const ModalUserAcademic = ({ info }) => {
 
 	return (
 		<form onChange={handleChange} onSubmit={handleUserUpdate}>
-			<button
+			<button // Revisar con mari el botón para seleccionar la formación y que sea editable para cada una de las formaciones
 				type="button"
 				className="btn btn-outline-primary"
 				data-bs-toggle="modal"
@@ -113,7 +113,7 @@ export const ModalUserAcademic = ({ info }) => {
 												defaultChecked={userAcademic.in_progress}
 												name="in_progress"
 												type="checkbox"
-												value={false}
+												value={true}
 												id="flexCheckDefault"
 											/>
 											<label className="form-check-label " forHTML="flexCheckDefault">
@@ -126,7 +126,7 @@ export const ModalUserAcademic = ({ info }) => {
 												defaultChecked={userAcademic.is_academic}
 												name="is_academic"
 												type="checkbox"
-												value={false}
+												value={true}
 												id="flexCheckChecked"
 											/>
 											<label className="form-check-label" forHTML="flexCheckChecked">
