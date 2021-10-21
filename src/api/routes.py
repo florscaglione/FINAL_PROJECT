@@ -24,7 +24,7 @@ def signup_user():
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
 
-    email = body.get("email") # cogemos el email QUE HA INTRODUCIDO el usuario (lo mismo con el password, etc)
+    email = body.get("email") # cogemos del body el email QUE HA INTRODUCIDO el usuario (lo mismo con el password, etc)
     password = body.get("password")
     name = body.get("name")
     lastname = body.get("lastname")
@@ -116,9 +116,9 @@ def create_user_info_training(userId):
 
     academic_degree = body.get("academic_degree") # body.get() es igual a request.json.get()
     study_center = body.get("study_center")
-    study_start_date = body.get("study_start_date")
-    study_end_date = body.get("study_end_date")
-    study_in_progress = body.get("study_in_progress")
+    study_start_date = body.get("start_date")   
+    study_end_date = body.get("end_date")
+    study_in_progress = body.get("in_progress")
     is_academic = body.get("is_academic")
 
     academic_training = AcademicTraining(user_id=userId, academic_degree=academic_degree, study_center=study_center, start_date=study_start_date, end_date=study_end_date, in_progress=study_in_progress, is_academic=is_academic)
@@ -134,11 +134,11 @@ def create_user_info_experience(userId):
     if body is None:   
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
 
-    experience_title = body.get("experience_title")
-    experience_description = body.get("experience_description")
-    experience_start_date = body.get("experience_start_date")
-    experience_end_date = body.get("experience_end_date")
-    experience_in_progress = body.get("experience_in_progress")
+    experience_title = body.get("title")    # IMPORTANTE: lo que hay antes del = puedo inventármelo, pero el "title" tiene que ser el mismo que viene de los modelos
+    experience_description = body.get("description")
+    experience_start_date = body.get("start_date")
+    experience_end_date = body.get("end_date")
+    experience_in_progress = body.get("in_progress")
 
     experience = Experience(user_id=userId, title=experience_title, description=experience_description, start_date=experience_start_date, end_date=experience_end_date, in_progress=experience_in_progress)     
     experience.save()  
@@ -160,13 +160,16 @@ def show_user_info(userId):
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
 
-# Modificar la información de CV de un usuario: ( FUNCIONA )
+# Modificar la información básica en un CV de un usuario: ( FUNCIONA )
 @api.route('/user-info/<int:userId>/edit', methods=['PUT'])
 # @jwt_required
 def update_user_info(userId):
    # user = User.query.get(userId) 
     body = request.get_json()
 
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
     name = body.get('name', None)   # body.get('name', None) = request.json.get('name', None) !!!!
     lastname = body.get('lastname', None) 
     email = body.get('email', None) 
@@ -197,7 +200,7 @@ def update_user_info(userId):
 #################
 
 # Registro empresa:
-@api.route('/signup-company', methods=['POST'])
+@api.route('/signup-company', methods=['POST']) # (PROBADO EN POSTMAN Y OK)
 def signup_company():
     body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar qué usuario estamos creando
     
@@ -245,7 +248,7 @@ def login_company():
         access_token = create_access_token(identity=company.email, expires_delta=timedelta(minutes=100))
         return jsonify({"access_token": access_token}), 200
 
-# Eliminar empresa:  (NO FUNCIONA EN POSTMAN)
+# Eliminar empresa:  (FUNCIONA A MEDIAS EN POSTMAN)=> Sólo funciona con las empresas que creo desde postman pero NO con las q creo a mano, por qué??
 @api.route('/company/<int:companyId>', methods=['DELETE'])
 def delete_company(companyId):
 
@@ -257,8 +260,8 @@ def delete_company(companyId):
 
     return jsonify({"success": "Empresa eliminada"}), 200    
 
-# Obtener la información de una empresa:
-@api.route('/companies/<int:company_id>', methods=['GET']) # FUNCIONA EN POSTMAN
+# Obtener la información de una empresa:    (PROBADO EN POSTMAN Y OK)
+@api.route('/companies/<int:company_id>', methods=['GET']) 
 # @jwt_required
 def show_company(company_id):
     company = Company.query.get(company_id)      # lo cogemos de la BBDD con el get
@@ -268,3 +271,100 @@ def show_company(company_id):
         return jsonify({"msg": "This company does not exists"}), 404
 
     return jsonify(companySerialized), 200
+
+# Crear una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
+@api.route('/offer', methods=['POST']) 
+def create_offer():
+
+    body = request.get_json()      
+
+    if body is None:    
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
+
+    company_id = body.get("company_id", None)
+    title = body.get("title", None) 
+    remote_work = body.get("remote_work", None)
+    contract_type = body.get("contract_type", None)
+    salary_range = body.get("salary_range", None)
+    requirement = body.get("requirement", None)
+    offer_description = body.get("offer_description", None)
+    social_benefit = body.get("social_benefit", None)
+
+    offer = Offer(company_id=company_id, title=title, remote_work=remote_work, contract_type=contract_type, salary_range=salary_range, requirement=requirement, offer_description=offer_description, social_benefit=social_benefit)
+    offer.save() 
+
+    return jsonify(offer.serialize()), 200 
+
+# Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
+@api.route('/offer/<int:offerId>', methods=['GET'])
+# @jwt_required
+def show_offer(offerId):
+
+    offer = Offer.query.get(offerId)      # le pasamos el ID de la oferta, la buscamos en la BBDD y la cogemos con el get
+
+    if not offer:
+        raise APIException("Offer not found", 401)
+
+    return jsonify(offer.serialize()), 200
+
+# Obtener la lista de todas las ofertas de trabajo: (PROBADO EN POSTMAN Y OK)
+@api.route('/offers', methods =['GET'])
+def get_all_offers():
+
+    offers = Offer.get_all()  # busco en la BBDD todas las ofertas
+
+    all_offers = []  # convierto los objetos de ofertas en array (json)
+    for offer in offers:
+        all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de respuesta
+
+    return jsonify({'offers': all_offers}), 200
+
+# Eliminar oferta de trabajo:  (PROBADO EN POSTMAN Y OK!)
+@api.route('/offer/<int:offerId>', methods=['DELETE'])
+def delete_offer(offerId):
+
+    offer = Offer.query.get(offerId)
+    if not offer: 
+        return jsonify({"fail": "Oferta no encontrada"}), 404
+
+    offer.delete()
+
+    return jsonify({"success": "Oferta eliminada"}), 200        
+
+# Modificar oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
+@api.route('/offer/<int:offerId>', methods=['PUT'])
+def update_offer(offerId):
+ 
+    body = request.get_json()
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    title = body.get('title', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    remote_work = body.get('remote_work', None) 
+    contract_type = body.get('contract_type', None) 
+    salary_range = body.get('salary_range', None)
+    requirement = body.get('requirement', None)
+    offer_description = body.get("offer_description", None)
+    social_benefit = body.get("social_benefit", None)
+
+    offer = Offer.query.filter_by(id=offerId).first()
+
+    if title:    # similar a   if title != "" and title is not None:
+        offer.title = title # el primer "title" se refiere a la columna, y el 2o al title introducido (title = body.get('title', None) )
+    if remote_work:
+        offer.remote_work = remote_work 
+    if contract_type:
+        offer.contract_type = contract_type 
+    if salary_range:
+        offer.salary_range = salary_range 
+    if requirement:
+        offer.requirement = requirement  
+    if offer_description:
+        offer.offer_description = offer_description 
+    if social_benefit:
+        offer.social_benefit = social_benefit                
+
+    db.session.commit()
+
+    return jsonify(offer.serialize()), 200

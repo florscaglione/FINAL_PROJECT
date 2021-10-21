@@ -108,6 +108,17 @@ class Offer(db.Model):
             "social_benefit": self.social_benefit
         }
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()    
 
 class Inscription(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -189,8 +200,8 @@ class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     academic_degree = db.Column(db.String(300), unique=False, nullable=False)
     study_center = db.Column(db.String(300), unique=False, nullable=False)
-    start_date = db.Column(db.DateTime, unique=False, nullable=False)
-    end_date = db.Column(db.DateTime, unique=False, nullable=True)
+    start_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
+    end_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
     is_academic = db.Column(db.Boolean, default=False, nullable=True)
 
