@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
 export const ModalUserAcademic = ({ info, icon, id }) => {
-	console.log("AAAAAAAAA", icon, info);
 	const { store, actions } = useContext(Context);
 
 	const [userAcademic, setUserAcademic] = useState({
@@ -25,15 +24,18 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 	);
 
 	const handleChange = event => {
-		if (event.target.checked) {
+		/* if (event.target.checked) {
 			if (event.target.name == "in_progress") {
 				//setUserAcademic(...userAcademic, !userAcademic.in_progress)
 				setUserAcademic({ ...userAcademic, [event.target.name]: !event.target.value });
 				console.log("------", event.target.checked);
 			}
-		}
-		setUserAcademic({ ...userAcademic, [event.target.name]: event.target.value });
-		console.log(userAcademic);
+		} */
+		setUserAcademic({
+			...userAcademic,
+			[event.target.name]: event.target.type == "checkbox" ? event.target.checked : event.target.value
+		});
+		console.log("Prueba del checkbox", userAcademic);
 	};
 
 	const handleUserUpdate = async event => {
@@ -41,7 +43,15 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 		console.log("*********", userAcademic);
 		/* console.log("USER", user); */
 		if (icon == "edit") {
-			console.log("estoy editando");
+			const url = `${process.env.BACKEND_URL}api/user-info-training/edit/${info.id}`; // id de la formación
+
+			const response = await fetch(url, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(userAcademic)
+			});
 		}
 		if (icon == "plus") {
 			const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
@@ -120,27 +130,25 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 										<div className="form-check mt-2">
 											<input
 												className="form-check-input"
-												defaultChecked={userAcademic.in_progress}
 												name="in_progress"
 												type="checkbox"
-												value={userAcademic.in_progress}
+												checked={userAcademic.in_progress}
 												id="flexCheckDefault"
 											/>
 											<label className="form-check-label " forHTML="flexCheckDefault">
-												Formación reglada
+												Actualmente en curso
 											</label>
 										</div>
 										<div className="form-check">
 											<input
 												className="form-check-input"
-												defaultChecked={userAcademic.is_academic}
 												name="is_academic"
 												type="checkbox"
-												value={userAcademic.is_academic}
+												checked={userAcademic.is_academic}
 												id="flexCheckChecked"
 											/>
 											<label className="form-check-label" forHTML="flexCheckChecked">
-												Actualmente en curso
+												Formación académica reglada
 											</label>
 										</div>
 									</div>

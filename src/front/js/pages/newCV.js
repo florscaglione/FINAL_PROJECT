@@ -8,6 +8,7 @@ import { ModalUserExperience } from "../../js/component/modalUserExperience";
 export const NewCV = () => {
 	// viene del componente userRegister al pulsar sobre siguiente
 	const { store, actions } = useContext(Context);
+	console.log(store.userInfo);
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
@@ -169,7 +170,7 @@ export const NewCV = () => {
 																		Fecha fin: {training.end_date}
 																	</h5>
 																	<h5 className="card-title">
-																		En curso: {training.in_progress}
+																		En curso: {training.in_progress ? "Sí" : "No"}
 																	</h5>
 																	<h5 className="card-title">
 																		Estudios reglados: {training.is_academic}
