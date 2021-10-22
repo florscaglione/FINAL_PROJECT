@@ -40,6 +40,10 @@ class User(db.Model):
         db.session.add(self)   
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
@@ -65,6 +69,10 @@ class Company(db.Model):
     def save(self):
         db.session.add(self)   
         db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()    
 
 
 class Offer(db.Model):
@@ -100,6 +108,17 @@ class Offer(db.Model):
             "social_benefit": self.social_benefit
         }
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()    
 
 class Inscription(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -137,6 +156,8 @@ class ProfessionUser(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE')) # ondelete: permite eliminar datos de las tablas secundarias automáticamente cuando elimina los datos de la tabla principal
     profession_id = db.Column(db.Integer(), db.ForeignKey('profession.id', ondelete='CASCADE'))
 
+    professionUsers = db.relationship('Profession', backref=db.backref('professionUser'))
+
     def __repr__(self):
         return '<ProfessionUser %r>' % self.id
 
@@ -145,17 +166,21 @@ class ProfessionUser(db.Model):
             "user_id": self.user_id,
             "profession_id": self.profession_id
         }
+    
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()    
 
 
 class Profession(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
     
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+   # user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
 
-    user = db.relationship('User', backref=db.backref('profession', lazy=True))
+    #user = db.relationship('User', backref=db.backref('profession', lazy=True))
 
-    professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
+   # professionUsers = db.relationship('ProfessionUser', backref=db.backref('profession', lazy=True))
 
     def __repr__(self):
         return '<Profession %r>' % self.id
@@ -164,16 +189,19 @@ class Profession(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "user_id": self.user_id
+          #  "user_id": self.user_id
         }
-
+        
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
 
 class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     academic_degree = db.Column(db.String(300), unique=False, nullable=False)
     study_center = db.Column(db.String(300), unique=False, nullable=False)
-    start_date = db.Column(db.DateTime, unique=False, nullable=False)
-    end_date = db.Column(db.DateTime, unique=False, nullable=True)
+    start_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
+    end_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
     is_academic = db.Column(db.Boolean, default=False, nullable=True)
 
@@ -195,6 +223,10 @@ class AcademicTraining(db.Model):
             "is_academic": self.is_academic,
             "user_id": self.user_id
         }
+
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()   
 
 class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -221,3 +253,7 @@ class Experience(db.Model):
             "in_progress": self.in_progress,
             "user_id": self.user_id
         }
+
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()           
