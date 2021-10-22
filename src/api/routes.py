@@ -212,8 +212,8 @@ def delete_training(trainingId):
 
     return jsonify({"success": "Formación Académica eliminada"}), 200            
 
-# Crear una EXPERIENCIA en el CV de un usuario:
-@api.route('/user-info-experience/<int:userId>/create', methods=['POST']) #(PROBADO EN POSTMAN Y OK)
+# Crear una EXPERIENCIA en el CV de un usuario: (PROBADO EN POSTMAN Y OK)
+@api.route('/user-info-experience/<int:userId>/create', methods=['POST']) 
 def create_user_info_experience(userId):
 
     body = request.get_json()      
@@ -231,6 +231,18 @@ def create_user_info_experience(userId):
     experience.save()  
 
     return jsonify(experience.serialize()), 200 
+
+# Eliminar una EXPERIENCIA en el CV de un usuario:    (PROBADO EN POSTMAN Y OK)
+@api.route('/user-info-experience/<int:experienceId>', methods=['DELETE'])
+def delete_experience(experienceId):
+
+    experience = Experience.query.get(experienceId)
+    if not experience: 
+        return jsonify({"fail": "Experiencia no encontrada"}), 404
+
+    experience.delete()
+
+    return jsonify({"success": "Experiencia eliminada"}), 200            
 
 # Obtener la información de CV de un usuario (DATOS PERSONALES, PROFESIÓN, FORMACIÓN, EXPERIENCIA): (FUNCIONA)
 @api.route('/user-info/<int:userId>/get', methods=['GET'])
