@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			userInfo: null,
 			message: null,
 			demo: [
 				{
@@ -16,6 +17,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			userGet: async id => {
+				const url = `${process.env.BACKEND_URL}api/user-info/${id}/get`;
+				const response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				const data = await response.json();
+				setStore({ userInfo: data });
+			},
+
+			userUpdate: async (event, id, userUpdate) => {
+				event.preventDefault();
+
+				const url = `${process.env.BACKEND_URL}api/user-info/${id}/edit`;
+
+				const response = await fetch(url, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(userUpdate)
+				});
+				if (response.ok) {
+					getActions().userGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				}
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
