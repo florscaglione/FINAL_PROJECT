@@ -145,6 +145,41 @@ def create_user_info_experience(userId):
 
     return jsonify(experience.serialize()), 200 
 
+# Modificar una formación en CV: 
+@api.route('/user-info-training/edit/<int:trainingId>', methods=['PUT']) 
+def update_user_info_training(trainingId):
+
+    body = request.get_json()      
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    academic_degree = body.get('academic_degree', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    study_center = body.get('study_center', None) 
+    study_start_date = body.get('start_date', None) 
+    study_end_date = body.get('end_date', None)
+    study_in_progress = body.get('in_progress', None)
+    is_academic = body.get('is_academic', None)
+
+
+    training = AcademicTraining.query.filter_by(id=trainingId).first()
+
+    if academic_degree:   
+        training.academic_degree = academic_degree 
+    if study_center:
+        training.study_center = study_center 
+    if study_start_date:
+        training.study_start_date = study_start_date 
+    if study_end_date:
+        training.study_end_date = study_end_date 
+    if study_in_progress:
+        training.study_in_progress = study_in_progress  
+    if is_academic:
+        training.is_academic = is_academic                 
+
+    db.session.commit()
+
+    return jsonify(training.serialize()), 200
 
 # Obtener la información de CV de un usuario: (FUNCIONA)
 @api.route('/user-info/<int:userId>/get', methods=['GET'])
