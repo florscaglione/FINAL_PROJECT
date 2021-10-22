@@ -228,6 +228,10 @@ class AcademicTraining(db.Model):
         db.session.add(self)   
         db.session.commit()   
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()        
+
 class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
@@ -257,3 +261,7 @@ class Experience(db.Model):
     def save(self):
         db.session.add(self)   
         db.session.commit()           
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()

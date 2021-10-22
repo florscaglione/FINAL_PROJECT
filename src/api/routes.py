@@ -15,7 +15,7 @@ api = Blueprint('api', __name__)
 ##   USER   ##
 ##############
 
-# Registro usuario:
+# Registro usuario (INFORMACIÓN BÁSICA):
 @api.route('/signup-user', methods=['POST'])
 def signup_user():
 
@@ -37,6 +37,39 @@ def signup_user():
     user = User(email=email, password=pass_encrypt, name=name, lastname=lastname, phone=phone, birth_date=birth_date) # creamos el usuario: significa que llene la columna email (1er "email") con lo que se haya escrito como email (2o email), y lo mismo con el password
 
     user.save()  # llamo a la función "save" (está en los modelos) para guardar el usuario en la BBDD
+
+    return jsonify(user.serialize()), 200
+
+# Modificar la INFORMACIÓN BÁSICA en un CV de un usuario: ( FUNCIONA )
+@api.route('/user-info/<int:userId>/edit', methods=['PUT'])
+# @jwt_required
+def update_user_info(userId):
+   # user = User.query.get(userId) 
+    body = request.get_json()
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    name = body.get('name', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    lastname = body.get('lastname', None) 
+    email = body.get('email', None) 
+    phone = body.get('phone', None)
+    birth_date = body.get('birth_date', None)
+
+    user = User.query.filter_by(id=userId).first()
+
+    if name:    # similar a   if name != "" and name is not None:
+        user.name = name # el primer "name" se refiere a la columna, y el 2o al name introducido (name = body.get('name', None) )
+    if lastname:
+        user.lastname = lastname 
+    if email:
+        user.email = email 
+    if phone:
+        user.phone = phone 
+    if birth_date:
+        user.birth_date = birth_date         
+
+    db.session.commit()
 
     return jsonify(user.serialize()), 200
 
@@ -78,7 +111,12 @@ def login():
         return jsonify({"access_token": access_token}), 200
 
 
-# Crear la información de CV de un usuario (profesión,formación,experiencia): (FUNCIONA)
+
+###################################################
+##   PROFESSION, ACADEMIC_TRAINING, EXPERIENCE   ##
+###################################################
+
+# Crear/Modificar una PROFESIÓN en el CV de un usuario: (FUNCIONA)
 @api.route('/user-info-profession/<int:userId>/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
 def create_user_info_profession(userId):
 
@@ -106,6 +144,7 @@ def create_user_info_profession(userId):
 
     return jsonify({"profession": "Creado con éxito"}), 200 
 
+# Crear una FORMACIÓN en el CV de un usuario: (FUNCIONA)
 @api.route('/user-info-training/<int:userId>/create', methods=['POST']) #(PROBADO EN POSTMAN Y OK)
 def create_user_info_training(userId):
 
@@ -126,6 +165,54 @@ def create_user_info_training(userId):
 
     return jsonify(academic_training.serialize()), 200 
 
+# Modificar una FORMACIÓN en el CV de un usuario:  (FUNCIONA)
+@api.route('/user-info-training/edit/<int:trainingId>', methods=['PUT']) 
+def update_user_info_training(trainingId):
+
+    body = request.get_json()      
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    academic_degree = body.get('academic_degree', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    study_center = body.get('study_center', None) 
+    study_start_date = body.get('start_date', None) 
+    study_end_date = body.get('end_date', None)
+    study_in_progress = body.get('in_progress', None)
+    is_academic = body.get('is_academic', None)
+
+    training = AcademicTraining.query.filter_by(id=trainingId).first()
+
+    if academic_degree:   
+        training.academic_degree = academic_degree 
+    if study_center:
+        training.study_center = study_center 
+    if study_start_date:
+        training.study_start_date = study_start_date 
+    if study_end_date:
+        training.study_end_date = study_end_date 
+    if study_in_progress:
+        training.study_in_progress = study_in_progress  
+    if is_academic:
+        training.is_academic = is_academic                 
+
+    db.session.commit()
+
+    return jsonify(training.serialize()), 200  
+
+# Eliminar una FORMACIÓN en el CV de un usuario:
+@api.route('/user-info-training/<int:trainingId>', methods=['DELETE'])
+def delete_training(trainingId):
+
+    training = AcademicTraining.query.get(trainingId)
+    if not training: 
+        return jsonify({"fail": "Formación Académica no encontrada"}), 404
+
+    training.delete()
+
+    return jsonify({"success": "Formación Académica eliminada"}), 200            
+
+# Crear una EXPERIENCIA en el CV de un usuario:
 @api.route('/user-info-experience/<int:userId>/create', methods=['POST']) #(PROBADO EN POSTMAN Y OK)
 def create_user_info_experience(userId):
 
@@ -145,43 +232,7 @@ def create_user_info_experience(userId):
 
     return jsonify(experience.serialize()), 200 
 
-# Modificar una formación en CV: 
-@api.route('/user-info-training/edit/<int:trainingId>', methods=['PUT']) 
-def update_user_info_training(trainingId):
-
-    body = request.get_json()      
-
-    if body is None:    # si no lo encuentra, tira este error 
-        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
-   
-    academic_degree = body.get('academic_degree', None)   # body.get('name', None) = request.json.get('name', None) !!!!
-    study_center = body.get('study_center', None) 
-    study_start_date = body.get('start_date', None) 
-    study_end_date = body.get('end_date', None)
-    study_in_progress = body.get('in_progress', None)
-    is_academic = body.get('is_academic', None)
-
-
-    training = AcademicTraining.query.filter_by(id=trainingId).first()
-
-    if academic_degree:   
-        training.academic_degree = academic_degree 
-    if study_center:
-        training.study_center = study_center 
-    if study_start_date:
-        training.study_start_date = study_start_date 
-    if study_end_date:
-        training.study_end_date = study_end_date 
-    if study_in_progress:
-        training.study_in_progress = study_in_progress  
-    if is_academic:
-        training.is_academic = is_academic                 
-
-    db.session.commit()
-
-    return jsonify(training.serialize()), 200
-
-# Obtener la información de CV de un usuario: (FUNCIONA)
+# Obtener la información de CV de un usuario (DATOS PERSONALES, PROFESIÓN, FORMACIÓN, EXPERIENCIA): (FUNCIONA)
 @api.route('/user-info/<int:userId>/get', methods=['GET'])
 # @jwt_required
 def show_user_info(userId):
@@ -193,41 +244,6 @@ def show_user_info(userId):
     experiences = list(map(lambda experience: experience.serialize(), Experience.query.filter_by(user_id=userId)))
 
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
-
-
-# Modificar la información básica en un CV de un usuario: ( FUNCIONA )
-@api.route('/user-info/<int:userId>/edit', methods=['PUT'])
-# @jwt_required
-def update_user_info(userId):
-   # user = User.query.get(userId) 
-    body = request.get_json()
-
-    if body is None:    # si no lo encuentra, tira este error 
-        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
-   
-    name = body.get('name', None)   # body.get('name', None) = request.json.get('name', None) !!!!
-    lastname = body.get('lastname', None) 
-    email = body.get('email', None) 
-    phone = body.get('phone', None)
-    birth_date = body.get('birth_date', None)
-
-    user = User.query.filter_by(id=userId).first()
-
-    if name:    # similar a   if name != "" and name is not None:
-        user.name = name # el primer "name" se refiere a la columna, y el 2o al name introducido (name = body.get('name', None) )
-    if lastname:
-        user.lastname = lastname 
-    if email:
-        user.email = email 
-    if phone:
-        user.phone = phone 
-    if birth_date:
-        user.birth_date = birth_date         
-
-    db.session.commit()
-
-    return jsonify(user.serialize()), 200
-
 
 
 #################
@@ -306,6 +322,12 @@ def show_company(company_id):
         return jsonify({"msg": "This company does not exists"}), 404
 
     return jsonify(companySerialized), 200
+
+
+
+###############
+##   OFFER   ##
+###############
 
 # Crear una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer', methods=['POST']) 
