@@ -135,7 +135,14 @@ export const NewCV = () => {
 										<h4>Formación</h4>
 									</div>
 									<div className="d-flex justify-content-end">
-										<ModalUserAcademic info={null} />
+										<button
+											type="button"
+											className="btn btn-outline-primary"
+											data-bs-toggle="modal"
+											data-bs-target="#idModalAcademic">
+											<i className="fas fa-plus" />
+										</button>
+										<ModalUserAcademic icon={"plus"} info={null} id={"idModalAcademic"} />
 									</div>
 								</div>
 								<div className="card-body">
@@ -143,6 +150,7 @@ export const NewCV = () => {
 										<div className="col-12">
 											{store.userInfo.trainings && store.userInfo.trainings.length > 0
 												? store.userInfo.trainings.map((training, index) => {
+														console.log("+++++++", training);
 														return (
 															<div key={index} className="row mb-4">
 																<div className="col-10">
@@ -167,8 +175,20 @@ export const NewCV = () => {
 																		Estudios reglados: {training.is_academic}
 																	</h5>
 																</div>
+																<button
+																	type="button"
+																	className="btn btn-outline-primary"
+																	data-bs-toggle="modal"
+																	data-bs-target={`#id${training.id}`}>
+																	<i className="fas fa-edit" />
+																</button>
 																<div className="col-2 d-flex justify-content-end">
-																	<ModalUserAcademic info={training} />
+																	<ModalUserAcademic
+																		key={index}
+																		icon={"edit"}
+																		info={training}
+																		id={`id${training.id}`}
+																	/>
 																</div>
 															</div>
 														);
@@ -216,8 +236,19 @@ export const NewCV = () => {
 																		En curso: {experience.in_progress}
 																	</h5>
 																</div>
+																<button
+																	type="button"
+																	className="btn btn-outline-primary"
+																	data-bs-toggle="modal"
+																	data-bs-target={`#id${experience.id}`}>
+																	<i className="fas fa-edit" />
+																</button>
 																<div className="col-2 d-flex justify-content-end">
-																	<ModalUserExperience info={experience} />
+																	<ModalUserExperience
+																		icon={"edit"}
+																		info={experience}
+																		id={`id${experience.id}`}
+																	/>
 																</div>
 															</div>
 														);

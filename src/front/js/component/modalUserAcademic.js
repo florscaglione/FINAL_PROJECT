@@ -2,11 +2,12 @@ import React, { Component, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const ModalUserAcademic = ({ info }) => {
+export const ModalUserAcademic = ({ info, icon, id }) => {
+	console.log("AAAAAAAAA", icon, info);
 	const { store, actions } = useContext(Context);
 
 	const [userAcademic, setUserAcademic] = useState({
-		academic_degree: "",
+		academic_degree: icon == "edit" ? info.academic_degree : "",
 		study_center: "",
 		start_date: "",
 		end_date: "",
@@ -24,6 +25,13 @@ export const ModalUserAcademic = ({ info }) => {
 	);
 
 	const handleChange = event => {
+		if (event.target.checked) {
+			if (event.target.name == "in_progress") {
+				//setUserAcademic(...userAcademic, !userAcademic.in_progress)
+				setUserAcademic({ ...userAcademic, [event.target.name]: !event.target.value });
+				console.log("------", event.target.checked);
+			}
+		}
 		setUserAcademic({ ...userAcademic, [event.target.name]: event.target.value });
 		console.log(userAcademic);
 	};
@@ -32,33 +40,33 @@ export const ModalUserAcademic = ({ info }) => {
 		event.preventDefault(); // Para evitar que se lance el evento del submit al cargar la página
 		console.log("*********", userAcademic);
 		/* console.log("USER", user); */
-		const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
+		if (icon == "edit") {
+			console.log("estoy editando");
+		}
+		if (icon == "plus") {
+			const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
 
-		const response = await fetch(url, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(userAcademic)
-		});
+			const response = await fetch(url, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(userAcademic)
+			});
+		}
 	};
 
 	return (
 		<form onChange={handleChange} onSubmit={handleUserUpdate}>
-			<button // Revisar con mari el botón para seleccionar la formación y que sea editable para cada una de las formaciones
+			{/* <button 
 				type="button"
 				className="btn btn-outline-primary"
 				data-bs-toggle="modal"
 				data-bs-target="#ModalUserAcademic">
-				<i className="fas fa-edit" />
-			</button>
+				<i className={`fas fa-${icon}`} />
+			</button> */}
 
-			<div
-				className="modal fade"
-				id="ModalUserAcademic"
-				tabIndex="-1"
-				aria-labelledby="userAcademicLabel"
-				aria-hidden="true">
+			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="userAcademicLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -78,7 +86,9 @@ export const ModalUserAcademic = ({ info }) => {
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={userAcademic.academic_degree}
+											defaultValue={
+												icon == "edit" ? info.academic_degree : userAcademic.academic_degree
+											}
 											name="academic_degree"
 											placeholder="Título"
 											aria-describedby="professionHelp"
@@ -113,7 +123,7 @@ export const ModalUserAcademic = ({ info }) => {
 												defaultChecked={userAcademic.in_progress}
 												name="in_progress"
 												type="checkbox"
-												value={true}
+												value={userAcademic.in_progress}
 												id="flexCheckDefault"
 											/>
 											<label className="form-check-label " forHTML="flexCheckDefault">
@@ -126,7 +136,7 @@ export const ModalUserAcademic = ({ info }) => {
 												defaultChecked={userAcademic.is_academic}
 												name="is_academic"
 												type="checkbox"
-												value={true}
+												value={userAcademic.is_academic}
 												id="flexCheckChecked"
 											/>
 											<label className="form-check-label" forHTML="flexCheckChecked">
@@ -153,5 +163,7 @@ export const ModalUserAcademic = ({ info }) => {
 };
 
 ModalUserAcademic.propTypes = {
-	info: PropTypes.object
+	info: PropTypes.object,
+	icon: PropTypes.string,
+	id: PropTypes.number
 };

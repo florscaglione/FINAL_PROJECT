@@ -26,9 +26,10 @@ export const ModalUserExperience = ({ info }) => {
 		if (event.target.checked) {
 			userExperience.in_progress == true;
 			setUserExperience(userExperience);
+			console.log("------", event.target.checked);
 		}
 		setUserExperience({ ...userExperience, [event.target.name]: event.target.value });
-		console.log(userExperience);
+		console.log("------", userExperience);
 	};
 
 	const handleUserUpdate = async event => {
