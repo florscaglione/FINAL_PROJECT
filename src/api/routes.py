@@ -200,7 +200,7 @@ def update_user_info_training(trainingId):
 
     return jsonify(training.serialize()), 200  
 
-# Eliminar una FORMACIÓN en el CV de un usuario:
+# Eliminar una FORMACIÓN en el CV de un usuario:    (PROBADO EN POSTMAN Y OK)
 @api.route('/user-info-training/<int:trainingId>', methods=['DELETE'])
 def delete_training(trainingId):
 
