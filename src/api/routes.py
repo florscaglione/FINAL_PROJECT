@@ -144,6 +144,18 @@ def create_user_info_profession(userId):
 
     return jsonify({"profession": "Creado con éxito"}), 200 
 
+# Eliminar una PROFESIÓN en el CV de un usuario:    (PROBADO EN POSTMAN Y OK)
+@api.route('/user-info-profession/<int:professionId>', methods=['DELETE'])
+def delete_profession(professionId):
+
+    profession = Profession.query.get(professionId)
+    if not profession: 
+        return jsonify({"fail": "Profesión no encontrada"}), 404
+
+    profession.delete()
+
+    return jsonify({"success": "Profesión eliminada"}), 200            
+
 # Crear una FORMACIÓN en el CV de un usuario: (FUNCIONA)
 @api.route('/user-info-training/<int:userId>/create', methods=['POST']) #(PROBADO EN POSTMAN Y OK)
 def create_user_info_training(userId):
