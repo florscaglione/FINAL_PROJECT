@@ -301,7 +301,6 @@ def show_user_info(userId):
 
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
-
 #################
 ##   COMPANY   ##
 #################
