@@ -12,7 +12,7 @@ export const NewCV = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
-		actions.userGet(15);
+		actions.userGet(1);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 
 	/* const getAllUserInfo = async id => {
@@ -144,6 +144,7 @@ export const NewCV = () => {
 											<i className="fas fa-plus" />
 										</button>
 										<ModalUserAcademic icon={"plus"} info={null} id={"idModalAcademic"} />
+										{/*Duda resuelta, esta en el botón de arriba*/}
 									</div>
 								</div>
 								<div className="card-body">
@@ -153,7 +154,9 @@ export const NewCV = () => {
 												? store.userInfo.trainings.map((training, index) => {
 														console.log("+++++++", training);
 														return (
-															<div key={index} className="row mb-4">
+															<div
+																key={index}
+																className="row mb-2 pb-2 mx-1 w-100 border-2 border-bottom">
 																<div className="col-10">
 																	<h5 className="card-title">
 																		Titulación:
@@ -164,6 +167,10 @@ export const NewCV = () => {
 																		{training.study_center}
 																	</h5>
 																	<h5 className="card-title">
+																		Estudios reglados:{" "}
+																		{training.is_academic ? "Sí" : "No"}
+																	</h5>
+																	<h5 className="card-title">
 																		Fecha inicio: {training.start_date}
 																	</h5>
 																	<h5 className="card-title">
@@ -172,22 +179,20 @@ export const NewCV = () => {
 																	<h5 className="card-title">
 																		En curso: {training.in_progress ? "Sí" : "No"}
 																	</h5>
-																	<h5 className="card-title">
-																		Estudios reglados: {training.is_academic}
-																	</h5>
 																</div>
-																<button
-																	type="button"
-																	className="btn btn-outline-primary"
-																	data-bs-toggle="modal"
-																	data-bs-target={`#id${training.id}`}>
-																	<i className="fas fa-edit" />
-																</button>
+
 																<div className="col-2 d-flex justify-content-end">
+																	<button
+																		type="button"
+																		className="btn btn-outline-primary"
+																		data-bs-toggle="modal"
+																		data-bs-target={`#id${training.id}`}>
+																		<i className="fas fa-edit" />
+																	</button>
 																	<ModalUserAcademic
 																		key={index}
 																		icon={"edit"}
-																		info={training}
+																		info={training} // "training" viene con el get del usuario a través del endpoint, "training" contiene la info académica
 																		id={`id${training.id}`}
 																	/>
 																</div>
@@ -197,9 +202,6 @@ export const NewCV = () => {
 												: ""}
 										</div>
 									</div>
-									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-										<div className="d-flex justify-content-between" />
-									</div>
 								</div>
 							</div>
 							<div className="card m-2">
@@ -208,7 +210,14 @@ export const NewCV = () => {
 										<h4>Experiencia</h4>
 									</div>
 									<div className="d-flex justify-content-end">
-										<ModalUserExperience info={null} />
+										<button
+											type="button"
+											className="btn btn-outline-primary"
+											data-bs-toggle="modal"
+											data-bs-target={"#idModalExperience"}>
+											<i className="fas fa-plus" />
+										</button>
+										<ModalUserExperience icon={"plus"} info={null} id={"idModalExperience"} />
 									</div>
 								</div>
 								<div className="card-body">
@@ -217,7 +226,9 @@ export const NewCV = () => {
 											{store.userInfo.experiences && store.userInfo.experiences.length > 0
 												? store.userInfo.experiences.map((experience, index) => {
 														return (
-															<div key={index} className="row mb-4">
+															<div
+																key={index}
+																className="row mb-2 pb-2 mx-1 w-100 border-2 border-bottom">
 																<div className="col-10">
 																	<h5 className="card-title">
 																		Titulación:
@@ -234,21 +245,23 @@ export const NewCV = () => {
 																		Fecha fin: {experience.end_date}
 																	</h5>
 																	<h5 className="card-title">
-																		En curso: {experience.in_progress}
+																		En curso: {experience.in_progress ? "Sí" : "No"}
 																	</h5>
 																</div>
-																<button
-																	type="button"
-																	className="btn btn-outline-primary"
-																	data-bs-toggle="modal"
-																	data-bs-target={`#id${experience.id}`}>
-																	<i className="fas fa-edit" />
-																</button>
+
 																<div className="col-2 d-flex justify-content-end">
+																	<button
+																		type="button"
+																		className="btn btn-outline-primary"
+																		data-bs-toggle="modal"
+																		data-bs-target={`#idexp${experience.id}`}>
+																		<i className="fas fa-edit" />
+																	</button>
 																	<ModalUserExperience
+																		key={index}
 																		icon={"edit"}
 																		info={experience}
-																		id={`id${experience.id}`}
+																		id={`idexp${experience.id}`}
 																	/>
 																</div>
 															</div>
@@ -256,9 +269,6 @@ export const NewCV = () => {
 												  })
 												: ""}
 										</div>
-									</div>
-									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-										<div className="d-flex justify-content-between" />
 									</div>
 								</div>
 							</div>
