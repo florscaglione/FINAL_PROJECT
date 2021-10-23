@@ -186,7 +186,7 @@ def update_user_info_training(trainingId):
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
    
-    academic_degree = body.get('academic_degree', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    academic_degree = body.get('academic_degree', None)  
     study_center = body.get('study_center', None) 
     study_start_date = body.get('start_date', None) 
     study_end_date = body.get('end_date', None)
@@ -243,6 +243,38 @@ def create_user_info_experience(userId):
     experience.save()  
 
     return jsonify(experience.serialize()), 200 
+
+# Modificar una EXPERIENCIA en el CV de un usuario:  (PROBADO EN POSTMAN Y OK)
+@api.route('/user-info-experience/edit/<int:experienceId>', methods=['PUT']) 
+def update_user_info_experience(experienceId):
+
+    body = request.get_json()      
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    title = body.get('title', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    description = body.get('description', None) 
+    experience_start_date = body.get('start_date', None) 
+    experience_end_date = body.get('end_date', None)
+    experience_in_progress = body.get('in_progress', None)
+
+    experience = Experience.query.filter_by(id=experienceId).first()
+
+    if title:   
+        experience.title = title 
+    if description:
+        experience.description = description 
+    if experience_start_date:
+        experience.experience_start_date = experience_start_date 
+    if experience_end_date:
+        experience.experience_end_date = experience_end_date 
+    if experience_in_progress:
+        experience.experience_in_progress = experience_in_progress             
+
+    db.session.commit()
+
+    return jsonify(experience.serialize()), 200      
 
 # Eliminar una EXPERIENCIA en el CV de un usuario:    (PROBADO EN POSTMAN Y OK)
 @api.route('/user-info-experience/<int:experienceId>', methods=['DELETE'])
