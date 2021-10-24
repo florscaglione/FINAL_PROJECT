@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import vistaEmpresa from "../../img/vistaEmpresa.jpg";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
@@ -9,30 +10,20 @@ export const VistaHomeEmp = () => {
 	return (
 		<div className="container">
 			<div className="container-fluid ">
-				<div className="row">
-					<a className="navbar sticky-top navbar-expand-lg-brand bg-light col-md-6">Working from Home</a>
-					<div className="btn-group justify-content-end col-md-6" role="group">
-						<button data-toggle="modal" data-target="#exampleModal" className="btn btn-success">
-							LOGIN
-						</button>
-						<button data-toggle="modal" data-target="#exampleModal" className="btn btn-success">
-							REGISTRO
-						</button>
+				<div className="row" />
+				<div className="col text-center">
+					<div className="card">
+						<img src={vistaEmpresa} className="card-img-top" alt="..." />
+						<div className="card-body">
+							<a className="btn btn-primary">Publicar oferta</a>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div className="card text-center">
-				<img src="https://picsum.photos/id/1/1000/500" className="card-img-top" alt="..." />
-				<div className="card-body">
-					<button data-toggle="modal" data-target="#exampleModal" className="btn btn-success">
-						PUBLICAR OFERTA
-					</button>
 				</div>
 			</div>
 			<div>
 				<h1 className="titulo text-center">INFORMACION PARA EMPRESAS </h1>
 			</div>
-			<div className="card-group text-center">
+			<div className="card-group  text-center">
 				<div className="card">
 					<div className="card-body">
 						<h5 className="card-title">TEXTO</h5>
@@ -63,7 +54,7 @@ export const VistaHomeEmp = () => {
 						</p>
 					</div>
 				</div>
-				<div className="card">
+				<div className="card ">
 					<div className="card-body">
 						<h5 className="card-title">TEXTO</h5>
 						<p className="card-text">
@@ -73,7 +64,7 @@ export const VistaHomeEmp = () => {
 							voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
 							cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 						</p>
-						<p className="card-text">
+						<p className="ultimapublicacion">
 							<small className="text-muted">Last updated 3 mins ago</small>
 						</p>
 					</div>

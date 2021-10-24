@@ -1,108 +1,59 @@
-import React, { Component } from "react";
-
+import React, { component } from "react";
+import iconoLn from "../../img/paginaInicio/iconoLn.png";
+import iconoFb from "../../img/paginaInicio/iconoFb.png";
+import iconoIg from "../../img/paginaInicio/iconoIg.png";
+import iconoTw from "../../img/paginaInicio/iconoTw.png";
 export const Footer = () => (
-	<footer className="container">
-		<footer className="row row-cols-5 py-5 my-5 border-top">
+	<footer className="container flex">
+		<footer className="row row-cols-2 border-top">
 			<div className="col">
-				<a href="/" className="d-flex align-items-center mb-3 link-dark text-decoration-none">
-					<svg className="bi me-2" width="40" height="32" />
-				</a>
-				<p className="text-muted">© 2021</p>
+				<div className="social d-flex align-items-right" href="/">
+					<i className="iconoSocial" />
+					<img src={iconoIg} alt="Icono Instagram" />
+					<i className="iconoSocial" />
+					<img src={iconoLn} alt="Icono Linkedin" />
+					<i className="iconoSocial" />
+					<img src={iconoTw} alt="Icono Twitter" />
+					<i className="iconoSocial" />
+					<img src={iconoFb} alt="Icono Facebook" />
+				</div>
 			</div>
-
+			<div className="col">
+				<ul className="list-inline">
+					<li className="list-inline-item 1">
+						<a href="#" className="nav-link p-0">
+							Sitemap
+						</a>
+					</li>
+					<li className="list-inline-item 2">
+						<a href="#" className="nav-link p-0">
+							Quienes Somos
+						</a>
+					</li>
+					<li className="list-inline-item 3">
+						<a href="#" className="nav-link p-0">
+							Privacidad
+						</a>
+					</li>
+					<li className="list-inline-item 4">
+						<a href="#" className="nav-link p-0">
+							FAQs
+						</a>
+					</li>
+					<li className="list-inline-item 5">
+						<a href="#" className="nav-link p-0">
+							Aviso Legal
+						</a>
+					</li>
+				</ul>
+			</div>
 			<div className="col" />
-
 			<div className="col">
-				<h5>Section</h5>
-				<ul className="nav flex-column">
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Home
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Features
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Pricing
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							FAQs
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							About
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div className="col">
-				<h5>Section</h5>
-				<ul className="nav flex-column">
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Home
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Features
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Pricing
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							FAQs
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							About
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div className="col">
-				<h5>Section</h5>
-				<ul className="nav flex-column">
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Home
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Features
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							Pricing
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							FAQs
-						</a>
-					</li>
-					<li className="nav-item mb-2">
-						<a href="#" className="nav-link p-0 text-muted">
-							About
-						</a>
-					</li>
-				</ul>
+				<div className="social d-flex align-items-center" href="/">
+					<p className="text-muted">
+						Working From Home Copyright © 2021 Made by Jorge, Flor and Sandra with patience
+					</p>
+				</div>
 			</div>
 		</footer>
 	</footer>

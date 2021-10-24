@@ -10,7 +10,7 @@ export const CandidatosInscritos = () => {
 			<div className="row">
 				<div className="card col-8">
 					<div className="card-header">
-						TÍTULO OFERTA DE TRABAJO
+						FULL STACK DEVELOPER TELETRABAJO
 						<button type="button" className="btn btn-outline-secondary m-1">
 							#Skill1
 						</button>
@@ -22,7 +22,7 @@ export const CandidatosInscritos = () => {
 						</button>
 					</div>
 					<div className="card-body">
-						<h5 className="card-title">Nombre empresa</h5>
+						<h5 className="card-title">JLK GROUP SPAIN</h5>
 						<p className="card-text">
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
 							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
@@ -30,9 +30,8 @@ export const CandidatosInscritos = () => {
 							aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
 							voluptatem sequi nesciunt.
 						</p>
-						<button type="button" className="btn btn-info">
-							Editar Oferta
-						</button>
+						<a className="btn btn-primary">Publicar oferta</a>
+						<a className="btn btn-primary">Editar Oferta</a>
 					</div>
 				</div>
 			</div>

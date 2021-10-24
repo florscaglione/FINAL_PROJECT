@@ -4,9 +4,14 @@ export const BuscadorYFiltros = () => {
 	return (
 		<div className="container">
 			<form className="d-flex">
-				<input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-				<button className="btn btn-outline-success" type="submit">
-					Search
+				<input
+					className="form-control me-2"
+					type="search"
+					placeholder="Localizar ofertas"
+					aria-label="Search"
+				/>
+				<button className="btn btn-outline" type="submit">
+					Buscar
 				</button>
 			</form>
 			<div className="m-1 d-flex flex-row-reverse bd-highlight">
