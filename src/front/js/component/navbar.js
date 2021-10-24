@@ -7,10 +7,10 @@ export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
 
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar mb-3">
 			<div className="container d-flex justify-content-between">
 				<a className="navbar-brand" href="/">
-					<img src={logoWfh} width="180" alt="starwars logo" />
+					<img src={logoWfh} width="300" alt="starwars logo" />
 				</a>
 				<div className="d-flex justify-content-end">
 					<UserRegister />
