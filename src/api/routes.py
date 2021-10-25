@@ -245,7 +245,7 @@ def create_user_info_experience(userId):
     return jsonify(experience.serialize()), 200 
 
 # Modificar una EXPERIENCIA en el CV de un usuario:  (PROBADO EN POSTMAN Y OK)
-@api.route('/user-info-experience/edit/<int:experienceId>', methods=['PUT']) 
+@api.route('/user-info-experience/<int:experienceId>', methods=['PUT']) 
 def update_user_info_experience(experienceId):
 
     body = request.get_json()      
@@ -353,6 +353,39 @@ def login_company():
     if user and check_password_hash(company.password, password):
         access_token = create_access_token(identity=company.email, expires_delta=timedelta(minutes=100))
         return jsonify({"access_token": access_token}), 200
+
+# Modificar la información de una empresa: (PROBADO EN POSTMAN Y OK)!!
+@api.route('/company-info/<int:companyId>', methods=['PUT'])
+# @jwt_required
+def update_company_info(companyId):
+
+    body = request.get_json()
+
+    if body is None:    # si no lo encuentra, tira este error 
+        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+   
+    name = body.get('name', None)   # body.get('name', None) = request.json.get('name', None) !!!!
+    email = body.get('email', None) 
+    cif = body.get('cif', None)
+    contact = body.get('contact', None)
+    phone = body.get('phone', None)
+
+    company = Company.query.filter_by(id=companyId).first()
+
+    if name:    # similar a   if name != "" and name is not None:
+        company.name = name # el primer "name" se refiere a la columna, y el 2o al name introducido (name = body.get('name', None) ) 
+    if email:
+        company.email = email 
+    if cif:
+        company.cif = cif
+    if contact:
+        company.contact = contact
+    if phone:
+        company.phone = phone        
+
+    db.session.commit()
+
+    return jsonify(company.serialize()), 200
 
 # Eliminar empresa:  (FUNCIONA A MEDIAS EN POSTMAN)=> Sólo funciona con las empresas que creo desde postman pero NO con las q creo a mano, por qué??
 @api.route('/company/<int:companyId>', methods=['DELETE'])
