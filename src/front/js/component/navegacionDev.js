@@ -20,6 +20,9 @@ export const NavegacionDev = () => {
 					<Link to="/new-CV">
 						<button className="btn btn-primary mx-2">NuevoCV</button>
 					</Link>
+					<Link to="/new-Offer">
+						<button className="btn btn-primary mx-2">Nueva Oferta</button>
+					</Link>
 					<Link to="/vista_home_emp">
 						<button className="btn btn-primary mx-2">Empresa Home</button>
 					</Link>
