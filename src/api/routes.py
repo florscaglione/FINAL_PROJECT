@@ -294,7 +294,7 @@ def delete_experience(experienceId):
 def show_user_info(userId):
     user = User.query.get(userId)      # le pasamos el ID del user, lo buscamos en la BBDD y lo cogemos con el get
     professions = ProfessionUser.query.filter_by(user_id=userId) # "professions" es un array 
-    academics = AcademicTraining.query.filter_by(user_id=userId)
+    academics = AcademicTraining.query.filter_by(user_id=userId).order_by(AcademicTraining.id.desc())
     experiences = Experience.query.filter_by(user_id=userId).order_by(Experience.id.desc()) # order_by para que al editar una formación se quede en su sitio en el CV (porque antes lo ponía el último)
 
     professions_names = list(map(lambda profession: Profession.query.get(profession.profession_id).name, professions)) # "profession" no es la profesion en si, sino cada fila que veo en el backend (admin) con la relación (ej: User1--Profession4)
