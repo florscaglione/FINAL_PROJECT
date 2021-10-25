@@ -11,9 +11,10 @@ export const HomeUsuarioSinLoguear = () => {
 		<div className="container">
 			<div className="row">
 				<div className="col-8 text-center mt-4">
-					<h1>Home Usuario Sin Loguear</h1>
 					<BuscadorYFiltros />
-					<p>Columna para el componente buscador y el componente cards de las ofertas de trabajo</p>
+					<CardResumenOferta />
+					<CardResumenOferta />
+					<CardResumenOferta />
 					<CardResumenOferta />
 					<CardResumenOferta />
 				</div>
