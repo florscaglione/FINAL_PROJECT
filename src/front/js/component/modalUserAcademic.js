@@ -45,6 +45,9 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 				},
 				body: JSON.stringify(userAcademic)
 			});
+			if (response.ok) {
+				actions.userGet(store.userInfo.user_basic.id); // añadir un else para mostrar un error en caso de que no funcione
+			}
 		}
 		if (icon == "plus") {
 			const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;

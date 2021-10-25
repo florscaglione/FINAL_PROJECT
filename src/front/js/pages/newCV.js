@@ -12,7 +12,7 @@ export const NewCV = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
-		actions.userGet(1);
+		actions.userGet(15);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 
 	/* const getAllUserInfo = async id => {
