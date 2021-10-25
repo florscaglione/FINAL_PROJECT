@@ -191,7 +191,7 @@ def update_user_info_training(trainingId):
     study_start_date = body.get('start_date', None) 
     study_end_date = body.get('end_date', None)
     study_in_progress = body.get('in_progress', None)
-    is_academic = body.get('is_academic', None)
+    study_is_academic = body.get('is_academic', None)
 
     training = AcademicTraining.query.filter_by(id=trainingId).first()
 
@@ -200,13 +200,13 @@ def update_user_info_training(trainingId):
     if study_center:
         training.study_center = study_center 
     if study_start_date:
-        training.study_start_date = study_start_date 
+        training.start_date = study_start_date 
     if study_end_date:
-        training.study_end_date = study_end_date 
-    if study_in_progress:
-        training.study_in_progress = study_in_progress  
-    if is_academic:
-        training.is_academic = is_academic                 
+        training.end_date = study_end_date 
+    if study_in_progress is not None:
+        training.in_progress = study_in_progress  
+    if study_is_academic is not None:
+        training.is_academic = study_is_academic                 
 
     db.session.commit()
 
@@ -266,11 +266,11 @@ def update_user_info_experience(experienceId):
     if description:
         experience.description = description 
     if experience_start_date:
-        experience.experience_start_date = experience_start_date 
+        experience.start_date = experience_start_date 
     if experience_end_date:
-        experience.experience_end_date = experience_end_date 
-    if experience_in_progress:
-        experience.experience_in_progress = experience_in_progress             
+        experience.end_date = experience_end_date 
+    if experience_in_progress is not None:      # es necesario especificar que no sea None porque al ser un boolean no entra en el IF si es false
+        experience.in_progress = experience_in_progress             # experience.in_progress = .... (después del punto, el nombre de la COLUMNA)
 
     db.session.commit()
 
@@ -294,10 +294,12 @@ def delete_experience(experienceId):
 def show_user_info(userId):
     user = User.query.get(userId)      # le pasamos el ID del user, lo buscamos en la BBDD y lo cogemos con el get
     professions = ProfessionUser.query.filter_by(user_id=userId) # "professions" es un array 
+    academics = AcademicTraining.query.filter_by(user_id=userId)
+    experiences = Experience.query.filter_by(user_id=userId).order_by(Experience.id.desc()) # order_by para que al editar una formación se quede en su sitio en el CV (porque antes lo ponía el último)
 
     professions_names = list(map(lambda profession: Profession.query.get(profession.profession_id).name, professions)) # "profession" no es la profesion en si, sino cada fila que veo en el backend (admin) con la relación (ej: User1--Profession4)
-    academic_trainings = list(map(lambda training: training.serialize(), AcademicTraining.query.filter_by(user_id=userId)))
-    experiences = list(map(lambda experience: experience.serialize(), Experience.query.filter_by(user_id=userId)))
+    academic_trainings = list(map(lambda training: training.serialize(), academics))
+    experiences = list(map(lambda experience: experience.serialize(), experiences))
 
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
