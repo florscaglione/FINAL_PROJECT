@@ -29,7 +29,7 @@ export const UserRegister = () => {
 			return;
 		}
 		/* console.log("USER", user); */
-		const url = "https://3001-beige-galliform-xo392btg.ws-eu18.gitpod.io/api/signup-user";
+		const url = `${process.env.BACKEND_URL}api/signup-user`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
