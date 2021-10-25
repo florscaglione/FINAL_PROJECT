@@ -135,6 +135,10 @@ class Inscription(db.Model):
             "offer_id": self.offer_id
         }
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 
 class FavoriteOffer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -150,6 +154,10 @@ class FavoriteOffer(db.Model):
             "user_id": self.user_id,
             "offer_id": self.offer_id
         }
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class ProfessionUser(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -196,6 +204,10 @@ class Profession(db.Model):
         db.session.add(self)   
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     academic_degree = db.Column(db.String(300), unique=False, nullable=False)
@@ -228,6 +240,10 @@ class AcademicTraining(db.Model):
         db.session.add(self)   
         db.session.commit()   
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()        
+
 class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
@@ -257,3 +273,7 @@ class Experience(db.Model):
     def save(self):
         db.session.add(self)   
         db.session.commit()           
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
