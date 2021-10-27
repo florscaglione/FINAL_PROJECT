@@ -2,7 +2,7 @@ import React, { Component, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const ModalCompanyData = ({ info }) => {
+export const ModalCompanyData = ({ info, id }) => {
 	const { store, actions } = useContext(Context);
 
 	const [companyUpdate, setCompanyUpdate] = useState({
@@ -24,20 +24,7 @@ export const ModalCompanyData = ({ info }) => {
 
 	return (
 		<form onChange={handleChange} onSubmit={handleCompanyUpdate}>
-			<button
-				type="button"
-				className="btn btn-outline-primary mx-1"
-				data-bs-toggle="modal"
-				data-bs-target="#ModalCompanyData">
-				<i className="fas fa-edit" />
-			</button>
-
-			<div
-				className="modal fade"
-				id="ModalCompanyData"
-				tabIndex="-1"
-				aria-labelledby="companyDataLabel"
-				aria-hidden="true">
+			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="companyDataLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -107,5 +94,6 @@ export const ModalCompanyData = ({ info }) => {
 };
 
 ModalCompanyData.propTypes = {
-	info: PropTypes.object
+	info: PropTypes.object,
+	id: PropTypes.number
 };

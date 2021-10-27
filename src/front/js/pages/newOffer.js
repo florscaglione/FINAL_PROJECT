@@ -8,12 +8,13 @@ import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
 
 export const NewOffer = () => {
 	const { store, actions } = useContext(Context);
-	console.log(store.companyInfo);
+	console.log("-----", store.offerInfo);
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
-		actions.companyGet(1);
-	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
+		actions.companyGet(1); // trae la información de la empresa
+		actions.offerGet(4); // trae la información de la oferta
+	}, []);
 
 	return (
 		<>
@@ -24,8 +25,19 @@ export const NewOffer = () => {
 						<div className="col-8">
 							<div className="card m-2">
 								<div className="card-header d-flex justify-content-between">
-									<h4>Datos empresa</h4>
-									{/* <ModalCompanyData info={store.companyInfo} /> */}
+									<div className="d-flex justify-content-start">
+										<h4>Datos empresa</h4>
+									</div>
+									<div className="d-flex justify-content-end">
+										<button
+											type="button"
+											className="btn btn-outline-primary"
+											data-bs-toggle="modal"
+											data-bs-target="#idEditDataCompany">
+											<i className="fas fa-edit" />
+										</button>
+										<ModalCompanyData info={store.companyInfo} id={"idEditDataCompany"} />
+									</div>
 								</div>
 								<div className="card-body">
 									<h5 className="card-title">Empresa: {store.companyInfo.name}</h5>
@@ -49,87 +61,75 @@ export const NewOffer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="row">
-						<div className="col-8">
-							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
-									<div className="d-flex justify-content-start">
-										<h4>Oferta de trabajo</h4>
-									</div>
-									<div className="d-flex justify-content-end">
-										<button
-											type="button"
-											className="btn btn-outline-primary"
-											data-bs-toggle="modal"
-											data-bs-target="#idModalCompany">
-											<i className="fas fa-plus" />
-										</button>
-										{/* <ModalCompanyOffer icon={"plus"} info={null} id={"idModalCompany"} /> */}
-									</div>
-								</div>
-								<div className="card-body">
-									<div className="row">
-										<div className="col-12">
-											{store.companyInfo.offers && store.companyInfo.offers.length > 0
-												? store.companyInfo.offers.map((offer, index) => {
-														console.log("+++++++", offer);
-														return (
-															<div key={index} className="row mb-4">
-																<div className="col-10">
-																	<h5 className="card-title">
-																		Título:
-																		{offer.title}
-																	</h5>
-																	<h5 className="card-title">
-																		Teletrabajo:
-																		{offer.remote_work}
-																	</h5>
-																	<h5 className="card-title">
-																		Tipo de contrato: {offer.contract_type}
-																	</h5>
-																	<h5 className="card-title">
-																		Rango de salario: {offer.salary_range}
-																	</h5>
-																	<h5 className="card-title">
-																		Requisitos: {offer.requirement}
-																	</h5>
-																	<h5 className="card-title">
-																		Descripción de la oferta:{" "}
-																		{offer.offer_description}
-																	</h5>
-																	<h5 className="card-title">
-																		social_benefit: {offer.social_benefit}
-																	</h5>
-																</div>
-
-																<div className="col-2 d-flex justify-content-end">
-																	<button
-																		type="button"
-																		className="btn btn-outline-primary"
-																		data-bs-toggle="modal"
-																		data-bs-target={`#id${offer.id}`}>
-																		<i className="fas fa-edit" />
-																	</button>
-																	{/* <ModalCompanyOffer
-																key={index}
-																icon={"edit"}
-																info={offer}
-																id={`id${offer.id}`}
-															/> */}
-																</div>
-															</div>
-														);
-												  })
-												: ""}
+					{store.offerInfo ? (
+						<div className="row">
+							<div className="col-8">
+								<div className="card m-2">
+									<div className="card-header d-flex justify-content-between">
+										<div className="d-flex justify-content-start">
+											<h4>Oferta de trabajo</h4>
+										</div>
+										<div className="d-flex justify-content-end">
+											<button
+												type="button"
+												className="btn btn-outline-primary"
+												data-bs-toggle="modal"
+												data-bs-target="#idEditOfferCompany">
+												<i className="fas fa-edit" />
+											</button>
+											<ModalCompanyOffer
+												icon={"edit"}
+												info={store.offerInfo}
+												id={"idEditOfferCompany"}
+											/>
 										</div>
 									</div>
-									<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-										<div className="d-flex justify-content-between" />
+									<div className="card-body">
+										<div className="row">
+											<div className="col-12">
+												<div className="row mb-4">
+													<div className="col-10">
+														{console.log("¡¡¡¡¡¡¡¡¡", store.offerInfo)}
+														<h5 className="card-title">
+															Título:
+															{store.offerInfo.title}
+														</h5>
+														<h5 className="card-title">
+															Teletrabajo:
+															{store.offerInfo.remote_work}
+														</h5>
+														<h5 className="card-title">
+															Tipo de contrato: {store.offerInfo.contract_type}
+														</h5>
+														<h5 className="card-title">
+															Rango de salario: {store.offerInfo.salary_range}
+														</h5>
+														<h5 className="card-title">
+															Requisitos: {store.offerInfo.requirement}
+														</h5>
+														<h5 className="card-title">
+															Descripción de la oferta:{" "}
+															{store.offerInfo.offer_description}
+														</h5>
+														<h5 className="card-title">
+															Beneficios sociales: {store.offerInfo.social_benefit}
+														</h5>
+													</div>
+
+													<div className="col-2 d-flex justify-content-end" />
+												</div>
+											</div>
+										</div>
+										<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
+											<div className="d-flex justify-content-between" />
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					) : (
+						<h1>Actualmente no hay ofertas disponibles</h1>
+					)}
 				</div>
 			) : (
 				<div className="d-flex justify-content-center">

@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: null, //Toda la info del usuario
 			companyInfo: null, //Toda la info de la empresa
+			offerInfo: null, //Toda la info de la oferta
 			message: null,
 			demo: [
 				{
@@ -59,6 +60,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				const data = await response.json();
 				setStore({ companyInfo: data });
+			},
+
+			//Esta función actualiza la información del companyInfo.
+			companyUpdate: async (event, id, companyUpdate) => {
+				event.preventDefault();
+
+				const url = `${process.env.BACKEND_URL}api/company-info/${id}`; // Revisar con Flor url endpoint editar info empresa
+
+				const response = await fetch(url, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(companyUpdate)
+				});
+				if (response.ok) {
+					getActions().companyGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				}
+			},
+
+			//Esta función obtiene todos los datos de la Oferta en offerInfo
+			offerGet: async id => {
+				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
+				const response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				const data = await response.json();
+				console.log(data); // Nota: no borrar
+				setStore({ offerInfo: data });
+			},
+
+			//Esta función actualiza la información de la oferta de trabajo en offerInfo.
+			offerUpdate: async (event, id, offerUpdate) => {
+				event.preventDefault();
+
+				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
+
+				const response = await fetch(url, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(offerUpdate)
+				});
+				if (response.ok) {
+					getActions().offerGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				}
 			},
 
 			// Use getActions to call a function within a fuction
