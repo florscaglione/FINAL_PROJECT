@@ -420,15 +420,14 @@ def show_company(company_id):
 ###############
 
 # Crear una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
-@api.route('/offer', methods=['POST']) 
-def create_offer():
+@api.route('/company/<int:company_id>/offer', methods=['POST']) 
+def create_offer(company_id):
 
     body = request.get_json()      
 
     if body is None:    
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
 
-    company_id = body.get("company_id", None)
     title = body.get("title", None) 
     remote_work = body.get("remote_work", None)
     contract_type = body.get("contract_type", None)
