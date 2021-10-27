@@ -111,7 +111,7 @@ export const ModalUserData = ({ info }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="submit" className="btn btn-primary">
+							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>
