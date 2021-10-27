@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-import datetime
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -10,7 +10,7 @@ class User(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(15), unique=False, nullable=False)
-    birth_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
 
     inscriptions = db.relationship('Inscription', backref=db.backref('user', lazy=True))
 
@@ -33,7 +33,7 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "phone": self.phone,
-            "birth_date": self.birth_date
+            "birth_date": self.birth_date.strftime("%Y-%m-%d")
         }
         
     def save(self):
@@ -212,8 +212,8 @@ class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     academic_degree = db.Column(db.String(300), unique=False, nullable=False)
     study_center = db.Column(db.String(300), unique=False, nullable=False)
-    start_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
-    end_date = db.Column(db.DateTime(timezone=False), unique=False, nullable=True)
+    start_date = db.Column(db.Date(), unique=False, nullable=True)
+    end_date = db.Column(db.Date(), unique=False, nullable=True)
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
     is_academic = db.Column(db.Boolean, default=False, nullable=True)
 
@@ -229,8 +229,8 @@ class AcademicTraining(db.Model):
             "id": self.id,
             "academic_degree": self.academic_degree,
             "study_center": self.study_center,
-            "start_date": self.start_date,
-            "end_date": self.end_date,
+            "start_date": self.start_date.strftime("%Y-%m-%d"),
+            "end_date": self.end_date.strftime("%Y-%m-%d") if self.end_date is not None else self.end_date,
             "in_progress": self.in_progress,
             "is_academic": self.is_academic,
             "user_id": self.user_id
@@ -248,8 +248,8 @@ class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     description = db.Column(db.String(300), unique=False, nullable=False)
-    start_date = db.Column(db.DateTime, unique=False, nullable=False)
-    end_date = db.Column(db.DateTime, unique=False, nullable=True)
+    start_date = db.Column(db.Date, unique=False, nullable=False)
+    end_date = db.Column(db.Date, unique=False, nullable=True)
     in_progress = db.Column(db.Boolean, default=False, nullable=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
@@ -264,8 +264,8 @@ class Experience(db.Model):
             "id": self.id,
             "title": self.title,
             "description": self.description,
-            "start_date": self.start_date,
-            "end_date": self.end_date,
+            "start_date": self.start_date.strftime("%Y-%m-%d"),
+            "end_date": self.end_date.strftime("%Y-%m-%d") if self.end_date is not None else self.end_date,
             "in_progress": self.in_progress,
             "user_id": self.user_id
         }
