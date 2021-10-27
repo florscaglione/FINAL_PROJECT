@@ -158,7 +158,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 							<button type="button" className="btn btn-outline-danger">
 								Eliminar
 							</button>
-							<button type="submit" className="btn btn-primary">
+							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>
