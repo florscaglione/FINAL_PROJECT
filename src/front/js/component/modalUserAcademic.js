@@ -6,9 +6,9 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 	const { store, actions } = useContext(Context);
 
 	const [userAcademic, setUserAcademic] = useState({
-		academic_degree: icon == "edit" ? info.academic_degree : "",
+		academic_degree: "",
 		study_center: "",
-		start_date: "",
+		start_date: "", // Revisar la fecha y los checkbox para que se puedan editar
 		end_date: "",
 		in_progress: false,
 		is_academic: false
@@ -24,16 +24,9 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 	);
 
 	const handleChange = event => {
-		/* if (event.target.checked) {
-			if (event.target.name == "in_progress") {
-				//setUserAcademic(...userAcademic, !userAcademic.in_progress)
-				setUserAcademic({ ...userAcademic, [event.target.name]: !event.target.value });
-				console.log("------", event.target.checked);
-			}
-		} */
 		setUserAcademic({
 			...userAcademic,
-			[event.target.name]: event.target.type == "checkbox" ? event.target.checked : event.target.value
+			[event.target.name]: event.target.type == "checkbox" ? event.target.checked : event.target.value // Recoge la información del event junto al checkbox.
 		});
 		console.log("Prueba del checkbox", userAcademic);
 	};
@@ -52,6 +45,9 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 				},
 				body: JSON.stringify(userAcademic)
 			});
+			if (response.ok) {
+				actions.userGet(store.userInfo.user_basic.id); // añadir un else para mostrar un error en caso de que no funcione
+			}
 		}
 		if (icon == "plus") {
 			const url = `${process.env.BACKEND_URL}api/user-info-training/${store.userInfo.user_basic.id}/create`;
@@ -106,25 +102,11 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={userAcademic.study_center}
+											defaultValue={
+												icon == "edit" ? info.study_center : userAcademic.study_center
+											}
 											name="study_center"
 											placeholder="Centro de estudios"
-											aria-describedby="professionHelp"
-										/>
-										<input
-											type="date"
-											className="mt-2 form-control"
-											defaultValue={userAcademic.start_date}
-											name="start_date"
-											placeholder="Fecha de inicio"
-											aria-describedby="professionHelp"
-										/>
-										<input
-											type="date"
-											className="mt-2 form-control"
-											defaultValue={userAcademic.end_date}
-											name="end_date"
-											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
 										/>
 										<div className="form-check mt-2">
@@ -139,7 +121,24 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 												Actualmente en curso
 											</label>
 										</div>
-										<div className="form-check">
+										<input
+											type="date"
+											className="mt-2 form-control"
+											defaultValue={icon == "edit" ? info.start_date : userAcademic.start_date}
+											name="start_date"
+											placeholder="Fecha de inicio"
+											aria-describedby="professionHelp"
+										/>
+										<input
+											type="date"
+											className="mt-2 form-control"
+											defaultValue={icon == "edit" ? info.end_date : userAcademic.end_date}
+											name="end_date"
+											placeholder="Fecha de fin"
+											aria-describedby="professionHelp"
+										/>
+
+										<div className="form-check mt-2">
 											<input
 												className="form-check-input"
 												name="is_academic"
