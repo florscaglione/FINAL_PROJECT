@@ -8,12 +8,13 @@ import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
 
 export const NewOffer = () => {
 	const { store, actions } = useContext(Context);
-	console.log("-----", store.offerInfo);
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
-		actions.companyGet(1); // trae la información de la empresa
-		actions.offerGet(1); // trae la información de la oferta
+		actions.companyGet(2); // trae la información de la empresa
+		actions.offerGet(4);
+
+		// trae la información de la oferta
 	}, []);
 
 	return (
@@ -64,10 +65,22 @@ export const NewOffer = () => {
 					{store.offerInfo ? (
 						<div className="row">
 							<div className="col-8">
+								<button
+									type="button"
+									className="btn btn-outline-primary m-2"
+									data-bs-toggle="modal"
+									data-bs-target="#idCreateOfferCompany">
+									<i className="fas fa-plus" /> Nueva oferta
+								</button>
+								<ModalCompanyOffer
+									icon={"plus"}
+									offer={store.companyInfo}
+									id={"idCreateOfferCompany"}
+								/>
 								<div className="card m-2">
 									<div className="card-header d-flex justify-content-between">
 										<div className="d-flex justify-content-start">
-											<h4>Oferta de trabajo</h4>
+											<h4>Oferta de trabajo #{store.offerInfo.id}</h4>
 										</div>
 										<div className="d-flex justify-content-end">
 											<button
@@ -79,7 +92,7 @@ export const NewOffer = () => {
 											</button>
 											<ModalCompanyOffer
 												icon={"edit"}
-												info={store.offerInfo}
+												offer={store.offerInfo}
 												id={"idEditOfferCompany"}
 											/>
 										</div>

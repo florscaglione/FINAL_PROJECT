@@ -15,17 +15,14 @@ export const NewCV = () => {
 		actions.userGet(1);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 
-	/* const getAllUserInfo = async id => {
-		const url = "https://3001-beige-galliform-xo392btg.ws-eu17.gitpod.io/api/user-info/" + id + "/get";
-		const response = await fetch(url, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json"
-			}
-		});
-		const data = await response.json();
-		setInfo(data); 
-	}; */
+	const [closeModal, setCloseModal] = useState({
+		// función para cerrar el modal y validar
+		showModal: false
+	});
+
+	const handleShow = () => {
+		setCloseModal({ showModal: true });
+	};
 
 	return (
 		<>
@@ -140,10 +137,19 @@ export const NewCV = () => {
 											type="button"
 											className="btn btn-outline-primary"
 											data-bs-toggle="modal"
+											onClick={() => {
+												setCloseModal({ showModal: true });
+											}}
 											data-bs-target="#idModalAcademic">
 											<i className="fas fa-plus" />
 										</button>
-										<ModalUserAcademic icon={"plus"} info={null} id={"idModalAcademic"} />
+										<ModalUserAcademic
+											icon={"plus"}
+											info={null}
+											id={"idModalAcademic"}
+											show={closeModal.showModal}
+											onClose={() => setCloseModal({ showModal: false })}
+										/>
 										{/*Duda resuelta, esta en el botón de arriba*/}
 									</div>
 								</div>
@@ -189,9 +195,8 @@ export const NewCV = () => {
 																		data-bs-target={`#id${training.id}`}>
 																		<i className="fas fa-edit" />
 																	</button>
-																	<ModalUserAcademic
-																		key={index}
-																		icon={"edit"}
+																	<ModalUserAcademic //No se conoce su relación con el modalUserAcademic, no funciona
+																		/* key={index} */ icon={"edit"}
 																		info={training} // "training" viene con el get del usuario a través del endpoint, "training" contiene la info académica
 																		id={`id${training.id}`}
 																	/>
