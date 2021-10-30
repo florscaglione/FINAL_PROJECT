@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const ModalUserAcademic = ({ info, icon, id }) => {
+export const ModalUserAcademic = ({ info, icon, id, show, onClose }) => {
 	const { store, actions } = useContext(Context);
 
 	const [userAcademic, setUserAcademic] = useState({
@@ -28,12 +28,13 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 			...userAcademic,
 			[event.target.name]: event.target.type == "checkbox" ? event.target.checked : event.target.value // Recoge la información del event junto al checkbox.
 		});
-		console.log("Prueba del checkbox", userAcademic);
+		console.log("Prueba del checkbox", event.target.value);
 	};
 
 	const handleUserUpdate = async event => {
 		event.preventDefault(); // Para evitar que se lance el evento del submit al cargar la página
-		console.log("*********", userAcademic);
+
+		/* console.log("*********", userAcademic); */
 		/* console.log("USER", user); */
 		if (icon == "edit") {
 			const url = `${process.env.BACKEND_URL}api/user-info-training/edit/${info.id}`; // id de la formación
@@ -46,7 +47,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 				body: JSON.stringify(userAcademic)
 			});
 			if (response.ok) {
-				actions.userGet(store.userInfo.user_basic.id); // añadir un else para mostrar un error en caso de que no funcione
+				actions.userGet(store.userInfo.user_basic.id); // actualiza la información en la vista al pulsar sobre el botón de guardar, añadir else en el caso de que haya algún error
 			}
 		}
 		if (icon == "plus") {
@@ -59,6 +60,21 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 				},
 				body: JSON.stringify(userAcademic)
 			});
+			if (response.ok) {
+				actions.userGet(store.userInfo.user_basic.id); // actualiza la información en la vista al pulsar sobre el botón de guardar
+			}
+		}
+	};
+
+	const validateInputs = userAcademic => {
+		// Validación de los inputs antes de guardar el modal
+		if (
+			userAcademic.academic_degree.trim() != "" &&
+			userAcademic.study_center.trim() != "" &&
+			userAcademic.start_date.trim() != ""
+		) {
+			return validateInputs();
+		} else {
 		}
 	};
 
@@ -98,6 +114,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 											name="academic_degree"
 											placeholder="Título"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<input
 											type="text"
@@ -108,6 +125,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 											name="study_center"
 											placeholder="Centro de estudios"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<div className="form-check mt-2">
 											<input
@@ -128,6 +146,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 											name="start_date"
 											placeholder="Fecha de inicio"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<input
 											type="date"
@@ -172,5 +191,7 @@ export const ModalUserAcademic = ({ info, icon, id }) => {
 ModalUserAcademic.propTypes = {
 	info: PropTypes.object,
 	icon: PropTypes.string,
-	id: PropTypes.number
+	id: PropTypes.number,
+	show: PropTypes.object,
+	onClose: PropTypes.func
 };

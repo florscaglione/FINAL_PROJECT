@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: null, //Toda la info del usuario
 			companyInfo: null, //Toda la info de la empresa
-			offerInfo: null, //Toda la info de la oferta
+			companyOffersList: [], //Todas las ofertas de la empresa
+			offerInfo: null, //Toda la info de una oferta
 			message: null,
 			demo: [
 				{
@@ -80,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			//Esta función obtiene todos los datos de la Oferta en offerInfo
+			//Esta función obtiene todos los datos de una Oferta en offerInfo
 			offerGet: async id => {
 				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
 				const response = await fetch(url, {
@@ -90,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				const data = await response.json();
-				console.log(data); // Nota: no borrar
+				console.log("offerGet", data); // Nota: no borrar
 				setStore({ offerInfo: data });
 			},
 
@@ -110,6 +111,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) {
 					getActions().offerGet(id); // añadir un else para mostrar un error en caso de que no funcione
 				}
+			},
+
+			//Esta función obtiene todas las ofertas de empleo disponibles de la empresa para mostrarlo en la vista de las ofertas disponibles
+			companyOffersGet: async id => {
+				const url = `${process.env.BACKEND_URL}api/company/${id}/offers`;
+				const response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				const data = await response.json();
+				setStore({ companyOffersList: data });
 			},
 
 			// Use getActions to call a function within a fuction

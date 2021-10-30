@@ -102,6 +102,7 @@ export const UserRegister = () => {
 												placeholder="example@domain.com"
 												aria-describedby="emailHelp"
 												name="email"
+												required
 												//value={user.email}
 											/>
 										</div>
@@ -115,6 +116,7 @@ export const UserRegister = () => {
 												placeholder="8 - 16 carácteres"
 												id="exampleInputPassword1"
 												name="password"
+												required
 												//value={user.password}
 											/>
 										</div>
@@ -128,6 +130,7 @@ export const UserRegister = () => {
 												placeholder="Repetir password"
 												id="exampleInputPassword1"
 												name="passwordConfirm"
+												required
 												//value={user.passwordConfirm}
 											/>
 										</div>
