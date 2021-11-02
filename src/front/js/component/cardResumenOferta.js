@@ -9,7 +9,7 @@ export const CardResumenOferta = ({ offer }) => {
 	/* console.log("çççççççççççç", offer.company.name); */
 	return (
 		<div className="container">
-			<div className="card mb-3">
+			<div className="card card-home mb-3">
 				<div className="row g-0">
 					<div className="col-md-4">
 						<img src={JLK} className="img-fluid rounded-start" alt="Acceso empresas" />
@@ -26,7 +26,7 @@ export const CardResumenOferta = ({ offer }) => {
 								</div>
 								<div className="d-flex justify-content-center">
 									<Link to={`/detalleOferta$/${offer.id}`}>
-										<span className="btn btn-primary btn-lg" href="#" role="button">
+										<span className="btn btn-primary-wfh" href="#" role="button">
 											Ver Oferta
 										</span>
 									</Link>

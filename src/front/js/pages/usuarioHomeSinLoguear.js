@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { BuscadorYFiltros } from "../component/buscadorYFiltros";
 import { CardResumenOferta } from "../component/cardResumenOferta";
+import { SidebarUsuario } from "../component/SidebarUsuario";
 import "../../styles/home.scss";
 
 export const HomeUsuarioSinLoguear = () => {

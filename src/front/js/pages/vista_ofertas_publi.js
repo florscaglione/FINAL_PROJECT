@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+<<<<<<< HEAD
+=======
+import { BannerEmpresa } from "../component/BannerEmpresa";
+import rigoImageUrl from "../../img/rigo-baby.jpg";
+>>>>>>> cambiosestilo
 import "../../styles/home.scss";
 
 import { OfferCard } from "../component/offerCard";

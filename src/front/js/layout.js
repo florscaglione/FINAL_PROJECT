@@ -5,7 +5,6 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { HomeUsuarioSinLoguear } from "./pages/usuarioHomeSinLoguear";
 import { NewCV } from "./pages/newCV";
-import { NewOffer } from "./pages/newOffer";
 import { DetalleOferta } from "./pages/usuarioDetalleOferta";
 import { CandidatosInscritos } from "./pages/empresaCandidatosInscritos";
 
@@ -17,7 +16,6 @@ import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { newOffer } from "./pages/newOffer";
 
 //create your first component
 const Layout = () => {
@@ -42,9 +40,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/new-CV">
 							<NewCV />
-						</Route>
-						<Route exact path="/new-Offer">
-							<NewOffer />
 						</Route>
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />

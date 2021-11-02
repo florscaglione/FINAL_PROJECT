@@ -57,14 +57,6 @@ export const UserRegister = () => {
 
 	return (
 		<form onChange={handleChange} onSubmit={handleRegister}>
-			<button
-				type="button"
-				className="btn btn-primary mx-1"
-				data-bs-toggle="modal"
-				data-bs-target="#userRegisterModal">
-				Registro Usuario
-			</button>
-
 			<div
 				className="modal fade"
 				id="userRegisterModal"
