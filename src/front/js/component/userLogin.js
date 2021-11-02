@@ -75,11 +75,7 @@ export const UserLogin = ({ id }) => {
 							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
 								Cerrar
 							</button>
-							<button
-								type="button"
-								className="btn btn-primary"
-								data-bs-toggle="modal"
-								data-bs-target="#userRegisterCV">
+							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
 								Entrar
 							</button>
 						</div>
