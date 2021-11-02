@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { BannerEmpresa } from "../component/BannerEmpresa";
 import "../../styles/home.scss";
+import { BannerEmpresa } from "../component/BannerEmpresa";
 
 export const CandidatosInscritos = () => {
 	const { store, actions } = useContext(Context);
