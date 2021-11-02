@@ -5,8 +5,12 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS, cross_origin
 from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+
 import bcrypt
-from api.encrypted import check_password_hash, encrypted_pass
+#from api.encrypted import check_password_hash, encrypted_pass
 
 api = Blueprint('api', __name__)
 
@@ -92,23 +96,30 @@ def login():
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
-    if not email:
-        return jsonify({"msg":"Email required"}), 400
+    # if not email:
+    #     return jsonify({"msg":"Email required"}), 400
 
-    if not password:
-        return jsonify({"msg":"Password required"}), 400
+    # if not password:
+    #     return jsonify({"msg":"Password required"}), 400
     
 
-    user = User.query.filter_by(email=email).first()
-    if not user:
-        return jsonify({"msg": "The email is not correct", "status": 401})
+    # user = User.query.filter_by(email=email).first()
+    # if not user:
+    #     return jsonify({"msg": "The email is not correct", "status": 401})
 
-    if not check_password_hash(user.password, password):
-        return jsonify({"msg": "The password is not correct", "status": 401})
+    # if not check_password_hash(user.password, password):
+    #     return jsonify({"msg": "The password is not correct", "status": 401})
 
-    if user and check_password_hash(user.password, password):
-        access_token = create_access_token(identity=user.email, expires_delta=timedelta(minutes=100))
-        return jsonify({"access_token": access_token}), 200
+    # if user and check_password_hash(user.password, password):
+    #     access_token = create_access_token(identity=user.email, expires_delta=timedelta(minutes=100))
+    #     return jsonify({"access_token": access_token}), 200
+
+    user = User.query.filter_by(email=email, password=password).first()
+    if user is None:
+        return jsonify({"msg": "Bad email or password"}), 401
+
+    access_token = create_access_token(identity=user.email)
+    return jsonify(access_token=access_token), 200
 
 
 

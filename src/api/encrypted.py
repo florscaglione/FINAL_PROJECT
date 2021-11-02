@@ -2,7 +2,7 @@ import bcrypt
 
 # función de encriptado
 def encrypted_pass(password):
-    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     return hashed
 
 # función de desencriptado
