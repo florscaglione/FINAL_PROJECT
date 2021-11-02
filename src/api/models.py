@@ -82,7 +82,7 @@ class Offer(db.Model):
     contract_type = db.Column(db.String(80), unique=False, nullable=False)
     salary_range = db.Column(db.String(9), unique=False, nullable=False)
     requirement = db.Column(db.String(80), unique=False, nullable=False)
-    offer_description = db.Column(db.String(80), unique=False, nullable=False)
+    offer_description = db.Column(db.String(250), unique=False, nullable=False)
     social_benefit = db.Column(db.String(80), unique=False, nullable=True)
 
     inscriptions = db.relationship('Inscription', backref=db.backref('offer', lazy=True))
@@ -105,7 +105,8 @@ class Offer(db.Model):
             "salary_range": self.salary_range,
             "requirement": self.requirement,
             "offer_description": self.offer_description,
-            "social_benefit": self.social_benefit
+            "social_benefit": self.social_benefit,
+            "company": self.company.serialize()
         }
 
     def save(self):
@@ -118,7 +119,7 @@ class Offer(db.Model):
         
     @classmethod
     def get_all(cls):
-        return cls.query.all()    
+        return cls.query.order_by(Offer.id.desc())
 
 class Inscription(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

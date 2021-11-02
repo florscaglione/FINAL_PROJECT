@@ -453,7 +453,7 @@ def show_offer(offerId):
 
     return jsonify(offer.serialize()), 200
 
-# Obtener la lista de todas las ofertas de trabajo: (PROBADO EN POSTMAN Y OK)
+# Obtener la lista de todas las ofertas de trabajo: (FUNCIONA)
 @api.route('/offers', methods =['GET'])
 def get_all_offers():
 
@@ -463,7 +463,19 @@ def get_all_offers():
     for offer in offers:
         all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de respuesta
 
-    return jsonify({'offers': all_offers}), 200
+    return jsonify(all_offers), 200 
+
+# Obtener la lista de todas las ofertas de trabajo DE UNA EMPRESA: (FUNCIONA)
+@api.route('/company/<int:company_id>/offers', methods =['GET'])
+def get_all_offers_in_company(company_id):
+
+    offers = Offer.query.filter_by(company_id=company_id).order_by(Offer.id.desc())    # busco en la BBDD todas las ofertas
+
+    all_offers = []  # convierto los objetos de ofertas en array (json)
+    for offer in offers:
+        all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de respuesta
+
+    return jsonify(all_offers), 200
 
 # Eliminar oferta de trabajo:  (PROBADO EN POSTMAN Y OK!)
 @api.route('/offer/<int:offerId>', methods=['DELETE'])
