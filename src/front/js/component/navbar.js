@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
 import { UserRegister } from "../../js/component/userRegister";
+import { UserLogin } from "../../js/component/userLogin";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
 
 export const Navbar = () => {
@@ -13,6 +14,14 @@ export const Navbar = () => {
 					<img src={logoWfh} width="300" alt="starwars logo" />
 				</a>
 				<div className="d-flex justify-content-end">
+					<button
+						type="button"
+						className="btn btn-primary mx-1"
+						data-bs-toggle="modal"
+						data-bs-target="#userLoginModal">
+						Login Usuario
+					</button>
+					<UserLogin id={"userLoginModal"} />
 					<UserRegister />
 				</div>
 			</div>

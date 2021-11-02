@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
 			allOffersList: [], // Todas las ofertas publicadas en la web (De todas las empresas)
+			token: "", // Recibe el token desde el back
 			message: null,
 			demo: [
 				{
@@ -160,6 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			login: async (email, password) => {
 				//lo hacemos asíncrono para que sea más fácil de administrar
+				console.log("-----", email);
 				const options = {
 					method: "POST",
 					headers: {

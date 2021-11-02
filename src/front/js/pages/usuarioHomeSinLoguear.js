@@ -14,16 +14,32 @@ export const HomeUsuarioSinLoguear = () => {
 	console.log("----------", store.allOffersList); // Funciona trae todas la ofertas publicadas
 
 	return (
-		<div className="container">
-			<div className="row">
-				<div className="col-8 text-center mt-4">
+		<>
+			{store.allOffersList && store.allOffersList.length == 0 ? (
+				<div className="container">
+					<div className="row">
+						<div className="col-8">
+							<h1>No hay ofertas</h1>
+						</div>
+					</div>
+				</div>
+			) : (
+				<div className="container">
+					<h1>Ofertas publicadas</h1>
 					<BuscadorYFiltros />
-					<CardResumenOferta />
+					{store.allOffersList.map((offer, index) => {
+						return (
+							<div key={index} className="container">
+								<div className="row">
+									<div className="col-8">
+										<CardResumenOferta offer={offer} />
+									</div>
+								</div>
+							</div>
+						);
+					})}
 				</div>
-				<div className="col-4 text-center mt-4">
-					<p>Sidebar</p>
-				</div>
-			</div>
-		</div>
+			)}
+		</>
 	);
 };
