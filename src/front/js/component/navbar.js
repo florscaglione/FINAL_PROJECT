@@ -3,7 +3,6 @@ import logoWfh from "../../img/logo_wfh.png";
 import { UserRegister } from "../../js/component/userRegister";
 import { UserLogin } from "../../js/component/userLogin";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
-import { UserLogin } from "../../js/component/userLogin";
 import { CompanyRegister } from "../../js/component/companyRegister";
 
 export const Navbar = () => {
