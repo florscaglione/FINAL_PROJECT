@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
 import { UserRegister } from "../../js/component/userRegister";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
-import { UserRegisterCV } from "../../js/component/userRegisterCV";
 import { UserLogin } from "../../js/component/userLogin";
 import { CompanyRegister } from "../../js/component/companyRegister";
 
