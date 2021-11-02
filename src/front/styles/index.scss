@@ -1,51 +1,80 @@
-/* 
-    General Styles
-*/
+
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
 
+/*Estilo background*/
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus, .btn-primary:active:focus {
-    background-color: rgb(113, 159, 176);
-    border-color:rgb(113, 159, 176);
-    letter-spacing: 1px;
-    color:#dedddf;
-    box-shadow: 0 0 4px 3px rgb(212, 241, 243);
-    font-family: 'Cantata One', serif;
+body{
+  background-color:rgb(229, 247, 242);
+  font-family: 'Cantata One', serif;
+  font-size:10px;
+  color:#525253;
+  padding-top:5%; /* para poder ver los botones de acceso temporal*/
 }
-.btn-primary:active:focus{
-    background-color: rgb(174, 225, 225);
-}
-.btn-primary:hover{
-    background-color:rgb(117, 184, 168);
-}
-.h-100{
-    background-color:rgb(211, 224, 220);
-    font-family: 'Cantata One', serif;
-    color:#6f6e70;
-}
-.navbar, .container{
-    background: rgb(211, 224, 220);
+.navbar-wfh, .container-body{
+    background: rgb(229, 247, 242);
     padding-top: 0;
     padding-bottom:0;
     font-family: 'Cantata One', serif;
     letter-spacing: 1px;
+
+}
+.navbar-inverse {
+  z-index: 10; 
+  background-color: #1a1a1a;
+  box-shadow: 0 0 3px 3px #1a1a1a;
 }
 
-.card{
-    margin-top: 7,5%;
-    background-color: #ece2e1;
+.navbar-brand {height: auto; padding: 0;}
+
+.container-fluid{
+  margin-right: 7%;
+
+}
+
+/*Estilos botones*/
+.btn-primary-wfh , .btn-primary-wfh :hover, .btn-primary-wfh :active, .btn-primary-wfh :visited, .btn-primary-wfh :focus, .btn-primary-wfh:active:focus {
+    background-color: rgb(113, 159, 176);
+    border-color:rgb(113, 159, 176);
+    letter-spacing: 0.5px;
+    color:#ffffff;
+    box-shadow: 0 0 4px 3px rgb(212, 241, 243);
+    font-family: 'Cantata One', serif;
+}
+.btn-primary-wfh:active:focus{
+    background-color: rgb(174, 225, 225);
+}
+.btn-primary-wfh:hover{
+    background-color:rgb(117, 184, 168);
+}
+
+.Tag {
+  background-color: rgb(113, 159, 176);
+  border-color:rgb(113, 159, 176);
+}
+
+.Tag:active , .Tag:hover{
+  background-color:rgb(229, 247, 242);
+
+} 
+
+/*.btn-primary-oferta: pendiente añadir estilos igual al resto de botones pero aumentando el margin para que no se quede debajo de la navbar*/
+
+/*Estilo Cards*/
+.card-home{
+    margin-top: 3%;
+    background-color: #f0e9e9;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
     font-family: 'Cantata One', serif;
-    color:#6f6e70;
+    color:#525253;
     box-shadow: 0 0 4px 3px rgb(247, 226, 226);
-    letter-spacing: 1px;
+    letter-spacing: 1px;   
 }
 .card-title{
   font-family: 'Cantata One', serif;
 
 }
-.card{
+.card-home{
     transition:0.5s;
     cursor:pointer;
   }
@@ -54,25 +83,19 @@
     cursor:pointer;
   }
   .card-title i{  
-    font-size:15px;
+    font-size:2em;
     transition:1s;
     cursor:pointer;
   }
   .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
     color:#18d4ca;
-    
   }
-  .card:hover{
+  .card-home:hover{
     transform: scale(1.05);
     box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
   }
-  .card-text{
-    height:80px; 
-    font-size: medium; 
-  }
-  
-  .card::before, .card::after {
+  .card-home::before, .card-home::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -84,103 +107,341 @@
     content: '';
     pointer-events: none;
   }
-  .card::before {
+  .card-home::before {
     transform-origin: left top;
   }
-  .card::after {
+  .card-home::after {
     transform-origin: right bottom;
   }
-  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+  .card-home:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
     transform: scale3d(1, 1, 1);
   }
-.row, .col, .h2 {
-    margin-top: 3%;
-}
-.social, .iconoSocial{
-  margin-top: 5px;
-  margin-right: 80px;
-  padding-top: 10px;
+  .card-text{
+    margin-top:20px ;
+    text-align: justify;
+    font-family: 'Cantata One', serif;
+    color: black;
+    font-size: small;
+  }
+  .card-empresa  {
+  
+    font-family: 'Cantata One', serif;
+      color:#6f6e70;
+      box-shadow: 0 0 4px 3px rgb(247, 226, 226);
+      letter-spacing: 1px;
+      font-size: medium;
+  }
+  
+  .card-usuario {
+  
+    font-family: 'Cantata One', serif;
+      color:#6f6e70;
+      box-shadow: 0 0 4px 3px rgb(247, 226, 226);
+      letter-spacing: 1px;
+      font-size: medium;
+  
+  }
+  .card-text{
+    margin-bottom:40px;
+    
+  }
+  .puesto{
+    font-family: 'Cantata One', serif;
+    font-size: medium;
+    color: black;
+  }
+  .empresa{
+    font-size: medium;
+  }
+  .detalle{
+    margin-top:20px ;
+    text-align: justify;
+    font-family: 'Cantata One', serif;
+    color: black;
+    font-size: small;
+  }
+  .ultimapublicacion{
+    margin-top: 40px;
+  }
 
+  .card-detalleOferta{
+    padding-top: 8%;
+  }
+  .card-body-detalleOferta{
+    background-color: #f0e9e9;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    padding: 2em;
+    margin-top:2em;
+  }
+ 
+  .card-header {
+    background-color: #ddf7e9;
+    color:#525253;
+    font-family: 'Cantata One', serif;
+  }
+
+  .home-texto{
+    margin-top: 3em;
+  }
+  /*Estilo footer*/
+
+  
+.footer .row, .col , .col-12 {
+    margin-top: 5%;
+}
+.iconoSocial{
+  margin-right: 2em;
+  padding-top: 10px;
 }
 footer {
-  padding-top: 60px;
   background-image: url(../img/footerImage.png);
-  background-size: cover;
-  height: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
   font-family: 'Cantata One', serif, bold;
+  margin-right: 6rem;
+  margin-left: 6rem;
 }
 .list, .nav-link, a{
-  margin-right: 21px;
-  color:black;
+  margin-right: 3.5em;
+  color:rgb(37, 37, 37);
+  font-size: 1.5em;
 }
 
-p{
+.text-muted-copyright{
   font-size: 9px;
   color: black;
   margin-right: 35px;
 }
-.d-flex{
-  margin-top: 30px;
-}
-.puesto{
-  font-family: 'Cantata One', serif;
-  font-size: large;
-  color: black;
-}
-.empresa{
-  font-size: medium;
-}
-.detalle{
-  margin-top:20px ;
-  text-align: justify;
-  font-family: 'Cantata One', serif;
-  color: black;
-  font-size: small;
-}
-.card-text{
-  margin-top:20px ;
-  text-align: justify;
-  font-family: 'Cantata One', serif;
-  color: black;
-  font-size: small;
-}
-.card-empresa  {
 
-  font-family: 'Cantata One', serif;
-    color:#6f6e70;
-    box-shadow: 0 0 4px 3px rgb(247, 226, 226);
-    letter-spacing: 1px;
-    font-size: large;
-}
+/*BANNER USUARIO*/
 
-.card-usuario {
-
-  font-family: 'Cantata One', serif;
-    color:#6f6e70;
-    box-shadow: 0 0 4px 3px rgb(247, 226, 226);
-    letter-spacing: 1px;
-    font-size: large;
-
-}
-.card-text{
-  margin-bottom:40px;
+.jumbotron-fluid-text-center-usuario {
+  background-image: url(../img/bannerusuario.png);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
   
 }
-.card-img-top{
-  height: 50%;
+@supports(object-fit: cover){
+  .box img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
-h1{
-  margin-top: 50px;
-  margin-bottom:50px;
+.display-4-titulo-fluid{
+  padding-top: 6em;
+  font-family: 'Cantata One', serif;
+  text-align: center;
+  text-shadow: rgb(185, 218, 233) -1px 1px, rgb(15, 14, 14) -2px 2px, rgb(185, 218, 233) -3px 3px, rgb(185, 218, 233) -4px 4px, rgb(185, 218, 233) -5px 5px;
+  color: rgb(76, 147, 158);
+  font-size: 3em;
+  -webkit-animation: display-4-titulo-fluid 1.5s ease-in-out infinite alternate both;
+	        animation: display-4-titulo-fluid 1.5s ease-in-out infinite alternate both;
+}
+@-webkit-keyframes display-4-titulo-fluid {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+@keyframes display-4-titulo-fluid {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
 }
 
-.ultimapublicacion{
-  margin-top: 40px;
-
+.lead-subtitulo{
+  color: rgb(76, 147, 158);
+  text-align: bottom;
+  font-size: calc(1em + 1vw);
+  text-shadow: rgb(15, 14, 14) -1px 1px,rgb(15, 14, 14) -2px 2px;
+  margin-top: 15em;
+  padding-top: 15.5em;
+  padding-bottom:2em;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-animation: lead-subtitulo 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 2s infinite both;
+  animation: lead-subtitulo 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 2s infinite both;
 
 }
+@-webkit-keyframes lead-subtitulo {
+  0% {
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+  100% {
+    -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+}
+@keyframes lead-subtitulo {
+  0% {
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+  100% {
+    -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+}
+/*banner empresa*/
+
+
+.jumbotron-fluid-text-center-empresa{
+  background-image: url(../img/bannerempresa.png);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+/*estilo home empresa*/
+.imagenEmp{
+  margin-top: 10%;
+  position:relative;
+}
+.imagenEmp a{
+  position: absolute;
+  bottom:4em;
+  right:4em;
+  border-radius:1.5em;
+  color:white;
+  padding:1em 1.5em;
+  }
+  .imagenEmp{
+    transition:0.5s;
+    cursor:pointer;
+  }
+  .card-title{  
+    transition:1s;
+    cursor:pointer;
+  }
+  .imagenEmp:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  .imagenEmp::before, .card-home::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    content: '';
+    pointer-events: none;
+  }
+  .imagenEmp::before {
+    transform-origin: left top;
+  }
+  .imagenEmp::after {
+    transform-origin: right bottom;
+  }
+  .imagenEmp:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
+
+  .titulo{
+    font-size: 2em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    font-family: 'Cantata One', serif;
+  }
+
+  .infoEmp{
+    text-align: justify;
+    color:#525253;
+    font-size: medium;
+    font-family: 'Cantata One', serif;
+  }
+  .tituloCardEmp{
+    font-family: 'Cantata One', serif;
+    margin-top:2em;
+    text-align: center;
+    text-shadow: rgb(15, 14, 14) -0.5px 0.5px ;
+    margin-bottom:2em;
+    font-size: 2em;
+    height: 40px;
+  }
+  /* estilos barra buscador- vista usuario home*/
+
+.buscador{
+  margin-top: 5em;
+  margin-bottom:1em;
+}
+
+.filtros{
+  padding-bottom:1em;
+}
+
+/* estilo vista candidatos*/
 
 .table{
-  margin-top: 40px;
+  margin-top:8em;
+  
+}
+thead{
+  background-color:#a8d6cf; ;
+}
+.vacio{
+  margin-top: 6em;
 }

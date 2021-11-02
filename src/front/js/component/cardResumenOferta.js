@@ -4,7 +4,7 @@ import JLK from "../../img/JLK.png";
 export const CardResumenOferta = () => {
 	return (
 		<div className="container">
-			<div className="card mb-3">
+			<div className="card card-home mb-3">
 				<div className="row g-0">
 					<div className="col-md-4">
 						<img src={JLK} className="img-fluid rounded-start" alt="Acceso empresas" />
@@ -35,7 +35,7 @@ export const CardResumenOferta = () => {
 									</button>
 								</div>
 								<div className="d-flex justify-content-center">
-									<a className="btn btn-primary">Ver oferta</a>
+									<a className="btn btn-primary-wfh ">Ver oferta</a>
 								</div>
 								<div className="d-flex justify-content-end">
 									<i className="far fa-bookmark mx-2" />

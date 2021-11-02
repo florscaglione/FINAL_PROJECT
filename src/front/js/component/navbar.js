@@ -7,16 +7,25 @@ export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
 
 	return (
-		<nav className="navbar mb-3">
-			<div className="container d-flex justify-content-between">
-				<a className="navbar-brand" href="/">
-					<img src={logoWfh} width="300" alt="starwars logo" />
-				</a>
-				<div className="d-flex justify-content-end">
-					<UserRegister />
+		<div className="container">
+			<div className="navbar-wfh mb-3 fixed-top">
+				<div className="container d-flex justify-content-between">
+					<a className="navbar-brand" href="/">
+						<img src={logoWfh} width="250" alt="starwars logo" />
+					</a>
+					<div className="d-flex justify-content-end" />
+					<button
+						type="button"
+						className="btn btn-primary-wfh  mx-1"
+						data-bs-toggle="modal"
+						data-bs-target="#userRegisterModal">
+						Registro Usuario
+					</button>
 				</div>
 			</div>
-		</nav>
+
+			<UserRegister />
+		</div>
 	);
 };
 
