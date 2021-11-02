@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import JLK from "../../img/JLK.png";
 
-export const CardResumenOferta = () => {
+export const CardResumenOferta = ({ offer }) => {
+	const { store, actions } = useContext(Context);
+	/* console.log("çççççççççççç", offer.company.name); */
 	return (
 		<div className="container">
 			<div className="card mb-3">
@@ -11,31 +16,20 @@ export const CardResumenOferta = () => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body">
-							<h4 className="puesto">FULL STACK DEVELOPER TELETRABAJO</h4>
-							<h5 className="empresa">JLK GROUP SPAIN</h5>
-							<p className="detalle">
-								Se busca Full Stack Developer con experiencia en Javascript ( Angular y React), bases de
-								datos, Node JS,WebApis entre otros. El rango salarial que se ofrece ronda los 36.000K
-								con contrato indefinido. Para conocer el resto de condiciones consulte el detalle de la
-								oferta.
-							</p>
+							<h4 className="puesto">{offer.title}</h4>
+							<h5 className="empresa">{offer.company.name}</h5>
+							<p className="detalle">{offer.offer_description}</p>
+
 							<div className="d-flex justify-content-between">
 								<div className="d-flex justify-content-start">
-									<button type="button" className="btn btn-outline btn-sm mx-1">
-										#NodeJS
-									</button>
-									<button type="button" className="btn btn-outline btn-sm mx-1">
-										#WebAPIs
-									</button>
-									<button type="button" className="btn btn-outline btn-sm mx-1">
-										#Javascript
-									</button>
-									<button type="button" className="btn btn-outline btn-sm mx-1">
-										#SQL
-									</button>
+									<p>{offer.requirement}</p>
 								</div>
 								<div className="d-flex justify-content-center">
-									<a className="btn btn-primary">Ver oferta</a>
+									<Link to={`/detalleOferta$/${offer.id}`}>
+										<span className="btn btn-primary btn-lg" href="#" role="button">
+											Ver Oferta
+										</span>
+									</Link>
 								</div>
 								<div className="d-flex justify-content-end">
 									<i className="far fa-bookmark mx-2" />
@@ -47,4 +41,8 @@ export const CardResumenOferta = () => {
 			</div>
 		</div>
 	);
+};
+
+CardResumenOferta.propTypes = {
+	offer: PropTypes.object
 };

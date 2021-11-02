@@ -5,6 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			companyInfo: null, //Toda la info de la empresa
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
+			allOffersList: [], // Todas las ofertas publicadas en la web (De todas las empresas)
+			token: "", // Recibe el token desde el back
 			message: null,
 			demo: [
 				{
@@ -126,6 +128,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ companyOffersList: data });
 			},
 
+			//Esta función obtiene todas las ofertas de empleo publicadas
+			allOffersGet: async () => {
+				const url = `${process.env.BACKEND_URL}api/offers`;
+				const response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				const data = await response.json();
+				setStore({ allOffersList: data });
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -146,6 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			login: async (email, password) => {
 				//lo hacemos asíncrono para que sea más fácil de administrar
+				console.log("-----", email);
 				const options = {
 					method: "POST",
 					headers: {
@@ -158,7 +174,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch(`${process.env.BACKEND_URL}/api/login-user`, options);
+					const resp = await fetch(`${process.env.BACKEND_URL}api/login-user`, options);
 					if (resp.status !== 200) {
 						alert("There was been some error");
 						return false;
