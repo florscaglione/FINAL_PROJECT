@@ -44,7 +44,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 				body: JSON.stringify(userExperience)
 			});
 			if (response.ok) {
-				actions.userGet(store.userInfo.user_basic.id); // añadir un else para mostrar un error en caso de que no funcione
+				actions.userGet(store.userInfo.user_basic.id); // actualiza la información en la vista al pulsar sobre el botón de guardar
 			}
 		}
 		if (icon == "plus") {
@@ -57,6 +57,9 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 				},
 				body: JSON.stringify(userExperience)
 			});
+			if (response.ok) {
+				actions.userGet(store.userInfo.user_basic.id); // actualiza la información en la vista al pulsar sobre el botón de guardar
+			}
 		}
 	};
 
@@ -94,6 +97,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 											name="title"
 											placeholder="Título"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<input
 											type="text"
@@ -104,6 +108,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 											name="description"
 											placeholder="Descripción"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<input
 											type="date"
@@ -112,6 +117,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 											name="start_date"
 											placeholder="Fecha de inicio"
 											aria-describedby="professionHelp"
+											required
 										/>
 										<input
 											type="date"

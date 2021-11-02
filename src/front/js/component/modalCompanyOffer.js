@@ -2,7 +2,7 @@ import React, { Component, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const ModalCompanyOffer = ({ info, icon, id }) => {
+export const ModalCompanyOffer = ({ offer, icon, id }) => {
 	const { store, actions } = useContext(Context);
 
 	const [editOffer, setEditOffer] = useState({
@@ -17,23 +17,34 @@ export const ModalCompanyOffer = ({ info, icon, id }) => {
 
 	const handleChange = event => {
 		setEditOffer({ ...editOffer, [event.target.name]: event.target.value });
-		console.log(editOffer);
 	};
 
-	const handleEditOffer = event => {
+	const handleEditOffer = async event => {
 		event.preventDefault();
-		console.log("a");
-		actions.offerUpdate(event, info.id, editOffer);
-	};
 
+		if (icon == "edit") {
+			await actions.offerUpdate(event, offer.id, editOffer); // se añade el await para que no comience la siguiente función hasta terminar de ejecutarse la primera
+			actions.companyOffersGet(offer.company_id); // Pretendemos que tras editar se actualice el listado de ofertas (no funciona)
+		}
+		if (icon == "plus") {
+			const url = `${process.env.BACKEND_URL}api/company/${offer.company_id}/offer`;
+			console.log("estoy en crear oferta", editOffer);
+			const response = await fetch(url, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(editOffer)
+			});
+			if (response.ok) {
+				actions.companyOffersGet(offer.company_id); // añadir un else para mostrar un error en caso de que no funcione
+			}
+		}
+	};
+	/* console.log("00000000", offer.id); */
 	return (
 		<form onChange={handleChange} onSubmit={handleEditOffer}>
-			<div
-				className="modal fade"
-				id={"idEditOfferCompany"}
-				tabIndex="-1"
-				aria-labelledby="userDataLabel"
-				aria-hidden="true">
+			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="userDataLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -45,7 +56,7 @@ export const ModalCompanyOffer = ({ info, icon, id }) => {
 						<div className="modal-body">
 							<div className="row">
 								<div className="col">
-									<h4>Editar oferta de trabajo</h4>
+									<h4>{icon == "plus" ? "Crear oferta de trabajo" : "Editar oferta de trabajo"}</h4>
 								</div>
 
 								<div className="row mt-2">
@@ -53,49 +64,56 @@ export const ModalCompanyOffer = ({ info, icon, id }) => {
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.title}
+											defaultValue={offer.title}
+											placeholder="Título"
 											name="title"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.remote_work}
+											defaultValue={offer.remote_work}
+											placeholder="Trabajo remoto"
 											name="remote_work"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.contract_type}
+											defaultValue={offer.contract_type}
+											placeholder="Tipo de contrato"
 											name="contact_type"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.salary_range}
+											defaultValue={offer.salary_range}
+											placeholder="Rango salarial"
 											name="salary_range"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.requirement}
+											defaultValue={offer.requirement}
+											placeholder="Requisitos"
 											name="requeriment"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.offer_description}
+											defaultValue={offer.offer_description}
+											placeholder="Descripción de la oferta"
 											name="offer_description"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
 											className="mt-2 form-control"
-											defaultValue={info.social_benefit}
+											defaultValue={offer.social_benefit}
+											placeholder="Beneficios sociales"
 											name="social_benefit"
 											aria-describedby="professionHelp"
 										/>
@@ -116,7 +134,7 @@ export const ModalCompanyOffer = ({ info, icon, id }) => {
 };
 
 ModalCompanyOffer.propTypes = {
-	info: PropTypes.object,
+	offer: PropTypes.object,
 	icon: PropTypes.string,
 	id: PropTypes.number
 };
