@@ -25,7 +25,7 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#MIGRATE = Migrate(app, db, compare_type=True) # OJO!! Si se rompe algo del migrate, puede ser debido a esto
+MIGRATE = Migrate(app, db, compare_type=True) # OJO!! Si se rompe algo del migrate, puede ser debido a esto
 db.init_app(app)
 
 # Allow CORS requests to this API
