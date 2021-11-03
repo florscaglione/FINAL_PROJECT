@@ -473,7 +473,7 @@ def get_all_offers_in_company(company_id):
 
     all_offers = []  # convierto los objetos de ofertas en array (json)
     for offer in offers:
-        all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de respuesta
+        all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de  respuesta
 
     return jsonify(all_offers), 200
 
