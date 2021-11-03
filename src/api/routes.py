@@ -471,6 +471,17 @@ def inscription_offer(offer_id, user_id):
 
     raise APIException("Inscription already exists", 401)
 
+# Buscar si un usuario está inscrito en una oferta:  (FUNCIONA)
+@api.route('/offer/<int:offer_id>/inscription-user/<int:user_id>', methods=['GET']) 
+#@jwt_required()
+def inscription_offer_exist(offer_id, user_id):
+
+    inscription_exist = Inscription.query.filter_by(offer_id=offer_id, user_id=user_id).first()
+
+    if not inscription_exist:
+        return jsonify(False), 201
+
+    return jsonify(True), 200
 
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer/<int:offerId>', methods=['GET'])
