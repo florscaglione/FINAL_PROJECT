@@ -140,6 +140,9 @@ class Inscription(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
 
 class FavoriteOffer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

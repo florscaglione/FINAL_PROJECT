@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS, cross_origin
-from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining
+from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining, Inscription
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -113,7 +113,7 @@ def login():
 
     if user and check_password_hash(password, user.password):
         access_token = create_access_token(identity=user.id, expires_delta=False)
-        return jsonify({"access_token": access_token}), 200
+        return jsonify({"access_token": access_token}, user.serialize()), 200
 
     # SIN ENCRIPTAR CONTRASEÑA:
     # user = User.query.filter_by(email=email, password=password).first()
@@ -455,6 +455,22 @@ def create_offer(company_id):
     offer.save() 
 
     return jsonify(offer.serialize()), 200 
+
+# Inscribirse en una oferta de trabajo:  (FUNCIONA)
+@api.route('/offer/<int:offer_id>/inscription-user/<int:user_id>', methods=['POST']) 
+#@jwt_required()  # SE LO QUITO MOMENTÁNEAMENTE PORQUE HACE QUE NO SE PUEDA INSCRIBIR A UNA OFERTA, PDTE. SOLUCIONAR
+def inscription_offer(offer_id, user_id):
+
+    inscription_exist = Inscription.query.filter_by(offer_id=offer_id, user_id=user_id).first()
+
+    if not inscription_exist:
+        inscription = Inscription(offer_id=offer_id, user_id=user_id)
+        inscription.save() 
+
+        return jsonify(inscription.serialize()), 200
+
+    raise APIException("Inscription already exists", 401)
+
 
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer/<int:offerId>', methods=['GET'])
