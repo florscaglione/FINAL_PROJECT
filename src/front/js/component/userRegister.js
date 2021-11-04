@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import logoWfh from "../../img/logo_wfh.png";
 import PropTypes from "prop-types";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
 
@@ -64,12 +65,15 @@ export const UserRegister = () => {
 				aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				{!registerCV ? (
-					<div className="modal-dialog">
+					<div className="modal-dialog modal-lg">
 						<div className="modal-content">
 							<div className="modal-header">
-								<h2 className="modal-title" id="exampleModalLabel">
-									Registro - paso 1
-								</h2>
+								<img className="logoformulario " src={logoWfh} width="150" alt="starwars logo" />
+								<div className="">
+									<h2 className="modal-title justify-content-end" id="exampleModalLabel">
+										Registro - paso 1
+									</h2>
+								</div>
 								<button
 									type="button"
 									className="btn-close"
@@ -134,7 +138,7 @@ export const UserRegister = () => {
 											</label>
 											<input
 												type="text"
-												className="form-control"
+												className="form-control modal-content-bg"
 												placeholder="Nombre"
 												aria-describedby="textName"
 												required
@@ -163,7 +167,7 @@ export const UserRegister = () => {
 											<input
 												type="tel"
 												className="form-control"
-												placeholder="34 123 456 789"
+												placeholder="+34 123 456 789"
 												aria-describedby="textPhone"
 												required
 												name="phone"
@@ -187,10 +191,10 @@ export const UserRegister = () => {
 								</div>
 							</div>
 							<div className="modal-footer">
-								<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+								<button type="button" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 									Cerrar
 								</button>
-								<button type="submit" className="btn btn-primary">
+								<button type="submit" className="btn btn-primary-wfh">
 									Siguiente
 								</button>
 							</div>
