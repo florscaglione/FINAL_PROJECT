@@ -80,7 +80,7 @@ class Offer(db.Model):
     title = db.Column(db.String(200), unique=False, nullable=False)
     remote_work = db.Column(db.String(120), unique=False, nullable=False)
     contract_type = db.Column(db.String(80), unique=False, nullable=False)
-    salary_range = db.Column(db.String(9), unique=False, nullable=False)
+    salary_range = db.Column(db.String(80), unique=False, nullable=False)
     requirement = db.Column(db.String(80), unique=False, nullable=False)
     offer_description = db.Column(db.String(250), unique=False, nullable=False)
     social_benefit = db.Column(db.String(80), unique=False, nullable=True)
