@@ -571,3 +571,24 @@ def update_offer(offerId):
     db.session.commit()
 
     return jsonify(offer.serialize()), 200
+
+##################
+##  CREAR BBDD  ##
+##################  QUÉ MÁS HACER ? ES DECIR, DÓNDE SE USA ESTE ENDPOINT Y CUÁNDO?
+
+# @api.route('/create-database', methods=['GET'])
+# def create_database():
+
+#     offer5 = Offer(
+#         title = "Programador backend",
+#         remote_work = "Teletrabajo 100%, horario flexible",
+#         contract_type = "Indefinido",
+#         salary_range = "18.000€/año",
+#         requirement = "4 años de experiencia trabajando con PHP",
+#         offer_description = "Estamos buscando un perfil de Programador PHP con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales en Barcelona.",
+#         social_benefit = "Formación bonificada"
+#     )
+
+#     db.session.add(offer5)
+
+#     return jsonify("database ok"), 200
