@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
-import { UserRegister } from "../../js/component/userRegister";
 import { UserLogin } from "../../js/component/userLogin";
-import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
-import { CompanyRegister } from "../../js/component/companyRegister";
+import { CompanyLogin } from "../../js/component/companyLogin";
 
 export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
@@ -23,6 +21,15 @@ export const Navbar = () => {
 						data-bs-target="#userRegisterModal">
 						Registro Usuario
 					</button>
+					<UserLogin id={"userLoginModal"} />
+					<button
+						type="button"
+						className="btn btn-primary mx-1"
+						data-bs-toggle="modal"
+						data-bs-target="#companyLoginModal">
+						Login Empresa
+					</button>
+					<CompanyLogin id={"companyLoginModal"} />
 				</div>
 			</div>
 
