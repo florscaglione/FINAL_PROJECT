@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
 
-export const UserRegister = () => {
+export const UserRegister = ({ id }) => {
+	console.log("Registrando usuario");
 	const history = useHistory();
 
 	const [registerCV, setRegisterCV] = useState(false);
@@ -57,25 +58,12 @@ export const UserRegister = () => {
 
 	return (
 		<form onChange={handleChange} onSubmit={handleRegister}>
-			{/* <button
-				type="button"
-				className="btn btn-primary mx-1"
-				data-bs-toggle="modal"
-				data-bs-target="#userRegisterModal">
-				Registro Usuario
-			</button> */}
-
-			<div
-				className="modal fade"
-				id="userRegisterModal"
-				tabIndex="-1"
-				aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
+			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
 				{!registerCV ? (
 					<div className="modal-dialog">
 						<div className="modal-content">
 							<div className="modal-header">
-								<h2 className="modal-title" id="exampleModalLabel">
+								<h2 className="modal-title" id="exampleModalLabel1">
 									Registro - paso 1
 								</h2>
 								<button
@@ -210,4 +198,8 @@ export const UserRegister = () => {
 			</div>
 		</form>
 	);
+};
+
+UserRegister.propTypes = {
+	id: PropTypes.string
 };

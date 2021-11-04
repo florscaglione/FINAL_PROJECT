@@ -1,7 +1,8 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
+import { CompanyRegisterConfirmation } from "../../js/component/companyRegisterConfirmation";
 
-export const CompanyRegister = () => {
+export const CompanyRegister = ({ id }) => {
 	const [registerCompany, setRegisterCompany] = useState(false);
 
 	const [company, setCompany] = useState({
@@ -25,7 +26,7 @@ export const CompanyRegister = () => {
 			return;
 		}
 		/* console.log("COMPANY", company); */
-		const url = "https://3001-beige-galliform-xo392btg.ws-eu18.gitpod.io/api/signup-company";
+		const url = `${process.env.BACKEND_URL}api/signup-company`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -53,17 +54,17 @@ export const CompanyRegister = () => {
 
 	return (
 		<form onChange={handleChange} onSubmit={handleRegister}>
-			<button
+			{/* <button
 				type="button"
 				className="btn btn-primary mx-1"
 				data-bs-toggle="modal"
 				data-bs-target="#companyRegisterModal">
 				Registro Empresa
-			</button>
+			</button> */}
 
 			<div
 				className="modal fade"
-				id="companyRegisterModal"
+				id={id}
 				tabIndex="-1"
 				aria-labelledby="companyRegisterModalLabel"
 				aria-hidden="true">
@@ -198,9 +199,13 @@ export const CompanyRegister = () => {
 						</div>
 					</div>
 				) : (
-					"" //Falta crear y enlazar al modal de confirmación de registro <CompanyRegisterConfirmation />
+					<CompanyRegisterConfirmation />
 				)}
 			</div>
 		</form>
 	);
+};
+
+CompanyRegister.propTypes = {
+	id: PropTypes.string
 };

@@ -1,7 +1,6 @@
 import React, { Component, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
-import { UserRegister } from "../../js/component/userRegister";
 
 export const UserLogin = ({ id }) => {
 	const { store, actions } = useContext(Context);
@@ -68,14 +67,16 @@ export const UserLogin = ({ id }) => {
 											id="exampleInputPassword1"
 										/>
 									</div>
-									<button
-										type="button"
-										className="btn btn-link"
-										data-bs-toggle="modal"
-										data-bs-target="#userRegisterModal">
-										Registro de usuarios
-									</button>
-									<UserRegister />
+									<div>
+										<button
+											type="button"
+											className="btn btn-link"
+											data-bs-toggle="modal"
+											data-bs-target="#userRegisterModal1">
+											Registro de usuarios
+										</button>
+										{/* <UserRegister id={"userRegisterModal1"} /> */}
+									</div>
 								</div>
 							</div>
 						</div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
 import { UserLogin } from "../../js/component/userLogin";
 import { CompanyLogin } from "../../js/component/companyLogin";
+import { UserRegister } from "../../js/component/userRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal userLogin
+import { CompanyRegister } from "./companyRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal companyLogin
 
 export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
@@ -30,6 +32,10 @@ export const Navbar = () => {
 						Login Empresa
 					</button>
 					<CompanyLogin id={"companyLoginModal"} />
+
+					<UserRegister id={"userRegisterModal1"} />
+
+					<CompanyRegister id={"companyRegisterModal"} />
 				</div>
 			</div>
 		</div>
