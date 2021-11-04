@@ -18,27 +18,35 @@ export const HomeUsuarioSinLoguear = () => {
 		<>
 			{store.allOffersList && store.allOffersList.length == 0 ? (
 				<div className="container">
+					<h1>Ofertas disponible</h1>
+					<BuscadorYFiltros />
 					<div className="row">
-						<div className="col-8">
-							<h1>No hay ofertas</h1>
+						<div className="col-9 text-center mt-4">
+							<h2>No hay ofertas</h2>
+						</div>
+						<div className="col-3 text-center d-none d-md-block mt-4">
+							<SidebarUsuario />
 						</div>
 					</div>
 				</div>
 			) : (
 				<div className="container">
-					<h1>Ofertas publicadas</h1>
-					<BuscadorYFiltros />
-					{store.allOffersList.map((offer, index) => {
-						return (
-							<div key={index} className="container">
-								<div className="row">
-									<div className="col-8">
+					<h2 className="mt-5 ms-4">Últimas ofertas</h2>
+					<div className="row">
+						<div className="col-9 text-center">
+							<BuscadorYFiltros />
+							{store.allOffersList.map((offer, index) => {
+								return (
+									<div key={index}>
 										<CardResumenOferta offer={offer} />
 									</div>
-								</div>
-							</div>
-						);
-					})}
+								);
+							})}
+						</div>
+						<div className="col-3 text-center d-none d-md-block">
+							<SidebarUsuario />
+						</div>
+					</div>
 				</div>
 			)}
 		</>

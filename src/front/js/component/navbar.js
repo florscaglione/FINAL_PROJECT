@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import logoWfh from "../../img/logo_wfh.png";
-import { UserRegister } from "../../js/component/userRegister";
 import { UserLogin } from "../../js/component/userLogin";
-import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
-import { CompanyRegister } from "../../js/component/companyRegister";
+import { CompanyLogin } from "../../js/component/companyLogin";
+import { UserRegister } from "../../js/component/userRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal userLogin
+import { CompanyRegister } from "./companyRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal companyLogin
 
 export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
@@ -15,18 +15,28 @@ export const Navbar = () => {
 					<a className="navbar-brand" href="/">
 						<img src={logoWfh} width="250" alt="starwars logo" />
 					</a>
-					<div className="d-flex justify-content-end" />
-					<button
-						type="button"
-						className="btn btn-primary-wfh  mx-1"
-						data-bs-toggle="modal"
-						data-bs-target="#userRegisterModal">
-						Registro Usuario
-					</button>
+					<div className="d-flex justify-content-end">
+						<button
+							type="button"
+							className="btn btn-primary-wfh  mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#userLoginModal">
+							Login Usuario
+						</button>
+						<button
+							type="button"
+							className="btn btn-primary-wfh mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#companyLoginModal">
+							Login Empresa
+						</button>
+					</div>
 				</div>
 			</div>
-
-			<UserRegister />
+			<UserLogin id={"userLoginModal"} />
+			<CompanyLogin id={"companyLoginModal"} />
+			<UserRegister id={"userRegisterModal1"} />
+			<CompanyRegister id={"companyRegisterModal"} />
 		</div>
 	);
 };

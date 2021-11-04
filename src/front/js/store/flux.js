@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: null, //Toda la info del usuario
+			userLoggedIn: null,
 			companyInfo: null, //Toda la info de la empresa
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
@@ -23,32 +24,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			//Esta función obtiene todos los datos del USUARIO: userData, profession, training, experience.
-			userGet: async id => {
-				const url = `${process.env.BACKEND_URL}api/user-info/${id}/get`;
-				const response = await fetch(url, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				const data = await response.json();
-				setStore({ userInfo: data });
+			userGet: async props => {
+				const url = `${process.env.BACKEND_URL}api/user-info/get`; // Revisión de la ruta quitar el id conjuntamente con el endpoint del back-end
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					// Revisar que el token existe
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					setStore({ userInfo: data });
+				}
 			},
 			//Esta función actualiza la información del userData.
 			userUpdate: async (event, id, userUpdate) => {
 				event.preventDefault();
-
-				const url = `${process.env.BACKEND_URL}api/user-info/${id}/edit`;
-
-				const response = await fetch(url, {
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(userUpdate)
-				});
-				if (response.ok) {
-					getActions().userGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				const url = `${process.env.BACKEND_URL}api/user-info/edit`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						},
+						body: JSON.stringify(userUpdate)
+					});
+					if (response.ok) {
+						getActions().userGet(id); // añadir un else para mostrar un error en caso de que no funcione
+					}
 				}
 			},
 
@@ -86,15 +94,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Esta función obtiene todos los datos de una Oferta en offerInfo
 			offerGet: async id => {
 				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
-				const response = await fetch(url, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				const data = await response.json();
-				console.log("offerGet", data); // Nota: no borrar
-				setStore({ offerInfo: data });
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					console.log("offerGet", data); // Nota: no borrar
+					setStore({ offerInfo: data });
+				}
 			},
 
 			//Esta función actualiza la información de la oferta de trabajo en offerInfo.
@@ -154,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			logout: () => {
-				localStorage.removeItem("token"); //borro el token del localStorage
+				localStorage.clear(); //borra todo lo que hay en el localStorage con el ".clear"
 				console.log("Login out");
 				setStore({ token: null }); //y establezco el token del store vacío
 			},
@@ -181,8 +193,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					const data = await resp.json();
 					console.log("This came from the backend", data);
-					localStorage.setItem("token", data.access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
-					setStore({ token: data.access_token });
+					localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
+					localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
 					return true;
 				} catch (error) {
 					console.log("There has been an error login in");

@@ -4,7 +4,7 @@ export const BannerEmpresa = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
 	return (
 		<div className="jumbotron jumbotron-fluid-text-center-empresa rounded">
-			<div className="container-jumbotron">
+			<div className="container-jumbotron mt-4">
 				<h4 className="display-4-titulo-fluid">¿BUSCAS TALENTO?</h4>
 				<p className="lead-subtitulo">Encuentra el personal que necesitas para llevar a cabo tus proyectos</p>
 				<a className="logobanner" href="/">

@@ -44,7 +44,7 @@ const Layout = () => {
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />
 						</Route>
-						<Route exact path="/detalleOferta">
+						<Route exact path="/detalleOferta/:id">
 							<DetalleOferta />
 						</Route>
 						<Route exact path="/candidatosInscritos">
