@@ -32,8 +32,6 @@ export const Navbar = () => {
 					<CompanyLogin id={"companyLoginModal"} />
 				</div>
 			</div>
-
-			<UserRegister />
 		</div>
 	);
 };
