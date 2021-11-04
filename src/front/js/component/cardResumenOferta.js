@@ -32,7 +32,7 @@ export const CardResumenOferta = ({ offer }) => {
 												onClick={() => {
 													localStorage.setItem("idItem", offer.id);
 												}}
-												className="btn btn-primary btn-lg"
+												className="btn btn-primary-wfh btn-lg"
 												href="#"
 												role="button">
 												Ver Oferta
@@ -40,7 +40,7 @@ export const CardResumenOferta = ({ offer }) => {
 										</Link>
 									) : (
 										<Link to={`/`}>
-											<span className="btn btn-primary btn-lg" href="#" role="button">
+											<span className="btn btn-primary-wfh btn-lg" href="#" role="button">
 												Login
 											</span>
 										</Link>

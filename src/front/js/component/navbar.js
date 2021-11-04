@@ -10,34 +10,33 @@ export const Navbar = () => {
 
 	return (
 		<div className="container">
-			<div className="navbar-wfh mb-3 ">
+			<div className="navbar-wfh mb-3 fixed-top">
 				<div className="container d-flex justify-content-between">
 					<a className="navbar-brand" href="/">
 						<img src={logoWfh} width="250" alt="starwars logo" />
 					</a>
-					<div className="d-flex justify-content-end" />
-					<button
-						type="button"
-						className="btn btn-primary-wfh  mx-1"
-						data-bs-toggle="modal"
-						data-bs-target="#userLoginModal">
-						Login Usuario
-					</button>
-					<UserLogin id={"userLoginModal"} />
-					<button
-						type="button"
-						className="btn btn-primary mx-1"
-						data-bs-toggle="modal"
-						data-bs-target="#companyLoginModal">
-						Login Empresa
-					</button>
-					<CompanyLogin id={"companyLoginModal"} />
-
-					<UserRegister id={"userRegisterModal1"} />
-
-					<CompanyRegister id={"companyRegisterModal"} />
+					<div className="d-flex justify-content-end">
+						<button
+							type="button"
+							className="btn btn-primary-wfh  mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#userLoginModal">
+							Login Usuario
+						</button>
+						<button
+							type="button"
+							className="btn btn-primary-wfh mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#companyLoginModal">
+							Login Empresa
+						</button>
+					</div>
 				</div>
 			</div>
+			<UserLogin id={"userLoginModal"} />
+			<CompanyLogin id={"companyLoginModal"} />
+			<UserRegister id={"userRegisterModal1"} />
+			<CompanyRegister id={"companyRegisterModal"} />
 		</div>
 	);
 };

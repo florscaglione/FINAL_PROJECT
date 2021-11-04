@@ -23,7 +23,7 @@ export const CompanyLogin = ({ id }) => {
 	return (
 		<form onChange={handleChange} onSubmit={handleLogin}>
 			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div className="modal-dialog">
+				<div className="modal-dialog modal-lg">
 					<div className="modal-content">
 						<div className="row">
 							<div className="col-6" />

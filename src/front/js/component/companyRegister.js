@@ -69,7 +69,7 @@ export const CompanyRegister = ({ id }) => {
 				aria-labelledby="companyRegisterModalLabel"
 				aria-hidden="true">
 				{!registerCompany ? (
-					<div className="modal-dialog">
+					<div className="modal-dialog modal-lg">
 						<div className="modal-content">
 							<div className="modal-header">
 								<h2 className="modal-title" id="companyRegisterModalLabel">

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const UserRegisterConfirmation = () => {
 	return (
 		<>
-			<div className="modal-dialog">
+			<div className="modal-dialog modal-lg">
 				<div className="modal-content">
 					<div className="modal-header">
 						<h2 className="modal-title" id="secondModalLabel">
