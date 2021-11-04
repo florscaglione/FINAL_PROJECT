@@ -46,11 +46,14 @@ def signup_user():
     return jsonify(user.serialize()), 200
 
 # Modificar la INFORMACIÓN BÁSICA en un CV de un usuario: ( FUNCIONA )
-@api.route('/user-info/<int:userId>/edit', methods=['PUT'])
-# @jwt_required
-def update_user_info(userId):
-   # user = User.query.get(userId) 
+@api.route('/user-info/edit', methods=['PUT'])
+@jwt_required()
+def update_user_info():
     body = request.get_json()
+
+    userId = get_jwt_identity() #
+    print(userId)
+    user = User.query.get(userId) #
 
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
