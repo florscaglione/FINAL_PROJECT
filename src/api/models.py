@@ -6,7 +6,7 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), unique=False, nullable=False)
+    password = db.Column(db.String(250), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(15), unique=False, nullable=False)
@@ -140,6 +140,9 @@ class Inscription(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    def save(self):
+        db.session.add(self)   
+        db.session.commit()
 
 class FavoriteOffer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

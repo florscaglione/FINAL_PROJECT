@@ -3,8 +3,13 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS, cross_origin
-from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining
+from api.models import db, User, Company, Profession, Offer, ProfessionUser, Experience, AcademicTraining, Inscription
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from datetime import datetime, timedelta
+
 import bcrypt
 from api.encrypted import check_password_hash, encrypted_pass
 
@@ -41,11 +46,14 @@ def signup_user():
     return jsonify(user.serialize()), 200
 
 # Modificar la INFORMACIÓN BÁSICA en un CV de un usuario: ( FUNCIONA )
-@api.route('/user-info/<int:userId>/edit', methods=['PUT'])
-# @jwt_required
-def update_user_info(userId):
-   # user = User.query.get(userId) 
+@api.route('/user-info/edit', methods=['PUT'])
+@jwt_required()
+def update_user_info():
     body = request.get_json()
+
+    userId = get_jwt_identity() #
+    print(userId)
+    user = User.query.get(userId) #
 
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
@@ -103,12 +111,20 @@ def login():
     if not user:
         return jsonify({"msg": "The email is not correct", "status": 401})
 
-    if not check_password_hash(user.password, password):
+    if not check_password_hash(password, user.password):
         return jsonify({"msg": "The password is not correct", "status": 401})
 
-    if user and check_password_hash(user.password, password):
-        access_token = create_access_token(identity=user.email, expires_delta=timedelta(minutes=100))
-        return jsonify({"access_token": access_token}), 200
+    if user and check_password_hash(password, user.password):
+        access_token = create_access_token(identity=user.id, expires_delta=False)
+        return jsonify({"access_token": access_token}, user.serialize()), 200
+
+    # SIN ENCRIPTAR CONTRASEÑA:
+    # user = User.query.filter_by(email=email, password=password).first()
+    # if user is None:
+    #     return jsonify({"msg": "Bad email or password"}), 401
+
+    # access_token = create_access_token(identity=user.email)
+    # return jsonify(access_token=access_token), 200
 
 
 
@@ -289,9 +305,11 @@ def delete_experience(experienceId):
     return jsonify({"success": "Experiencia eliminada"}), 200            
 
 # Obtener la información de CV de un usuario (DATOS PERSONALES, PROFESIÓN, FORMACIÓN, EXPERIENCIA): (FUNCIONA)
-@api.route('/user-info/<int:userId>/get', methods=['GET'])
-# @jwt_required
-def show_user_info(userId):
+@api.route('/user-info/get', methods=['GET'])
+@jwt_required()
+def show_user_info():
+    userId = get_jwt_identity() #
+
     user = User.query.get(userId)      # le pasamos el ID del user, lo buscamos en la BBDD y lo cogemos con el get
     professions = ProfessionUser.query.filter_by(user_id=userId) # "professions" es un array 
     academics = AcademicTraining.query.filter_by(user_id=userId).order_by(AcademicTraining.id.desc())
@@ -440,6 +458,33 @@ def create_offer(company_id):
     offer.save() 
 
     return jsonify(offer.serialize()), 200 
+
+# Inscribirse en una oferta de trabajo:  (FUNCIONA)
+@api.route('/offer/<int:offer_id>/inscription-user/<int:user_id>', methods=['POST']) 
+#@jwt_required()  # SE LO QUITO MOMENTÁNEAMENTE PORQUE HACE QUE NO SE PUEDA INSCRIBIR A UNA OFERTA, PDTE. SOLUCIONAR
+def inscription_offer(offer_id, user_id):
+
+    inscription_exist = Inscription.query.filter_by(offer_id=offer_id, user_id=user_id).first()
+
+    if not inscription_exist:
+        inscription = Inscription(offer_id=offer_id, user_id=user_id)
+        inscription.save() 
+
+        return jsonify(inscription.serialize()), 200
+
+    raise APIException("Inscription already exists", 401)
+
+# Buscar si un usuario está inscrito en una oferta:  (FUNCIONA)
+@api.route('/offer/<int:offer_id>/inscription-user/<int:user_id>', methods=['GET']) 
+#@jwt_required()
+def inscription_offer_exist(offer_id, user_id):
+
+    inscription_exist = Inscription.query.filter_by(offer_id=offer_id, user_id=user_id).first()
+
+    if not inscription_exist:
+        return jsonify(False), 201
+
+    return jsonify(True), 200
 
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer/<int:offerId>', methods=['GET'])
