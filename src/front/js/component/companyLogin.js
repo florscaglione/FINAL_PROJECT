@@ -1,24 +1,23 @@
 import React, { Component, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
-import { UserRegister } from "../../js/component/userRegister";
 
-export const UserLogin = ({ id }) => {
+export const CompanyLogin = ({ id }) => {
 	const { store, actions } = useContext(Context);
 
-	const [userLogin, setUserLogin] = useState({
+	const [companyLogin, setCompanyLogin] = useState({
 		email: "",
 		password: ""
 	});
 
 	const handleChange = event => {
-		setUserLogin({ ...userLogin, [event.target.name]: event.target.value });
+		setCompanyLogin({ ...companyLogin, [event.target.name]: event.target.value });
 	};
 	const handleLogin = async event => {
 		event.preventDefault();
 
 		/* console.log("USER", user); */
-		actions.login(userLogin.email, userLogin.password);
+		actions.login(companyLogin.email, companyLogin.password);
 	};
 
 	return (
@@ -33,7 +32,7 @@ export const UserLogin = ({ id }) => {
 
 						<div className="modal-header">
 							<h2 className="modal-title" id="exampleModalLabel">
-								Acceso a Usuarios
+								Acceso a Empresas
 							</h2>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
@@ -42,7 +41,7 @@ export const UserLogin = ({ id }) => {
 								<div className="col" />
 							</div>
 							<div className="row">
-								<h5>Introduzca sus datos de usuario</h5>
+								<h5>Introduzca sus datos de empresa</h5>
 								<div className="col">
 									<div className="mb-3">
 										<label forHTML="exampleInputEmail1" className="form-label">
@@ -51,7 +50,6 @@ export const UserLogin = ({ id }) => {
 										<input
 											type="email"
 											className="form-control"
-											name="email"
 											placeholder="Introduzca su email"
 											aria-describedby="emailHelp"
 										/>
@@ -63,7 +61,6 @@ export const UserLogin = ({ id }) => {
 										<input
 											type="password"
 											className="form-control"
-											name="password"
 											placeholder="Introduzca clave"
 											id="exampleInputPassword1"
 										/>
@@ -72,10 +69,9 @@ export const UserLogin = ({ id }) => {
 										type="button"
 										className="btn btn-link"
 										data-bs-toggle="modal"
-										data-bs-target="#userRegisterModal">
-										Registro de usuarios
+										data-bs-target="#companyRegisterModal">
+										Registro de empresas
 									</button>
-									<UserRegister />
 								</div>
 							</div>
 						</div>
@@ -94,6 +90,6 @@ export const UserLogin = ({ id }) => {
 	);
 };
 
-UserLogin.propTypes = {
+CompanyLogin.propTypes = {
 	id: PropTypes.string
 };

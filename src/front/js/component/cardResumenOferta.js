@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import JLK from "../../img/JLK.png";
+import { Button } from "bootstrap";
 
 export const CardResumenOferta = ({ offer }) => {
 	const { store, actions } = useContext(Context);
@@ -25,11 +26,25 @@ export const CardResumenOferta = ({ offer }) => {
 									<p>{offer.requirement}</p>
 								</div>
 								<div className="d-flex justify-content-center">
-									<Link to={`/detalleOferta$/${offer.id}`}>
-										<span className="btn btn-primary btn-lg" href="#" role="button">
-											Ver Oferta
-										</span>
-									</Link>
+									{localStorage.getItem("token") ? (
+										<Link to={`/detalleOferta/${offer.id}`}>
+											<button
+												onClick={() => {
+													localStorage.setItem("idItem", offer.id);
+												}}
+												className="btn btn-primary btn-lg"
+												href="#"
+												role="button">
+												Ver Oferta
+											</button>
+										</Link>
+									) : (
+										<Link to={`/`}>
+											<span className="btn btn-primary btn-lg" href="#" role="button">
+												Login
+											</span>
+										</Link>
+									)}
 								</div>
 								<div className="d-flex justify-content-end">
 									<i className="far fa-bookmark mx-2" />
