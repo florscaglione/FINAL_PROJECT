@@ -8,7 +8,14 @@ import { ModalUserExperience } from "../../js/component/modalUserExperience";
 export const NewCV = () => {
 	// viene del componente userRegister al pulsar sobre siguiente
 	const { store, actions } = useContext(Context);
+	const [professions, setProfessions] = useState([]);
+	const [professionSelected, setProfessionSelected] = useState(null);
+
 	console.log(store.userInfo);
+
+	useEffect(() => {
+		loadProfessions();
+	}, []);
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
@@ -23,6 +30,17 @@ export const NewCV = () => {
 	const handleShow = () => {
 		setCloseModal({ showModal: true });
 	};
+
+	async function loadProfessions() {
+		const response = await fetch(`${process.env.BACKEND_URL}api/professions`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
+		const data = await response.json();
+		setProfessions(data);
+	}
 
 	return (
 		<>
@@ -77,7 +95,15 @@ export const NewCV = () => {
 										<div className="row mt-2">
 											<div className="d-flex justify-content-start">
 												<div className="btn-group w-100">
-													<button
+													<select
+														onChange={event => setProfessionSelected(event.target.value)}>
+														{professions.map(profession => (
+															<option key={profession.id} value={profession.id}>
+																{profession.name}
+															</option>
+														))}
+													</select>
+													{/* <button
 														type="button"
 														className="btn btn-outline-primary dropdown-toggle w-100"
 														data-bs-toggle="dropdown"
@@ -101,7 +127,7 @@ export const NewCV = () => {
 																Perfil 3
 															</button>
 														</li>
-													</ul>
+													</ul> */}
 												</div>
 												<button type="button" className="btn btn-outline-primary mx-1">
 													<i className="far fa-trash-alt" />
@@ -110,7 +136,7 @@ export const NewCV = () => {
 										</div>
 									</div>
 									<div>
-										<h5 className="card-title mt-2">Nuevo perfil:</h5>
+										{/* <h5 className="card-title mt-2">Nuevo perfil:</h5>
 										<div className="row mt-2">
 											<div className="d-flex justify-content-start">
 												<input
@@ -123,7 +149,7 @@ export const NewCV = () => {
 													<i className="far fa-trash-alt" />
 												</button>
 											</div>
-										</div>
+										</div> */}
 									</div>
 								</div>
 							</div>
