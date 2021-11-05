@@ -9,6 +9,8 @@ import iconoContrato from "../../img/paginaInicio/iconoContrato.png";
 import iconoEmpresa from "../../img/paginaInicio/iconoEmpresa.png";
 import "../../styles/index.scss";
 import { NavegacionDev } from "../component/navegacionDev";
+import { NavbarUser } from "../component/navbarUser";
+import { NavbarCompany } from "../component/navbarCompany";
 import { UserRegister } from "../../js/component/userRegister";
 
 export const Home = () => {
