@@ -212,6 +212,10 @@ class Profession(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    @classmethod
+    def get_all(cls):
+        return cls.query.order_by(Profession.id.desc())
+
 class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     academic_degree = db.Column(db.String(300), unique=False, nullable=False)

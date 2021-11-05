@@ -321,6 +321,18 @@ def show_user_info():
 
     return jsonify({"user_basic": user.serialize(), "professions": professions_names, "trainings": academic_trainings, "experiences": experiences}), 200
 
+# Obtener la lista de todas las profesiones: (PROBADO EN POSTMAN Y OK)
+@api.route('/professions', methods =['GET'])
+def get_all_professions():
+
+    professions = Profession.get_all()  # busco en la BBDD todas las profesiones
+
+    all_professions = []  # convierto los objetos de profesiones en array (json)
+    for profession in professions:
+        all_professions.append(profession.serialize())    # agregando los datos (json) de profesiones a la lista de respuesta
+
+    return jsonify(all_professions), 200 
+
 #################
 ##   COMPANY   ##
 #################
@@ -510,6 +522,14 @@ def get_all_offers():
 
     return jsonify(all_offers), 200 
 
+# # Obtener todas las profesiones (offer.title) para el buscador:
+# @api.route('/title', methods =['GET'])                                # CAMBIAR EL NOMBRE DEL ENDPOINT???
+# def get_all_offers_titles():    
+
+#     titles = Offer.query.all()
+#     return jsonify(titles)
+
+
 # Obtener la lista de todas las ofertas de trabajo DE UNA EMPRESA: (FUNCIONA)
 @api.route('/company/<int:company_id>/offers', methods =['GET'])
 def get_all_offers_in_company(company_id):
@@ -571,6 +591,24 @@ def update_offer(offerId):
     db.session.commit()
 
     return jsonify(offer.serialize()), 200
+    
+################
+##  BUSCADOR  ##
+################ 
+
+# Buscador de profesiones (offer.title):  (PROBADO EN POSTMAN Y FUNCIONA, PERO NO SÉ SI TENGO QUE DEVOLVER OTRA COSA)
+@api.route('/search', methods=['POST'])
+def get_professions_filtered():
+    json = request.get_json()
+
+    text_selected = json.get("text_selected", None)
+
+    query = Offer.query
+
+    if text_selected is not None:
+        query.filter_by(title=text_selected)
+
+    return jsonify(text_selected), 200
 
 ##################
 ##  CREAR BBDD  ##
