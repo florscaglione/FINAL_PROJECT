@@ -17,11 +17,11 @@ export const BuscadorYFiltros = () => {
 		console.log("store.allOffersList ", store.allOffersList);
 		filteredResults = store.allOffersList.filter(offer => {
 			if (textSelected == "") {
-				return true;
+				return true; // True significa que devuelva allOffersList
 			} else if (offer.title.toLowerCase().includes(textSelected.toLowerCase())) {
-				return true;
+				return true; // True significa que devuelva SOLO las ofertas que incluyan en su título lo escrito en el buscador
 			}
-			return false;
+			return false; // False significa que si no se cumple ninguna condición anterior, no devuelva nada
 		});
 	}
 
@@ -30,7 +30,6 @@ export const BuscadorYFiltros = () => {
 	console.log("filteredResults", filteredResults);
 
 	useEffect(() => {
-		//NO ESTOY SEGURA DE SI ME SIRVE O SI ME SOBRA !! (tanto el useEffect como el loadOffers)
 		actions.allOffersGet();
 	}, []);
 
@@ -62,24 +61,13 @@ export const BuscadorYFiltros = () => {
 					aria-label="Buscar"
 					onChange={handleChange}
 				/>
-				<button className="btn btn-outline" type="submit">
+				<button className="btn btn-outline" type="button">
 					Buscar
 				</button>
 			</form>
-			{/* 			<div className="filtros m-1 d-flex flex-row-reverse bd-highlight">
-				<button className="btn btn-primary-wfh m-1 btn-sm" type="submit">
-					Filtro 1
-				</button>
-				<button className="btn btn-primary-wfh m-1 btn-sm" type="submit">
-					Filtro 2
-				</button>
-				<button className="btn btn-primary-wfh m-1 btn-sm" type="submit">
-					Filtro 3
-				</button>
-			</div> */}
 
 			{filteredResults.length == 0 && textSelected.length != 0 ? (
-				<h1 className="text-center text-white font-weight-bold mt-4 font-italic">
+				<h1 className="text-center text-gray font-weight-bold mt-4 font-italic">
 					No hay ofertas para esa profesión
 				</h1>
 			) : (

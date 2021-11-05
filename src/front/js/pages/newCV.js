@@ -42,8 +42,6 @@ export const NewCV = () => {
 		setProfessions(data);
 	}
 
-	
-
 	return (
 		<>
 			{store.userInfo ? (
