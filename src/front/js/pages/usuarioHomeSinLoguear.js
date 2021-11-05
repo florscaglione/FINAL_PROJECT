@@ -35,13 +35,13 @@ export const HomeUsuarioSinLoguear = () => {
 					<div className="row">
 						<div className="col-9 text-center">
 							<BuscadorYFiltros />
-							{store.allOffersList.map((offer, index) => {
+							{/* {store.allOffersList.map((offer, index) => {
 								return (
 									<div key={index}>
 										<CardResumenOferta offer={offer} />
 									</div>
 								);
-							})}
+							})} */}
 						</div>
 						<div className="col-3 text-center d-none d-md-block">
 							<SidebarUsuario />

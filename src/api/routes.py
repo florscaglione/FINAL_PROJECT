@@ -628,5 +628,6 @@ def get_professions_filtered():
 #     )
 
 #     db.session.add(offer5)
+#     db.session.commit()
 
 #     return jsonify("database ok"), 200
