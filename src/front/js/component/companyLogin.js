@@ -1,5 +1,6 @@
 import React, { Component, useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import logoWfh from "../../img/logo_wfh.png";
 import PropTypes from "prop-types";
 
 export const CompanyLogin = ({ id }) => {
@@ -23,7 +24,7 @@ export const CompanyLogin = ({ id }) => {
 	return (
 		<form onChange={handleChange} onSubmit={handleLogin}>
 			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div className="modal-dialog modal-lg">
+				<div className="modal-dialog modal-dialog-centered modal-lg">
 					<div className="modal-content">
 						<div className="row">
 							<div className="col-6" />
@@ -31,8 +32,9 @@ export const CompanyLogin = ({ id }) => {
 						</div>
 
 						<div className="modal-header">
+							<img className="logoformulario " src={logoWfh} width="150" alt="logo Wfh" />
 							<h2 className="modal-title" id="exampleModalLabel">
-								Acceso a Empresas
+								Acceso Empresas
 							</h2>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
@@ -67,7 +69,7 @@ export const CompanyLogin = ({ id }) => {
 									</div>
 									<button
 										type="button"
-										className="btn btn-link"
+										className="btn btn-link btn-registro"
 										data-bs-toggle="modal"
 										data-bs-target="#companyRegisterModal">
 										Registro de empresas
@@ -76,10 +78,10 @@ export const CompanyLogin = ({ id }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+							<button type="button" className="btn btn-secondary-wfh" data-bs-dismiss="modal">
 								Cerrar
 							</button>
-							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
+							<button type="submit" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 								Entrar
 							</button>
 						</div>
