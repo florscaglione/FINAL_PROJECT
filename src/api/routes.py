@@ -133,10 +133,15 @@ def login():
 ###################################################
 
 # Crear/Modificar una PROFESIÓN en el CV de un usuario: (FUNCIONA)
-@api.route('/user-info-profession/<int:userId>/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
+@api.route('/user-info-profession/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
+@jwt_required() #
 def create_user_info_profession(userId):
 
     body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar a qué usuario estamos creando el CV
+
+    userId = get_jwt_identity() #
+
+    user = User.query.get(userId)   #
 
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
