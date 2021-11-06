@@ -45,11 +45,11 @@ export const NewCV = () => {
 	async function selectProfession(event) {
 		const professionIdSelected = event.target.value;
 		console.log("professionIdSelected", professionIdSelected);
-		const userId = localStorage.getItem("userLoggedIn");
+		//const userId = localStorage.getItem("userLoggedIn");
 		const token = localStorage.getItem("token");
 		if (token && token != "" && token != undefined) {
 			const profession = await fetch(
-				`${process.env.BACKEND_URL}api/user-info-profession/${userId}/${professionIdSelected}/create`,
+				`${process.env.BACKEND_URL}api/user-info-profession/${professionIdSelected}/create`,
 				{
 					method: "PUT",
 					headers: {

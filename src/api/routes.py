@@ -133,9 +133,9 @@ def login():
 ###################################################
 
 # Crear/Modificar una PROFESIÓN en el CV de un usuario: (FUNCIONA)
-@api.route('/user-info-profession/<int:userId>/<int:profession_id>/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
+@api.route('/user-info-profession/<int:profession_id>/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
 @jwt_required() #
-def create_user_info_profession(userId, profession_id):
+def create_user_info_profession(profession_id):
 
     body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar a qué usuario estamos creando el CV
 
@@ -146,6 +146,15 @@ def create_user_info_profession(userId, profession_id):
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
    
+    profession = Profession.query.get(profession_id)
+
+    professionUser = ProfessionUser(user_id=userId, profession_id=profession_id)
+    user.professionUsers.append(professionUser)
+
+    user.save()
+
+    return jsonify({"profession": "Creado con éxito"}), 200 
+
     # Input para introducir nueva profesion, ej: ["ingeniero", "camarero"] (DE MOMENTO NO LO USAMOS)
     
     # new_professions = body.get("new_professions", None)   # devuelve el array de nuevas profesiones
@@ -158,13 +167,13 @@ def create_user_info_profession(userId, profession_id):
     #         user_profession.save()  
 
     # Desplegable de profesiones, ej: [1,2,3] (son los ID de las profesiones existentes)
-    all_professions = body.get("all_professions", None) # cogemos la profesion QUE HA INTRODUCIDO el usuario 
-    if all_professions:
-        for profession_id in all_professions:
-            user_profession = ProfessionUser(user_id=userId, profession_id=profession_id)
-            user_profession.save()  
+    # all_professions = body.get("all_professions", None) # cogemos la profesion QUE HA INTRODUCIDO el usuario 
+    # if all_professions:
+    #     for profession_id in all_professions:
+    #         user_profession = ProfessionUser(user_id=userId, profession_id=profession_id)
+    #         user_profession.save()  
 
-    return jsonify({"profession": "Creado con éxito"}), 200 
+    # return jsonify({"profession": "Creado con éxito"}), 200 
 
 # Eliminar una PROFESIÓN en el CV de un usuario:    (PROBADO EN POSTMAN Y OK)
 @api.route('/user-info-profession/<int:professionId>', methods=['DELETE'])
