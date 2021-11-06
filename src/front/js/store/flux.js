@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: null, //Toda la info del usuario
-			userLoggedIn: null,
+			userLoggedIn: null, // Guarda la info de un usuario una vez logueado (es lo que devuelve el endpoint del login)
 			companyInfo: null, //Toda la info de la empresa
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
