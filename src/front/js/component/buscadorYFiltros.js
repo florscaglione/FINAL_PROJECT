@@ -71,7 +71,7 @@ export const BuscadorYFiltros = () => {
 					No hay ofertas para esa profesión
 				</h1>
 			) : (
-				<div className="hostels-Container text-center">
+				<div className="filter-Container text-center">
 					<div className="row ml-5">
 						{filteredResults.map((offer, id) => {
 							return (

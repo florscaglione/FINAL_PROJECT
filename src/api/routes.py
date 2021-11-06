@@ -153,7 +153,7 @@ def create_user_info_profession(profession_id):
 
     user.save()
 
-    return jsonify({"profession": "Creado con éxito"}), 200 
+    return jsonify(profession.serialize()), 200 
 
     # Input para introducir nueva profesion, ej: ["ingeniero", "camarero"] (DE MOMENTO NO LO USAMOS)
     

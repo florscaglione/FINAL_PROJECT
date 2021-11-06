@@ -11,7 +11,7 @@ export const NewCV = () => {
 	const [professions, setProfessions] = useState([]);
 	const [professionSelected, setProfessionSelected] = useState(null);
 
-	console.log(store.userInfo);
+	console.log("=======", professionSelected);
 
 	useEffect(() => {
 		loadProfessions();
@@ -19,7 +19,7 @@ export const NewCV = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
-		actions.userGet(3);
+		actions.userGet(localStorage.getItem("userLoggedIn"));
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 
 	const [closeModal, setCloseModal] = useState({
@@ -59,9 +59,13 @@ export const NewCV = () => {
 					body: JSON.stringify({ professionIdSelected })
 				}
 			);
-			setProfessionSelected(profession);
+			const data = await profession.json();
+			console.log("DATA", data);
+			setProfessionSelected(data.name);
 		}
 	}
+
+	console.log("userInfo", store.userInfo);
 
 	return (
 		<>
@@ -124,6 +128,11 @@ export const NewCV = () => {
 														))}
 														<option selected>ELIGE TU PROFESIÓN</option>
 													</select>
+													<input
+														value={professionSelected || store.userInfo.professions}
+														disabled
+													/>
+
 													{/* <button
 														type="button"
 														className="btn btn-outline-primary dropdown-toggle w-100"
