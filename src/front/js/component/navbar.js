@@ -10,7 +10,7 @@ export const Navbar = () => {
 
 	return (
 		<div className="container">
-			<div className="navbar-wfh mb-3 fixed-top">
+			<div className="navbar-wfh mb-4 fixed-top">
 				<div className="container d-flex justify-content-between">
 					<a className="navbar-brand" href="/">
 						<img src={logoWfh} width="250" alt="starwars logo" />

@@ -19,7 +19,7 @@ export const NewCV = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función getAllUserInfo(),
 	useEffect(() => {
-		actions.userGet(3);
+		actions.userGet(4);
 	}, []); // cada vez que "info" se actualiza se vuelve a lanzar el useEffect
 
 	const [closeModal, setCloseModal] = useState({
