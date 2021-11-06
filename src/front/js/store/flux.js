@@ -171,7 +171,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: null }); //y establezco el token del store vacío
 			},
 
-			login: async (email, password) => {	// LOGIN DE USUARIOS!
+			login: async (email, password) => {
+				// LOGIN DE USUARIOS!
 				//lo hacemos asíncrono para que sea más fácil de administrar
 				console.log("-----", email);
 				const options = {
@@ -201,7 +202,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			loginCompany: async (email, password) => {		// LOGIN DE EMPRESAS!
+			loginCompany: async (email, password) => {
+				// LOGIN DE EMPRESAS!
 				console.log("-----", email);
 				const options = {
 					method: "POST",
