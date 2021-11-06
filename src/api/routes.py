@@ -133,9 +133,9 @@ def login():
 ###################################################
 
 # Crear/Modificar una PROFESIÓN en el CV de un usuario: (FUNCIONA)
-@api.route('/user-info-profession/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
+@api.route('/user-info-profession/<int:userId>/<int:profession_id>/create', methods=['PUT']) # utilizo PUT porque si encuentra la profesión,la modifica, pero si no la encuentra también la añade (como si fuera POST)
 @jwt_required() #
-def create_user_info_profession(userId):
+def create_user_info_profession(userId, profession_id):
 
     body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar a qué usuario estamos creando el CV
 

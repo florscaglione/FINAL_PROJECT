@@ -44,18 +44,23 @@ export const NewCV = () => {
 
 	async function selectProfession(event) {
 		const professionIdSelected = event.target.value;
-
-		const profession = await fetch(
-			`${process.env.BACKEND_URL}api/user-info-profession/${professionIdSelected}/create`,
-			{
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({ profession })
-			}
-		);
-		setProfessionSelected(profession);
+		console.log("professionIdSelected", professionIdSelected);
+		const userId = localStorage.getItem("userLoggedIn");
+		const token = localStorage.getItem("token");
+		if (token && token != "" && token != undefined) {
+			const profession = await fetch(
+				`${process.env.BACKEND_URL}api/user-info-profession/${userId}/${professionIdSelected}/create`,
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token
+					},
+					body: JSON.stringify({ professionIdSelected })
+				}
+			);
+			setProfessionSelected(profession);
+		}
 	}
 
 	return (
