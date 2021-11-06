@@ -25,8 +25,12 @@ export const UserRegisterConfirmation = () => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary">
-							Dar de alta mi CV
+						<button
+							type="button"
+							className="btn btn-primary-wfh  mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#userLoginModal">
+							Login Usuario
 						</button>
 					</div>
 				</div>
