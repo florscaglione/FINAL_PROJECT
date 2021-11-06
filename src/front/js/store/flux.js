@@ -171,8 +171,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: null }); //y establezco el token del store vacío
 			},
 
-			login: async (email, password) => {
+			login: async (email, password) => {	// LOGIN DE USUARIOS!
 				//lo hacemos asíncrono para que sea más fácil de administrar
+				console.log("-----", email);
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
+
+				try {
+					const resp = await fetch(`${process.env.BACKEND_URL}api/login-user`, options);
+					if (resp.status !== 200) {
+						alert("There was been some error");
+						return false;
+					}
+					const data = await resp.json();
+					console.log("This came from the backend", data);
+					localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
+					localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
+					return true;
+				} catch (error) {
+					console.log("There has been an error login in");
+				}
+			},
+
+			loginCompany: async (email, password) => {		// LOGIN DE EMPRESAS!
 				console.log("-----", email);
 				const options = {
 					method: "POST",
