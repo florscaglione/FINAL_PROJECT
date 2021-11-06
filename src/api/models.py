@@ -119,7 +119,7 @@ class Offer(db.Model):
         
     @classmethod
     def get_all(cls):
-        return cls.query.order_by(Offer.id.desc())
+        return cls.query.order_by(Offer.id.desc())  # ordeno en orden descendente para que muestre primero las ofertas más recientes
 
 class Inscription(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -214,7 +214,7 @@ class Profession(db.Model):
 
     @classmethod
     def get_all(cls):
-        return cls.query.order_by(Profession.id.desc())
+        return cls.query.order_by(Profession.name)  # ordeno alfabéticamente
 
 class AcademicTraining(db.Model):
     id = db.Column(db.Integer, primary_key=True)

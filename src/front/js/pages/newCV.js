@@ -42,6 +42,17 @@ export const NewCV = () => {
 		setProfessions(data);
 	}
 
+	async function selectProfession(professionSelected) {
+		// DUDA! CREO QUE FALLA POR LO QUE DEVUELVE EL ENDPOINT L.156, CORREGIR ROUTES Y FETCH!
+		const response = await fetch(`${process.env.BACKEND_URL}api/user-info-profession/5/create`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(professionSelected)
+		});
+	}
+
 	return (
 		<>
 			{store.userInfo ? (
