@@ -49,18 +49,14 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h2 className="modal-title" id="userDataLabel">
-								Información usuario
+								{icon == "plus" ? "Crear oferta de trabajo" : "Editar oferta de trabajo"}
 							</h2>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
 							<div className="row">
-								<div className="col">
-									<h4>{icon == "plus" ? "Crear oferta de trabajo" : "Editar oferta de trabajo"}</h4>
-								</div>
-
 								<div className="row mt-2">
-									<div className="col">
+									<div className="col m-0">
 										<input
 											type="text"
 											className="mt-2 form-control"
@@ -122,7 +118,7 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
+							<button type="submit" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>
