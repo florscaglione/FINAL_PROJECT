@@ -39,11 +39,13 @@ export const CardResumenOferta = ({ offer }) => {
 											</button>
 										</Link>
 									) : (
-										<Link to={`/`}>
-											<span className="btn btn-primary-wfh btn-lg" href="#" role="button">
-												Login
-											</span>
-										</Link>
+										<button
+											type="button"
+											className="btn btn-primary-wfh  mx-1"
+											data-bs-toggle="modal"
+											data-bs-target="#userLoginModal">
+											Ver Oferta
+										</button>
 									)}
 								</div>
 								<div className="d-flex justify-content-end">

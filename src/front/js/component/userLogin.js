@@ -2,6 +2,7 @@ import React, { Component, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import logoWfh from "../../img/logo_wfh.png";
 import PropTypes from "prop-types";
+import { useHistory, useLocation } from "react-router";
 
 export const UserLogin = ({ id }) => {
 	const { store, actions } = useContext(Context);
@@ -18,7 +19,48 @@ export const UserLogin = ({ id }) => {
 		event.preventDefault();
 
 		/* console.log("USER", user); */
-		actions.login(userLogin.email, userLogin.password);
+		/* actions.login(userLogin.email, userLogin.password); */
+		login(userLogin.email, userLogin.password);
+	};
+
+	const history = useHistory(); // Importamos el useHistory para poder enviar al usuario a la vista de las ofertas
+
+	const login = async (email, password) => {
+		//lo hacemos asíncrono para que sea más fácil de administrar
+		console.log("-----", email);
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json"
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		};
+
+		try {
+			const resp = await fetch(`${process.env.BACKEND_URL}api/login-user`, options);
+			if (resp.status !== 200) {
+				alert("There was been some error");
+				return false;
+			}
+			const data = await resp.json();
+			console.log("This came from the backend", data);
+			localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
+			localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
+			localStorage.setItem("role", "user"); // Definimos el rol de usuario para poder mostrar el componente navbar usuario
+			console.log("DATA", data);
+			if (data !== null) {
+				history.push("/usuarioHomeSinLoguear");
+			} else {
+				history.push("/");
+			}
+
+			return true;
+		} catch (error) {
+			console.log("There has been an error login in");
+		}
 	};
 
 	return (

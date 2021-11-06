@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: null, //Toda la info del usuario
-			userLoggedIn: null, // Guarda la info de un usuario una vez logueado (es lo que devuelve el endpoint del login)
+			userLoggedIn: null, // Guarda el ID del usuario una vez logueado (es lo que devuelve el endpoint del login)
 			companyInfo: null, //Toda la info de la empresa
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
@@ -171,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: null }); //y establezco el token del store vacío
 			},
 
-			login: async (email, password) => {
+			/* login: async (email, password) => {
 				//lo hacemos asíncrono para que sea más fácil de administrar
 				console.log("-----", email);
 				const options = {
@@ -195,11 +195,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("This came from the backend", data);
 					localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
 					localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
+					localStorage.setItem("role", "user"); // Definimos el rol de usuario para poder mostrar el componente navbar usuario
 					return true;
 				} catch (error) {
 					console.log("There has been an error login in");
 				}
-			},
+			}, */
 
 			getMessage: () => {
 				const store = getStore(); //con esto accedo al store, que es de donde obtengo el token que voy a utilizar
