@@ -185,6 +185,12 @@ body{
   .home-texto{
     margin-top: 3em;
   }
+
+  
+.textocv{
+  padding:0.9em;
+  margin-bottom: 0;
+}
   /*Estilo footer*/
 
   
@@ -482,4 +488,31 @@ background-color:rgb(229, 247, 242);}
 .tituloconf{
   margin-top:1.5em;
   margin-bottom:1em;
+}
+
+/* estilos cv */
+.card-header-cv{
+  padding-bottom: 1em;
+  padding-top: 1em;
+  border:none; 
+}
+.btn-outline-primary{
+  color:  #3e3e3f;
+  border-color: #3e3e3f;
+}
+.card-cv{
+  border:none; 
+  font-family: 'Cantata One', serif;
+  color:#3e3e3f;
+  font-size:1.8em;
+}
+.infocv{
+  color:#3e3e3f;
+  font-style: italic;
+}
+#userDataLabel, #userAcademicLabel, #userExperienceLabel, #userDataLabel{
+  font-size:1.2em;
+}
+.form-control-cv{
+  font-size: 1rem;
 }

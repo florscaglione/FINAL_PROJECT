@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
+import { SidebarUsuario } from "../component/SidebarUsuario";
 import { ModalUserData } from "../../js/component/modalUserData";
 import { ModalUserAcademic } from "../../js/component/modalUserAcademic";
 import { ModalUserExperience } from "../../js/component/modalUserExperience";
@@ -71,44 +72,32 @@ export const NewCV = () => {
 		<>
 			{store.userInfo ? (
 				<div className="container">
-					<h1 className="m-4">Introduce los datos de tu currículum CV</h1>
 					<div className="row">
-						<div className="col-8">
-							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
-									<h4>Datos personales</h4>
+						<div className="col-9 mt-5">
+							<div className="card card-cv">
+								<p className="textocv">Introduce los datos de tu currículum CV</p>
+								<div className="card-header d-flex justify-content-between card-header-cv">
+									<h5>Datos personales</h5>
 									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
 								<div className="card-body">
-									<h5 className="card-title">Nombre: {store.userInfo.user_basic.name}</h5>
-									<h5 className="">
-										Apellidos:
-										{store.userInfo.user_basic.lastname}
-									</h5>
-									<h5 className="">
-										Fecha nacimiento:
-										{store.userInfo.user_basic.birth_date}
-									</h5>
-									<h5 className="">
-										Email:
-										{store.userInfo.user_basic.email}
-									</h5>
-									<h5 className="">
-										Teléfono:
-										{store.userInfo.user_basic.phone}
-									</h5>
+									<h6 className="card-title">Nombre: {store.userInfo.user_basic.name}</h6>
+									<h6 className="infocv">Apellidos: {store.userInfo.user_basic.lastname}</h6>
+									<h6 className="infocv">Fecha nacimiento: {store.userInfo.user_basic.birth_date}</h6>
+									<h6 className="infocv">Email: {store.userInfo.user_basic.email}</h6>
+									<h6 className="infocv">Teléfono: {store.userInfo.user_basic.phone}</h6>
 								</div>
 							</div>
-							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
+							<div className="card card-cv">
+								<div className="card-header d-flex justify-content-between card-header-cv">
 									<div className="d-flex justify-content-start">
-										<h4>Perfil profesional</h4>
+										<h5>Perfil profesional</h5>
 									</div>
 									<div className="d-flex justify-content-end">
-										<button type="button" className="btn btn-outline-primary mx-1">
+										<button type="button" className="btn btn-outline-primary-wfh">
 											<i className="fas fa-caret-down" />
 										</button>
-										<button type="button" className="btn btn-outline-primary mx-1">
+										<button type="button" className="btn btn-outline-primary-wfh">
 											<i className="fas fa-plus" />
 										</button>
 									</div>
@@ -116,10 +105,10 @@ export const NewCV = () => {
 
 								<div className="card-body">
 									<div>
-										<h5 className="card-title">Seleccione perfil:</h5>
-										<div className="row mt-2">
+										<h6 className="card-title">Seleccione perfil:</h6>
+										<div className="row">
 											<div className="d-flex justify-content-start">
-												<div className="btn-group w-100">
+												<div className="btn-group w-100 btn-sm mt-4">
 													<select onChange={selectProfession}>
 														{professions.map(profession => (
 															<option key={profession.id} value={profession.id}>
@@ -159,7 +148,7 @@ export const NewCV = () => {
 														</li>
 													</ul> */}
 												</div>
-												<button type="button" className="btn btn-outline-primary mx-1">
+												<button type="button" className="btn btn-outline-primary-wfh ">
 													<i className="far fa-trash-alt" />
 												</button>
 											</div>
@@ -183,15 +172,13 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
-									<div className="d-flex justify-content-start">
-										<h4>Formación</h4>
-									</div>
+							<div className="card card-cv">
+								<div className="card-header d-flex justify-content-between card-header-cv">
+									<h5>Formación</h5>
 									<div className="d-flex justify-content-end">
 										<button
 											type="button"
-											className="btn btn-outline-primary"
+											className="btn btn-outline-primary-wfh"
 											data-bs-toggle="modal"
 											onClick={() => {
 												setCloseModal({ showModal: true });
@@ -211,42 +198,37 @@ export const NewCV = () => {
 								</div>
 								<div className="card-body">
 									<div className="row">
-										<div className="col-12">
+										<div className="col-12 m-0">
 											{store.userInfo.trainings && store.userInfo.trainings.length > 0
 												? store.userInfo.trainings.map((training, index) => {
 														console.log("+++++++", training);
 														return (
-															<div
-																key={index}
-																className="row mb-2 pb-2 mx-1 w-100 border-2 border-bottom">
+															<div key={index} className="row">
 																<div className="col-10">
-																	<h5 className="card-title">
-																		Titulación:
-																		{training.academic_degree}
-																	</h5>
-																	<h5 className="card-title">
-																		Centro de estudios:
-																		{training.study_center}
-																	</h5>
-																	<h5 className="card-title">
+																	<h6 className="infocv">
+																		Titulación: {training.academic_degree}
+																	</h6>
+																	<h6 className="infocv">
+																		Centro de estudios: {training.study_center}
+																	</h6>
+																	<h6 className="infocv">
 																		Estudios reglados:{" "}
 																		{training.is_academic ? "Sí" : "No"}
-																	</h5>
-																	<h5 className="card-title">
+																	</h6>
+																	<h6 className="infocv">
 																		Fecha inicio: {training.start_date}
-																	</h5>
-																	<h5 className="card-title">
+																	</h6>
+																	<h6 className="infocv">
 																		Fecha fin: {training.end_date}
-																	</h5>
-																	<h5 className="card-title">
+																	</h6>
+																	<h6 className="infocv">
 																		En curso: {training.in_progress ? "Sí" : "No"}
-																	</h5>
+																	</h6>
 																</div>
-
 																<div className="col-2 d-flex justify-content-end">
 																	<button
 																		type="button"
-																		className="btn btn-outline-primary"
+																		className="btn btn-outline-primary-wfh"
 																		data-bs-toggle="modal"
 																		data-bs-target={`#id${training.id}`}>
 																		<i className="fas fa-edit" />
@@ -265,15 +247,15 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
+							<div className="card card-cv">
+								<div className="card-header d-flex justify-content-between card-header-cv">
 									<div className="d-flex justify-content-start">
-										<h4>Experiencia</h4>
+										<h5>Experiencia</h5>
 									</div>
 									<div className="d-flex justify-content-end">
 										<button
 											type="button"
-											className="btn btn-outline-primary"
+											className="btn btn-outline-primary-wfh"
 											data-bs-toggle="modal"
 											data-bs-target={"#idModalExperience"}>
 											<i className="fas fa-plus" />
@@ -283,37 +265,33 @@ export const NewCV = () => {
 								</div>
 								<div className="card-body">
 									<div className="row">
-										<div className="col-12">
+										<div className="col-12 m-0">
 											{store.userInfo.experiences && store.userInfo.experiences.length > 0
 												? store.userInfo.experiences.map((experience, index) => {
 														return (
-															<div
-																key={index}
-																className="row mb-2 pb-2 mx-1 w-100 border-2 border-bottom">
+															<div key={index} className="row">
 																<div className="col-10">
-																	<h5 className="card-title">
-																		Titulación:
-																		{experience.title}
-																	</h5>
-																	<h5 className="card-title">
-																		Descripción:
-																		{experience.description}
-																	</h5>
-																	<h5 className="card-title">
+																	<h6 className="infocv">
+																		Titulación: {experience.title}
+																	</h6>
+																	<h6 className="infocv">
+																		Descripción: {experience.description}
+																	</h6>
+																	<h6 className="infocv">
 																		Fecha inicio: {experience.start_date}
-																	</h5>
-																	<h5 className="card-title">
+																	</h6>
+																	<h6 className="infocv">
 																		Fecha fin: {experience.end_date}
-																	</h5>
-																	<h5 className="card-title">
+																	</h6>
+																	<h6 className="infocv">
 																		En curso: {experience.in_progress ? "Sí" : "No"}
-																	</h5>
+																	</h6>
 																</div>
 
 																<div className="col-2 d-flex justify-content-end">
 																	<button
 																		type="button"
-																		className="btn btn-outline-primary"
+																		className="btn btn-outline-primary-wfh"
 																		data-bs-toggle="modal"
 																		data-bs-target={`#idexp${experience.id}`}>
 																		<i className="fas fa-edit" />
@@ -333,6 +311,9 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
+						</div>
+						<div className="col-3 text-center d-none d-md-block">
+							<SidebarUsuario />
 						</div>
 					</div>
 				</div>

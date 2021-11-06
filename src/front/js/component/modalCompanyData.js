@@ -28,17 +28,13 @@ export const ModalCompanyData = ({ info, id }) => {
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h2 className="modal-title" id="companyDataLabel">
-								Información Empresa
-							</h2>
+							<h5 className="modal-title" id="companyDataLabel">
+							Editar perfil empresa
+							</h5>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
 							<div className="row">
-								<div className="col">
-									<h4>Editar perfil empresa</h4>
-								</div>
-
 								<div className="row mt-2">
 									<div className="col">
 										<input
@@ -82,7 +78,7 @@ export const ModalCompanyData = ({ info, id }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
+							<button type="submit" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>

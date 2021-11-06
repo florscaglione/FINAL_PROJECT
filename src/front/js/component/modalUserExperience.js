@@ -74,25 +74,21 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 			</button> */}
 
 			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="userExperienceLabel" aria-hidden="true">
-				<div className="modal-dialog">
+				<div className="modal-dialog modal-dialog-centered modal-lg">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h2 className="modal-title" id="userExperienceLabel">
-								Experiencia profesional
-							</h2>
+							<h6 className="modal-title" id="userExperienceLabel">
+								Editar experiencia laboral
+							</h6>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
 							<div className="row">
-								<div className="col-8">
-									<h4>Editar experiencia laboral</h4>
-								</div>
-
 								<div className="row mt-2">
-									<div className="col-12">
+									<div className="col-12 m-0">
 										<input
 											type="text"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={icon == "edit" ? info.title : userExperience.title}
 											name="title"
 											placeholder="Título"
@@ -101,7 +97,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 										/>
 										<input
 											type="text"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={
 												icon == "edit" ? info.description : userExperience.description
 											}
@@ -112,7 +108,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 										/>
 										<input
 											type="date"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={icon == "edit" ? info.start_date : userExperience.start_date}
 											name="start_date"
 											placeholder="Fecha de inicio"
@@ -121,7 +117,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 										/>
 										<input
 											type="date"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={icon == "edit" ? info.end_date : userExperience.end_date}
 											name="end_date"
 											placeholder="Fecha de fin"
@@ -145,10 +141,10 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-outline-danger">
+							<button type="button" className="btn btn-outline-secondary">
 								Eliminar
 							</button>
-							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
+							<button type="submit" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>

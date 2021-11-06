@@ -42,7 +42,7 @@ export const ModalUserData = ({ info }) => {
 		<form onChange={handleChange} onSubmit={handleUserUpdate}>
 			<button
 				type="button"
-				className="btn btn-outline-primary mx-1"
+				className="btn btn-outline-primary-wfh"
 				data-bs-toggle="modal"
 				data-bs-target="#ModalUserData">
 				<i className="fas fa-edit" />
@@ -54,46 +54,42 @@ export const ModalUserData = ({ info }) => {
 				tabIndex="-1"
 				aria-labelledby="userDataLabel"
 				aria-hidden="true">
-				<div className="modal-dialog">
+				<div className="modal-dialog modal-dialog-centered modal-lg">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h2 className="modal-title" id="userDataLabel">
-								Información usuario
-							</h2>
+							<h6 className="modal-title" id="userDataLabel">
+								Editar perfil de usuario
+							</h6>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
 							<div className="row">
-								<div className="col">
-									<h4>Editar perfil de usuario</h4>
-								</div>
-
 								<div className="row mt-2">
-									<div className="col">
+									<div className="col m-0">
 										<input
 											type="text"
-											className="mt-2 form-control"
+											className="form-control form-control-cv"
 											defaultValue={info.name}
 											name="name"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="text"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={info.lastname}
 											name="lastname"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="date"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={info.birth_date}
 											name="birth_date"
 											aria-describedby="professionHelp"
 										/>
 										<input
 											type="email"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={info.email}
 											name="email"
 											aria-describedby="professionHelp"
@@ -101,7 +97,7 @@ export const ModalUserData = ({ info }) => {
 										/>
 										<input
 											type="text"
-											className="mt-2 form-control"
+											className="mt-2 form-control form-control-cv"
 											defaultValue={info.phone}
 											name="phone"
 											aria-describedby="professionHelp"
@@ -111,7 +107,7 @@ export const ModalUserData = ({ info }) => {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="submit" className="btn btn-primary" data-bs-dismiss="modal">
+							<button type="submit" className="btn btn-primary-wfh" data-bs-dismiss="modal">
 								Guardar
 							</button>
 						</div>
