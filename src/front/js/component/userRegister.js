@@ -176,6 +176,7 @@ export const UserRegister = ({ id }) => {
 												placeholder="DD / MM / YYYY"
 												aria-describedby="textBirthDate"
 												name="birth_date"
+												required
 												//value={user.birthdate}
 											/>
 										</div>

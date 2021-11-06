@@ -202,9 +202,7 @@ export const NewCV = () => {
 												? store.userInfo.trainings.map((training, index) => {
 														console.log("+++++++", training);
 														return (
-															<div
-																key={index}
-																className="row mb-2 pb-2 mx-1 w-100 border-2 border-bottom">
+															<div key={index} className="row ">
 																<div className="col-10">
 																	<h5 className="card-title">
 																		Titulación:

@@ -48,8 +48,16 @@ export const OfferCard = ({ offer }) => {
 						</div>
 					</div>
 				</div>
-				<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-					<div className="d-flex justify-content-between" />
+				<div className="row pb-2 mx-1 w-100 border-2 border-top">
+					<div className="d-flex justify-content-between">
+						<button
+							type="button"
+							className="btn btn-primary-wfh mt-3"
+							data-bs-toggle="modal"
+							data-bs-target="#">
+							Candidatos inscritos
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
