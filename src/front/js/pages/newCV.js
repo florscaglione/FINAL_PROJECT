@@ -42,15 +42,20 @@ export const NewCV = () => {
 		setProfessions(data);
 	}
 
-	async function selectProfession(professionSelected) {
-		// DUDA! CREO QUE FALLA POR LO QUE DEVUELVE EL ENDPOINT L.156, CORREGIR ROUTES Y FETCH!
-		const response = await fetch(`${process.env.BACKEND_URL}api/user-info-profession/5/create`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(professionSelected)
-		});
+	async function selectProfession(event) {
+		const professionIdSelected = event.target.value;
+
+		const profession = await fetch(
+			`${process.env.BACKEND_URL}api/user-info-profession/${professionIdSelected}/create`,
+			{
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({ profession })
+			}
+		);
+		setProfessionSelected(profession);
 	}
 
 	return (
@@ -106,13 +111,13 @@ export const NewCV = () => {
 										<div className="row mt-2">
 											<div className="d-flex justify-content-start">
 												<div className="btn-group w-100">
-													<select
-														onChange={event => setProfessionSelected(event.target.value)}>
+													<select onChange={selectProfession}>
 														{professions.map(profession => (
 															<option key={profession.id} value={profession.id}>
 																{profession.name}
 															</option>
 														))}
+														<option selected>ELIGE TU PROFESIÓN</option>
 													</select>
 													{/* <button
 														type="button"
