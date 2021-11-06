@@ -141,15 +141,16 @@ def create_user_info_profession(userId):
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
    
-    # Input para introducir nueva profesion, ej: ["ingeniero", "camarero"]
-    new_professions = body.get("new_professions", None)   # devuelve el array de nuevas profesiones
-    if new_professions:
-        for new_profession in new_professions:
-            profession = Profession(name=new_profession)
-            profession.save()  # llamo a la función "save" (está en los modelos) para guardar la profesion en la BBDD
+    # Input para introducir nueva profesion, ej: ["ingeniero", "camarero"] (DE MOMENTO NO LO USAMOS)
+    
+    # new_professions = body.get("new_professions", None)   # devuelve el array de nuevas profesiones
+    # if new_professions:
+    #     for new_profession in new_professions:
+    #         profession = Profession(name=new_profession)
+    #         profession.save()  # llamo a la función "save" (está en los modelos) para guardar la profesion en la BBDD
 
-            user_profession = ProfessionUser(user_id=userId, profession_id=profession.id)
-            user_profession.save()  
+    #         user_profession = ProfessionUser(user_id=userId, profession_id=profession.id)
+    #         user_profession.save()  
 
     # Desplegable de profesiones, ej: [1,2,3] (son los ID de las profesiones existentes)
     all_professions = body.get("all_professions", None) # cogemos la profesion QUE HA INTRODUCIDO el usuario 
