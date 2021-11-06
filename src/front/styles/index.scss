@@ -8,8 +8,9 @@ body{
   background-color:rgb(229, 247, 242);
   font-family: 'Cantata One', serif;
   font-size:10px;
-  color:#525253;
+  color:#3e3e3f;
   padding-top:5%; /* para poder ver los botones de acceso temporal*/
+  overflow-x: hidden;
 }
 .navbar-wfh, .container-body{
     background: rgb(229, 247, 242);
@@ -17,15 +18,15 @@ body{
     padding-bottom:0;
     font-family: 'Cantata One', serif;
     letter-spacing: 1px;
-
 }
+
 .navbar-inverse {
   z-index: 10; 
   background-color: #1a1a1a;
   box-shadow: 0 0 3px 3px #1a1a1a;
 }
 
-.navbar-brand {height: auto; padding: 0;}
+.navbar-brand {height: auto; padding: 0.5em;}
 
 .container-fluid{
   margin-right: 7%;
@@ -35,6 +36,8 @@ body{
 .btn-primary-wfh , .btn-primary-wfh :hover, .btn-primary-wfh :active, .btn-primary-wfh :visited, .btn-primary-wfh :focus, .btn-primary-wfh:active:focus {
     background-color: rgb(113, 159, 176);
     border-color:rgb(113, 159, 176);
+    padding-right: 1.5em;
+    padding-left:1.5em;
     letter-spacing: 0.5px;
     color:#ffffff;
     box-shadow: 0 0 4px 3px rgb(212, 241, 243);
@@ -119,13 +122,13 @@ body{
     margin-top:20px ;
     text-align: justify;
     font-family: 'Cantata One', serif;
-    color: black;
+    color:#3e3e3f;
     font-size: small;
   }
   .card-empresa  {
   
     font-family: 'Cantata One', serif;
-      color:#6f6e70;
+    color:#3e3e3f;
       box-shadow: 0 0 4px 3px rgb(247, 226, 226);
       letter-spacing: 1px;
       font-size: medium;
@@ -134,7 +137,7 @@ body{
   .card-usuario {
   
     font-family: 'Cantata One', serif;
-      color:#6f6e70;
+    color:#3e3e3f;
       box-shadow: 0 0 4px 3px rgb(247, 226, 226);
       letter-spacing: 1px;
       font-size: medium;
@@ -156,7 +159,7 @@ body{
     margin-top:20px ;
     text-align: justify;
     font-family: 'Cantata One', serif;
-    color: black;
+    color:#3e3e3f;
     font-size: small;
   }
   .ultimapublicacion{
@@ -175,7 +178,7 @@ body{
  
   .card-header {
     background-color: #ddf7e9;
-    color:#525253;
+    color:#3e3e3f;
     font-family: 'Cantata One', serif;
   }
 
@@ -443,4 +446,40 @@ thead{
 }
 .vacio{
   margin-top: 6em;
+}
+/* estilo formularios*/
+.form-control, .mb-3, .form-label{
+  font-family: 'Cantata One', serif;
+  font-size: 1.2em;
+}
+.modal-title{
+  font-family: 'Cantata One', serif;
+  font-size: 2em;
+}
+.modal-body{
+background-color:rgb(229, 247, 242);}
+
+.btn-link{
+  color:rgb(113, 159, 176);
+}
+.btn-link:hover{
+ color: rgb(113, 159, 176);
+}
+.btn-link:active{
+  color:#3e3e3f;
+}
+.logoformulario{
+  margin-left:1em;
+  margin-right: 38em;
+}
+.cuerpoconfirmacion{
+  margin: 1.5em;
+  text-align: justify;
+  font-size: 1em;
+  font-family: 'Cantata One', serif;
+}
+
+.tituloconf{
+  margin-top:1.5em;
+  margin-bottom:1em;
 }

@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import logoWfh from "../../img/logo_wfh.png";
 import { UserRegisterConfirmation } from "../../js/component/userRegisterConfirmation";
 
 export const UserRegister = ({ id }) => {
@@ -60,11 +61,12 @@ export const UserRegister = ({ id }) => {
 		<form onChange={handleChange} onSubmit={handleRegister}>
 			<div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
 				{!registerCV ? (
-					<div className="modal-dialog modal-lg">
+					<div className="modal-dialog  modal-dialog-centered modal-lg">
 						<div className="modal-content">
 							<div className="modal-header">
+								<img className="logoformulario" src={logoWfh} width="150" alt="logo Wfh" />
 								<h2 className="modal-title" id="exampleModalLabel1">
-									Registro - paso 1
+									Registro Usuario
 								</h2>
 								<button
 									type="button"
@@ -183,10 +185,10 @@ export const UserRegister = ({ id }) => {
 								</div>
 							</div>
 							<div className="modal-footer">
-								<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+								<button type="button" className="btn btn-secondary-wfh" data-bs-dismiss="modal">
 									Cerrar
 								</button>
-								<button type="submit" className="btn btn-primary">
+								<button type="submit" className="btn btn-primary-wfh">
 									Siguiente
 								</button>
 							</div>

@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
+import logoWfh from "../../img/logo_wfh.png";
 import { CompanyRegisterConfirmation } from "../../js/component/companyRegisterConfirmation";
 
 export const CompanyRegister = ({ id }) => {
@@ -69,11 +70,12 @@ export const CompanyRegister = ({ id }) => {
 				aria-labelledby="companyRegisterModalLabel"
 				aria-hidden="true">
 				{!registerCompany ? (
-					<div className="modal-dialog modal-lg">
+					<div className="modal-dialog modal-dialog-centered modal-lg">
 						<div className="modal-content">
 							<div className="modal-header">
+								<img className="logoformulario " src={logoWfh} width="150" alt="logo Wfh" />
 								<h2 className="modal-title" id="companyRegisterModalLabel">
-									Registro - paso 1
+									Registro Empresa
 								</h2>
 								<button
 									type="button"
@@ -179,7 +181,7 @@ export const CompanyRegister = ({ id }) => {
 											<input
 												type="text"
 												className="form-control"
-												placeholder="B 12345678"
+												placeholder="B12345678"
 												aria-describedby="inputCif"
 												name="cif"
 												//value={user.birthdate}
@@ -189,10 +191,10 @@ export const CompanyRegister = ({ id }) => {
 								</div>
 							</div>
 							<div className="modal-footer">
-								<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+								<button type="button" className="btn btn-secondary-wfh" data-bs-dismiss="modal">
 									Cerrar
 								</button>
-								<button type="submit" className="btn btn-primary">
+								<button type="submit" className="btn btn-primary-wfh">
 									Siguiente
 								</button>
 							</div>
