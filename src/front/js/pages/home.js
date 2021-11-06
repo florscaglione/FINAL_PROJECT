@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import homeEmpresa from "../../img/paginaInicio/homeEmpresa.jpg";
 import homeUsuario from "../../img/paginaInicio/homeUsuario.jpg";
 import infoInicio from "../../img/paginaInicio/info-inicio.jpg";
@@ -28,7 +29,9 @@ export const Home = () => {
 								¿Está buscando candidatos? Regístrese y publique su oferta de trabajo. Encuentre el
 								candidato óptimo entre los miles de perfiles de candidatos de los que disponemos.
 							</p>
-							<a className="btn btn-primary-wfh ">Publicar oferta</a>
+							<Link to="/vista_home_emp" className="btn btn-primary-wfh ">
+								Publicar oferta
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -42,7 +45,9 @@ export const Home = () => {
 								todas las ofertas disponibles. Date de alta como usuario y recibe alertas ajustadas a tu
 								perfil.
 							</p>
-							<a className="btn btn-primary-wfh">Ofertas de teletrabajo</a>
+							<Link to="/usuarioHomeSinLoguear" className="btn btn-primary-wfh">
+								Ofertas de teletrabajo
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -72,37 +72,14 @@ export const DetalleOferta = () => {
 						<div className="card col-8">
 							<div className="card-header">
 								<h1>El título es: {store.offerInfo.title}</h1>
-								<button type="button" className="btn btn-outline-secondary m-1">
-									#NodeJS
-								</button>
-								<button type="button" className="btn btn-outline-secondary m-1">
-									#WebAPIs
-								</button>
-								<button type="button" className="btn btn-outline-secondary m-1">
-									#SQL
-								</button>
 							</div>
 							<div className="card-body">
-								<h5 className="card-title">JLK GROUP SPAIN</h5>
-								<p className="card-text">
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-									doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-									veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-									voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-									magni dolores eos qui ratione voluptatem sequi nesciunt.
-								</p>
-								<h5 className="card-title">Descripción</h5>
-								<p className="card-text">
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-									doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-									veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-									voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-									magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-									qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-									numqua consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-									esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-									nulla pariatur?
-								</p>
+								<h5 className="card-title">Empresa: {store.offerInfo.company.name}</h5>
+								<h5 className="card-title">Descripción: {store.offerInfo.offer_description}</h5>
+								<h5 className="card-title">Requisitos: {store.offerInfo.requirement}</h5>
+								<h5 className="card-title">Tipo de teletrabajo: {store.offerInfo.remote_work}</h5>
+								<h5 className="card-title">Salario: {store.offerInfo.salary_range}</h5>
+								<h5 className="card-title">Beneficios sociales: {store.offerInfo.social_benefit}</h5>
 								{!inscription ? (
 									<button onClick={handleClick} type="submit" className="btn btn-primary">
 										Inscribirse

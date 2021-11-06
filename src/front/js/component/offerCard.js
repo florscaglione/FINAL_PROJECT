@@ -1,4 +1,5 @@
 import React, { Component, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
@@ -48,8 +49,12 @@ export const OfferCard = ({ offer }) => {
 						</div>
 					</div>
 				</div>
-				<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
-					<div className="d-flex justify-content-between" />
+				<div className="row pb-2 mx-1 w-100 border-2 border-top">
+					<div className="d-flex justify-content-between">
+						<Link to="/candidatosInscritos" type="button" className="btn btn-primary-wfh mt-3">
+							Candidatos inscritos
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>
