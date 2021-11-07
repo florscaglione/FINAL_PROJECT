@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: null, //Toda la info del usuario
 			userLoggedIn: null, // Guarda el ID del usuario una vez logueado (es lo que devuelve el endpoint del login)
+			companyLoggedIn: null, // Guarda el ID de la empresa una vez logueado (es lo que devuelve el endpoint del login)
 			companyInfo: null, //Toda la info de la empresa
 			companyOffersList: [], //Todas las ofertas de la empresa
 			offerInfo: null, //Toda la info de una oferta
@@ -61,33 +62,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//Esta función obtiene todos los datos de la EMPRESA: companyData
-			companyGet: async id => {
-				const url = `${process.env.BACKEND_URL}api/companies/${id}`;
-				const response = await fetch(url, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				const data = await response.json();
-				setStore({ companyInfo: data });
+			companyGet: async () => {
+				const url = `${process.env.BACKEND_URL}api/companies`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					setStore({ companyInfo: data });
+				}
 			},
 
 			//Esta función actualiza la información del companyInfo.
 			companyUpdate: async (event, id, companyUpdate) => {
+				// id es el "info.id" que viene del "modalCompanyData"
 				event.preventDefault();
 
-				const url = `${process.env.BACKEND_URL}api/company-info/${id}`; // Revisar con Flor url endpoint editar info empresa
-
-				const response = await fetch(url, {
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(companyUpdate)
-				});
-				if (response.ok) {
-					getActions().companyGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				const url = `${process.env.BACKEND_URL}api/company-info`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						},
+						body: JSON.stringify(companyUpdate)
+					});
+					if (response.ok) {
+						getActions().companyGet(id); // añadir un else para mostrar un error en caso de que no funcione
+					}
 				}
 			},
 
