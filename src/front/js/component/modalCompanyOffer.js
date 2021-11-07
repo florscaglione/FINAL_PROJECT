@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
 export const ModalCompanyOffer = ({ offer, icon, id }) => {
+	console.log("OFFER MODAL", offer);
+
 	const { store, actions } = useContext(Context);
 
 	const [editOffer, setEditOffer] = useState({
@@ -23,22 +25,27 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 		event.preventDefault();
 
 		if (icon == "edit") {
+			console.log("editOffer", editOffer);
 			await actions.offerUpdate(event, offer.id, editOffer); // se añade el await para que no comience la siguiente función hasta terminar de ejecutarse la primera
-			actions.companyOffersGet(offer.company_id); // Pretendemos que tras editar se actualice el listado de ofertas (no funciona)
+			actions.companyOffersGet(offer.id); // Pretendemos que tras editar se actualice el listado de ofertas (no funciona)
 		}
 		if (icon == "plus") {
-			const url = `${process.env.BACKEND_URL}api/company/${offer.company_id}/offer`;
+			const url = `${process.env.BACKEND_URL}api/company/offer`;
 			console.log("estoy en crear oferta", editOffer);
-			const response = await fetch(url, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(editOffer)
-			});
-			if (response.ok) {
-				actions.companyOffersGet(offer.company_id); // añadir un else para mostrar un error en caso de que no funcione
-			}
+			const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+			if (token && token != "" && token != undefined) {
+				const response = await fetch(url, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+					},
+					body: JSON.stringify(editOffer)
+				});
+				if (response.ok) {
+					actions.companyOffersGet(offer.id); // añadir un else para mostrar un error en caso de que no funcione
+				}
+			} // Faltaría un else para cuando no hay token para que salte el modal del login
 		}
 	};
 	/* console.log("00000000", offer.id); */

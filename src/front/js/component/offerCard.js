@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
 
 export const OfferCard = ({ offer }) => {
+	console.log("OFFER", offer);
+
 	const { store, actions } = useContext(Context);
 
 	return (

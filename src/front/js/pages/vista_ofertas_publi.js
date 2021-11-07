@@ -12,7 +12,7 @@ export const VistaOfertasPubli = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
-		actions.companyOffersGet(1); // trae todas las ofertas publicadas de la empresa
+		actions.companyOffersGet(localStorage.getItem("companyLoggedIn")); // trae todas las ofertas publicadas de la empresa
 	}, []);
 	console.log("----------", store.companyOffersList);
 
@@ -51,7 +51,11 @@ export const VistaOfertasPubli = () => {
 								data-bs-target="#idCreateOfferCompany">
 								<i className="fas fa-plus" /> Nueva oferta
 							</button>
-							<ModalCompanyOffer icon={"plus"} offer={{ company_id: 2 }} id={"idCreateOfferCompany"} />
+							<ModalCompanyOffer
+								icon={"plus"}
+								offer={localStorage.getItem("companyLoggedIn")}
+								id={"idCreateOfferCompany"}
+							/>
 							{store.companyOffersList.map((offer, index) => {
 								return (
 									<div key={index} className="container">

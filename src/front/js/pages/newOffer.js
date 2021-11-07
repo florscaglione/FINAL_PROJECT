@@ -11,8 +11,8 @@ export const NewOffer = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
-		actions.companyGet(2); // trae la información de la empresa
-		actions.offerGet(4);
+		actions.companyGet(localStorage.getItem("companyLoggedIn")); // trae la información de la empresa
+		actions.offerGet(localStorage.getItem("offerInfo"));
 
 		// trae la información de la oferta
 	}, []);
