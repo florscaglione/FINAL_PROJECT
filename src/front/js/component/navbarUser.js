@@ -2,10 +2,6 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import logoWfh from "../../img/logo_wfh.png";
 import { Link } from "react-router-dom";
-import { UserLogin } from "../../js/component/userLogin";
-import { CompanyLogin } from "../../js/component/companyLogin";
-import { UserRegister } from "../../js/component/userRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal userLogin
-import { CompanyRegister } from "./companyRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal companyLogin
 
 export const NavbarUser = () => {
 	const { store, actions } = useContext(Context);

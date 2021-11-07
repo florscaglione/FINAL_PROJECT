@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import logoWfh from "../../img/logo_wfh.png";
-import { UserLogin } from "../../js/component/userLogin";
-import { CompanyLogin } from "../../js/component/companyLogin";
-import { UserRegister } from "../../js/component/userRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal userLogin
-import { CompanyRegister } from "./companyRegister"; // Nota importante: en el navbar se esta pasando el id al modal y se llama en el botón del modal companyLogin
+import { Link } from "react-router-dom";
 
 export const NavbarCompany = () => {
-	//const isLoggedIn = state.store.isLoggedIn;
+	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="container">
@@ -27,17 +25,19 @@ export const NavbarCompany = () => {
 							</button>
 							<ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
 								<li>
-									<button className="dropdown-item" type="button">
-										<i className="far fa-file" /> Listado ofertas
-									</button>
+									<Link to="/vista_ofertas_publi" className="dropdown-item" type="button">
+										<i className="far fa-file" /> Listado de ofertas
+									</Link>
 								</li>
 								<li>
 									<button className="dropdown-item" type="button">
+										{" "}
+										{/* No tiene funcionalidad, se accede a través de cada ofertas */}
 										<i className="fas fa-users" /> Candidatos preselecionados
 									</button>
 								</li>
 								<li>
-									<button className="dropdown-item" type="button">
+									<button onClick={() => actions.logout()} className="dropdown-item" type="button">
 										<i className="fas fa-sign-out-alt" />
 										Cerrar sesión
 									</button>

@@ -7,12 +7,16 @@ import { useHistory } from "react-router";
 export const CompanyLogin = ({ id }) => {
 	const { store, actions } = useContext(Context);
 
+	const history = useHistory(); // Importamos el useHistory para poder enviar al usuario a la vista de las ofertas
+
 	const [companyLogin, setCompanyLogin] = useState({
 		email: "",
 		password: ""
 	});
 
 	const handleChange = event => {
+		console.log("name", event.target.name);
+		console.log("value", event.target.value);
 		setCompanyLogin({ ...companyLogin, [event.target.name]: event.target.value });
 	};
 	const handleLoginCompany = async event => {
@@ -91,6 +95,7 @@ export const CompanyLogin = ({ id }) => {
 										<input
 											type="email"
 											className="form-control"
+											name="email"
 											placeholder="Introduzca su email"
 											aria-describedby="emailHelp"
 										/>
@@ -102,6 +107,7 @@ export const CompanyLogin = ({ id }) => {
 										<input
 											type="password"
 											className="form-control"
+											name="password"
 											placeholder="Introduzca clave"
 											id="exampleInputPassword1"
 										/>

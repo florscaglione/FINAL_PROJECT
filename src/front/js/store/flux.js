@@ -101,8 +101,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//Esta función obtiene todos los datos de una Oferta en offerInfo
-			offerGet: async id => {
-				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
+			offerGet: async () => {
+				const url = `${process.env.BACKEND_URL}api/offer`;
 				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
 				if (token && token != "" && token != undefined) {
 					const response = await fetch(url, {
@@ -121,32 +121,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Esta función actualiza la información de la oferta de trabajo en offerInfo.
 			offerUpdate: async (event, id, offerUpdate) => {
 				event.preventDefault();
-
 				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
-
-				const response = await fetch(url, {
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(offerUpdate)
-				});
-				if (response.ok) {
-					getActions().offerGet(id); // añadir un else para mostrar un error en caso de que no funcione
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						},
+						body: JSON.stringify(offerUpdate)
+					});
+					if (response.ok) {
+						getActions().offerGet(id); // añadir un else para mostrar un error en caso de que no funcione
+					}
 				}
 			},
 
 			//Esta función obtiene todas las ofertas de empleo disponibles de la empresa para mostrarlo en la vista de las ofertas disponibles
-			companyOffersGet: async id => {
-				const url = `${process.env.BACKEND_URL}api/company/${id}/offers`;
-				const response = await fetch(url, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				const data = await response.json();
-				setStore({ companyOffersList: data });
+			companyOffersGet: async () => {
+				const url = `${process.env.BACKEND_URL}api/company/offers`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					setStore({ companyOffersList: data });
+				}
 			},
 
 			//Esta función obtiene todas las ofertas de empleo publicadas
