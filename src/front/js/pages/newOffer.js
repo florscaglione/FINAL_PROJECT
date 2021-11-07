@@ -11,8 +11,8 @@ export const NewOffer = () => {
 
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
-		actions.companyGet(2); // trae la información de la empresa
-		actions.offerGet(4);
+		actions.companyGet(1); // trae la información de la empresa
+		/* actions.offerGet(1); */
 
 		// trae la información de la oferta
 	}, []);
@@ -62,7 +62,7 @@ export const NewOffer = () => {
 							</div>
 						</div>
 					</div>
-					{store.offerInfo ? (
+					{/* {store.offerInfo ? (
 						<div className="row">
 							<div className="col-8">
 								<button
@@ -142,7 +142,7 @@ export const NewOffer = () => {
 						</div>
 					) : (
 						<h1>Actualmente no hay ofertas disponibles</h1>
-					)}
+					)} */}
 				</div>
 			) : (
 				<div className="d-flex justify-content-center">
