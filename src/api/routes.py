@@ -394,6 +394,9 @@ def login_company():
     if not company:
         return jsonify({"msg": "The email is not correct", "status": 401})
 
+    print(password)
+    print(company.password)
+
     if not check_password_hash(password, company.password):
          return jsonify({"msg": "The password is not correct", "status": 401})
 
@@ -471,10 +474,15 @@ def show_company():
 ###############
 
 # Crear una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
-@api.route('/company/<int:company_id>/offer', methods=['POST']) 
-def create_offer(company_id):
+@api.route('/company/offer', methods=['POST']) 
+@jwt_required()
+def create_offer():
 
-    body = request.get_json()      
+    body = request.get_json()  
+
+    companyId = get_jwt_identity()
+
+    company = Company.query.get(companyId)    
 
     if body is None:    
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") 
@@ -487,7 +495,7 @@ def create_offer(company_id):
     offer_description = body.get("offer_description", None)
     social_benefit = body.get("social_benefit", None)
 
-    offer = Offer(company_id=company_id, title=title, remote_work=remote_work, contract_type=contract_type, salary_range=salary_range, requirement=requirement, offer_description=offer_description, social_benefit=social_benefit)
+    offer = Offer(company_id=companyId, title=title, remote_work=remote_work, contract_type=contract_type, salary_range=salary_range, requirement=requirement, offer_description=offer_description, social_benefit=social_benefit)
     offer.save() 
 
     return jsonify(offer.serialize()), 200 
@@ -520,9 +528,11 @@ def inscription_offer_exist(offer_id, user_id):
     return jsonify(True), 200
 
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
-@api.route('/offer/<int:offerId>', methods=['GET'])
-# @jwt_required
-def show_offer(offerId):
+@api.route('/offer', methods=['GET'])
+@jwt_required()
+def show_offer():
+
+    offerId = get_jwt_identity()
 
     offer = Offer.query.get(offerId)      # le pasamos el ID de la oferta, la buscamos en la BBDD y la cogemos con el get
 
@@ -552,10 +562,15 @@ def get_all_offers():
 
 
 # Obtener la lista de todas las ofertas de trabajo DE UNA EMPRESA: (FUNCIONA)
-@api.route('/company/<int:company_id>/offers', methods =['GET'])
-def get_all_offers_in_company(company_id):
+@api.route('/company/offers', methods =['GET'])
+@jwt_required()
+def get_all_offers_in_company():
 
-    offers = Offer.query.filter_by(company_id=company_id).order_by(Offer.id.desc())    # busco en la BBDD todas las ofertas
+    companyId = get_jwt_identity()
+
+    company = Company.query.get(companyId)
+
+    offers = Offer.query.filter_by(company_id=companyId).order_by(Offer.id.desc())    # busco en la BBDD todas las ofertas
 
     all_offers = []  # convierto los objetos de ofertas en array (json)
     for offer in offers:
@@ -577,9 +592,12 @@ def delete_offer(offerId):
 
 # Modificar oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer/<int:offerId>', methods=['PUT'])
+@jwt_required()
 def update_offer(offerId):
  
     body = request.get_json()
+
+    offer = Offer.query.get(offerId)
 
     if body is None:    # si no lo encuentra, tira este error 
         raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
@@ -635,21 +653,21 @@ def get_professions_filtered():
 ##  CREAR BBDD  ##
 ##################  QUÉ MÁS HACER ? ES DECIR, DÓNDE SE USA ESTE ENDPOINT Y CUÁNDO?
 
-@api.route('/create-database', methods=['GET'])
-def create_database():
+# @api.route('/create-database', methods=['GET'])
+# def create_database():
 
-    offer5 = Offer(
-        title = "Programador backend",
-        remote_work = "Teletrabajo 100%, horario flexible",
-        contract_type = "Indefinido",
-        salary_range = "18.000€/año",
-        requirement = "4 años de experiencia trabajando con PHP",
-        offer_description = "Estamos buscando un perfil de Programador PHP con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales en Barcelona.",
-        social_benefit = "Formación bonificada",
-        company_id = "1"
-    )
+#     offer5 = Offer(
+#         title = "Programador backend",
+#         remote_work = "Teletrabajo 100%, horario flexible",
+#         contract_type = "Indefinido",
+#         salary_range = "18.000€/año",
+#         requirement = "4 años de experiencia trabajando con PHP",
+#         offer_description = "Estamos buscando un perfil de Programador PHP con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales en Barcelona.",
+#         social_benefit = "Formación bonificada",
+#         company_id = "1"
+#     )
 
-    db.session.add(offer5)
-    db.session.commit()
+#     db.session.add(offer5)
+#     db.session.commit()
 
-    return jsonify("database ok"), 200
+#     return jsonify("database ok"), 200
