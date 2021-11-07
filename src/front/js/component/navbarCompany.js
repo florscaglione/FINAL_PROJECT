@@ -23,9 +23,12 @@ export const NavbarCompany = () => {
 								aria-expanded="false">
 								<i className="fas fa-building fa-lg iconopersona" /> Menu Empresa
 							</button>
-							<ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<ul className="dropdown-menu p-0" aria-labelledby="dropdownMenu2">
 								<li>
-									<Link to="/vista_ofertas_publi" className="dropdown-item dropsuario pr-3" type="button">
+									<Link
+										to="/vista_ofertas_publi"
+										className="dropdown-item dropsuario pr-3"
+										type="button">
 										<i className="far fa-file fa-lg pr-2" /> Listado de ofertas
 									</Link>
 								</li>
@@ -37,7 +40,10 @@ export const NavbarCompany = () => {
 									</button>
 								</li>
 								<li>
-									<button onClick={() => actions.logout()} className="dropdown-item dropsuario pr-3" type="button">
+									<button
+										onClick={() => actions.logout()}
+										className="dropdown-item dropsuario pr-3"
+										type="button">
 										<i className="fas fa-sign-out-alt fa-lg pr-2" />
 										Cerrar sesión
 									</button>
