@@ -528,11 +528,9 @@ def inscription_offer_exist(offer_id, user_id):
     return jsonify(True), 200
 
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
-@api.route('/offer', methods=['GET'])
+@api.route('/offer/<int:offerId>', methods=['GET'])
 @jwt_required()
-def show_offer():
-
-    offerId = get_jwt_identity()
+def show_offer(offerId):
 
     offer = Offer.query.get(offerId)      # le pasamos el ID de la oferta, la buscamos en la BBDD y la cogemos con el get
 
