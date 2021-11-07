@@ -18,11 +18,9 @@ export const HomeUsuarioSinLoguear = () => {
 		<>
 			{store.allOffersList && store.allOffersList.length == 0 ? (
 				<div className="container">
-					<h1>Ofertas disponible</h1>
-					<BuscadorYFiltros />
 					<div className="row">
-						<div className="col-9 text-center mt-4">
-							<h2>No hay ofertas</h2>
+						<div className="col-9 text-center">
+							<BuscadorYFiltros />
 						</div>
 						<div className="col-3 text-center d-none d-md-block mt-4">
 							<SidebarUsuario />
@@ -30,10 +28,10 @@ export const HomeUsuarioSinLoguear = () => {
 					</div>
 				</div>
 			) : (
-				<div className="container">
-					<h2 className="mt-5 ms-4">Últimas ofertas</h2>
-					<div className="row">
-						<div className="col-9 text-center">
+				<div className="container buscadortexto">
+					<div className="row mt-4">
+						<div className="col-9 text-right mt-5">
+							<h4 className="mt-5 ms-4 textobusca">Busco ofertas de..</h4>
 							<BuscadorYFiltros />
 						</div>
 						<div className="col-3 text-center d-none d-md-block">

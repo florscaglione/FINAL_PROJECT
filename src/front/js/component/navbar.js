@@ -9,11 +9,12 @@ export const Navbar = () => {
 	//const isLoggedIn = state.store.isLoggedIn;
 
 	return (
-		<div className="container">
+		<div className="container prueba">
 			<div className="navbar-wfh mb-4 fixed-top">
 				<div className="container d-flex justify-content-between">
-					<a className="navbar-brand" href="/">
-						<img src={logoWfh} width="250" alt="starwars logo" />
+					{" "}
+					<a className="navbar-brand logonavbar" href="/">
+						<img className="logonavbar" src={logoWfh} width="250" alt="starwars logo" />
 					</a>
 					<div className="d-flex justify-content-end">
 						<button

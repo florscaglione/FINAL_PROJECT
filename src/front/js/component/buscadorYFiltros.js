@@ -62,14 +62,23 @@ export const BuscadorYFiltros = () => {
 					onChange={handleChange}
 				/>
 				<button className="btn btn-outline" type="button">
-					Buscar
+					<i className="fas fa-search" />
 				</button>
 			</form>
 
 			{filteredResults.length == 0 && textSelected.length != 0 ? (
-				<h1 className="text-center text-gray font-weight-bold mt-4 font-italic">
-					No hay ofertas para esa profesión
-				</h1>
+				<div className="row">
+					<div className="col-12">
+						<div className="jumbotron jumbotron-fluid mt-5 jumbofertas">
+							<div className="container p-0">
+								<p className="text-align-center sinofertas">
+									Lo sentimos, no hemos localizado ninguna oferta con esa descripción. Ajuste la
+									búsqueda con otras palabras clave.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			) : (
 				<div className="filter-Container text-center">
 					<div className="row ml-5">

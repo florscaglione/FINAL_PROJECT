@@ -13,32 +13,32 @@ export const NavbarCompany = () => {
 			<div className="navbar-wfh mb-3 fixed-top">
 				<div className="container d-flex justify-content-between">
 					<a className="navbar-brand" href="/">
-						<img src={logoWfh} width="250" alt="starwars logo" />
+						<img className="logonavbar" src={logoWfh} width="250" alt="starwars logo" />
 					</a>
 					<div className="d-flex justify-content-end align-items-center">
 						<div className="dropdown">
 							<button
-								className="btn btn-secondary dropdown-toggle"
+								className="btn btn-secondary-wfh dropdown-toggle menusuario"
 								type="button"
 								id="dropdownMenu2"
 								data-bs-toggle="dropdown"
 								aria-expanded="false">
-								<i className="fas fa-building" /> Empresa
+								<i className="fas fa-building fa-lg iconopersona" /> Menu Empresa
 							</button>
 							<ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
 								<li>
-									<button className="dropdown-item" type="button">
-										<i className="far fa-file" /> Listado ofertas
+									<button className="dropdown-item dropsuario pr-3" type="button">
+										<i className="far fa-file fa-lg pr-2" /> Listado ofertas
 									</button>
 								</li>
 								<li>
-									<button className="dropdown-item" type="button">
-										<i className="fas fa-users" /> Candidatos preselecionados
+									<button className="dropdown-item dropsuario pr-3" type="button">
+										<i className="fas fa-users fa-lg pr-2" /> Candidatos preselecionados
 									</button>
 								</li>
 								<li>
-									<button className="dropdown-item" type="button">
-										<i className="fas fa-sign-out-alt" />
+									<button className="dropdown-item dropsuario pr-3" type="button">
+										<i className="fas fa-sign-out-alt fa-lg pr-2" />
 										Cerrar sesión
 									</button>
 								</li>

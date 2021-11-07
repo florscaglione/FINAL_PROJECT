@@ -25,7 +25,7 @@ export const OfferCard = ({ offer }) => {
 					<ModalCompanyOffer icon={"edit"} offer={offer} id={`id${offer.id}`} />
 				</div>
 			</div>
-			<div className="card-body">
+			<div className="card-body-cv">
 				<div className="row">
 					<div className="col-12">
 						<div className="row mb-4">
@@ -38,11 +38,11 @@ export const OfferCard = ({ offer }) => {
 									Teletrabajo:
 									{offer.remote_work}
 								</h5>
-								<h5 className="card-title">Tipo de contrato: {offer.contract_type}</h5>
-								<h5 className="card-title">Rango de salario: {offer.salary_range}</h5>
-								<h5 className="card-title">Requisitos: {offer.requirement}</h5>
-								<h5 className="card-title">Descripción de la oferta: {offer.offer_description}</h5>
-								<h5 className="card-title">Beneficios sociales: {offer.social_benefit}</h5>
+								<h5 className="infocv">Tipo de contrato: {offer.contract_type}</h5>
+								<h5 className="infocv">Rango de salario: {offer.salary_range}</h5>
+								<h5 className="infocv">Requisitos: {offer.requirement}</h5>
+								<h5 className="infocv">Descripción de la oferta: {offer.offer_description}</h5>
+								<h5 className="infocv">Beneficios sociales: {offer.social_benefit}</h5>
 							</div>
 
 							<div className="col-2 d-flex justify-content-end" />

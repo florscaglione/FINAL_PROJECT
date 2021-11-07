@@ -15,28 +15,33 @@ export const NavbarUser = () => {
 			<div className="navbar-wfh mb-3 fixed-top">
 				<div className="container d-flex justify-content-between">
 					<a className="navbar-brand" href="/">
-						<img src={logoWfh} width="250" alt="starwars logo" />
+						<img className="logonavbar" src={logoWfh} width="250" alt="starwars logo" />
 					</a>
 					<div className="d-flex justify-content-end align-items-center">
 						<div className="dropdown">
 							<button
-								className="btn btn-secondary dropdown-toggle"
+								className="btn btn-secondary-wfh dropdown-toggle menusuario"
 								type="button"
 								id="dropdownMenu2"
 								data-bs-toggle="dropdown"
 								aria-expanded="false">
-								<i className="fas fa-user-cog" /> Usuario
+								<i className="fas fa-user-cog fa-lg iconopersona " /> Menu Usuario
 							</button>
-							<ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<ul className="dropdown-menu menusuario" aria-labelledby="dropdownMenu2">
 								<li>
-									<Link to="/new-CV" className="dropdown-item" type="button">
-										<i className="far fa-file" /> Datos personales y CV
+									<Link to="/new-CV" className="dropdown-item dropsuario pr-3" type="button">
+										<i className="far fa-file fa-lg pr-2" /> Datos personales y CV
 									</Link>
 								</li>
 								<li>
-									<button onClick={() => actions.logout()} className="dropdown-item" type="button">
-										<i className="fas fa-sign-out-alt" />
-										Cerrar sesión
+									<div className="dropdown-item dropsuario pr-3" type="button">
+										<i className="fas fa-heart fa-lg pr-2" /> Mis ofertas
+									</div>
+									<button
+										onClick={() => actions.logout()}
+										className="dropdown-item dropsuario pr-3"
+										type="button">
+										<i className="fas fa-sign-out-alt fa-lg pr-3" /> Cerrar sesión
 									</button>
 								</li>
 							</ul>

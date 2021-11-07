@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
+import profile from "../../img/profile.png";
 import { SidebarUsuario } from "../component/SidebarUsuario";
 import { ModalUserData } from "../../js/component/modalUserData";
 import { ModalUserAcademic } from "../../js/component/modalUserAcademic";
@@ -75,17 +76,30 @@ export const NewCV = () => {
 					<div className="row">
 						<div className="col-9 mt-5">
 							<div className="card card-cv">
-								<p className="textocv">Introduce los datos de tu currículum CV</p>
-								<div className="card-header d-flex justify-content-between card-header-cv">
+								<div className="card-header d-flex justify-content-between card-header-cv ml-5">
 									<h5>Datos personales</h5>
 									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
-								<div className="card-body">
-									<h6 className="card-title">Nombre: {store.userInfo.user_basic.name}</h6>
-									<h6 className="infocv">Apellidos: {store.userInfo.user_basic.lastname}</h6>
-									<h6 className="infocv">Fecha nacimiento: {store.userInfo.user_basic.birth_date}</h6>
-									<h6 className="infocv">Email: {store.userInfo.user_basic.email}</h6>
-									<h6 className="infocv">Teléfono: {store.userInfo.user_basic.phone}</h6>
+								<div className="card-body-cv">
+									<div className="row">
+										<div className="col-9">
+											<h6 className="infocv">Nombre: {store.userInfo.user_basic.name}</h6>
+											<h6 className="infocv">Apellidos: {store.userInfo.user_basic.lastname}</h6>
+											<h6 className="infocv">
+												Fecha nacimiento: {store.userInfo.user_basic.birth_date}
+											</h6>
+											<h6 className="infocv">Email: {store.userInfo.user_basic.email}</h6>
+											<h6 className="infocv">Teléfono: {store.userInfo.user_basic.phone}</h6>
+										</div>
+										<div className="col-3">
+											<div className="jumbotron jumbotron-fluid">
+												<img className="profile" src={profile} width="100" alt="profile" />
+												<button type="button" className="btn btn-outline-primary-wfh p-1">
+													<i className="fas fa-plus-square"> Añadir foto</i>
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div className="card card-cv">
@@ -103,9 +117,9 @@ export const NewCV = () => {
 									</div>
 								</div>
 
-								<div className="card-body">
+								<div className="card-body-cv">
 									<div>
-										<h6 className="card-title">Seleccione perfil:</h6>
+										<h6 className="card-title infocv">Seleccione perfil:</h6>
 										<div className="row">
 											<div className="d-flex justify-content-start">
 												<div className="btn-group w-100 btn-sm mt-4">
@@ -117,11 +131,13 @@ export const NewCV = () => {
 														))}
 														<option selected>ELIGE TU PROFESIÓN</option>
 													</select>
-													<input
-														value={professionSelected || store.userInfo.professions}
-														disabled
-													/>
-
+													<div>
+														<input
+															className="imput input-group-lg imputcv"
+															value={professionSelected || store.userInfo.professions}
+															disabled
+														/>
+													</div>
 													{/* <button
 														type="button"
 														className="btn btn-outline-primary dropdown-toggle w-100"
@@ -196,7 +212,7 @@ export const NewCV = () => {
 										{/*Duda resuelta, esta en el botón de arriba*/}
 									</div>
 								</div>
-								<div className="card-body">
+								<div className="card-body-cv">
 									<div className="row">
 										<div className="col-12 m-0">
 											{store.userInfo.trainings && store.userInfo.trainings.length > 0
@@ -263,7 +279,7 @@ export const NewCV = () => {
 										<ModalUserExperience icon={"plus"} info={null} id={"idModalExperience"} />
 									</div>
 								</div>
-								<div className="card-body">
+								<div className="card-body-cv">
 									<div className="row">
 										<div className="col-12 m-0">
 											{store.userInfo.experiences && store.userInfo.experiences.length > 0
@@ -311,6 +327,11 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
+							<button
+								type="button"
+								className="btn d-grid d-md-flex btn-primary-wfh btn-sm justify-content-end mt-5 ">
+								Dar de baja
+							</button>
 						</div>
 						<div className="col-3 text-center d-none d-md-block">
 							<SidebarUsuario />
