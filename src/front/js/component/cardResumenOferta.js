@@ -9,7 +9,7 @@ export const CardResumenOferta = ({ offer }) => {
 	const { store, actions } = useContext(Context);
 	/* console.log("çççççççççççç", offer.company.name); */
 	return (
-		<div className="container">
+		<div className="container p-0">
 			<div className="card card-home mb-3">
 				<div className="row g-0">
 					<div className="col-md-4">
@@ -32,7 +32,7 @@ export const CardResumenOferta = ({ offer }) => {
 												onClick={() => {
 													localStorage.setItem("idItem", offer.id);
 												}}
-												className="btn btn-primary-wfh btn-lg"
+												className="btn btn-primary-wfh btn-sm mt-5"
 												href="#"
 												role="button">
 												Ver Oferta
@@ -41,15 +41,12 @@ export const CardResumenOferta = ({ offer }) => {
 									) : (
 										<button
 											type="button"
-											className="btn btn-primary-wfh  mx-1"
+											className="btn btn-primary-wfh  mx-1 align-items-right "
 											data-bs-toggle="modal"
 											data-bs-target="#userLoginModal">
 											Ver Oferta
 										</button>
 									)}
-								</div>
-								<div className="d-flex justify-content-end">
-									<i className="far fa-bookmark mx-2" />
 								</div>
 							</div>
 						</div>

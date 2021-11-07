@@ -18,6 +18,7 @@ import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
 
 import { Navbar } from "./component/navbar";
 import { NavbarUser } from "./component/navbarUser";
+import { NavbarCompany } from "./component/navbarCompany";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -31,8 +32,14 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{localStorage.getItem("role") === "user" ? <NavbarUser /> : <Navbar />}
-					{/* Preguntamos si el logueado es un usuario para mostrar el navbar de usuario */}
+					{localStorage.getItem("role") === "user" ? (
+						<NavbarUser />
+					) : localStorage.getItem("role") === "company" ? (
+						<NavbarCompany />
+					) : (
+						<Navbar />
+					)}
+
 					<Switch>
 						<Route exact path="/">
 							<Home />

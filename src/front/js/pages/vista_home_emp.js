@@ -45,7 +45,7 @@ export const VistaHomeEmp = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-3 text-center mt-6">
+				<div className="col-3 text-center d-none d-md-block mt-4">
 					<BannerEmpresa />
 				</div>
 			</div>

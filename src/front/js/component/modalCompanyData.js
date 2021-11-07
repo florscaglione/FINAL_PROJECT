@@ -90,6 +90,6 @@ export const ModalCompanyData = ({ info, id }) => {
 };
 
 ModalCompanyData.propTypes = {
-	info: PropTypes.object,
-	id: PropTypes.number
+	info: PropTypes.object, // Información de la empresa que viene del Get (info = {store.companyInfo}, declarado en newOffer )
+	id: PropTypes.number // Id viene del botón del modal para que se abra, declarado en newOffer.
 };

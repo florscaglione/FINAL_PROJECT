@@ -63,9 +63,9 @@ body{
 /*.btn-primary-oferta: pendiente añadir estilos igual al resto de botones pero aumentando el margin para que no se quede debajo de la navbar*/
 
 /*Estilo Cards*/
-.card-home{
+.card-home{/*para elevar las cards*/
     margin-top: 3%;
-    background-color: #f0e9e9;
+    background-color: #f0e9e9;/* para poner fondo de puntito las dos propiedades de background*/
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
     font-family: 'Cantata One', serif;
     color:#525253;
@@ -129,7 +129,6 @@ body{
   
     font-family: 'Cantata One', serif;
     color:#3e3e3f;
-      box-shadow: 0 0 4px 3px rgb(247, 226, 226);
       letter-spacing: 1px;
       font-size: medium;
   }
@@ -138,7 +137,6 @@ body{
   
     font-family: 'Cantata One', serif;
     color:#3e3e3f;
-      box-shadow: 0 0 4px 3px rgb(247, 226, 226);
       letter-spacing: 1px;
       font-size: medium;
   
@@ -177,19 +175,29 @@ body{
   }
  
   .card-header {
-    background-color: #ddf7e9;
+    background-color:#cbeee6;
     color:#3e3e3f;
     font-family: 'Cantata One', serif;
   }
 
   .home-texto{
     margin-top: 3em;
+    font-size: 3em;
+    color:#3e3e3f;
+   
   }
 
   
 .textocv{
   padding:0.9em;
   margin-bottom: 0;
+  padding-left: 2em;
+}
+
+.card-body-cv{
+  background-color: #f0e9e9;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    padding: 2em;
 }
   /*Estilo footer*/
 
@@ -208,11 +216,12 @@ footer {
   font-family: 'Cantata One', serif, bold;
   margin-right: 6rem;
   margin-left: 6rem;
+  font-size: 1.5em;
 }
 .list, .nav-link, a{
   margin-right: 3.5em;
   color:rgb(37, 37, 37);
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .text-muted-copyright{
@@ -371,7 +380,6 @@ footer {
   position: absolute;
   bottom:4em;
   right:4em;
-  border-radius:1.5em;
   color:white;
   padding:1em 1.5em;
   }
@@ -433,8 +441,9 @@ footer {
   /* estilos barra buscador- vista usuario home*/
 
 .buscador{
-  margin-top: 5em;
+  margin-top: 2em;
   margin-bottom:1em;
+  font-size: 1.6em;
 }
 
 .filtros{
@@ -494,6 +503,7 @@ background-color:rgb(229, 247, 242);}
 .card-header-cv{
   padding-bottom: 1em;
   padding-top: 1em;
+  padding-left: 2em;
   border:none; 
 }
 .btn-outline-primary{
@@ -516,3 +526,124 @@ background-color:rgb(229, 247, 242);}
 .form-control-cv{
   font-size: 1rem;
 }
+.imputcv{
+  margin-left:3em;
+  font-style: italic;
+  display: flex;
+}
+.jumbofertas{
+  height: 100%;
+  align-items: center;
+}
+.sinofertas{
+  background-image: url(../img/sinofertas.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  font-size: 2em;
+  text-align: center;
+  padding-right: 1em;
+  padding-left:1em;
+  padding-top:6em;
+  padding-bottom:6em;
+  font-weight: bold;
+  text-shadow: rgb(185, 218, 233) -1px 1px, rgb(255, 255, 255) -2px 2px;
+}
+.textobusca{
+  text-shadow: rgb(185, 218, 233) -1px 1px, rgb(255, 255, 255) -2px 2px;
+  color:#525253;
+}
+/*dropdown usuario*/
+
+.menusuario{
+font-size: 1.5em;
+color:#525253;
+padding: 0;
+}
+.menuusuario:hover{
+ color: rgb(113, 159, 176);
+}
+.iconopersona {
+  padding-right: 0.5em;
+}
+.dropdown-item:active{
+ background-color:  rgb(113, 159, 176);
+}
+.dropdown-item{
+  color: #525253;
+  background-color:rgb(229, 247, 242);
+}
+.link,.dropusuario{
+  font-size: 1em;
+  color:#525253;
+}
+.fa-plus-square{
+  color:#525253;
+}
+.prueba{
+  display: flex;
+  justify-content: between;
+}
+@media (max-width: 576px) {
+  .prueba{
+    display: block;
+  }
+  .card-home{
+    margin-top:10em;
+    align-content: center;
+  }
+  .logonavbar{
+    width:150px;
+  }
+  .social{
+    height: 25px;
+    margin-top: 5em;
+   margin-left: 1.5em;
+  }
+  .btn-primary-wfh{
+    font-size:12px;
+  }
+  .text-muted-copyright{
+    margin-left: 10px;
+    text-align: center;
+  }
+  .list-inline{
+    margin-top: 5px;
+    padding-left: 3em;
+  }
+  .menusuario{
+    width: 15%;
+    align-content: center;
+    font-size: 0.9em;
+  }
+  .textobusca{
+    font-size: 1.5em;
+  }
+  .filter-Container{
+    width: 100vw;
+  }
+  .buscador{
+    width: 100vw;
+  }
+  .card-body-cv{
+   
+    width: 100vw;
+  }
+  .card-header{
+    width: 100vw;
+   
+  }
+  .imputcv{
+    width: 5em;
+  }
+  .profile{
+    width: 80px;
+  }
+  .imagenEmp{
+    width: 100vw;
+    margin-top: 10em;
+  }
+  .tituloCardEmp, .infoEmp, .card-home, .titulo{
+    width: 100vw;
+  }
+ }
