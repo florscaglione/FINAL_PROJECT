@@ -40,8 +40,8 @@ export const VistaOfertasPubli = () => {
 						<div className="col-9">
 							<div className="vacio">
 								<p className="cabecera mb-5">
-									<h4>Bienvenido! Las ofertas que has publicado con nosotros son las siguientes:</h4>
-									<h4>Ofertas publicadas</h4>
+									{/* <h4>Bienvenido! Las ofertas que has publicado con nosotros son las siguientes:</h4>
+									<h4>Ofertas publicadas</h4> */}
 								</p>
 							</div>
 							<button
@@ -60,7 +60,7 @@ export const VistaOfertasPubli = () => {
 								return (
 									<div key={index} className="container">
 										<div className="row">
-											<div className="col-8">
+											<div className="col-12">
 												<OfferCard offer={offer} />
 											</div>
 										</div>
