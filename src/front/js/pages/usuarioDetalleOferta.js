@@ -69,33 +69,35 @@ export const DetalleOferta = () => {
 			{store.offerInfo ? (
 				<div className="container">
 					<div className="row mt-5">
-						<div className="card col-9 p-0 mt-5">
-							<div className="card-header">
-								<h5> {store.offerInfo.title}</h5>
-							</div>
-							<div className="card-body-cv">
-								<h5 className="infocv">Empresa: {store.offerInfo.company.name}</h5>
-								<h5 className="infocv">Descripción: {store.offerInfo.offer_description}</h5>
-								<h5 className="infocv">Requisitos: {store.offerInfo.requirement}</h5>
-								<h5 className="infocv">Tipo de teletrabajo: {store.offerInfo.remote_work}</h5>
-								<h5 className="infocv">Salario: {store.offerInfo.salary_range}</h5>
-								<h5 className="infocv">Beneficios sociales: {store.offerInfo.social_benefit}</h5>
-								{!inscription ? (
-									<button
-										onClick={handleClick}
-										type="submit"
-										className="btn btn-primary-wfh mt-5 mb-4">
-										Inscribirse
-									</button>
-								) : (
-									<button
-										onClick={handleClick}
-										type="button"
-										className="btn btn-primary-wfh mt-5 mb-4"
-										disabled>
-										Ya inscrito/a
-									</button>
-								)}
+						<div className="col-9 p-0 mt-5">
+							<div className="card">
+								<div className="card-header">
+									<h5> {store.offerInfo.title}</h5>
+								</div>
+								<div className="card-body-cv">
+									<h5 className="infocv">Empresa: {store.offerInfo.company.name}</h5>
+									<h5 className="infocv">Descripción: {store.offerInfo.offer_description}</h5>
+									<h5 className="infocv">Requisitos: {store.offerInfo.requirement}</h5>
+									<h5 className="infocv">Tipo de teletrabajo: {store.offerInfo.remote_work}</h5>
+									<h5 className="infocv">Salario: {store.offerInfo.salary_range}</h5>
+									<h5 className="infocv">Beneficios sociales: {store.offerInfo.social_benefit}</h5>
+									{!inscription ? (
+										<button
+											onClick={handleClick}
+											type="submit"
+											className="btn btn-primary-wfh mt-5 mb-4">
+											Inscribirse
+										</button>
+									) : (
+										<button
+											onClick={handleClick}
+											type="button"
+											className="btn btn-primary-wfh mt-5 mb-4"
+											disabled>
+											Ya inscrito/a
+										</button>
+									)}
+								</div>
 							</div>
 						</div>
 						<div className="col-3 text-center d-none d-md-block mt-4">

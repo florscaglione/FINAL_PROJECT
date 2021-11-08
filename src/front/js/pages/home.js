@@ -52,8 +52,8 @@ export const Home = () => {
 			</div>
 			<div className="row">
 				<div className="col text-center">
-					<NavegacionDev />
-					<h2 className="home-texto">¿Porque elegirnos?</h2>
+					{/* <NavegacionDev /> */}
+					<h2 className="card-title">¿POR QUÉ ELEGIRNOS?</h2>
 				</div>
 			</div>
 			<div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">

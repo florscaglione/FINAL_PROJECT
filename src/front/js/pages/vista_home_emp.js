@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import vistaEmpresa from "../../img/vistaEmpresa.jpg";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
@@ -14,7 +15,9 @@ export const VistaHomeEmp = () => {
 				<div className="col-9">
 					<div className="imagenEmp">
 						<img src={vistaEmpresa} className="card-img-top" alt="..." width="300" />
-						<a className="btn btn-primary-wfh">Publicar oferta</a>
+						<Link to="/vista_ofertas_publi" className="btn btn-primary-wfh">
+							Publicar oferta
+						</Link>
 					</div>
 					<div>
 						<h1 className="titulo text-center">

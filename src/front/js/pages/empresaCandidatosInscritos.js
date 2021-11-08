@@ -24,22 +24,22 @@ export const CandidatosInscritos = () => {
 							</button> */}
 						</div>
 						<div className="card-body">
-							<h5 className="card-title">JLK GROUP SPAIN</h5>
-							<h1 className="card-text">PROGRAMADOR FRONTEND</h1>
-
-							<li className="m-1">100% remoto</li>
-							<li className="m-1">Horarios flexibles</li>
-							<li className="m-1">Contrato por obra y servicio</li>
-							<li className="m-1">24.000€/año</li>
-							<li className="m-1">
+							<h6 className="card-title">JLK GROUP SPAIN</h6>
+							<h4>PROGRAMADOR FRONTEND</h4>
+							<h6>100% remoto</h6>
+							<h6>Horarios flexibles</h6>
+							<h6>Contrato por obra y servicio</h6>
+							<h6>24.000€/año</h6>
+							<h6>
 								Programador con experiencia en HTML/CSS, lenguajes javascript/typescript y frameworks
-								angular o react. Formación bonificada
-							</li>
+								angular o react
+							</h6>
+							<h6>Formación bonificada</h6>
 							{/* <a className="btn btn-primary-wfh">Publicar oferta</a>
 							<a className="btn btn-primary-wfh">Editar Oferta</a> */}
 						</div>
 					</div>
-					<table className="table table-striped-wfh table-hover">
+					<table className="table table-striped-wfh table-hover font">
 						<thead>
 							<tr>
 								<th scope="col 3">Nombre</th>

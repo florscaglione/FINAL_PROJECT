@@ -31,7 +31,6 @@ export const HomeUsuarioSinLoguear = () => {
 				<div className="container buscadortexto">
 					<div className="row mt-4">
 						<div className="col-9 text-right mt-5">
-							<h4 className="mt-5 ms-4 textobusca">Busco ofertas de..</h4>
 							<BuscadorYFiltros />
 						</div>
 						<div className="col-3 text-center d-none d-md-block">

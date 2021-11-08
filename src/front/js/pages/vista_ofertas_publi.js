@@ -24,7 +24,6 @@ export const VistaOfertasPubli = () => {
 						<div className="col-9">
 							<div className="vacio">
 								<p className="cabecera mb-5">
-									<h4>Bienvenido! Las ofertas que has publicado con nosotros son las siguientes:</h4>
 									<h4>No hay ofertas disponibles</h4>
 								</p>
 							</div>
@@ -38,18 +37,12 @@ export const VistaOfertasPubli = () => {
 				<div className="container">
 					<div className="row rows-cols-2">
 						<div className="col-9">
-							<div className="vacio">
-								<p className="cabecera mb-5">
-									{/* <h4>Bienvenido! Las ofertas que has publicado con nosotros son las siguientes:</h4>
-									<h4>Ofertas publicadas</h4> */}
-								</p>
-							</div>
 							<button
 								type="button"
-								className="btn btn-outline-primary-wfh"
+								className="btn d-grid d-md-flex btn-primary-wfh btn-sm justify-content-end mt-5 ms-4"
 								data-bs-toggle="modal"
 								data-bs-target="#idCreateOfferCompany">
-								<i className="fas fa-plus" /> Nueva oferta
+								<i className="fas fa-plus me-3 " /> Nueva oferta
 							</button>
 							<ModalCompanyOffer
 								icon={"plus"}

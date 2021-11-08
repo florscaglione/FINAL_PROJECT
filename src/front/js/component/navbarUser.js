@@ -31,7 +31,10 @@ export const NavbarUser = () => {
 								</li>
 								<li>
 									<div className="dropdown-item dropsuario pr-3" type="button">
-										<i className="fas fa-heart fa-lg pr-2" /> Mis ofertas
+										<i className="fas fa-list fa-lg pr-2" /> Mis ofertas
+									</div>
+									<div className="dropdown-item dropsuario pr-3" type="button">
+										<i className="fas fa-heart fa-lg pr-2" /> Ofertas guardadas
 									</div>
 									<button
 										onClick={() => actions.logout()}

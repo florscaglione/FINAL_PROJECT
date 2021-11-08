@@ -11,7 +11,7 @@ export const OfferCard = ({ offer }) => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="card m-2">
+		<div className="card my-2">
 			<div className="card-header d-flex justify-content-between">
 				<div className="d-flex justify-content-start">
 					<h4>Oferta de trabajo #{offer.id}</h4>
@@ -32,11 +32,11 @@ export const OfferCard = ({ offer }) => {
 					<div className="col-12">
 						<div className="row mb-4">
 							<div className="col-10">
-								<h5 className="card-title">
+								<h5 className="infocv">
 									Título:
 									{offer.title}
 								</h5>
-								<h5 className="card-title">
+								<h5 className="infocv">
 									Teletrabajo:
 									{offer.remote_work}
 								</h5>

@@ -29,7 +29,7 @@ export const NavbarCompany = () => {
 										to="/vista_ofertas_publi"
 										className="dropdown-item dropsuario pr-3"
 										type="button">
-										<i className="far fa-file fa-lg pr-2" /> Listado de ofertas
+										<i className="far fa-file fa-lg pr-2" /> Mis ofertas publicadas
 									</Link>
 								</li>
 								<li>
