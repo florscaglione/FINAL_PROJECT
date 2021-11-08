@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
 import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
+import { OfferUserInscripted } from "./offerUserInscripted";
 
 export const OfferCard = ({ offer }) => {
 	console.log("OFFER", offer);
@@ -53,8 +54,15 @@ export const OfferCard = ({ offer }) => {
 				</div>
 				<div className="row pb-2 mx-1 w-100 border-2 border-top">
 					<div className="d-flex justify-content-between">
-						<Link to="/candidatosInscritos" type="button" className="btn btn-primary-wfh mt-3">
-							Candidatos inscritos
+						<Link to={`/candidatosInscritos/${offer.id}`}>
+							<button
+								onClick={() => {
+									localStorage.setItem("idItem", offer.id);
+								}}
+								className="btn btn-primary-wfh btn-sm mt-5"
+								role="button">
+								Candidatos Inscritos
+							</button>
 						</Link>
 					</div>
 				</div>

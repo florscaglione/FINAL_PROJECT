@@ -101,8 +101,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//Esta función obtiene todos los datos de una Oferta en offerInfo
-			offerGet: async () => {
-				const url = `${process.env.BACKEND_URL}api/offer`;
+			offerGet: async id => {
+				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
 				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
 				if (token && token != "" && token != undefined) {
 					const response = await fetch(url, {

@@ -33,11 +33,13 @@ export const NavbarCompany = () => {
 									</Link>
 								</li>
 								<li>
-									<button className="dropdown-item dropsuario pr-3" type="button">
-										{" "}
+									<Link
+										className="dropdown-item dropsuario pr-3"
+										type="button"
+										to="/candidatosInscritos">
 										{/* No tiene funcionalidad, se accede a través de cada ofertas */}
 										<i className="fas fa-users fa-lg pr-2" /> Candidatos preselecionados
-									</button>
+									</Link>
 								</li>
 								<li>
 									<button

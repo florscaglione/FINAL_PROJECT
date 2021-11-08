@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { BannerEmpresa } from "../component/BannerEmpresa";
+import { OfferUserInscripted } from "../component/offerUserInscripted";
 
 export const CandidatosInscritos = () => {
 	const { store, actions } = useContext(Context);
@@ -10,6 +11,7 @@ export const CandidatosInscritos = () => {
 		<div className="container">
 			<div className="row">
 				<div className="col-9">
+					<OfferUserInscripted />
 					<div className="card card-home">
 						<div className="card-header">
 							FULL STACK DEVELOPER TELETRABAJO

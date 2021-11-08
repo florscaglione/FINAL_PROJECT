@@ -52,7 +52,7 @@ export const Home = () => {
 			</div>
 			<div className="row">
 				<div className="col text-center">
-					<NavegacionDev />
+					{/* <NavegacionDev /> */}
 					<h2 className="home-texto">¿Porque elegirnos?</h2>
 				</div>
 			</div>

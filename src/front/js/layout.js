@@ -20,6 +20,7 @@ import { Navbar } from "./component/navbar";
 import { NavbarUser } from "./component/navbarUser";
 import { NavbarCompany } from "./component/navbarCompany";
 import { Footer } from "./component/footer";
+import { NewOffer } from "./pages/newOffer";
 
 //create your first component
 const Layout = () => {
@@ -53,13 +54,16 @@ const Layout = () => {
 						<Route exact path="/new-CV">
 							<NewCV />
 						</Route>
+						<Route exact path="/new-Offer">
+							<NewOffer />
+						</Route>
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />
 						</Route>
 						<Route exact path="/detalleOferta/:id">
 							<DetalleOferta />
 						</Route>
-						<Route exact path="/candidatosInscritos">
+						<Route exact path="/candidatosInscritos/:id">
 							<CandidatosInscritos />
 						</Route>
 						<Route exact path="/demo">
