@@ -27,7 +27,7 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 		if (icon == "edit") {
 			console.log("editOffer", editOffer);
 			await actions.offerUpdate(event, offer.id, editOffer); // se añade el await para que no comience la siguiente función hasta terminar de ejecutarse la primera
-			actions.companyOffersGet(offer.id); // Pretendemos que tras editar se actualice el listado de ofertas (no funciona)
+			actions.companyOffersGet(); // Pretendemos que tras editar se actualice el listado de ofertas (no funciona)
 		}
 		if (icon == "plus") {
 			const url = `${process.env.BACKEND_URL}api/company/offer`;
@@ -42,8 +42,10 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 					},
 					body: JSON.stringify(editOffer)
 				});
+				console.log("¢¢¢¢¢¢¢¢¢¢¢¢¢");
 				if (response.ok) {
-					actions.companyOffersGet(offer.id); // añadir un else para mostrar un error en caso de que no funcione
+					console.log("%%%%%%%%%%%%%%");
+					actions.companyOffersGet(); // añadir un else para mostrar un error en caso de que no funcione
 				}
 			} // Faltaría un else para cuando no hay token para que salte el modal del login
 		}
@@ -85,7 +87,7 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 											className="mt-2 form-control"
 											defaultValue={offer.contract_type}
 											placeholder="Tipo de contrato"
-											name="contact_type"
+											name="contract_type"
 											aria-describedby="professionHelp"
 										/>
 										<input
@@ -101,7 +103,7 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 											className="mt-2 form-control"
 											defaultValue={offer.requirement}
 											placeholder="Requisitos"
-											name="requeriment"
+											name="requirement"
 											aria-describedby="professionHelp"
 										/>
 										<input

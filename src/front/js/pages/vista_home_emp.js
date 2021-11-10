@@ -15,9 +15,26 @@ export const VistaHomeEmp = () => {
 				<div className="col-9">
 					<div className="imagenEmp">
 						<img src={vistaEmpresa} className="card-img-top" alt="..." width="300" />
-						<Link to="/vista_ofertas_publi" className="btn btn-primary-wfh">
-							Publicar oferta
-						</Link>
+						{localStorage.getItem("token") && localStorage.getItem("role") === "company" ? (
+							<Link to="/vista_ofertas_publi" className="btn btn-primary-wfh">
+								Publicar oferta
+							</Link>
+						) : localStorage.getItem("token") && localStorage.getItem("role") === "user" ? (
+							<Link
+								onClick={() => {
+									alert("Acceso denegado a usuarios");
+								}}
+								className="btn btn-primary-wfh">
+								Publicar Oferta
+							</Link>
+						) : (
+							<Link
+								className="btn btn-primary-wfh"
+								data-bs-toggle="modal"
+								data-bs-target="#companyLoginModal">
+								Ver Ofertas
+							</Link>
+						)}
 					</div>
 					<div>
 						<h1 className="titulo text-center">

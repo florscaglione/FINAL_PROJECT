@@ -49,9 +49,9 @@ export const VistaOfertasPubli = () => {
 								offer={localStorage.getItem("companyLoggedIn")}
 								id={"idCreateOfferCompany"}
 							/>
-							{store.companyOffersList.map((offer, index) => {
+							{store.companyOffersList.map(offer => {
 								return (
-									<div key={index} className="container">
+									<div key={offer.id} className="container">
 										<div className="row">
 											<div className="col-12">
 												<OfferCard offer={offer} />
