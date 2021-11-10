@@ -32,7 +32,7 @@ export const VistaHomeEmp = () => {
 								className="btn btn-primary-wfh"
 								data-bs-toggle="modal"
 								data-bs-target="#companyLoginModal">
-								Ver Ofertas
+								Publicar Ofertas
 							</Link>
 						)}
 					</div>
