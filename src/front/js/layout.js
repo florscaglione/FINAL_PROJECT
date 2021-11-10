@@ -29,10 +29,10 @@ const Layout = () => {
 	const { store, actions } = useContext(Context);
 	console.log("Info del usuario", store.userLoggedIn);
 
-	const [role, setRole] = useState(null);
+	/* const [role, setRole] = useState(null);
 
 	useEffect(() => {
-		/* setRole(localStorage.getItem("role")); */
+		setRole(localStorage.getItem("role"));
 
 		window.addEventListener("storage", checkUserData);
 
@@ -44,13 +44,19 @@ const Layout = () => {
 	function checkUserData() {
 		console.log("Pepitooooooooooooooo");
 		setRole(localStorage.getItem("role"));
-	}
+	} */
 
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{role === "user" ? <NavbarUser /> : role === "company" ? <NavbarCompany /> : <Navbar />}
+					{localStorage.getItem("role") === "user" ? (
+						<NavbarUser />
+					) : localStorage.getItem("role") === "company" ? (
+						<NavbarCompany />
+					) : (
+						<Navbar />
+					)}
 
 					<Switch>
 						<Route exact path="/">
