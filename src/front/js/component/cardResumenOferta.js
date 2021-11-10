@@ -26,7 +26,7 @@ export const CardResumenOferta = ({ offer }) => {
 									<p>{offer.requirement}</p>
 								</div>
 								<div className="d-flex justify-content-center">
-									{localStorage.getItem("token") ? (
+									{localStorage.getItem("token") && localStorage.getItem("role") === "user" ? (
 										<Link to={`/detalleOferta/${offer.id}`}>
 											<button
 												onClick={() => {
@@ -38,6 +38,18 @@ export const CardResumenOferta = ({ offer }) => {
 												Ver Oferta
 											</button>
 										</Link>
+									) : localStorage.getItem("token") && localStorage.getItem("role") === "company" ? (
+										<button
+											onClick={() => {
+												alert("Acceso denegado a empresas");
+												console.log("ALERTA");
+											}}
+											className="btn btn-primary-wfh  mx-1 align-items-right "
+											//data-bs-toggle="modal"
+											//data-bs-target="#userLoginModal"
+										>
+											Ver Oferta
+										</button>
 									) : (
 										<button
 											type="button"
