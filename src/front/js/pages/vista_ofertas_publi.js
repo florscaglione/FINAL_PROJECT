@@ -60,7 +60,7 @@ export const VistaOfertasPubli = () => {
 								return (
 									<div key={index} className="container">
 										<div className="row">
-											<div className="col-8">
+											<div className="col-12">
 												<OfferCard offer={offer} />
 											</div>
 										</div>
