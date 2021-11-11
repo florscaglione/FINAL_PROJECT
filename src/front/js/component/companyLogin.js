@@ -48,11 +48,13 @@ export const CompanyLogin = ({ id }) => {
 			}
 			const data = await resp.json();
 			console.log("This came from the backend", data);
-			localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
-			localStorage.setItem("companyLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info de la empresa (viene del endpoint del login)
-			localStorage.setItem("role", "company"); // Definimos el rol de empresa para poder mostrar el componente navbar empresa
+
 			console.log("DATA", data);
 			if (data !== null) {
+				localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
+				localStorage.setItem("companyLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info de la empresa (viene del endpoint del login)
+				localStorage.setItem("role", "company"); // Definimos el rol de empresa para poder mostrar el componente navbar empresa
+				actions.setRole("company");
 				history.push("/vista_home_emp");
 			} else {
 				history.push("/");

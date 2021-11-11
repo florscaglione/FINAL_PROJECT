@@ -34,9 +34,8 @@ export const DetalleOferta = () => {
 				}
 			});
 			if (response.status == 201 && response.ok) {
-				setInscription(false);
-				actions.offerGet(id); // añadir un else para mostrar un error en caso de que no funcione
-				console.log("0000000000", response.status);
+				setInscription(false); // añadir un else para mostrar un error en caso de que no funcione
+				actions.offerGet(id); console.log("0000000000", response.status);
 			} else {
 				setInscription(true);
 				console.log("11111111111", response.status);
@@ -57,7 +56,7 @@ export const DetalleOferta = () => {
 					Authorization: "Bearer " + token
 				}
 			});
-			if (response.ok == 201) {
+			if (response.status == 201) {
 				setInscription(false);
 				console.log("2222222222", response.status);
 			}

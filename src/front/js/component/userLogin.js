@@ -47,11 +47,13 @@ export const UserLogin = ({ id }) => {
 			}
 			const data = await resp.json();
 			console.log("This came from the backend", data);
-			localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
-			localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
-			localStorage.setItem("role", "user"); // Definimos el rol de usuario para poder mostrar el componente navbar usuario
+
 			console.log("DATA", data);
 			if (data !== null) {
+				localStorage.setItem("token", data[0].access_token); //access_token es lo que me respondió el token en Postman (es decir, lo que me llega desde el backend)
+				localStorage.setItem("userLoggedIn", data[1].id); // Viene de un array de objetos donde la posición 0 es el token y la 1 la info del usuario (viene del endpoint del login)
+				localStorage.setItem("role", "user"); // Definimos el rol de usuario para poder mostrar el componente navbar usuario
+				actions.setRole("user");
 				history.push("/usuarioHomeSinLoguear");
 			} else {
 				history.push("/");

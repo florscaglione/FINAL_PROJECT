@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			offerInfo: null, //Toda la info de una oferta
 			allOffersList: [], // Todas las ofertas publicadas en la web (De todas las empresas)
 			token: "", // Recibe el token desde el back
+			role: null, // Recibe el rol de user/company
 			message: null,
 			demo: [
 				{
@@ -183,7 +184,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logout: () => {
 				localStorage.clear(); //borra todo lo que hay en el localStorage con el ".clear"
 				console.log("Login out");
-				setStore({ token: null }); //y establezco el token del store vacío
+				setStore({ token: null, role: null }); //y establezco el token del store vacío
+			},
+
+			setRole: role => {
+				setStore({ role: role });
 			},
 
 			/* login: async (email, password) => {
