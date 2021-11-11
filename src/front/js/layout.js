@@ -28,12 +28,21 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 	const { store, actions } = useContext(Context);
 
+	useEffect(() => {}, [store.role]);
+	console.log("Navbar role", store.role);
+
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{store.role == "user" ? <NavbarUser /> : store.role == "company" ? <NavbarCompany /> : <Navbar />}
-
+					{/* {store.role == "user" ? <NavbarUser /> : store.role == "company" ? <NavbarCompany /> : <Navbar />} */}
+					{localStorage.getItem("role") == "user" ? (
+						<NavbarUser />
+					) : localStorage.getItem("role") == "company" ? (
+						<NavbarCompany />
+					) : (
+						<Navbar />
+					)}
 					<Switch>
 						<Route exact path="/">
 							<Home />

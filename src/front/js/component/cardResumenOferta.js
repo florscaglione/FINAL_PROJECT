@@ -22,11 +22,11 @@ export const CardResumenOferta = ({ offer, change }) => {
 							<h5 className="empresa">{offer.company.name}</h5>
 							<p className="detalle">{offer.offer_description}</p>
 
-							<div className="d-flex justify-content-between">
-								<div className="d-flex justify-content-start">
+							<div className="row">
+								<div className="col-8 ">
 									<p>{offer.requirement}</p>
 								</div>
-								<div className="d-flex justify-content-center">
+								<div className="col-4 d-flex justify-content-end">
 									{localStorage.getItem("token") && localStorage.getItem("role") === "user" ? (
 										<Link to={`/detalleOferta/${offer.id}`}>
 											<button
