@@ -1,11 +1,12 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import JLK from "../../img/JLK.png";
 import { Button } from "bootstrap";
+import { ModalAccessDenied } from "./ModalAccessDenied";
 
-export const CardResumenOferta = ({ offer }) => {
+export const CardResumenOferta = ({ offer, change }) => {
 	const { store, actions } = useContext(Context);
 	/* console.log("çççççççççççç", offer.company.name); */
 	return (
@@ -41,8 +42,7 @@ export const CardResumenOferta = ({ offer }) => {
 									) : localStorage.getItem("token") && localStorage.getItem("role") === "company" ? (
 										<button
 											onClick={() => {
-												alert("Acceso denegado a empresas");
-												console.log("ALERTA");
+												change();
 											}}
 											className="btn btn-primary-wfh  mx-1 align-items-right "
 											//data-bs-toggle="modal"
@@ -70,5 +70,6 @@ export const CardResumenOferta = ({ offer }) => {
 };
 
 CardResumenOferta.propTypes = {
-	offer: PropTypes.object
+	offer: PropTypes.object,
+	change: PropTypes.func
 };

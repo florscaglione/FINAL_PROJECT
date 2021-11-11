@@ -655,3 +655,9 @@ padding: 0;
     width: 100vw;
   }
  }
+.modal-access-denied{
+  z-index: 1000;
+  position: absolute;
+  top: 5%;
+  left: 25%;
+}

@@ -1,11 +1,13 @@
 import React, { Component, useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { CardResumenOferta } from "../component/cardResumenOferta";
+import { ModalAccessDenied } from "./ModalAccessDenied";
 
 export const BuscadorYFiltros = () => {
 	const { store, actions } = useContext(Context);
 	const [offers, setOffers] = useState([]);
 	const [textSelected, setTextSelected] = useState("");
+	const [alertModal, setAlertModal] = useState(false);
 
 	const handleChange = event => {
 		setTextSelected(event.target.value);
@@ -53,6 +55,7 @@ export const BuscadorYFiltros = () => {
 
 	return (
 		<div className="container-fluid">
+			{alertModal ? <ModalAccessDenied close={() => setAlertModal(false)} /> : ""}
 			<form className=" buscador d-flex">
 				<input
 					className="form-control me-2"
@@ -65,7 +68,6 @@ export const BuscadorYFiltros = () => {
 					<i className="fas fa-search" />
 				</button>
 			</form>
-
 			{filteredResults.length == 0 && textSelected.length != 0 ? (
 				<div className="row">
 					<div className="col-12">
@@ -85,7 +87,7 @@ export const BuscadorYFiltros = () => {
 						{filteredResults.map((offer, id) => {
 							return (
 								<div key={id}>
-									<CardResumenOferta offer={offer} />
+									<CardResumenOferta offer={offer} change={() => setAlertModal(true)} />
 								</div>
 							);
 						})}
