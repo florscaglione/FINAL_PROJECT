@@ -35,7 +35,8 @@ export const DetalleOferta = () => {
 			});
 			if (response.status == 201 && response.ok) {
 				setInscription(false); // añadir un else para mostrar un error en caso de que no funcione
-				actions.offerGet(id); console.log("0000000000", response.status);
+				actions.offerGet(id);
+				console.log("0000000000", response.status);
 			} else {
 				setInscription(true);
 				console.log("11111111111", response.status);
