@@ -27,36 +27,12 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 	const { store, actions } = useContext(Context);
-	console.log("Info del usuario", store.userLoggedIn);
-
-	/* const [role, setRole] = useState(null);
-
-	useEffect(() => {
-		setRole(localStorage.getItem("role"));
-
-		window.addEventListener("storage", checkUserData);
-
-		() => {
-			window.removeEventListener("storage", checkUserData);
-		};
-	}, []); // pasar la variable role desde el store, previamente tenemos que almacenar en el store (Flux)
-
-	function checkUserData() {
-		console.log("Pepitooooooooooooooo");
-		setRole(localStorage.getItem("role"));
-	} */
 
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{localStorage.getItem("role") === "user" ? (
-						<NavbarUser />
-					) : localStorage.getItem("role") === "company" ? (
-						<NavbarCompany />
-					) : (
-						<Navbar />
-					)}
+					{store.role == "user" ? <NavbarUser /> : store.role == "company" ? <NavbarCompany /> : <Navbar />}
 
 					<Switch>
 						<Route exact path="/">
