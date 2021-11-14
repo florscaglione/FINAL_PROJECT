@@ -19,7 +19,7 @@ export const Home = () => {
 		<div className="container">
 			<div className="row">
 				<div className="col text-center">
-					<div className="card-home">
+					<div className="card-home mt-5">
 						<img src={homeEmpresa} className="card-img-top" alt="Acceso empresas" />
 						<div className="card-body">
 							<h2 className="card-title">ACCESO EMPRESAS</h2>
@@ -34,7 +34,7 @@ export const Home = () => {
 					</div>
 				</div>
 				<div className="col text-center">
-					<div className="card-home">
+					<div className="card-home mt-5">
 						<img src={homeUsuario} className="card-img-top" alt="Acceso usuarios" />
 						<div className="card-body">
 							<h2 className="card-title">ACCESO USUARIOS</h2>

@@ -71,16 +71,48 @@ export const DetalleOferta = () => {
 					<div className="row mt-5">
 						<div className="col-9 p-0 mt-5">
 							<div className="card">
-								<div className="card-header">
-									<h5> {store.offerInfo.title}</h5>
+								<div className="card-header ">
+									<p className="m-3"> {store.offerInfo.title}</p>
 								</div>
-								<div className="card-body-cv">
-									<h5 className="infocv">Empresa: {store.offerInfo.company.name}</h5>
-									<h5 className="infocv">Descripción: {store.offerInfo.offer_description}</h5>
-									<h5 className="infocv">Requisitos: {store.offerInfo.requirement}</h5>
-									<h5 className="infocv">Tipo de teletrabajo: {store.offerInfo.remote_work}</h5>
-									<h5 className="infocv">Salario: {store.offerInfo.salary_range}</h5>
-									<h5 className="infocv">Beneficios sociales: {store.offerInfo.social_benefit}</h5>
+								<div className="card-body-cv p-5">
+									<div className="row">
+										<div className="col-4 d-flex align-items-center">
+											<h5 className="infocv">Empresa : </h5>
+										</div>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{store.offerInfo.company.name}
+										</div>
+										<div className="col-4 mt-4 d-flex align-items-center">
+											<h5 className="infocv">Descripción: </h5>
+										</div>
+										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
+											{store.offerInfo.offer_description}
+										</div>
+										<div className="col-4 mt-4 d-flex align-items-center">
+											<h5 className="infocv">Requisitos : </h5>
+										</div>
+										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
+											{store.offerInfo.requirement}
+										</div>
+										<div className="col-4 mt-4 d-flex align-items-center">
+											<h5 className="infocv">Tipo de teletrabajo : </h5>
+										</div>
+										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
+											{store.offerInfo.remote_work}
+										</div>
+										<div className="col-4 mt-4 d-flex align-items-center">
+											<h5 className="infocv">Salario : </h5>
+										</div>
+										<div className="card-header-det col-8 mt-2 d-flex align-items-center">
+											{store.offerInfo.salary_range}
+										</div>
+										<div className="col-4 mt-4 d-flex align-items-center">
+											<h5 className="infocv">Beneficios sociales : </h5>
+										</div>
+										<div className="card-header-det col-8 mt-2 d-flex align-items-center">
+											{store.offerInfo.social_benefit}
+										</div>
+									</div>
 									{!inscription ? (
 										<button
 											onClick={handleClick}

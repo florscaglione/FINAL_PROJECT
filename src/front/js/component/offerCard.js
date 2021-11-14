@@ -14,7 +14,7 @@ export const OfferCard = ({ offer }) => {
 		<div className="card my-2">
 			<div className="card-header d-flex justify-content-between">
 				<div className="d-flex justify-content-start">
-					<h4>Oferta de trabajo #{offer.id}</h4>
+					<h3>Oferta de trabajo #{offer.id}</h3>
 				</div>
 				<div className="d-flex justify-content-end">
 					<button
@@ -23,6 +23,9 @@ export const OfferCard = ({ offer }) => {
 						data-bs-toggle="modal"
 						data-bs-target={`#id${offer.id}`}>
 						<i className="fas fa-edit" />
+					</button>
+					<button type="button" className="btn btn-outline-secondary">
+						Eliminar Oferta
 					</button>
 					<ModalCompanyOffer icon={"edit"} offer={offer} id={`id${offer.id}`} />
 				</div>
@@ -51,7 +54,7 @@ export const OfferCard = ({ offer }) => {
 						</div>
 					</div>
 				</div>
-				<div className="row pb-2 mx-1 w-100 border-2 border-top">
+				<div className="row pb-2 mx-1 w-100">
 					<div className="d-flex justify-content-between">
 						<Link to="/candidatosInscritos" type="button" className="btn btn-primary-wfh mt-3">
 							Candidatos inscritos

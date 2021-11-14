@@ -73,12 +73,18 @@ export const NewCV = () => {
 		<>
 			{store.userInfo ? (
 				<div className="container">
-					<div className="row">
-						<div className="col-9 mt-5">
+					<div className="row mt-5">
+						<div className="col-9 p-0 mt-5">
 							<div className="card card-cv">
-								<div className="card-header d-flex justify-content-between card-header-cv ml-5">
+								<div className="card-header d-flex justify-content-between ml-5">
 									<h5>Datos personales</h5>
-									<ModalUserData info={store.userInfo.user_basic} />
+									<ModalUserData>
+										<p className="m-3">
+											{" "}
+											info=
+											{store.userInfo.user_basic}
+										</p>
+									</ModalUserData>
 								</div>
 								<div className="card-body-cv">
 									<div className="row">
