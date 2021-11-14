@@ -26,6 +26,18 @@ export const VistaOfertasPubli = () => {
 								<p className="cabecera mb-5">
 									<h4>No hay ofertas disponibles</h4>
 								</p>
+								<button
+									type="button"
+									className="btn d-grid d-md-flex btn-primary-wfh btn-sm justify-content-end mt-5 ms-4"
+									data-bs-toggle="modal"
+									data-bs-target="#idCreateOfferCompany">
+									<i className="fas fa-plus me-3 " /> Nueva oferta
+								</button>
+								<ModalCompanyOffer
+									icon={"plus"}
+									offer={localStorage.getItem("companyLoggedIn")}
+									id={"idCreateOfferCompany"}
+								/>
 							</div>
 						</div>
 						<div className="col-3 text-center mt-4">

@@ -18,13 +18,13 @@ export const CardResumenOferta = ({ offer, change }) => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body">
-							<h4 className="puesto">{offer.title}</h4>
-							<h5 className="empresa">{offer.company.name}</h5>
+							<h4>{offer.title}</h4>
+							<h4 className="empresa">{offer.company.name}</h4>
 							<p className="detalle">{offer.offer_description}</p>
 
-							<div className="row">
-								<div className="col-8 ">
-									<p>{offer.requirement}</p>
+							<div className="d-flex justify-content-between">
+								<div className="d-flex justify-content-start">
+									<p className="requisitos mt-5">{offer.requirement}</p>
 								</div>
 								<div className="col-4 d-flex justify-content-end">
 									{localStorage.getItem("token") && localStorage.getItem("role") === "user" ? (
