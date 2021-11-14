@@ -78,13 +78,7 @@ export const NewCV = () => {
 							<div className="card-body-cv p-5">
 								<div className="card-header d-flex justify-content-between ml-5">
 									<h5 className="infocv">Datos personales</h5>
-									<ModalUserData>
-										<p className="m-3">
-											{" "}
-											info=
-											{store.userInfo.user_basic}
-										</p>
-									</ModalUserData>
+									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
 								<div className="card-body-cv p-5">
 									<div className="row">

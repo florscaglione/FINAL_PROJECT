@@ -2,7 +2,6 @@ import React, { Component, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { BannerEmpresa } from "../component/BannerEmpresa";
 
 import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
 
@@ -32,67 +31,60 @@ export const OfferCard = ({ offer }) => {
 						<ModalCompanyOffer icon={"edit"} offer={offer} id={`id${offer.id}`} />
 					</div>
 				</div>
-				<div className="card-body-cv">
+				<div className="card-body-cv p-5">
 					<div className="row mt-5">
-						<div className="col-9 p-0 mt-5">
-							<div className="card">
-								<div className="card-header ">
-									<p className="m-3"> {store.offerInfo.title}</p>
+						<div className="col-12 p-0 mt-5">
+							<div className="row mb-4">
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Título: </h5>
 								</div>
-								<div className="card-body-cv p-5">
-									<div className="row">
-										<div className="col-4 d-flex align-items-center">
-											<h5 className="infocv">Empresa : </h5>
-										</div>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{store.offerInfo.company.name}
-										</div>
-										<div className="col-4 mt-4 d-flex align-items-center">
-											<h5 className="infocv">Descripción: </h5>
-										</div>
-										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
-											{store.offerInfo.offer_description}
-										</div>
-										<div className="col-4 mt-4 d-flex align-items-center">
-											<h5 className="infocv">Requisitos : </h5>
-										</div>
-										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
-											{store.offerInfo.requirement}
-										</div>
-										<div className="col-4 mt-4 d-flex align-items-center">
-											<h5 className="infocv">Tipo de teletrabajo : </h5>
-										</div>
-										<div className="card-header-det col-8 mt-4 d-flex align-items-center">
-											{store.offerInfo.remote_work}
-										</div>
-										<div className="col-4 mt-4 d-flex align-items-center">
-											<h5 className="infocv">Salario : </h5>
-										</div>
-										<div className="card-header-det col-8 mt-2 d-flex align-items-center">
-											{store.offerInfo.salary_range}
-										</div>
-										<div className="col-4 mt-4 d-flex align-items-center">
-											<h5 className="infocv">Beneficios sociales : </h5>
-										</div>
-										<div className="card-header-det col-8 mt-2 d-flex align-items-center">
-											{store.offerInfo.social_benefit}
-										</div>
-									</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.title}
 								</div>
-								<div className="row pb-2 mx-1 w-100">
-									<div className="d-flex justify-content-between">
-										<Link
-											to="/candidatosInscritos"
-											type="button"
-											className="btn btn-primary-wfh mt-3">
-											Candidatos inscritos
-										</Link>
-									</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Teletrabajo: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.remote_work}
+								</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Tipo de contrato: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.contract_type}
+								</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Rango de salario: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.salary_range}
+								</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Requisitos: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.requirement}
+								</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Descripción de la oferta: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.offer_description}
+								</div>
+								<div className="col-4 d-flex align-items-center">
+									<h5 className="infocv">Beneficios sociales: </h5>
+								</div>
+								<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+									{offer.social_benefit}
 								</div>
 							</div>
-							<div className="col-3 text-center d-none d-md-block mt-4">
-								<BannerEmpresa />
-							</div>
+						</div>
+					</div>
+					<div className="row pb-2 mx-1 w-100 border-2 border-top">
+						<div className="d-flex justify-content-between">
+							<Link to="/candidatosInscritos" type="button" className="btn btn-primary-wfh mt-3">
+								Candidatos inscritos
+							</Link>
 						</div>
 					</div>
 				</div>
