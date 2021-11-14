@@ -2,6 +2,7 @@ import React, { Component, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { BannerEmpresa } from "../component/BannerEmpresa";
 
 import { ModalCompanyOffer } from "../../js/component/modalCompanyOffer";
 
