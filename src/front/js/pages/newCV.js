@@ -239,25 +239,36 @@ export const NewCV = () => {
 														return (
 															<div key={index} className="row">
 																<div className="col-10">
-																	<h6 className="infocv">
-																		Titulación: {training.academic_degree}
-																	</h6>
-																	<h6 className="infocv">
-																		Centro de estudios: {training.study_center}
-																	</h6>
-																	<h6 className="infocv">
-																		Estudios reglados:{" "}
-																		{training.is_academic ? "Sí" : "No"}
-																	</h6>
-																	<h6 className="infocv">
-																		Fecha inicio: {training.start_date}
-																	</h6>
-																	<h6 className="infocv">
-																		Fecha fin: {training.end_date}
-																	</h6>
-																	<h6 className="infocv">
-																		En curso: {training.in_progress ? "Sí" : "No"}
-																	</h6>
+																	<h5 className="infocv">Titulación: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.academic_degree}
+																	</div>
+																	<h5 className="infocv">Centro de estudios: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.study_center}{" "}
+																	</div>
+																	<h5 className="infocv">Estudios reglados: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.is_academic ? "Sí" : "No"}{" "}
+																	</div>
+																	<h5 className="infocv">Fecha inicio: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.start_date}{" "}
+																	</div>
+																	<h5 className="infocv">Fecha fin: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.end_date}{" "}
+																	</div>
+																	<h5 className="infocv"> En curso: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{training.in_progress ? "Sí" : "No"}{" "}
+																	</div>
 																</div>
 																<div className="col-2 d-flex justify-content-end">
 																	<button
@@ -305,23 +316,32 @@ export const NewCV = () => {
 														return (
 															<div key={index} className="row">
 																<div className="col-10">
-																	<h6 className="infocv">
-																		Titulación: {experience.title}
-																	</h6>
-																	<h6 className="infocv">
-																		Descripción: {experience.description}
-																	</h6>
-																	<h6 className="infocv">
-																		Fecha inicio: {experience.start_date}
-																	</h6>
-																	<h6 className="infocv">
-																		Fecha fin: {experience.end_date}
-																	</h6>
-																	<h6 className="infocv">
-																		En curso: {experience.in_progress ? "Sí" : "No"}
-																	</h6>
+																	<h5 className="infocv">Titulación: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{experience.title}
+																	</div>
+																	<h5 className="infocv">Descripción: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{experience.description}
+																	</div>
+																	<h5 className="infocv"> Fecha inicio: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{experience.start_date}
+																	</div>
+																	<h5 className="infocv">Fecha fin: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{experience.end_date}
+																	</div>
+																	<h5 className="infocv">En curso: </h5>
+																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																		{" "}
+																		{experience.in_progress ? "Sí" : "No"}
+																	</div>
 																</div>
-
 																<div className="col-2 d-flex justify-content-end">
 																	<button
 																		type="button"
