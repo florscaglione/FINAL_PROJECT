@@ -75,9 +75,9 @@ export const NewCV = () => {
 				<div className="container">
 					<div className="row mt-5">
 						<div className="col-9 p-0 mt-5">
-							<div className="card card-cv">
+							<div className="card-body-cv p-5">
 								<div className="card-header d-flex justify-content-between ml-5">
-									<h5>Datos personales</h5>
+									<h5 className="infocv">Datos personales</h5>
 									<ModalUserData>
 										<p className="m-3">
 											{" "}
@@ -86,33 +86,46 @@ export const NewCV = () => {
 										</p>
 									</ModalUserData>
 								</div>
-								<div className="card-body-cv">
+								<div className="card-body-cv p-5">
 									<div className="row">
-										<div className="col-9">
-											<h6 className="infocv">Nombre: {store.userInfo.user_basic.name}</h6>
-											<h6 className="infocv">Apellidos: {store.userInfo.user_basic.lastname}</h6>
-											<h6 className="infocv">
-												Fecha nacimiento: {store.userInfo.user_basic.birth_date}
-											</h6>
-											<h6 className="infocv">Email: {store.userInfo.user_basic.email}</h6>
-											<h6 className="infocv">Teléfono: {store.userInfo.user_basic.phone}</h6>
+										<div className="col-4 d-flex align-items-center" />
+										<h5 className="infocv">Nombre: </h5>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{store.userInfo.user_basic.name}
 										</div>
-										<div className="col-3">
-											<div className="jumbotron jumbotron-fluid">
-												<img className="profile" src={profile} width="100" alt="profile" />
-												<button type="button" className="btn btn-outline-primary-wfh p-1">
-													<i className="fas fa-plus-square"> Añadir foto</i>
-												</button>
-											</div>
+										<h5 className="infocv">Apellidos: </h5>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{store.userInfo.user_basic.lastname}
+										</div>
+										<h5 className="infocv">Fecha nacimiento: </h5>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{" "}
+											{store.userInfo.user_basic.birth_date}
+										</div>
+										<h5 className="infocv">Email: </h5>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{" "}
+											{store.userInfo.user_basic.email}
+										</div>
+										<h5 className="infocv">Teléfono: </h5>
+										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+											{" "}
+											{store.userInfo.user_basic.phone}
+										</div>
+									</div>
+									<div className="col-3">
+										<div className="jumbotron jumbotron-fluid">
+											<img className="profile" src={profile} width="100" alt="profile" />
+											<button type="button" className="btn btn-outline-primary-wfh p-1">
+												<i className="fas fa-plus-square"> Añadir foto</i>
+											</button>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className="card card-cv">
-								<div className="card-header d-flex justify-content-between card-header-cv">
-									<div className="d-flex justify-content-start">
-										<h5>Perfil profesional</h5>
-									</div>
+							<div className="card-body-cv p-5">
+								<div className="card-header d-flex justify-content-between ml-5">
+									<h5 className="infocv">Perfil profesional</h5>
 									<div className="d-flex justify-content-end">
 										<button type="button" className="btn btn-outline-primary-wfh">
 											<i className="fas fa-caret-down" />
@@ -122,10 +135,9 @@ export const NewCV = () => {
 										</button>
 									</div>
 								</div>
-
-								<div className="card-body-cv">
+								<div className="card-body-cv p-5">
 									<div>
-										<h6 className="card-title infocv">Seleccione perfil:</h6>
+										<h5 className="card-title infocv">Seleccione perfil:</h5>
 										<div className="row">
 											<div className="d-flex justify-content-start">
 												<div className="btn-group w-100 btn-sm mt-4">
@@ -194,7 +206,7 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card card-cv">
+							<div className="card-body-cv p-5">
 								<div className="card-header d-flex justify-content-between card-header-cv">
 									<h5>Formación</h5>
 									<div className="d-flex justify-content-end">
