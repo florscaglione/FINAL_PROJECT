@@ -75,55 +75,60 @@ export const NewCV = () => {
 				<div className="container">
 					<div className="row mt-5">
 						<div className="col-9 p-0 mt-5">
-							<div className="card-body-cv p-5">
-								<div className="card-header d-flex justify-content-between ml-5">
+							<div className="card">
+								<div className="card-header d-flex justify-content-between card-header-cv ">
 									<h5 className="infocv">Datos personales</h5>
-									<ModalUserData>
-										<p className="m-3">
-											{" "}
-											info=
-											{store.userInfo.user_basic}
-										</p>
-									</ModalUserData>
+									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
-								<div className="card-body-cv p-5">
+								<div className="card-body-cv p-3">
 									<div className="row">
-										<div className="col-4 d-flex align-items-center" />
-										<h5 className="infocv">Nombre: </h5>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{store.userInfo.user_basic.name}
+										<div className="col-10">
+											<div className="col-6 d-flex align-items-center">
+												<h5 className="infocv col-3 d-flex align-items-center">Nombre: </h5>
+											</div>
+											<div className="card-header-det col-9 mt-1 d-flex align-items-center">
+												{store.userInfo.user_basic.name}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Apellidos: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.userInfo.user_basic.lastname}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Fecha nacimiento: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{" "}
+												{store.userInfo.user_basic.birth_date}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Email: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{" "}
+												{store.userInfo.user_basic.email}
+											</div>
+											<div className="col-4 align-items-right">
+												<h5 className="infocv">Teléfono: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{" "}
+												{store.userInfo.user_basic.phone}
+											</div>
 										</div>
-										<h5 className="infocv">Apellidos: </h5>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{store.userInfo.user_basic.lastname}
-										</div>
-										<h5 className="infocv">Fecha nacimiento: </h5>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{" "}
-											{store.userInfo.user_basic.birth_date}
-										</div>
-										<h5 className="infocv">Email: </h5>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{" "}
-											{store.userInfo.user_basic.email}
-										</div>
-										<h5 className="infocv">Teléfono: </h5>
-										<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-											{" "}
-											{store.userInfo.user_basic.phone}
-										</div>
-									</div>
-									<div className="col-3">
-										<div className="jumbotron jumbotron-fluid">
-											<img className="profile" src={profile} width="100" alt="profile" />
-											<button type="button" className="btn btn-outline-primary-wfh p-1">
-												<i className="fas fa-plus-square"> Añadir foto</i>
-											</button>
+										<div className="col-2">
+											<div className="jumbotron jumbotron-fluid">
+												<img className="profile" src={profile} width="100" alt="profile" />
+												<button type="button" className="btn btn-outline-primary-wfh p-1">
+													<i className="fas fa-plus-square"> Añadir foto</i>
+												</button>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className="card-body-cv p-5">
+							<div className="card-body-cv mt-5">
 								<div className="card-header d-flex justify-content-between ml-5">
 									<h5 className="infocv">Perfil profesional</h5>
 									<div className="d-flex justify-content-end">
@@ -135,7 +140,7 @@ export const NewCV = () => {
 										</button>
 									</div>
 								</div>
-								<div className="card-body-cv p-5">
+								<div className="card-body-cv mt-5">
 									<div>
 										<h5 className="card-title infocv">Seleccione perfil:</h5>
 										<div className="row">
@@ -156,31 +161,6 @@ export const NewCV = () => {
 															disabled
 														/>
 													</div>
-													{/* <button
-														type="button"
-														className="btn btn-outline-primary dropdown-toggle w-100"
-														data-bs-toggle="dropdown"
-														data-bs-display="static"
-														aria-expanded="false">
-														Seleccione profesión de la lista
-													</button>
-													<ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start w-90">
-														<li>
-															<button className="dropdown-item" type="button">
-																Perfil 1
-															</button>
-														</li>
-														<li>
-															<button className="dropdown-item" type="button">
-																Perfil 2
-															</button>
-														</li>
-														<li>
-															<button className="dropdown-item" type="button">
-																Perfil 3
-															</button>
-														</li>
-													</ul> */}
 												</div>
 												<button type="button" className="btn btn-outline-primary-wfh ">
 													<i className="far fa-trash-alt" />
@@ -188,25 +168,9 @@ export const NewCV = () => {
 											</div>
 										</div>
 									</div>
-									<div>
-										{/* <h5 className="card-title mt-2">Nuevo perfil:</h5>
-										<div className="row mt-2">
-											<div className="d-flex justify-content-start">
-												<input
-													type="text"
-													className="form-control"
-													placeholder="Perfil profesional"
-													aria-describedby="professionHelp"
-												/>
-												<button type="button" className="btn btn-outline-primary mx-1">
-													<i className="far fa-trash-alt" />
-												</button>
-											</div>
-										</div> */}
-									</div>
 								</div>
 							</div>
-							<div className="card-body-cv p-5">
+							<div className="card-body-cv mt-5">
 								<div className="card-header d-flex justify-content-between card-header-cv">
 									<h5>Formación</h5>
 									<div className="d-flex justify-content-end">
@@ -230,7 +194,7 @@ export const NewCV = () => {
 										{/*Duda resuelta, esta en el botón de arriba*/}
 									</div>
 								</div>
-								<div className="card-body-cv">
+								<div className="card-body-cv mt-5">
 									<div className="row">
 										<div className="col-12 m-0">
 											{store.userInfo.trainings && store.userInfo.trainings.length > 0
@@ -292,11 +256,10 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card card-cv">
-								<div className="card-header d-flex justify-content-between card-header-cv">
-									<div className="d-flex justify-content-start">
-										<h5>Experiencia</h5>
-									</div>
+							<div className="card card-cv mt-5">
+								<div className="card-header d-flex justify-content-between">
+									<h5>Experiencia</h5>
+
 									<div className="d-flex justify-content-end">
 										<button
 											type="button"
@@ -371,9 +334,9 @@ export const NewCV = () => {
 								Dar de baja
 							</button>
 						</div>
-						<div className="col-3 text-center d-none d-md-block">
-							<SidebarUsuario />
-						</div>
+					</div>
+					<div className="col-3 text-center d-none d-md-block">
+						<SidebarUsuario />
 					</div>
 				</div>
 			) : (

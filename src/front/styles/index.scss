@@ -5,7 +5,8 @@
 /*Estilo background*/
 
 body{
-  background-color:rgb(229, 247, 242);
+  /*background-color:rgb(229, 247, 242);*/
+  background-color:white;
   font-family: 'Poppins', sans-serif;
   font-size:10px;
   color:#3e3e3f;
@@ -13,7 +14,8 @@ body{
   overflow-x: hidden;
 }
 .navbar-wfh, .container-body{
-    background: rgb(229, 247, 242);
+    /*background: rgb(229, 247, 242);*/
+    background:white;
     padding-top: 0;
     padding-bottom:0;
     font-family: 'Poppins', sans-serif;
@@ -60,7 +62,8 @@ body{
 }
 
 .Tag:active , .Tag:hover{
-  background-color:rgb(229, 247, 242);
+ /* background-color:rgb(229, 247, 242);*/
+ background-color:whitesmoke;
 
 } 
 
@@ -192,6 +195,8 @@ body{
     font-family: 'Poppins', sans-serif;
     font-size: 2.5em;
     text-shadow: rgb(146, 146, 146) -1px 1px,rgb(236, 235, 235) -2px 2px;
+    padding-top: 0.5em;
+    padding-bottom:0.5em;
   }
   .card-header-det{
     
@@ -221,7 +226,6 @@ body{
 .card-body-cv{
   background-color: #f0e9e9;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    padding: 2em;
 }
   /*Estilo footer*/
 
@@ -525,9 +529,9 @@ background-color:rgb(229, 247, 242);}
 
 /* estilos cv */
 .card-header-cv{
-  padding-bottom: 1em;
-  padding-top: 1em;
-  padding-left: 2em;
+  padding-bottom: 0.5em;
+  padding-top: 0.8em;
+  padding-left: 0.8em;
   border:none; 
 }
 .btn-outline-primary{
@@ -547,7 +551,7 @@ background-color:rgb(229, 247, 242);}
  
 }
 #userDataLabel, #userAcademicLabel, #userExperienceLabel, #userDataLabel{
-  font-size:1.2em;
+  font-size:0.8em;
 }
 .form-control-cv{
   font-size: 1rem;
