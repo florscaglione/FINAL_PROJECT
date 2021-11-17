@@ -657,7 +657,7 @@ padding: 0;
  }
 .modal-access-denied{
   z-index: 1000;
-  position: absolute;
-  top: 5%;
-  left: 25%;
+  position: fixed;
+  top: 5vh;
+  left: 25vw;
 }

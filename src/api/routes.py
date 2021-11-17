@@ -565,6 +565,21 @@ def get_all_offers():
 
     return jsonify(all_offers), 200 
 
+# Obtener la lista de todas las ofertas de trabajo en las que se ha inscrito un usuario: (FUNCIONA)
+@api.route('/offer-by-user', methods =['GET'])
+@jwt_required()
+def get_offers_by_userId():
+
+    userId = get_jwt_identity()
+
+    inscriptions = Inscription.query.filter_by(user_id=userId) # me devuelve un array de inscripciones
+
+    all_offers = []  # convierto los objetos de ofertas en array (json)
+    for offer in inscriptions:
+        all_offers.append(Offer.query.get(offer.offer_id).serialize())    # agregando los datos (json) de oferta a la lista de respuesta
+
+    return jsonify(all_offers), 200 
+
 # # Obtener todas las profesiones (offer.title) para el buscador:
 # @api.route('/title', methods =['GET'])                                # CAMBIAR EL NOMBRE DEL ENDPOINT???
 # def get_all_offers_titles():    
