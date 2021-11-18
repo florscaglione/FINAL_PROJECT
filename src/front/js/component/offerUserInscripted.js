@@ -25,14 +25,7 @@ export const OfferUserInscripted = ({ id }) => {
 		<>
 			{store.offerInfo ? (
 				<div className="row">
-					<div className="col-8">
-						<button
-							type="button"
-							className="btn btn-outline-primary m-2"
-							data-bs-toggle="modal"
-							data-bs-target="#idCreateOfferCompany">
-							<i className="fas fa-plus" /> Nueva oferta
-						</button>
+					<div className="col-12">
 						<div className="card m-2">
 							<div className="card-header d-flex justify-content-between">
 								<div className="d-flex justify-content-start">

@@ -57,8 +57,9 @@ export const DetalleOferta = () => {
 					Authorization: "Bearer " + token
 				}
 			});
-			if (response.status == 201) {
+			if (response.ok) {
 				setInscription(false);
+				getInscriptionUser();
 				console.log("2222222222", response.status);
 			}
 		}
