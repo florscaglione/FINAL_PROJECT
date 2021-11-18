@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "", // Recibe el token desde el back
 			role: null, // Recibe el rol de user/company
 			message: null,
+			offersByUserId: [], //Es el array ofertas donde se ha inscrito un usuario
 			demo: [
 				{
 					title: "FIRST",
@@ -116,6 +117,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					console.log("offerGet", data); // Nota: no borrar
 					setStore({ offerInfo: data });
+				}
+			},
+
+			//Esta función obtiene todos los datos de una Oferta en offerInfo
+			offerGet: async id => {
+				const url = `${process.env.BACKEND_URL}api/offer/${id}`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					console.log("offerGet", data); // Nota: no borrar
+					setStore({ offerInfo: data });
+				}
+			},
+
+			//Esta función obtiene todas las ofertas a las que se ha inscrito un usuario
+			offersByUserId: async () => {
+				const url = `${process.env.BACKEND_URL}api/offer-by-user`;
+				const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+				if (token && token != "" && token != undefined) {
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+						}
+					});
+					const data = await response.json();
+					console.log("offerGet", data); // Nota: no borrar
+					setStore({ offersByUserId: data });
 				}
 			},
 

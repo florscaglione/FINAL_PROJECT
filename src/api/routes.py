@@ -567,6 +567,20 @@ def inscription_offer_exist(offer_id, user_id):
 
     return jsonify(True), 200
 
+# Buscar todos los usuarios que están inscritos en una oferta:  
+@api.route('/offer/<int:offer_id>/inscription-user', methods=['GET']) 
+@jwt_required()
+def inscripted_users(offer_id):
+
+    all_users_inscripted = Inscription.query.filter_by(offer_id=offer_id).all()
+
+    if not all_users_inscripted:
+        return jsonify("There are not users inscripted yet"), 400
+
+    all_users = list(map(lambda inscription: User.query.get(inscription.user_id).serialize(), all_users_inscripted)) # para cada inscripción, busco el id de usuario para de ahí sacar el propio usuario
+
+    return jsonify(all_users), 200    
+
 # Obtener una oferta de trabajo:  (PROBADO EN POSTMAN Y OK)
 @api.route('/offer/<int:offerId>', methods=['GET'])
 @jwt_required()
@@ -588,6 +602,21 @@ def get_all_offers():
     all_offers = []  # convierto los objetos de ofertas en array (json)
     for offer in offers:
         all_offers.append(offer.serialize())    # agregando los datos (json) de oferta a la lista de respuesta
+
+    return jsonify(all_offers), 200 
+
+# Obtener la lista de todas las ofertas de trabajo en las que se ha inscrito un usuario: (FUNCIONA)
+@api.route('/offer-by-user', methods =['GET'])
+@jwt_required()
+def get_offers_by_userId():
+
+    userId = get_jwt_identity()
+
+    inscriptions = Inscription.query.filter_by(user_id=userId) # me devuelve un array de inscripciones
+
+    all_offers = []  # convierto los objetos de ofertas en array (json)
+    for offer in inscriptions:
+        all_offers.append(Offer.query.get(offer.offer_id).serialize())    # agregando los datos (json) de oferta a la lista de respuesta
 
     return jsonify(all_offers), 200 
 

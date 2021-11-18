@@ -19,6 +19,7 @@ export const DetalleOferta = () => {
 		} else {
 			console.log("Sin oferta");
 		}
+		window.scrollTo(0, 0);
 	}, []);
 
 	const getInscriptionUser = async () => {
@@ -57,8 +58,9 @@ export const DetalleOferta = () => {
 					Authorization: "Bearer " + token
 				}
 			});
-			if (response.status == 201) {
+			if (response.ok) {
 				setInscription(false);
+				getInscriptionUser();
 				console.log("2222222222", response.status);
 			}
 		}

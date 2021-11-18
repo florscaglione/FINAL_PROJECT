@@ -30,9 +30,12 @@ export const NavbarUser = () => {
 									</Link>
 								</li>
 								<li>
-									<div className="dropdown-item dropsuario pr-3" type="button">
+									<Link
+										to="/vista_ofertas_inscritas"
+										className="dropdown-item dropsuario pr-3"
+										type="button">
 										<i className="fas fa-list fa-lg pr-2" /> Mis ofertas
-									</div>
+									</Link>
 								</li>
 								<li>
 									<div className="dropdown-item dropsuario pr-3" type="button">

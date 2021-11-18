@@ -15,6 +15,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { VistaHomeEmp } from "./pages/vista_home_emp";
 import { VistaOfertasPubli } from "./pages/vista_ofertas_publi";
+import { OfertasInscritasUsuario } from "./pages/vista_ofertas_inscritas";
 
 import { Navbar } from "./component/navbar";
 import { NavbarUser } from "./component/navbarUser";
@@ -59,10 +60,13 @@ const Layout = () => {
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />
 						</Route>
+						<Route exact path="/vista_ofertas_inscritas">
+							<OfertasInscritasUsuario />
+						</Route>
 						<Route exact path="/detalleOferta/:id">
 							<DetalleOferta />
 						</Route>
-						<Route exact path="/candidatosInscritos">
+						<Route exact path="/candidatosInscritos/:id">
 							<CandidatosInscritos />
 						</Route>
 						<Route exact path="/demo">

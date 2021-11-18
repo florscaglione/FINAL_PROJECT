@@ -11,6 +11,7 @@ export const HomeUsuarioSinLoguear = () => {
 	//const [info, setInfo] = useState(); Guardar en el store la variable "info" y en el "actions" la función companyGet(),
 	useEffect(() => {
 		actions.allOffersGet();
+		window.scrollTo(0, 0);
 	}, []);
 	console.log("----------", store.allOffersList); // Funciona trae todas la ofertas publicadas
 
