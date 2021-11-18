@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: fc68d824fe58
+Revision ID: a764256a2dfa
 Revises: 
-Create Date: 2021-11-03 20:53:20.099149
+Create Date: 2021-11-18 17:47:58.258159
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'fc68d824fe58'
+revision = 'a764256a2dfa'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,11 +38,12 @@ def upgrade():
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password', sa.String(length=120), nullable=False),
+    sa.Column('password', sa.String(length=250), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('lastname', sa.String(length=120), nullable=False),
     sa.Column('phone', sa.String(length=15), nullable=False),
     sa.Column('birth_date', sa.Date(), nullable=True),
+    sa.Column('image_url', sa.String(length=250), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
@@ -74,7 +75,7 @@ def upgrade():
     sa.Column('title', sa.String(length=200), nullable=False),
     sa.Column('remote_work', sa.String(length=120), nullable=False),
     sa.Column('contract_type', sa.String(length=80), nullable=False),
-    sa.Column('salary_range', sa.String(length=9), nullable=False),
+    sa.Column('salary_range', sa.String(length=80), nullable=False),
     sa.Column('requirement', sa.String(length=80), nullable=False),
     sa.Column('offer_description', sa.String(length=250), nullable=False),
     sa.Column('social_benefit', sa.String(length=80), nullable=True),
