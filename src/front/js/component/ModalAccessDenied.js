@@ -21,7 +21,10 @@ export const ModalAccessDenied = ({ close }) => {
 					<div className="modal-body">
 						<div className="mb-3">
 							<div className="mx-1 cuerpoconfirmacion">
-								<h6 className="tituloconf"> *** ACCESO DENEGADO PARA ESTE TIPO DE PERFIL ***</h6>
+								<h6 className="tituloconf text-center">
+									{" "}
+									*** ACCESO DENEGADO PARA ESTE TIPO DE PERFIL ***
+								</h6>
 							</div>
 						</div>
 					</div>

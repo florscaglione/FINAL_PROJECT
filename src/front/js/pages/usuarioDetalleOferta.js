@@ -19,6 +19,7 @@ export const DetalleOferta = () => {
 		} else {
 			console.log("Sin oferta");
 		}
+		window.scrollTo(0, 0);
 	}, []);
 
 	const getInscriptionUser = async () => {
