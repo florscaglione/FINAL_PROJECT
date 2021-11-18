@@ -11,6 +11,7 @@ class User(db.Model):
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(15), unique=False, nullable=False)
     birth_date = db.Column(db.Date(), unique=False, nullable=True)
+    image_url= db.Column(db.String(250), unique=False, nullable=True)
 
     inscriptions = db.relationship('Inscription', backref=db.backref('user', lazy=True))
 
@@ -33,7 +34,8 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "phone": self.phone,
-            "birth_date": self.birth_date.strftime("%Y-%m-%d")
+            "birth_date": self.birth_date.strftime("%Y-%m-%d"),
+            "image_url": self.image_url
         }
         
     def save(self):

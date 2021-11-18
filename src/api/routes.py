@@ -10,11 +10,17 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from datetime import datetime, timedelta
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import os # Para poder utilizar la variables entorno que hemos importado de cloudinary al .env
+
 import bcrypt
 from api.encrypted import check_password_hash, encrypted_pass
 
 api = Blueprint('api', __name__)
 
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg']) # Array de extensiones permitidas para subir fotos a Cloudinary
 
 ##############
 ##   USER   ##
@@ -80,6 +86,40 @@ def update_user_info():
     db.session.commit()
 
     return jsonify(user.serialize()), 200
+
+# Subir imagen a un usuario ya existente
+@api.route('/upload-file', methods=['POST'])
+@jwt_required()
+def upload_file():
+    #el usuario que se le ingresa la imagen
+    userId = get_jwt_identity() #
+
+    user = User.query.get(userId)
+
+    #congif cloudinary
+    cloudinary.config(
+        cloud_name= os.getenv('CLOUD_NAME'),
+        api_key= os.getenv('API_KEY'),
+        api_secret= os.getenv('API_SECRET')
+    )
+
+    #para subir solo una imagen
+    file_upload = request.files.get('file') # Recibir el archivo cargado en el input de la vista newcv
+    print(file_upload)
+    if file_upload:
+        print(file_upload.filename)
+        file_name=file_upload.filename # El archivo es un objeto, se incluye el nombre del archivo y necesitamos verificar la extensión
+        #validar la extension del archivo
+        if file_upload.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS: #Agarro el nombre del archivo y separamos la extensión para poder comprobar que esta permitida
+            upload_result = cloudinary.uploader.upload(file_upload) #Enviamos directamente a Cloudinary la foto del usuario
+            print(upload_result) #Sirve para ver la respuesta de Cloudinary al enviar el archivo, vemos que es lo que vamos a guardar en la base de datos
+            if upload_result:
+                user.image_url = upload_result.get('secure_url') #Guardamos en base de datos la url que nos devuelve Cloudinary
+                user.save() 
+                  
+                return jsonify(user.serialize()), 200
+
+    return jsonify("Image format invalid"), 400
 
 # Eliminar usuario:  (PROBADO EN POSTMAN Y OK!)
 @api.route('/user/<int:userId>', methods=['DELETE'])

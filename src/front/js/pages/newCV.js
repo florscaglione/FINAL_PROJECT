@@ -12,6 +12,7 @@ export const NewCV = () => {
 	const { store, actions } = useContext(Context);
 	const [professions, setProfessions] = useState([]);
 	const [professionSelected, setProfessionSelected] = useState(null);
+	const [files, setFiles] = useState(null);
 
 	console.log("=======", professionSelected);
 
@@ -69,6 +70,29 @@ export const NewCV = () => {
 
 	console.log("userInfo", store.userInfo);
 
+	const save = async () => {
+		console.log("This are the files", files);
+
+		const data = new FormData(); // FormData envia los datos con el formato clave valor
+		data.append("file", files[0]);
+		console.log("FILE CLOUDINARY", data);
+		const token = localStorage.getItem("token"); // Almacenar el token en una variable desde el localStorage
+		if (token && token != "" && token != undefined) {
+			const response = await fetch(`${process.env.BACKEND_URL}api/upload-file`, {
+				method: "POST",
+				headers: {
+					Authorization: "Bearer " + token // Autorización para enviar el token, importante no quitar el espacio del "Bearer "
+				},
+				body: data
+			});
+			if (response.ok) {
+				actions.userGet();
+			} else {
+				alert("Formato de la imagen no válida");
+			}
+		}
+	};
+
 	return (
 		<>
 			{store.userInfo ? (
@@ -93,8 +117,21 @@ export const NewCV = () => {
 										</div>
 										<div className="col-3">
 											<div className="jumbotron jumbotron-fluid">
-												<img className="profile" src={profile} width="100" alt="profile" />
-												<button type="button" className="btn btn-outline-primary-wfh p-1">
+												<img
+													className="profile"
+													src={
+														store.userInfo.user_basic.image_url
+															? store.userInfo.user_basic.image_url
+															: profile
+													}
+													width="100"
+													alt="profile"
+												/>
+												<input type="file" onChange={e => setFiles(e.target.files)} />
+												<button
+													type="button"
+													onClick={save}
+													className="btn btn-outline-primary-wfh p-1">
 													<i className="fas fa-plus-square"> Añadir foto</i>
 												</button>
 											</div>
