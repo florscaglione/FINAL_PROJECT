@@ -9,9 +9,9 @@ export const CandidatosInscritos = () => {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-9">
+				<div className="col-9 mt-5">
 					<div className="card card-home">
-						<div className="card-header">
+						<div className="card-header titulocard">
 							FULL STACK DEVELOPER TELETRABAJO
 							{/* <button type="button" className="btn btn-outline-secondary m-1">
 								#Skill1
@@ -40,7 +40,7 @@ export const CandidatosInscritos = () => {
 						</div>
 					</div>
 					<table className="table table-striped-wfh table-hover font">
-						<thead>
+						<thead className="titulotabla">
 							<tr>
 								<th scope="col 3">Nombre</th>
 								<th scope="col 3">Apellidos</th>

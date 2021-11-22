@@ -37,7 +37,7 @@ export const VistaHomeEmp = () => {
 						)}
 					</div>
 					<div>
-						<h1 className="titulo text-center">
+						<h1 className="titulo text-center publihome">
 							¿Estás listo para contratar? Puedes contar con nosotros.{" "}
 						</h1>
 					</div>

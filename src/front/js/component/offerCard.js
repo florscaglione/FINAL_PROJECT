@@ -13,14 +13,14 @@ export const OfferCard = ({ offer }) => {
 	return (
 		<div className="container">
 			<div className="card my-2">
-				<div className="card-header d-flex justify-content-between">
-					<div className="d-flex justify-content-start">
+				<div className="card-header d-flex justify-content-between p-4 titulocard">
+					<div className="d-flex justify-content-start pl-3">
 						<h4>Oferta de trabajo #{offer.id}</h4>
 					</div>
 					<div className="d-flex justify-content-end">
 						<button
 							type="button"
-							className="btn btn-outline-primary"
+							className="btn btn-outline-primary border-0"
 							data-bs-toggle="modal"
 							data-bs-target={`#id${offer.id}`}>
 							<i className="fas fa-edit" />
@@ -31,9 +31,9 @@ export const OfferCard = ({ offer }) => {
 						<ModalCompanyOffer icon={"edit"} offer={offer} id={`id${offer.id}`} />
 					</div>
 				</div>
-				<div className="card-body-cv p-5">
-					<div className="row mt-5">
-						<div className="col-12 p-0 mt-5">
+				<div className="card-body-cv">
+					<div className="row">
+						<div className="col-12 p-5 mt-3">
 							<div className="row mb-4">
 								<div className="col-4 d-flex align-items-center">
 									<h5 className="infocv">Título: </h5>
@@ -80,7 +80,7 @@ export const OfferCard = ({ offer }) => {
 							</div>
 						</div>
 					</div>
-					<div className="row pb-2 mx-1 w-100 border-2 border-top">
+					<div className="row pb-5 w-100">
 						<div className="d-flex justify-content-between">
 							<Link to="/candidatosInscritos" type="button" className="btn btn-primary-wfh mt-3">
 								Candidatos inscritos

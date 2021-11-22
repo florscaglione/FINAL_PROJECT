@@ -58,20 +58,20 @@ export const BuscadorYFiltros = () => {
 			{alertModal ? <ModalAccessDenied close={() => setAlertModal(false)} /> : ""}
 			<form className=" buscador d-flex">
 				<input
-					className="form-control me-2"
+					className="form-control mt-4"
 					type="search"
 					placeholder="Localizar ofertas"
 					aria-label="Buscar"
 					onChange={handleChange}
 				/>
-				<button className="btn btn-outline" type="button">
+				<button className="btn btn-outline mt-4" type="button">
 					<i className="fas fa-search" />
 				</button>
 			</form>
 			{filteredResults.length == 0 && textSelected.length != 0 ? (
 				<div className="row">
 					<div className="col-12">
-						<div className="jumbotron jumbotron-fluid mt-5 jumbofertas">
+						<div className="jumbotron jumbotron-fluid mt-4 jumbofertas">
 							<div className="container p-0">
 								<p className="text-align-center sinofertas">
 									Lo sentimos, no hemos localizado ninguna oferta con esa descripción. Ajuste la

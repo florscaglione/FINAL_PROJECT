@@ -68,10 +68,10 @@ export const DetalleOferta = () => {
 		<>
 			{store.offerInfo ? (
 				<div className="container">
-					<div className="row mt-5">
+					<div className="row">
 						<div className="col-9 p-0 mt-5">
 							<div className="card">
-								<div className="card-header ">
+								<div className="card-header titulocard">
 									<p className="m-3"> {store.offerInfo.title}</p>
 								</div>
 								<div className="card-body-cv p-5">

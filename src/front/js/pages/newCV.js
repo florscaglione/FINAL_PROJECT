@@ -73,48 +73,58 @@ export const NewCV = () => {
 		<>
 			{store.userInfo ? (
 				<div className="container">
-					<div className="row mt-5">
+					<div className="row mt-3">
 						<div className="col-9 p-0 mt-5">
 							<div className="card">
-								<div className="card-header d-flex justify-content-between card-header-cv ">
+								<div className="card-header d-flex justify-content-between card-header-cv titulocard">
 									<h5 className="infocv">Datos personales</h5>
 									<ModalUserData info={store.userInfo.user_basic} />
 								</div>
-								<div className="card-body-cv p-3">
+								<div className="card-body-cv p-4">
 									<div className="row">
 										<div className="col-10">
-											<div className="col-6 d-flex align-items-center">
-												<h5 className="infocv col-3 d-flex align-items-center">Nombre: </h5>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv ">Nombre: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.userInfo.user_basic.name}
+												</div>
 											</div>
-											<div className="card-header-det col-9 mt-1 d-flex align-items-center">
-												{store.userInfo.user_basic.name}
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Apellidos: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.userInfo.user_basic.lastname}
+												</div>
 											</div>
-											<div className="col-4 d-flex align-items-center">
-												<h5 className="infocv">Apellidos: </h5>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Fecha nacimiento: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{" "}
+													{store.userInfo.user_basic.birth_date}
+												</div>
 											</div>
-											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-												{store.userInfo.user_basic.lastname}
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Email: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{" "}
+													{store.userInfo.user_basic.email}
+												</div>
 											</div>
-											<div className="col-4 d-flex align-items-center">
-												<h5 className="infocv">Fecha nacimiento: </h5>
-											</div>
-											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-												{" "}
-												{store.userInfo.user_basic.birth_date}
-											</div>
-											<div className="col-4 d-flex align-items-center">
-												<h5 className="infocv">Email: </h5>
-											</div>
-											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-												{" "}
-												{store.userInfo.user_basic.email}
-											</div>
-											<div className="col-4 align-items-right">
-												<h5 className="infocv">Teléfono: </h5>
-											</div>
-											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-												{" "}
-												{store.userInfo.user_basic.phone}
+											<div className="row">
+												<div className="col-4 align-items-right mt-3">
+													<h5 className="infocv">Teléfono: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{" "}
+													{store.userInfo.user_basic.phone}
+												</div>
 											</div>
 										</div>
 										<div className="col-2">
@@ -128,50 +138,52 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card-body-cv mt-5">
-								<div className="card-header d-flex justify-content-between ml-5">
-									<h5 className="infocv">Perfil profesional</h5>
-									<div className="d-flex justify-content-end">
-										<button type="button" className="btn btn-outline-primary-wfh">
-											<i className="fas fa-caret-down" />
-										</button>
-										<button type="button" className="btn btn-outline-primary-wfh">
-											<i className="fas fa-plus" />
-										</button>
+							<div className="card mt-5">
+								<div className="card-body-cv ">
+									<div className="card-header d-flex justify-content-between ml-5 titulocard">
+										<h5 className="infocv mt-2">Perfil profesional</h5>
+										<div className="d-flex justify-content-end">
+											<button type="button" className="btn btn-outline-primary-wfh">
+												<i className="fas fa-caret-down" />
+											</button>
+											<button type="button" className="btn btn-outline-primary-wfh">
+												<i className="fas fa-plus" />
+											</button>
+											<button type="button" className="btn btn-outline-primary-wfh ">
+												<i className="far fa-trash-alt" />
+											</button>
+										</div>
 									</div>
-								</div>
-								<div className="card-body-cv mt-5">
-									<div>
-										<h5 className="card-title infocv">Seleccione perfil:</h5>
-										<div className="row">
-											<div className="d-flex justify-content-start">
-												<div className="btn-group w-100 btn-sm mt-4">
-													<select onChange={selectProfession}>
-														{professions.map(profession => (
-															<option key={profession.id} value={profession.id}>
-																{profession.name}
-															</option>
-														))}
-														<option selected>ELIGE TU PROFESIÓN</option>
-													</select>
-													<div>
-														<input
-															className="imput input-group-lg imputcv"
-															value={professionSelected || store.userInfo.professions}
-															disabled
-														/>
+									<div className="card-body-cv m-4">
+										<div>
+											<h5 className="card-title infocv pl-3">Seleccione perfil:</h5>
+											<div className="row">
+												<div className="d-flex justify-content-start">
+													<div className="btn-group w-100 btn-sm">
+														<select onChange={selectProfession}>
+															{professions.map(profession => (
+																<option key={profession.id} value={profession.id}>
+																	{profession.name}
+																</option>
+															))}
+															<option selected>ELIGE TU PROFESIÓN</option>
+														</select>
+														<div>
+															<input
+																className="imput input-group-lg imputcv"
+																value={professionSelected || store.userInfo.professions}
+																disabled
+															/>
+														</div>
 													</div>
 												</div>
-												<button type="button" className="btn btn-outline-primary-wfh ">
-													<i className="far fa-trash-alt" />
-												</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className="card-body-cv mt-5">
-								<div className="card-header d-flex justify-content-between card-header-cv">
+							<div className="card mt-5">
+								<div className="card-header d-flex justify-content-between card-header-cv titulocard">
 									<h5>Formación</h5>
 									<div className="d-flex justify-content-end">
 										<button
@@ -194,50 +206,78 @@ export const NewCV = () => {
 										{/*Duda resuelta, esta en el botón de arriba*/}
 									</div>
 								</div>
-								<div className="card-body-cv mt-5">
+								<div className="card-body-cv">
 									<div className="row">
-										<div className="col-12 m-0">
+										<div className="col-12 m-4">
 											{store.userInfo.trainings && store.userInfo.trainings.length > 0
 												? store.userInfo.trainings.map((training, index) => {
 														console.log("+++++++", training);
 														return (
 															<div key={index} className="row">
 																<div className="col-10">
-																	<h5 className="infocv">Titulación: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.academic_degree}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv">Titulación: </h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center ">
+																			{" "}
+																			{training.academic_degree}
+																		</div>
 																	</div>
-																	<h5 className="infocv">Centro de estudios: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.study_center}{" "}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv">
+																				Centro de estudios:{" "}
+																			</h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																			{" "}
+																			{training.study_center}{" "}
+																		</div>
 																	</div>
-																	<h5 className="infocv">Estudios reglados: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.is_academic ? "Sí" : "No"}{" "}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv">
+																				Estudios reglados:{" "}
+																			</h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																			{" "}
+																			{training.is_academic ? "Sí" : "No"}{" "}
+																		</div>
 																	</div>
-																	<h5 className="infocv">Fecha inicio: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.start_date}{" "}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv">Fecha inicio: </h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																			{" "}
+																			{training.start_date}{" "}
+																		</div>
 																	</div>
-																	<h5 className="infocv">Fecha fin: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.end_date}{" "}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv">Fecha fin: </h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																			{" "}
+																			{training.end_date}{" "}
+																		</div>
 																	</div>
-																	<h5 className="infocv"> En curso: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{training.in_progress ? "Sí" : "No"}{" "}
+																	<div className="row">
+																		<div className="col-4 d-flex align-items-center mt-3">
+																			<h5 className="infocv"> En curso: </h5>
+																		</div>
+																		<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																			{" "}
+																			{training.in_progress ? "Sí" : "No"}{" "}
+																		</div>
 																	</div>
 																</div>
 																<div className="col-2 d-flex justify-content-end">
 																	<button
 																		type="button"
-																		className="btn btn-outline-primary-wfh"
+																		className="btn btn-outline-primary-wfh m-5"
 																		data-bs-toggle="modal"
 																		data-bs-target={`#id${training.id}`}>
 																		<i className="fas fa-edit" />
@@ -256,10 +296,9 @@ export const NewCV = () => {
 									</div>
 								</div>
 							</div>
-							<div className="card card-cv mt-5">
-								<div className="card-header d-flex justify-content-between">
+							<div className="card mt-5">
+								<div className="card-header d-flex justify-content-between card-header-cv titulocard">
 									<h5>Experiencia</h5>
-
 									<div className="d-flex justify-content-end">
 										<button
 											type="button"
@@ -271,61 +310,77 @@ export const NewCV = () => {
 										<ModalUserExperience icon={"plus"} info={null} id={"idModalExperience"} />
 									</div>
 								</div>
-								<div className="card-body-cv">
-									<div className="row">
-										<div className="col-12 m-0">
-											{store.userInfo.experiences && store.userInfo.experiences.length > 0
-												? store.userInfo.experiences.map((experience, index) => {
-														return (
-															<div key={index} className="row">
-																<div className="col-10">
+								<div className="card-body-cv p-4">
+									{store.userInfo.experiences && store.userInfo.experiences.length > 0
+										? store.userInfo.experiences.map((experience, index) => {
+												return (
+													<div key={index} className="row">
+														<div className="col-10">
+															<div className="row">
+																<div className="col-4 d-flex align-items-center mt-3">
 																	<h5 className="infocv">Titulación: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{experience.title}
-																	</div>
-																	<h5 className="infocv">Descripción: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{experience.description}
-																	</div>
-																	<h5 className="infocv"> Fecha inicio: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{experience.start_date}
-																	</div>
-																	<h5 className="infocv">Fecha fin: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{experience.end_date}
-																	</div>
-																	<h5 className="infocv">En curso: </h5>
-																	<div className="card-header-det col-8 mt-1 d-flex align-items-center">
-																		{" "}
-																		{experience.in_progress ? "Sí" : "No"}
-																	</div>
 																</div>
-																<div className="col-2 d-flex justify-content-end">
-																	<button
-																		type="button"
-																		className="btn btn-outline-primary-wfh"
-																		data-bs-toggle="modal"
-																		data-bs-target={`#idexp${experience.id}`}>
-																		<i className="fas fa-edit" />
-																	</button>
-																	<ModalUserExperience
-																		key={index}
-																		icon={"edit"}
-																		info={experience}
-																		id={`idexp${experience.id}`}
-																	/>
+																<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																	{" "}
+																	{experience.title}
 																</div>
 															</div>
-														);
-												  })
-												: ""}
-										</div>
-									</div>
+															<div className="row">
+																<div className="col-4 d-flex align-items-center mt-3">
+																	<h5 className="infocv">Descripción: </h5>
+																</div>
+																<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																	{" "}
+																	{experience.description}
+																</div>
+															</div>
+															<div className="row">
+																<div className="col-4 d-flex align-items-center mt-3">
+																	<h5 className="infocv"> Fecha inicio: </h5>
+																</div>
+																<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																	{" "}
+																	{experience.start_date}
+																</div>
+															</div>
+															<div className="row">
+																<div className="col-4 d-flex align-items-center mt-3">
+																	<h5 className="infocv">Fecha fin: </h5>
+																</div>
+																<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+																	{" "}
+																	{experience.end_date}
+																</div>
+															</div>
+															<div className="row">
+																<div className="col-4 d-flex align-items-center mt-3">
+																	<h5 className="infocv">En curso: </h5>
+																</div>
+																<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+																	{" "}
+																	{experience.in_progress ? "Sí" : "No"}
+																</div>
+															</div>
+														</div>
+														<div className="col-2 d-flex justify-content-end">
+															<button
+																type="button"
+																className="btn btn-outline-primary-wfh "
+																data-bs-toggle="modal"
+																data-bs-target={`#idexp${experience.id}`}>
+																<i className="fas fa-edit" />
+															</button>
+															<ModalUserExperience
+																key={index}
+																icon={"edit"}
+																info={experience}
+																id={`idexp${experience.id}`}
+															/>
+														</div>
+													</div>
+												);
+										  })
+										: ""}
 								</div>
 							</div>
 							<button
@@ -334,9 +389,9 @@ export const NewCV = () => {
 								Dar de baja
 							</button>
 						</div>
-					</div>
-					<div className="col-3 text-center d-none d-md-block">
-						<SidebarUsuario />
+						<div className="col-3 text-center d-none d-md-block">
+							<SidebarUsuario />
+						</div>
 					</div>
 				</div>
 			) : (
