@@ -16,7 +16,7 @@ export const NavbarCompany = () => {
 					<div className="list-inline d-flex justify-content-end align-items-center">
 						<ul className="list-inline justify-content-center">
 							<li className="list-inline-item 1">
-								<Link to="/" className="nav-link linksnavbar pr-4" type="button">
+								<Link to="/perfil-empresa" className="nav-link linksnavbar pr-4" type="button">
 									Mi perfil
 								</Link>
 							</li>

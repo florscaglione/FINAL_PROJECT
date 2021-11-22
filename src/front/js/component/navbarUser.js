@@ -21,9 +21,9 @@ export const NavbarUser = () => {
 								</Link>
 							</li>
 							<li className="list-inline-item 2">
-								<div className="nav-link linksnavbar pr-5" type="button">
+								<Link to="/vista_ofertas_inscritas" className="nav-link linksnavbar pr-5" type="button">
 									Mis ofertas
-								</div>
+								</Link>
 							</li>
 							<li className="list-inline-item 3">
 								<Link
