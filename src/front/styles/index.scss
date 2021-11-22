@@ -6,7 +6,7 @@
 
 body{
   /*background-color:rgb(229, 247, 242);*/
-  background-image:url(../img/background2.jpg);
+  background-image:url(../img/background.jpg);
   background-size:cover;
   background-attachment: fixed;
   background-position: center center;
@@ -46,7 +46,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
 
 /*Estilos botones*/
 .btn-primary-wfh , .btn-primary-wfh :hover, .btn-primary-wfh :active, .btn-primary-wfh :visited, .btn-primary-wfh :focus, .btn-primary-wfh:active:focus {
-    background-color: rgb(44, 48, 111);
+    background-color: rgb(187, 143, 58);
     padding-top: 0.8em;
     padding-bottom: 0.8em;
     padding-right: 1.6em;
@@ -60,20 +60,20 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     border:none;
 }
 .btn-primary-wfh:active:focus{
-    background-color: rgb(165, 228, 220);
+    background-color: rgb(52, 133, 131);
     color:#ffffff;
-    box-shadow:  rgb(44, 48, 111) ;
+    box-shadow: rgb(187, 143, 58) ;
 }
 .btn-primary-wfh:hover{
-    background-color:rgb(165, 228, 220);
+    background-color:rgb(52, 133, 131);
     color:#ffffff;
-    box-shadow:  rgb(44, 48, 111);
+    box-shadow:  rgb(187, 143, 58);
 }
 .btnoferta{
   padding-left: 25px;
 }
 .btn-outline-secondary{
-  background-color: rgb(255, 208, 72);
+  background-color: rgb(52, 133, 131);
   padding-top: 0.8em;
   padding-bottom: 0.8em;
   padding-right: 1.6em;
@@ -107,7 +107,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
 
 } 
 .nav-link:focus{
-  color:rgb(44, 48, 111) ;
+  color:rgb(52, 133, 131) ;
 }
 
 /*.btn-primary-oferta: pendiente añadir estilos igual al resto de botones pero aumentando el margin para que no se quede debajo de la navbar*/
@@ -118,12 +118,12 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     background-color: white;/* para poner fondo de puntito las dos propiedades de background*/
     font-family: 'Poppins', sans-serif;
     color:#525253;
-    box-shadow: 0 0 4px 3px rgb(255, 208, 72);
+    box-shadow: 0 0 4px 3px rgb(187, 143, 58);
     letter-spacing: 1px;
     border-radius: 25px;      
 }
 .titulocard{
-  border-color: rgb(255, 208, 72);
+  border-color: rgb(187, 143, 58);
   border-width: 3px;
   border-radius: 25px; 
 }
@@ -152,11 +152,11 @@ box-shadow: 0 0 3px 3px #1a1a1a;
   }
   .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
-    color:#18d4ca;
+    color:rgb(52, 133, 131);
   }
   .card-home:hover{
     transform: scale(1.05);
-    box-shadow: 10px 10px 15px rgb(165, 228, 220);
+    box-shadow: 10px 10px 15px rgb(187, 143, 58);
   }
   .card-home::before, .card-home::after {
     position: absolute;
@@ -697,7 +697,7 @@ padding: 0;
   opacity: 95%;
 }
 .publihome{
-  color:#3e3e3f;
+  color:white;
   text-shadow: #3e3e3f -2px 2px;
 }
 
