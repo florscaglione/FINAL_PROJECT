@@ -39,7 +39,7 @@ export const CandidatosInscritos = () => {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-9">
+				<div className="col-9 mt-5">
 					<OfferUserInscripted id={params.id} />
 
 					{usersInscripted.length == 0 ? (

@@ -19,13 +19,25 @@ export const VistaOfertasPubli = () => {
 	return (
 		<>
 			{store.companyOffersList && store.companyOffersList.length == 0 ? (
-				<div className="container">
-					<div className="row rows-cols-2">
-						<div className="col-9">
-							<div className="vacio">
+				<div className="container ">
+					<div className="row rows-cols-2 ">
+						<div className="col-9 ">
+							<div className="vacio ">
 								<p className="cabecera mb-5">
 									<h4>No hay ofertas disponibles</h4>
 								</p>
+								<button
+									type="button"
+									className="btn btn-primary-wfh btn-sm justify-content-end mt-5 btnoferta"
+									data-bs-toggle="modal"
+									data-bs-target="#idCreateOfferCompany">
+									<i className="fas fa-plus" /> Nueva ofertas
+								</button>
+								<ModalCompanyOffer
+									icon={"plus"}
+									offer={localStorage.getItem("companyLoggedIn")}
+									id={"idCreateOfferCompany"}
+								/>
 							</div>
 						</div>
 						<div className="col-3 text-center mt-4">
@@ -39,7 +51,7 @@ export const VistaOfertasPubli = () => {
 						<div className="col-9">
 							<button
 								type="button"
-								className="btn d-grid d-md-flex btn-primary-wfh btn-sm justify-content-end mt-5 ms-4"
+								className="btn btn-primary-wfh btn-sm justify-content-end mt-5 btnoferta"
 								data-bs-toggle="modal"
 								data-bs-target="#idCreateOfferCompany">
 								<i className="fas fa-plus me-3 " /> Nueva oferta

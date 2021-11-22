@@ -20,7 +20,7 @@ export const HomeUsuarioSinLoguear = () => {
 			{store.allOffersList && store.allOffersList.length == 0 ? (
 				<div className="container">
 					<div className="row">
-						<div className="col-9 text-center">
+						<div className="col-9 text-center mt-1">
 							<BuscadorYFiltros />
 						</div>
 						<div className="col-3 text-center d-none d-md-block mt-4">
@@ -30,8 +30,8 @@ export const HomeUsuarioSinLoguear = () => {
 				</div>
 			) : (
 				<div className="container buscadortexto">
-					<div className="row mt-4">
-						<div className="col-9 text-right mt-5">
+					<div className="row">
+						<div className="col-9 text-right mt-1">
 							<BuscadorYFiltros />
 						</div>
 						<div className="col-3 text-center d-none d-md-block">

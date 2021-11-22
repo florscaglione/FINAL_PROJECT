@@ -14,19 +14,19 @@ export const Navbar = () => {
 				<div className="container d-flex justify-content-between">
 					{" "}
 					<a className="navbar-brand logonavbar" href="/">
-						<img className="logonavbar" src={logoWfh} width="250" alt="starwars logo" />
+						<img className="logonavbar" src={logoWfh} width="200" alt="starwars logo" />
 					</a>
 					<div className="d-flex justify-content-end">
 						<button
 							type="button"
-							className="btn btn-primary-wfh  mx-1"
+							className="btn btn-primary-wfh mx-1 botonnav"
 							data-bs-toggle="modal"
 							data-bs-target="#userLoginModal">
 							Login Usuario
 						</button>
 						<button
 							type="button"
-							className="btn btn-primary-wfh mx-1"
+							className="btn btn-primary-wfh mx-1 botonnav"
 							data-bs-toggle="modal"
 							data-bs-target="#companyLoginModal">
 							Login Empresa

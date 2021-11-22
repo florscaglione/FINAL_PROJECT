@@ -20,27 +20,27 @@ export const Footer = () => (
 		<div className="col">
 			<ul className="list-inline justify-content-center">
 				<li className="list-inline-item 1">
-					<a href="#" className="nav-link p-0">
+					<a href="#" className="nav-link p-0 linksfooter">
 						Sitemap
 					</a>
 				</li>
 				<li className="list-inline-item 2">
-					<a href="#" className="nav-link p-0">
+					<a href="#" className="nav-link p-0 linksfooter">
 						Quienes Somos
 					</a>
 				</li>
 				<li className="list-inline-item 3">
-					<a href="#" className="nav-link p-0">
+					<a href="#" className="nav-link p-0 linksfooter">
 						Privacidad
 					</a>
 				</li>
 				<li className="list-inline-item 4">
-					<a href="#" className="nav-link p-0">
+					<a href="#" className="nav-link p-0 linksfooter">
 						FAQs
 					</a>
 				</li>
 				<li className="list-inline-item 5">
-					<a href="#" className="nav-link p-0">
+					<a href="#" className="nav-link p-0 linksfooter">
 						Aviso Legal
 					</a>
 				</li>

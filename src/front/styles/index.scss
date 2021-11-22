@@ -1,80 +1,139 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 /*Estilo background*/
 
 body{
-  background-color:rgb(229, 247, 242);
-  font-family: 'Cantata One', serif;
+  /*background-color:rgb(229, 247, 242);*/
+  background-image:url(../img/background.jpg);
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #FFF;
+  font-family: 'Poppins', sans-serif;
   font-size:10px;
   color:#3e3e3f;
   padding-top:5%; /* para poder ver los botones de acceso temporal*/
   overflow-x: hidden;
+  height:100vh;
 }
+/*Estilos Navbars*/
 .navbar-wfh, .container-body{
-    background: rgb(229, 247, 242);
-    padding-top: 0;
-    padding-bottom:0;
-    font-family: 'Cantata One', serif;
-    letter-spacing: 1px;
+  /*background: rgb(229, 247, 242);*/
+  background:white;
+  padding-top: 0;
+  padding-bottom:0;
+  }
+.linksnavbar{
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  color:#525253;
+  font-size: 1.5em;
+  text-shadow: rgb(173, 172, 172) -1px 1px;
 }
-
+.linksnavbar:active, .linksnavbar:hover {
+  color: rgb(113, 159, 176);
+}
 .navbar-inverse {
-  z-index: 10; 
-  background-color: #1a1a1a;
-  box-shadow: 0 0 3px 3px #1a1a1a;
+z-index: 10; 
+background-color: #1a1a1a;
+box-shadow: 0 0 3px 3px #1a1a1a;
 }
 
 .navbar-brand {height: auto; padding: 0.5em;}
 
-.container-fluid{
-  margin-right: 7%;
-}
-
 /*Estilos botones*/
 .btn-primary-wfh , .btn-primary-wfh :hover, .btn-primary-wfh :active, .btn-primary-wfh :visited, .btn-primary-wfh :focus, .btn-primary-wfh:active:focus {
-    background-color: rgb(113, 159, 176);
-    border-color:rgb(113, 159, 176);
-    padding-right: 1.5em;
-    padding-left:1.5em;
+    background-color: rgb(187, 143, 58);
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    padding-right: 1.6em;
+    padding-left:1.6em;
+    margin-bottom: 0.8em;
+    margin-left: 2.5em;
     letter-spacing: 0.5px;
     color:#ffffff;
-    box-shadow: 0 0 4px 3px rgb(212, 241, 243);
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+    border:none;
 }
 .btn-primary-wfh:active:focus{
-    background-color: rgb(174, 225, 225);
+    background-color: rgb(52, 133, 131);
+    color:#ffffff;
+    box-shadow: rgb(187, 143, 58) ;
 }
 .btn-primary-wfh:hover{
-    background-color:rgb(117, 184, 168);
+    background-color:rgb(52, 133, 131);
+    color:#ffffff;
+    box-shadow:  rgb(187, 143, 58);
 }
+.btnoferta{
+  padding-left: 25px;
+}
+.btn-outline-secondary{
+  background-color: rgb(52, 133, 131);
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  padding-right: 1.6em;
+  padding-left:1.6em;
+  margin-bottom: 0.8em;
+  margin-left: 2.5em;
+  letter-spacing: 0.5px;
+  border: none;
+  color:#3e3e3f;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 15px;
+    
 
+}
+.btn-outline-primary:hover{
+  background-color:white;
+  color: #3e3e3f ;
+
+}
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+  background-color: rgb(159, 200, 190);
+}
 .Tag {
   background-color: rgb(113, 159, 176);
   border-color:rgb(113, 159, 176);
 }
 
 .Tag:active , .Tag:hover{
-  background-color:rgb(229, 247, 242);
+ /* background-color:rgb(229, 247, 242);*/
+ background-color:white;
 
 } 
+.nav-link:focus{
+  color:rgb(52, 133, 131) ;
+}
 
 /*.btn-primary-oferta: pendiente añadir estilos igual al resto de botones pero aumentando el margin para que no se quede debajo de la navbar*/
 
 /*Estilo Cards*/
 .card-home{/*para elevar las cards*/
     margin-top: 0%;
-    background-color: #f0e9e9;/* para poner fondo de puntito las dos propiedades de background*/
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    font-family: 'Cantata One', serif;
+    background-color: white;/* para poner fondo de puntito las dos propiedades de background*/
+    font-family: 'Poppins', sans-serif;
     color:#525253;
-    box-shadow: 0 0 4px 3px rgb(247, 226, 226);
-    letter-spacing: 1px;   
+    box-shadow: 0 0 4px 3px rgb(187, 143, 58);
+    letter-spacing: 1px;
+    border-radius: 25px;      
+}
+.titulocard{
+  border-color: rgb(187, 143, 58);
+  border-width: 3px;
+  border-radius: 25px; 
+}
+.card-img-top{
+  border-top-left-radius:25px;
+  border-top-right-radius:25px;
 }
 .card-title{
-  font-family: 'Cantata One', serif;
-
+  font-family: 'Poppins', sans-serif;
+  text-shadow: rgb(173, 172, 172) -1px 1px;
 }
 .card-home{
     transition:0.5s;
@@ -82,6 +141,8 @@ body{
   }
   .card-title{  
     transition:1s;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     cursor:pointer;
   }
   .card-title i{  
@@ -91,11 +152,11 @@ body{
   }
   .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
-    color:#18d4ca;
+    color:rgb(52, 133, 131);
   }
   .card-home:hover{
     transform: scale(1.05);
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    box-shadow: 10px 10px 15px rgb(187, 143, 58);
   }
   .card-home::before, .card-home::after {
     position: absolute;
@@ -121,34 +182,40 @@ body{
   .card-text{
     margin-top:20px ;
     text-align: justify;
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
     color:#3e3e3f;
     font-size: small;
   }
   .card-empresa  {
   
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
     color:#3e3e3f;
+    padding-bottom: 0.8em;
       letter-spacing: 1px;
       font-size: medium;
   }
   
   .card-usuario {
-  
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 0.8em;
     color:#3e3e3f;
       letter-spacing: 1px;
       font-size: medium;
-  
+    text-align:justify;   
   }
   .card-text{
     margin-bottom:40px;
     
   }
   .puesto{
-    font-family: 'Cantata One', serif;
-    font-size: medium;
-    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-style: bold;
+    color:#3e3e3f;
+    text-shadow: rgb(146, 146, 146) -1px 1px,rgb(236, 235, 235) -2px 2px;
+
+  }
+  .requisitos{
+    text-shadow: rgb(190, 188, 188) -1px 1px,rgb(236, 235, 235) -2px 2px;
   }
   .empresa{
     font-size: medium;
@@ -156,7 +223,7 @@ body{
   .detalle{
     margin-top:20px ;
     text-align: justify;
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
     color:#3e3e3f;
     font-size: small;
   }
@@ -168,16 +235,29 @@ body{
     padding-top: 8%;
   }
   .card-body-detalleOferta{
-    background-color: #f0e9e9;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    background-color: white;
+
     padding: 2em;
     margin-top:2em;
   }
  
   .card-header {
-    background-color:#cbeee6;
     color:#3e3e3f;
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em;
+    text-shadow: rgb(146, 146, 146) -1px 1px,rgb(236, 235, 235) -2px 2px;
+    padding-top: 0.5em;
+    padding-bottom:0.5em;
+  }
+  .card-header-det{
+    
+    color:#3e3e3f;
+    font-size: 1.6em;
+    font-family: 'Poppins', sans-serif;
+    text-align: start;
+    padding-right: 4em;
+
+   
   }
 
   .home-texto{
@@ -193,17 +273,19 @@ body{
   margin-bottom: 0;
   padding-left: 2em;
 }
-
+.card{
+  border-radius: 25px; }
 .card-body-cv{
-  background-color: #f0e9e9;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a5e8e8' fill-opacity='0.53' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    padding: 2em;
+  background-color:white;
+  border-radius: 25px;
+ 
 }
   /*Estilo footer*/
 
   
 .footer .row, .col , .col-12 {
     margin-top: 5%;
+    
 }
 .iconoSocial{
   margin-right: 2em;
@@ -213,17 +295,20 @@ footer {
   background-image: url(../img/footerImage.png);
   background-size:cover;
   background-repeat: no-repeat;
-  font-family: 'Cantata One', serif, bold;
+  font-family: 'Poppins', sans-serif, bold;
   margin-right: 6rem;
   margin-left: 6rem;
   font-size: 1.5em;
+  opacity: 95%;
 }
-.list, .nav-link, a{
-  margin-right: 3.5em;
+.linksfooter{
+  margin-right: 2.5em;
   color:rgb(37, 37, 37);
   font-size: 1em;
 }
-
+.linksfooter:active, .linksfooter:hover {
+  color:rgb(113, 159, 176);
+}
 .text-muted-copyright{
   font-size: 9px;
   color: black;
@@ -250,7 +335,7 @@ footer {
 
 .display-4-titulo-fluid{
   padding-top: 6em;
-  font-family: 'Cantata One', serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   text-shadow: rgb(185, 218, 233) -1px 1px, rgb(15, 14, 14) -2px 2px, rgb(185, 218, 233) -3px 3px, rgb(185, 218, 233) -4px 4px, rgb(185, 218, 233) -5px 5px;
   color: rgb(76, 147, 158);
@@ -393,7 +478,7 @@ footer {
   }
   .imagenEmp:hover{
     transform: scale(1.05);
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    box-shadow: 10px 10px 15px rgb(165, 228, 220);
   }
   .imagenEmp::before, .card-home::after {
     position: absolute;
@@ -420,17 +505,17 @@ footer {
     font-size: 2em;
     margin-top: 3em;
     margin-bottom: 3em;
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
   }
 
   .infoEmp{
     text-align: justify;
     color:#525253;
     font-size: medium;
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
   }
   .tituloCardEmp{
-    font-family: 'Cantata One', serif;
+    font-family: 'Poppins', sans-serif;
     margin-top:2em;
     text-align: center;
     text-shadow: rgb(15, 14, 14) -0.5px 0.5px ;
@@ -455,24 +540,31 @@ footer {
 .table{
   margin-top:8em;
   
+  
+}
+.titulotabla{
+  border-radius: 40px; 
+  background-color: rgb(255, 208, 72);
 }
 thead{
-  background-color:#a8d6cf; ;
+  background-color:white ;
 }
 .vacio{
   margin-top: 6em;
 }
 /* estilo formularios*/
 .form-control, .mb-3, .form-label{
-  font-family: 'Cantata One', serif;
-  font-size: 1.2em;
+  font-family: 'Poppins', sans-serif;
+  
 }
 .modal-title{
-  font-family: 'Cantata One', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2em;
 }
+
 .modal-body{
-background-color:rgb(229, 247, 242);}
+background-color:rgb(229, 247, 242);
+font-size: 2em;}
 
 .btn-link{
   color:rgb(113, 159, 176);
@@ -491,7 +583,7 @@ background-color:rgb(229, 247, 242);}
   margin: 1.5em;
   text-align: justify;
   font-size: 1em;
-  font-family: 'Cantata One', serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .tituloconf{
@@ -501,10 +593,10 @@ background-color:rgb(229, 247, 242);}
 
 /* estilos cv */
 .card-header-cv{
-  padding-bottom: 1em;
-  padding-top: 1em;
-  padding-left: 2em;
-  border:none; 
+  padding-bottom: 0.5em;
+  padding-top: 0.8em;
+  padding-left: 0.8em;
+ 
 }
 .btn-outline-primary{
   color:  #3e3e3f;
@@ -512,23 +604,32 @@ background-color:rgb(229, 247, 242);}
 }
 .card-cv{
   border:none; 
-  font-family: 'Cantata One', serif;
+  font-family: 'Poppins', sans-serif;
   color:#3e3e3f;
   font-size:1.8em;
 }
 .infocv{
   color:#3e3e3f;
-  font-style: italic;
+  text-shadow: rgb(146, 146, 146) -1px 1px,rgb(236, 235, 235) -2px 2px;
+  font-family: 'Poppins', sans-serif;
+ 
 }
-#userDataLabel, #userAcademicLabel, #userExperienceLabel, #userDataLabel{
-  font-size:1.2em;
+#userDataLabel, #userDataLabel{
+  font-size:0.8em;
+}
+#userAcademicLabel{
+  font-size: 1.9em;
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
+}
+#userExperienceLabel{
+  font-size: 1.9em;
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
 }
 .form-control-cv{
   font-size: 1rem;
 }
 .imputcv{
   margin-left:3em;
-  font-style: italic;
   display: flex;
 }
 .jumbofertas{
@@ -567,11 +668,11 @@ padding: 0;
   padding-right: 0.5em;
 }
 .dropdown-item:active{
- background-color:  rgb(113, 159, 176);
+ background-color:  white;
 }
 .dropdown-item{
   color: #525253;
-  background-color:rgb(229, 247, 242);
+  background-color:white;
 }
 .link,.dropusuario{
   font-size: 1em;
@@ -585,23 +686,51 @@ padding: 0;
   justify-content: between;
 }
 .font{
-  background-color:rgb(229, 247, 242);
-  font-family: 'Cantata One', serif;
+  background-color:white;
+  font-family: 'Poppins', sans-serif;
   font-size:16px;
   color:#3e3e3f;
   padding-top:5%; /* para poder ver los botones de acceso temporal*/
   overflow-x: hidden;
 }
+.cardsinfo{
+  opacity: 95%;
+}
+.publihome{
+  color:white;
+  text-shadow: #3e3e3f -2px 2px;
+}
+
+
+
 @media (max-width: 576px) {
+  .botonnav{
+    padding-right: 6px;
+    padding-left: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 11px;
+  }
+  .cardsinfo{
+    width:20vw;
+      }
+  .tituloCardEmp{
+    font-size: 1.4em;
+  }
+  .publihome{
+    margin-top: 40px;
+  }
   .prueba{
     display: block;
   }
   .card-home{
-    margin-top:10em;
+    margin-top: 5em;
     align-content: center;
   }
   .logonavbar{
     width:150px;
+    padding:0px;
+    margin-right: 15px;
   }
   .social{
     height: 25px;
