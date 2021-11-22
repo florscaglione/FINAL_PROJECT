@@ -24,8 +24,12 @@ export const CompanyRegisterConfirmation = () => {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary-wfh">
-							Dar de alta mi oferta
+						<button
+							type="button"
+							className="btn btn-primary-wfh mx-1"
+							data-bs-toggle="modal"
+							data-bs-target="#companyLoginModal">
+							Login Empresa
 						</button>
 					</div>
 				</div>

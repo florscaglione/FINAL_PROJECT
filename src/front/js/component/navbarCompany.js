@@ -40,6 +40,11 @@ export const NavbarCompany = () => {
 									</button>
 								</li>
 								<li>
+									<Link to="/perfil-empresa" className="dropdown-item dropsuario pr-3" type="button">
+										Mis datos empresa
+									</Link>
+								</li>
+								<li>
 									<Link
 										to="/"
 										onClick={() => actions.logout()}

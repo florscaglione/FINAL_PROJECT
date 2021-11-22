@@ -21,6 +21,7 @@ import { Navbar } from "./component/navbar";
 import { NavbarUser } from "./component/navbarUser";
 import { NavbarCompany } from "./component/navbarCompany";
 import { Footer } from "./component/footer";
+import { PerfilEmpresa } from "./pages/perfilEmpresa";
 
 //create your first component
 const Layout = () => {
@@ -56,6 +57,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/new-CV">
 							<NewCV />
+						</Route>
+						<Route exact path="/perfil-empresa">
+							<PerfilEmpresa />
 						</Route>
 						<Route exact path="/vista_ofertas_publi">
 							<VistaOfertasPubli />
