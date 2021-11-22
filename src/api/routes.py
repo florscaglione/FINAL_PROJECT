@@ -29,27 +29,33 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg']) # Array de extensiones permitid
 # Registro usuario (INFORMACIÓN BÁSICA):
 @api.route('/signup-user', methods=['POST'])
 def signup_user():
+    try:
+        body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar qué usuario estamos creando
 
-    body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar qué usuario estamos creando
+        if body is None:    # si no lo encuentra, tira este error 
+            raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
 
-    if body is None:    # si no lo encuentra, tira este error 
-        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+        email = body.get("email") # cogemos del body el email QUE HA INTRODUCIDO el usuario (lo mismo con el password, etc)
+        password = body.get("password")
+        name = body.get("name")
+        lastname = body.get("lastname")
+        phone = body.get("phone")
+        birth_date = body.get("birth_date")
 
-    email = body.get("email") # cogemos del body el email QUE HA INTRODUCIDO el usuario (lo mismo con el password, etc)
-    password = body.get("password")
-    name = body.get("name")
-    lastname = body.get("lastname")
-    phone = body.get("phone")
-    birth_date = body.get("birth_date")
+        email_check = db.session.query(User).filter(User.email==email).first()
+        if email_check is None: 
+            pass_encrypt = encrypted_pass(password)
+            print(pass_encrypt)
 
-    pass_encrypt = encrypted_pass(password)
-    print(pass_encrypt)
+            user = User(email=email, password=pass_encrypt, name=name, lastname=lastname, phone=phone, birth_date=birth_date) # creamos el usuario: significa que llene la columna email (1er "email") con lo que se haya escrito como email (2o email), y lo mismo con el password
 
-    user = User(email=email, password=pass_encrypt, name=name, lastname=lastname, phone=phone, birth_date=birth_date) # creamos el usuario: significa que llene la columna email (1er "email") con lo que se haya escrito como email (2o email), y lo mismo con el password
+            user.save()  # llamo a la función "save" (está en los modelos) para guardar el usuario en la BBDD
 
-    user.save()  # llamo a la función "save" (está en los modelos) para guardar el usuario en la BBDD
-
-    return jsonify(user.serialize()), 200
+            return jsonify(user.serialize()), 200
+        else:
+            return jsonify("Email already exists") , 409
+    except OSError as error:
+        return jsonify("error"), 400           
 
 # Modificar la INFORMACIÓN BÁSICA en un CV de un usuario: ( FUNCIONA )
 @api.route('/user-info/edit', methods=['PUT'])
@@ -395,26 +401,34 @@ def get_all_professions():
 # Registro empresa:
 @api.route('/signup-company', methods=['POST']) # (PROBADO EN POSTMAN Y OK)
 def signup_company():
-    body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar qué usuario estamos creando
-    
-    if body is None:    # si no lo encuentra, tira este error 
-        raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
+    try:
+        body = request.get_json()       # con esto COGEMOS EL BODY que le enviamos para indicar qué usuario estamos creando
+        
+        if body is None:    # si no lo encuentra, tira este error 
+            raise APIException("No se ha enviado un JSON o no se ha especificado en el header que se nos ha enviado un JSON") # lanzo una excepción que la aplicación captura y devuelve al usuario
 
-    name = body.get("name")
-    email = body.get("email") # cogemos el email QUE HA INTRODUCIDO el usuario
-    password = body.get("password")
-    cif = body.get("cif")
-    contact = body.get("contact")
-    phone = body.get("phone")
+        name = body.get("name")
+        email = body.get("email") # cogemos el email QUE HA INTRODUCIDO el usuario
+        password = body.get("password")
+        cif = body.get("cif")
+        contact = body.get("contact")
+        phone = body.get("phone")
 
-    pass_encrypt = encrypted_pass(password)
-    print(pass_encrypt)
+        email_check = db.session.query(Company).filter(Company.email==email).first()
+        cif_check = db.session.query(Company).filter(Company.cif==cif).first()
+        if email_check is None and cif_check is None:
+            pass_encrypt = encrypted_pass(password)
+            print(pass_encrypt)
 
-    company = Company(name=name, email=email, password=pass_encrypt, cif=cif, contact=contact, phone=phone) # creamos la empresa
+            company = Company(name=name, email=email, password=pass_encrypt, cif=cif, contact=contact, phone=phone) # creamos la empresa
 
-    company.save()  # llamo a la función "save" (está en los modelos) para guardar la empresa en la BBDD
+            company.save()  # llamo a la función "save" (está en los modelos) para guardar la empresa en la BBDD
 
-    return jsonify(company.serialize()), 200
+            return jsonify(company.serialize()), 200
+        else:
+            return jsonify("Company or email already exists"), 409
+    except OSError as error:
+        return jsonify("error"), 400        
 
 # Login empresa:
 @api.route('/login-company', methods=['POST'])
