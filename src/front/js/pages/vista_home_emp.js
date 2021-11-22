@@ -5,9 +5,11 @@ import vistaEmpresa from "../../img/vistaEmpresa.jpg";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { BannerEmpresa } from "../component/BannerEmpresa";
+import { ModalAccessDenied } from "../component/ModalAccessDenied";
 
 export const VistaHomeEmp = () => {
 	const { store, actions } = useContext(Context);
+	const [alertModal, setAlertModal] = useState(false);
 
 	return (
 		<div className="container">
@@ -22,6 +24,13 @@ export const VistaHomeEmp = () => {
 						) : localStorage.getItem("token") && localStorage.getItem("role") === "user" ? (
 							<Link
 								onClick={() => {
+									/* alertModal ? (
+										<ModalAccessDenied close={() => setAlertModal(false)} />
+									) : (
+										<button className="btn btn-primary-wfh" change={() => setAlertModal(true)}>
+											Publicar Oferta
+										</button>
+									); */
 									alert("Acceso denegado a usuarios");
 								}}
 								className="btn btn-primary-wfh">
