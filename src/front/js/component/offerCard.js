@@ -26,8 +26,8 @@ export const OfferCard = ({ offer }) => {
 							data-bs-target={`#id${offer.id}`}>
 							<i className="fas fa-edit" />
 						</button>
-						<button type="button" className="btn btn-outline-secondary">
-							Eliminar Oferta
+						<button type="button" className="btn btn-outline-primary border-0" data-bs-toggle="modal">
+							<i className="fas fa-trash" />
 						</button>
 						<ModalCompanyOffer icon={"edit"} offer={offer} id={`id${offer.id}`} />
 					</div>

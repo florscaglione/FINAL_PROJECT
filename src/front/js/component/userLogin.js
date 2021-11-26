@@ -80,7 +80,12 @@ export const UserLogin = ({ id }) => {
 							<h2 className="modal-title" id="exampleModalLabel">
 								Acceso Usuarios
 							</h2>
-							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+							<button
+								type="button"
+								className="btn-close p-2"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							/>
 						</div>
 						<div className="modal-body">
 							<div className="row">

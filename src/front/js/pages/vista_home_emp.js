@@ -46,9 +46,9 @@ export const VistaHomeEmp = () => {
 						)}
 					</div>
 					<div>
-						<h1 className="titulo text-center publihome">
+						<h2 className="text-center publihomeEmp">
 							¿Estás listo para contratar? Puedes contar con nosotros.{" "}
-						</h1>
+						</h2>
 					</div>
 					<div className="row d-flex justify-content-center">
 						<div className="card-home card-block col">

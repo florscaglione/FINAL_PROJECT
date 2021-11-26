@@ -17,7 +17,7 @@ export const NavbarUser = () => {
 						<ul className="list-inline justify-content-center">
 							<li className="list-inline-item 1">
 								<Link to="/new-CV" type="button" className="nav-link pr-4 linksnavbar">
-									Mi perfil
+									Datos personales y CV
 								</Link>
 							</li>
 							<li className="list-inline-item 2">

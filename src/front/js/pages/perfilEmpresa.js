@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { BannerEmpresa } from "../component/BannerEmpresa";
 
 import { ModalCompanyData } from "../../js/component/modalCompanyData";
 
@@ -17,18 +18,17 @@ export const PerfilEmpresa = () => {
 		<>
 			{store.companyInfo ? (
 				<div className="container">
-					<h1 className="m-4">Introduce los datos de la oferta de trabajo</h1>
-					<div className="row">
-						<div className="col-8">
+					<div className="row row-cols-2">
+						<div className="col-9 mt-5">
 							<div className="card m-2">
-								<div className="card-header d-flex justify-content-between">
+								<div className="card-header d-flex justify-content-between titulocard">
 									<div className="d-flex justify-content-start">
 										<h4>Datos empresa</h4>
 									</div>
 									<div className="d-flex justify-content-end">
 										<button
 											type="button"
-											className="btn btn-outline-primary"
+											className="btn btn-outline-primary-wfh"
 											data-bs-toggle="modal"
 											data-bs-target="#idEditDataCompany">
 											<i className="fas fa-edit" />
@@ -37,25 +37,55 @@ export const PerfilEmpresa = () => {
 									</div>
 								</div>
 								<div className="card-body">
-									<h5 className="card-title">Empresa: {store.companyInfo.name}</h5>
-									<h5 className="">
-										Contacto:
-										{store.companyInfo.contact}
-									</h5>
-									<h5 className="">
-										Cif / Nif:
-										{store.companyInfo.cif}
-									</h5>
-									<h5 className="">
-										Email:
-										{store.companyInfo.email}
-									</h5>
-									<h5 className="">
-										Teléfono:
-										{store.companyInfo.phone}
-									</h5>
+									<div className="row">
+										<div className="col-10">
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Empresa: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.companyInfo.name}
+												</div>
+											</div>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Contacto: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.companyInfo.contact}
+												</div>
+											</div>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv"> Cif / Nif: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.companyInfo.cif}
+												</div>
+											</div>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Email: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.companyInfo.email}
+												</div>
+											</div>
+											<div className="row">
+												<div className="col-4 d-flex align-items-center mt-3">
+													<h5 className="infocv">Teléfono: </h5>
+												</div>
+												<div className="card-header-det col-8 mt-3 d-flex align-items-center">
+													{store.companyInfo.phone}
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
+						</div>
+						<div className="col-3 text-center d-none d-md-block mt-4">
+							<BannerEmpresa />
 						</div>
 					</div>
 				</div>

@@ -27,12 +27,12 @@ export const OfferUserInscripted = ({ id }) => {
 				<div className="row">
 					<div className="col-12">
 						<div className="card m-2">
-							<div className="card-header d-flex justify-content-between">
+							<div className="card-header titulocard ">
 								<div className="d-flex justify-content-start">
-									<h4>Oferta de trabajo #{store.offerInfo.id}</h4>
+									<h4 className="m-3">Oferta de trabajo #{store.offerInfo.id}</h4>
 								</div>
 							</div>
-							<div className="card-body">
+							<div className="card-body m-3">
 								<div className="row">
 									<div className="col-12">
 										<div className="row mb-4">
@@ -67,7 +67,7 @@ export const OfferUserInscripted = ({ id }) => {
 										</div>
 									</div>
 								</div>
-								<div className="row pb-2 mx-1 w-100 border-2 border-bottom">
+								<div className="row pb-3  w-100 ">
 									<div className="d-flex justify-content-between" />
 								</div>
 							</div>

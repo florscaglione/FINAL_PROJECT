@@ -48,40 +48,45 @@ export const CandidatosInscritos = () => {
 						</div>
 					) : (
 						<div>
-							<table className="table table-striped-wfh table-hover font">
-								<thead>
-									<tr>
-										<th scope="col 3">Nombre</th>
-										<th scope="col 3">Apellidos</th>
-										<th scope="col 3">Ver CV</th>
-										<th scope="col 3">Preseleccionado</th>
+							<table className="table table-striped table-hover font">
+								<thead className="titulotabla">
+									<tr id="miTablaPersonalizada">
+										<th className=" p-3" scope="col-3">
+											Nombre
+										</th>
+										<th className="p-3 " scope="col-3">
+											Apellidos
+										</th>
+										<th className="p-3 " scope="col-3">
+											Ver CV
+										</th>
+										<th className="p-3" scope="col-3">
+											Preseleccionado
+										</th>
 									</tr>
 								</thead>
 								<tbody>
 									<>
 										{usersInscripted.map((userInscripted, index) => {
 											return (
-												<tr key={index}>
-													<td>{userInscripted.name}</td>
-													<td>{userInscripted.lastname}</td>
-													<td>
-														<button type="button" className="btn btn-outline-secondary">
+												<tr className="m-3" key={index}>
+													<td className="pt-4 align-items-center">{userInscripted.name}</td>
+													<td className="pt-4 align-items-center">
+														{userInscripted.lastname}
+													</td>
+													<td className="pt-3 align-items-center">
+														<button type="button" className="btn border border-3">
 															CV
 														</button>
 													</td>
-													<td>
-														<div className="form-check">
+													<td className="p-4 align-items-center">
+														<div className="form-check ">
 															<input
-																className="form-check-input"
+																className="form-check-input "
 																type="checkbox"
 																value=""
 																id="flexCheckChecked"
 															/>
-															<label
-																className="form-check-label"
-																htmlFor="flexCheckChecked">
-																Preseleccionado
-															</label>
 														</div>
 													</td>
 												</tr>

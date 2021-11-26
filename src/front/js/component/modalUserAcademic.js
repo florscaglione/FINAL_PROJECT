@@ -92,9 +92,7 @@ export const ModalUserAcademic = ({ info, icon, id, show, onClose }) => {
 				<div className="modal-dialog modal-dialog-centered modal-lg">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h6 className="modal-title" id="userAcademicLabel">
-								Editar formación academica
-							</h6>
+							<h6 className="modal-academic">Editar formación academica</h6>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
@@ -123,15 +121,15 @@ export const ModalUserAcademic = ({ info, icon, id, show, onClose }) => {
 											aria-describedby="professionHelp"
 											required
 										/>
-										<div className="form-check mt-2">
+										<div className="form-check mt-1 p-0 align-items-center">
 											<input
-												className="form-check-input"
+												className="form-control-cv m-2"
 												name="in_progress"
 												type="checkbox"
 												checked={userAcademic.in_progress}
 												id="flexCheckDefault"
 											/>
-											<label className="form-check-label " forHTML="flexCheckDefault">
+											<label className="form-control-cv " forHTML="flexCheckDefault">
 												Actualmente en curso
 											</label>
 										</div>
@@ -153,7 +151,7 @@ export const ModalUserAcademic = ({ info, icon, id, show, onClose }) => {
 											aria-describedby="professionHelp"
 										/>
 
-										<div className="form-check mt-2">
+										<div className="form-control-cv mt-2">
 											<input
 												className="form-check-input"
 												name="is_academic"
@@ -161,7 +159,7 @@ export const ModalUserAcademic = ({ info, icon, id, show, onClose }) => {
 												checked={userAcademic.is_academic}
 												id="flexCheckChecked"
 											/>
-											<label className="form-check-label" forHTML="flexCheckChecked">
+											<label className="form-control-cv" forHTML="flexCheckChecked">
 												Formación académica reglada
 											</label>
 										</div>

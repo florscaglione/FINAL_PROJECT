@@ -30,10 +30,10 @@ export const OfertasInscritasUsuario = () => {
 			) : (
 				<div className="container">
 					<div className="row">
-						<div className="col-9 ">
+						<div className="col-9  ">
 							<div>
 								<table className="table table-striped-wfh table-hover font">
-									<thead>
+									<thead className="titulotabla p-5">
 										<tr>
 											<th scope="col 6">Título</th>
 											<th scope="col 3">Empresa</th>
@@ -45,10 +45,14 @@ export const OfertasInscritasUsuario = () => {
 											{store.offersByUserId.map((offerByUserId, index) => {
 												return (
 													<tr key={index}>
-														<td>{offerByUserId.title}</td>
-														<td>{offerByUserId.company.name}</td>
-														<td>
-															<button type="button" className="btn btn-outline-secondary">
+														<td className="m-3 pt-4 align-items-center">
+															{offerByUserId.title}
+														</td>
+														<td className="m-3 pt-4 align-items-center">
+															{offerByUserId.company.name}
+														</td>
+														<td className="pt-3 align-items-center">
+															<button type="button" className="btn border border-3">
 																Ver Oferta
 															</button>
 														</td>

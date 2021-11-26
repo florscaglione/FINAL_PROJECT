@@ -65,7 +65,7 @@ export const UserRegister = ({ id }) => {
 						<div className="modal-content">
 							<div className="modal-header">
 								<img className="logoformulario" src={logoWfh} width="150" alt="logo Wfh" />
-								<h2 className="modal-title" id="exampleModalLabel1">
+								<h2 className="modal-title" id="exampleModalLabel">
 									Registro Usuario
 								</h2>
 								<button

@@ -77,9 +77,7 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 				<div className="modal-dialog modal-dialog-centered modal-lg">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h6 className="modal-title" id="userExperienceLabel">
-								Editar experiencia laboral
-							</h6>
+							<h6 className="modal-academic">Editar experiencia laboral</h6>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
@@ -123,16 +121,16 @@ export const ModalUserExperience = ({ info, icon, id }) => {
 											placeholder="Fecha de fin"
 											aria-describedby="professionHelp"
 										/>
-										<div className="form-check mt-2">
+										<div className="form-check mt-1 p-0 align-items-center">
 											<input
-												className="form-check-input"
+												className="form-control-cv m-2"
 												defaultValue={userExperience.in_progress}
 												name="in_progress"
 												type="checkbox"
 												checked={userExperience.in_progress}
 												id="flexCheckChecked"
 											/>
-											<label className="form-check-label" forHTML="flexCheckChecked">
+											<label className="form-control-cv" forHTML="flexCheckChecked">
 												Actualmente en curso
 											</label>
 										</div>

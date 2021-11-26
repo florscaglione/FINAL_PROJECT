@@ -57,7 +57,7 @@ export const ModalCompanyOffer = ({ offer, icon, id }) => {
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h2 className="modal-title" id="userDataLabel">
+							<h2 className="modal-createoffer">
 								{icon == "plus" ? "Crear oferta de trabajo" : "Editar oferta de trabajo"}
 							</h2>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />

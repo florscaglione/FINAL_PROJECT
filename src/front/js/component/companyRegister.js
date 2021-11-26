@@ -74,7 +74,7 @@ export const CompanyRegister = ({ id }) => {
 						<div className="modal-content">
 							<div className="modal-header">
 								<img className="logoformulario " src={logoWfh} width="150" alt="logo Wfh" />
-								<h2 className="modal-title" id="companyRegisterModalLabel">
+								<h2 className="modal-title" id="exampleModalLabel">
 									Registro Empresa
 								</h2>
 								<button

@@ -106,7 +106,7 @@ export const NewCV = () => {
 								</div>
 								<div className="card-body-cv p-4">
 									<div className="row">
-										<div className="col-10">
+										<div className="col-8">
 											<div className="row">
 												<div className="col-4 d-flex align-items-center mt-3">
 													<h5 className="infocv ">Nombre: </h5>
@@ -151,10 +151,10 @@ export const NewCV = () => {
 												</div>
 											</div>
 										</div>
-										<div className="col-2">
+										<div className="col-4">
 											<div className="jumbotron jumbotron-fluid">
 												<img
-													className="profile"
+													className="profile m-2 rounded-start border border-secondary"
 													src={
 														store.userInfo.user_basic.image_url
 															? store.userInfo.user_basic.image_url
@@ -163,11 +163,15 @@ export const NewCV = () => {
 													width="100"
 													alt="profile"
 												/>
-												<input type="file" onChange={e => setFiles(e.target.files)} />
+												<input
+													className="fotoperfil"
+													type="file"
+													onChange={e => setFiles(e.target.files)}
+												/>
 												<button
 													type="button"
 													onClick={save}
-													className="btn btn-outline-primary-wfh p-1">
+													className="btn btn-outline-primary-wfh p-3">
 													<i className="fas fa-plus-square"> Añadir foto</i>
 												</button>
 											</div>

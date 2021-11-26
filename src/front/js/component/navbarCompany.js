@@ -17,13 +17,13 @@ export const NavbarCompany = () => {
 						<ul className="list-inline justify-content-center">
 							<li className="list-inline-item 1">
 								<Link to="/perfil-empresa" className="nav-link linksnavbar pr-4" type="button">
-									Mi perfil
+									Mis datos de empresa
 								</Link>
 							</li>
 
 							<li className="list-inline-item 2">
 								<Link to="/vista_ofertas_publi" className="nav-link linksnavbar pr-5" type="button">
-									Mis ofertas publicadas
+									Ofertas publicadas
 								</Link>
 							</li>
 							<li className="list-inline-item 3">

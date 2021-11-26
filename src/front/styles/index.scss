@@ -6,7 +6,7 @@
 
 body{
   /*background-color:rgb(229, 247, 242);*/
-  background-image:url(../img/background.jpg);
+  background-image:url(../img/background1.png);
   background-size:cover;
   background-attachment: fixed;
   background-position: center center;
@@ -46,7 +46,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
 
 /*Estilos botones*/
 .btn-primary-wfh , .btn-primary-wfh :hover, .btn-primary-wfh :active, .btn-primary-wfh :visited, .btn-primary-wfh :focus, .btn-primary-wfh:active:focus {
-    background-color: rgb(187, 143, 58);
+    background-color: rgb(202, 169, 109);
     padding-top: 0.8em;
     padding-bottom: 0.8em;
     padding-right: 1.6em;
@@ -58,22 +58,22 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     font-family: 'Poppins', sans-serif;
     border-radius: 15px;
     border:none;
+    align-items: center;
 }
 .btn-primary-wfh:active:focus{
-    background-color: rgb(52, 133, 131);
+    background-color: rgb(159, 200, 190);
     color:#ffffff;
-    box-shadow: rgb(187, 143, 58) ;
+    box-shadow: rgb(202, 169, 109);
 }
 .btn-primary-wfh:hover{
-    background-color:rgb(52, 133, 131);
+    background-color:rgb(159, 200, 190);
     color:#ffffff;
-    box-shadow:  rgb(187, 143, 58);
+    box-shadow:  rgb(202, 169, 109);
 }
 .btnoferta{
   padding-left: 25px;
 }
 .btn-outline-secondary{
-  background-color: rgb(52, 133, 131);
   padding-top: 0.8em;
   padding-bottom: 0.8em;
   padding-right: 1.6em;
@@ -85,16 +85,16 @@ box-shadow: 0 0 3px 3px #1a1a1a;
   color:#3e3e3f;
   font-family: 'Poppins', sans-serif;
   border-radius: 15px;
-    
 
 }
 .btn-outline-primary:hover{
-  background-color:white;
-  color: #3e3e3f ;
+  background-color:whitesmoke;
+  color:#3e3e3f;
 
 }
 .btn-outline-secondary:hover, .btn-outline-secondary:focus {
-  background-color: rgb(159, 200, 190);
+  background-color: whitesmoke;
+  color:#3e3e3f;
 }
 .Tag {
   background-color: rgb(113, 159, 176);
@@ -107,7 +107,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
 
 } 
 .nav-link:focus{
-  color:rgb(52, 133, 131) ;
+  color:rgb(83, 145, 143);
 }
 
 /*.btn-primary-oferta: pendiente añadir estilos igual al resto de botones pero aumentando el margin para que no se quede debajo de la navbar*/
@@ -118,45 +118,54 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     background-color: white;/* para poner fondo de puntito las dos propiedades de background*/
     font-family: 'Poppins', sans-serif;
     color:#525253;
-    box-shadow: 0 0 4px 3px rgb(187, 143, 58);
+    box-shadow: 0 0 4px 3px rgb(202, 169, 109);
     letter-spacing: 1px;
-    border-radius: 25px;      
+    border-radius: 25px;   
+      
 }
 .titulocard{
-  border-color: rgb(187, 143, 58);
+  border-color: rgb(202, 169, 109);
   border-width: 3px;
   border-radius: 25px; 
 }
 .card-img-top{
   border-top-left-radius:25px;
   border-top-right-radius:25px;
+  border-bottom-left-radius:25px;
+  border-bottom-left-radius:25px;
 }
 .card-title{
   font-family: 'Poppins', sans-serif;
   text-shadow: rgb(173, 172, 172) -1px 1px;
+  border-radius: 25px; 
 }
 .card-home{
     transition:0.5s;
     cursor:pointer;
+    border-radius: 25px; 
   }
   .card-title{  
     transition:1s;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor:pointer;
+    border-radius: 25px; 
   }
   .card-title i{  
     font-size:2em;
     transition:1s;
     cursor:pointer;
+    border-radius: 25px; 
   }
   .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
-    color:rgb(52, 133, 131);
+    color:rgb(83, 145, 143);
+    border-radius: 25px; 
   }
   .card-home:hover{
     transform: scale(1.05);
-    box-shadow: 10px 10px 15px rgb(187, 143, 58);
+    box-shadow: 10px 10px 15px rgb(202, 169, 109);
+    border-radius: 25px; 
   }
   .card-home::before, .card-home::after {
     position: absolute;
@@ -169,15 +178,19 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     background: rgba(255, 255, 255, 0.1);
     content: '';
     pointer-events: none;
+    border-radius: 25px; 
   }
   .card-home::before {
     transform-origin: left top;
+    border-radius: 25px; 
   }
   .card-home::after {
     transform-origin: right bottom;
+    border-radius: 25px; 
   }
   .card-home:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
     transform: scale3d(1, 1, 1);
+    border-radius: 25px; 
   }
   .card-text{
     margin-top:20px ;
@@ -207,6 +220,14 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     margin-bottom:40px;
     
   }
+  table{
+    table-layout: fixed;
+  }
+  #miTablaPersonalizada th{
+    width: 130px;
+   overflow: auto;
+  }
+
   .puesto{
     font-family: 'Poppins', sans-serif;
     font-style: bold;
@@ -451,10 +472,11 @@ footer {
 
 .jumbotron-fluid-text-center-empresa{
   background-image: url(../img/bannerempresa.png);
-  background-size: cover;
   height: 100%;
   width: 100%;
   margin: 0 auto;
+  background-size:cover;
+ 
 }
 /*estilo home empresa*/
 .imagenEmp{
@@ -463,10 +485,10 @@ footer {
 }
 .imagenEmp a{
   position: absolute;
-  bottom:4em;
-  right:4em;
+  bottom:4.5em;
+  right:4.5em;
   color:white;
-  padding:1em 1.5em;
+  padding:1em 1em;
   }
   .imagenEmp{
     transition:0.5s;
@@ -478,7 +500,7 @@ footer {
   }
   .imagenEmp:hover{
     transform: scale(1.05);
-    box-shadow: 10px 10px 15px rgb(165, 228, 220);
+    
   }
   .imagenEmp::before, .card-home::after {
     position: absolute;
@@ -490,6 +512,7 @@ footer {
     transition: transform .3s ease-out 0s;
     content: '';
     pointer-events: none;
+
   }
   .imagenEmp::before {
     transform-origin: left top;
@@ -539,15 +562,16 @@ footer {
 
 .table{
   margin-top:8em;
-  
-  
+ 
+
 }
 .titulotabla{
-  border-radius: 40px; 
-  background-color: rgb(255, 208, 72);
+  border-radius: 10px; 
+  background-color: rgb(202, 169, 109);
 }
 thead{
   background-color:white ;
+  border-radius: 10px; 
 }
 .vacio{
   margin-top: 6em;
@@ -556,6 +580,10 @@ thead{
 .form-control, .mb-3, .form-label{
   font-family: 'Poppins', sans-serif;
   
+}
+.form-check-input{
+  margin-right: 10px;
+  float:0;
 }
 .modal-title{
   font-family: 'Poppins', sans-serif;
@@ -592,6 +620,10 @@ font-size: 2em;}
 }
 
 /* estilos cv */
+.fotoperfil{
+  font-family: 'Poppins', sans-serif;
+
+}
 .card-header-cv{
   padding-bottom: 0.5em;
   padding-top: 0.8em;
@@ -614,15 +646,31 @@ font-size: 2em;}
   font-family: 'Poppins', sans-serif;
  
 }
-#userDataLabel, #userDataLabel{
-  font-size:0.8em;
+.modal-academic{
+  font-size: 1.1em;
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
+}
+.modal-createoffer{
+ 
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
+}
+#userDataLabel {
+  font-size: 1.1em;
 }
 #userAcademicLabel{
   font-size: 1.9em;
   text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
 }
+#companyDataLabel{
+  font-size: 1em;
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
+}
 #userExperienceLabel{
   font-size: 1.9em;
+  text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
+}
+#exampleModalLabel{
+  font-size: 2.3em;
   text-shadow: #929292 -1px 1px, #ecebeb -2px 2px;
 }
 .form-control-cv{
@@ -649,6 +697,8 @@ font-size: 2em;}
   padding-bottom:6em;
   font-weight: bold;
   text-shadow: rgb(185, 218, 233) -1px 1px, rgb(255, 255, 255) -2px 2px;
+  border-radius: 25px;
+
 }
 .textobusca{
   text-shadow: rgb(185, 218, 233) -1px 1px, rgb(255, 255, 255) -2px 2px;
@@ -700,7 +750,12 @@ padding: 0;
   color:white;
   text-shadow: #3e3e3f -2px 2px;
 }
-
+.publihomeEmp {
+  color:white;
+  text-shadow: #3e3e3f -2px 2px;
+  margin-top: 40px;
+  font-size: 3em;
+}
 
 
 @media (max-width: 576px) {
@@ -719,7 +774,9 @@ padding: 0;
   }
   .publihome{
     margin-top: 40px;
+    
   }
+  
   .prueba{
     display: block;
   }
@@ -789,4 +846,7 @@ padding: 0;
   position: fixed;
   top: 5vh;
   left: 25vw;
+  .h2{
+    font-size: 1.5rem;
+  }
 }
