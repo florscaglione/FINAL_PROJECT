@@ -16,7 +16,7 @@ export const VistaHomeEmp = () => {
 			<div className="row row-cols-2 mt-5">
 				<div className="col-9 mt-5">
 					<div className="imagenEmp">
-						<img src={vistaEmpresa} className="card-img-top" alt="..." width="300" />
+						<img src={vistaEmpresa} className="card-img-top" id="cardempresa" alt="..." width="300" />
 						{localStorage.getItem("token") && localStorage.getItem("role") === "company" ? (
 							<Link to="/vista_ofertas_publi" className="btn btn-primary-wfh">
 								Publicar oferta

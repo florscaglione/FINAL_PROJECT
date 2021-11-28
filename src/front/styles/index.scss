@@ -132,11 +132,16 @@ box-shadow: 0 0 3px 3px #1a1a1a;
   border-width: 3px;
   border-radius: 25px; 
 }
-
+.card-img-top{
+  border-radius: 25px;
+}
 .card-title{
   font-family: 'Poppins', sans-serif;
   text-shadow: rgb(173, 172, 172) -1px 1px;
   border-radius: 25px; 
+}
+#cardempresa{
+  border-radius: 0;
 }
 .card-home{
     transition:0.5s;
@@ -482,7 +487,6 @@ footer {
 /*estilo home empresa*/
 .imagenEmp{
   position:relative;
-  border-radius: 20%;
 }
 .imagenEmp a{
   position: absolute;
