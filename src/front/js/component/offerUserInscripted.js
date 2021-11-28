@@ -32,37 +32,53 @@ export const OfferUserInscripted = ({ id }) => {
 									<h4 className="m-3">Oferta de trabajo #{store.offerInfo.id}</h4>
 								</div>
 							</div>
-							<div className="card-body m-3">
+							<div className="card-body-cv">
 								<div className="row">
-									<div className="col-12">
+									<div className="col-12 p-5 mt-3">
 										<div className="row mb-4">
-											<div className="col-10">
+											<div className="col-4 d-flex align-items-center">
 												{console.log("¡¡¡¡¡¡¡¡¡", store.offerInfo)}
-												<h5 className="card-title">
-													Título:
-													{store.offerInfo.title}
-												</h5>
-												<h5 className="card-title">
-													Teletrabajo:
-													{store.offerInfo.remote_work}
-												</h5>
-												<h5 className="card-title">
-													Tipo de contrato: {store.offerInfo.contract_type}
-												</h5>
-												<h5 className="card-title">
-													Rango de salario: {store.offerInfo.salary_range}
-												</h5>
-												<h5 className="card-title">
-													Requisitos: {store.offerInfo.requirement}
-												</h5>
-												<h5 className="card-title">
-													Descripción de la oferta: {store.offerInfo.offer_description}
-												</h5>
-												<h5 className="card-title">
-													Beneficios sociales: {store.offerInfo.social_benefit}
-												</h5>
+												<h5 className="infocv">Título: </h5>
 											</div>
-
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.title}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Teletrabajo: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.remote_work}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Tipo de contrato: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.contract_type}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Rango de salario: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.salary_range}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Requisitos: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.requirement}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Descripción de la oferta: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.offer_description}
+											</div>
+											<div className="col-4 d-flex align-items-center">
+												<h5 className="infocv">Beneficios sociales: </h5>
+											</div>
+											<div className="card-header-det col-8 mt-1 d-flex align-items-center">
+												{store.offerInfo.social_benefit}
+											</div>
 											<div className="col-2 d-flex justify-content-end" />
 										</div>
 									</div>

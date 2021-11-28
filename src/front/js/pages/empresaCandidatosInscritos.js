@@ -48,19 +48,19 @@ export const CandidatosInscritos = () => {
 						</div>
 					) : (
 						<div>
-							<table className="table table-striped table-hover font">
+							<table className="table table-striped table-hover font tablita">
 								<thead className="titulotabla">
 									<tr id="miTablaPersonalizada">
-										<th className=" p-3" scope="col-3">
+										<th className="p-2" scope="col-3">
 											Nombre
 										</th>
-										<th className="p-3 " scope="col-3">
+										<th className="p-2 " scope="col-3">
 											Apellidos
 										</th>
-										<th className="p-3 " scope="col-3">
+										<th className="p-2 " scope="col-3">
 											Ver CV
 										</th>
-										<th className="p-3" scope="col-3">
+										<th className="p-2" scope="col-3">
 											Preseleccionado
 										</th>
 									</tr>
@@ -69,17 +69,21 @@ export const CandidatosInscritos = () => {
 									<>
 										{usersInscripted.map((userInscripted, index) => {
 											return (
-												<tr className="m-3" key={index}>
-													<td className="pt-4 align-items-center">{userInscripted.name}</td>
-													<td className="pt-4 align-items-center">
+												<tr className="m-3 p-5" key={index}>
+													<td className="titulotabla2 pt-4 align-items-center">
+														{userInscripted.name}
+													</td>
+													<td className="pt-4  align-items-center">
 														{userInscripted.lastname}
 													</td>
 													<td className="pt-3 align-items-center">
-														<button type="button" className="btn border border-3">
+														<button
+															type="button"
+															className="btn border border-3 botoncitocv">
 															CV
 														</button>
 													</td>
-													<td className="p-4 align-items-center">
+													<td className=" p-4 align-items-center">
 														<div className="form-check ">
 															<input
 																className="form-check-input "

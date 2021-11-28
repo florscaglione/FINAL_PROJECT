@@ -70,6 +70,9 @@ box-shadow: 0 0 3px 3px #1a1a1a;
     color:#ffffff;
     box-shadow:  rgb(202, 169, 109);
 }
+.botoncitocv{
+  margin-left: 5px;
+}
 .btnoferta{
   padding-left: 25px;
 }
@@ -560,18 +563,19 @@ footer {
 
 /* estilo vista candidatos*/
 
-.table{
+.tablita{
   margin-top:8em;
- 
-
+  border-spacing: 10px;
+  padding: 2px;
+  
 }
-.titulotabla{
-  border-radius: 10px; 
-  background-color: rgb(202, 169, 109);
+
+.titulotabla {
+  padding-top: 10px;
+   background-color: rgb(202, 169, 109);
 }
 thead{
-  background-color:white ;
-  border-radius: 10px; 
+  border-radius: 25px;
 }
 .vacio{
   margin-top: 6em;
@@ -581,9 +585,15 @@ thead{
   font-family: 'Poppins', sans-serif;
   
 }
+
+.form-check .form-check-input {
+  float: none;
+  margin-left: 20px;
+}
 .form-check-input{
   margin-right: 10px;
   float:0;
+  
 }
 .modal-title{
   font-family: 'Poppins', sans-serif;
