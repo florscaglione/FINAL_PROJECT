@@ -97,8 +97,8 @@ export const NewCV = () => {
 		<>
 			{store.userInfo ? (
 				<div className="container">
-					<div className="row mt-3">
-						<div className="col-9 p-0 mt-5">
+					<div className="row mt-5">
+						<div className="col-9 p-0 mt-4">
 							<div className="card">
 								<div className="card-header d-flex justify-content-between card-header-cv titulocard">
 									<h5 className="infocv">Datos personales</h5>
@@ -430,7 +430,7 @@ export const NewCV = () => {
 								Dar de baja
 							</button>
 						</div>
-						<div className="col-3 text-center d-none d-md-block">
+						<div className="col-3 text-center d-none d-md-block mt-4">
 							<SidebarUsuario />
 						</div>
 					</div>

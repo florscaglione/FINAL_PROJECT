@@ -18,7 +18,7 @@ export const PerfilEmpresa = () => {
 		<>
 			{store.companyInfo ? (
 				<div className="container">
-					<div className="row row-cols-2">
+					<div className="row row-cols-2 mt-5">
 						<div className="col-9 mt-5">
 							<div className="card m-2">
 								<div className="card-header d-flex justify-content-between titulocard">

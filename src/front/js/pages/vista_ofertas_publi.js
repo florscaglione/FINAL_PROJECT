@@ -20,8 +20,8 @@ export const VistaOfertasPubli = () => {
 		<>
 			{store.companyOffersList && store.companyOffersList.length == 0 ? (
 				<div className="container ">
-					<div className="row rows-cols-2 ">
-						<div className="col-9 ">
+					<div className="row rows-cols-2 mt-5 ">
+						<div className="col-9 mt-4 ">
 							<div className="vacio ">
 								<div className="row">
 									<div className="col-12">
@@ -55,11 +55,11 @@ export const VistaOfertasPubli = () => {
 				</div>
 			) : (
 				<div className="container">
-					<div className="row rows-cols-2">
-						<div className="col-9">
+					<div className="row rows-cols-2 mt-5">
+						<div className="col-9 mt-4">
 							<button
 								type="button"
-								className="btn btn-primary-wfh btn-sm justify-content-end mt-5 btnoferta"
+								className="btn btn-primary-wfh btn-sm justify-content-end ms-5 btnoferta"
 								data-bs-toggle="modal"
 								data-bs-target="#idCreateOfferCompany">
 								<i className="fas fa-plus me-3 " /> Nueva oferta

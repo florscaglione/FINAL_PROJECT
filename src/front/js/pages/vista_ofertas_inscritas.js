@@ -18,7 +18,7 @@ export const OfertasInscritasUsuario = () => {
 		<>
 			{store.offersByUserId && store.offersByUserId.length == 0 ? (
 				<div className="container">
-					<div className="row">
+					<div className="row mt-5">
 						<div className="col-9 text-center mt-5">
 							<p className="text-align-center sinofertas">Aún no te has inscrito a ninguna oferta.</p>
 						</div>
@@ -29,8 +29,8 @@ export const OfertasInscritasUsuario = () => {
 				</div>
 			) : (
 				<div className="container">
-					<div className="row">
-						<div className="col-9  ">
+					<div className="row mt-5">
+						<div className="col-9">
 							<div>
 								<table className="table table-striped-wfh table-hover font">
 									<thead className="titulotabla p-5">

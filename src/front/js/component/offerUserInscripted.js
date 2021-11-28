@@ -25,8 +25,8 @@ export const OfferUserInscripted = ({ id }) => {
 		<>
 			{store.offerInfo ? (
 				<div className="row">
-					<div className="col-12">
-						<div className="card m-2">
+					<div className="col">
+						<div className="card">
 							<div className="card-header titulocard ">
 								<div className="d-flex justify-content-start">
 									<h4 className="m-3">Oferta de trabajo #{store.offerInfo.id}</h4>
@@ -34,7 +34,7 @@ export const OfferUserInscripted = ({ id }) => {
 							</div>
 							<div className="card-body-cv">
 								<div className="row">
-									<div className="col-12 p-5 mt-3">
+									<div className="col-12 p-5">
 										<div className="row mb-4">
 											<div className="col-4 d-flex align-items-center">
 												{console.log("¡¡¡¡¡¡¡¡¡", store.offerInfo)}
@@ -82,9 +82,6 @@ export const OfferUserInscripted = ({ id }) => {
 											<div className="col-2 d-flex justify-content-end" />
 										</div>
 									</div>
-								</div>
-								<div className="row pb-3  w-100 ">
-									<div className="d-flex justify-content-between" />
 								</div>
 							</div>
 						</div>

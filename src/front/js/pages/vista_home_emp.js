@@ -13,8 +13,8 @@ export const VistaHomeEmp = () => {
 
 	return (
 		<div className="container">
-			<div className="row row-cols-2">
-				<div className="col-9">
+			<div className="row row-cols-2 mt-5">
+				<div className="col-9 mt-5">
 					<div className="imagenEmp">
 						<img src={vistaEmpresa} className="card-img-top" alt="..." width="300" />
 						{localStorage.getItem("token") && localStorage.getItem("role") === "company" ? (

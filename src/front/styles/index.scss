@@ -75,6 +75,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
 }
 .btnoferta{
   padding-left: 25px;
+  margin-top: 20px;
 }
 .btn-outline-secondary{
   padding-top: 0.8em;
@@ -131,12 +132,7 @@ box-shadow: 0 0 3px 3px #1a1a1a;
   border-width: 3px;
   border-radius: 25px; 
 }
-.card-img-top{
-  border-top-left-radius:25px;
-  border-top-right-radius:25px;
-  border-bottom-left-radius:25px;
-  border-bottom-left-radius:25px;
-}
+
 .card-title{
   font-family: 'Poppins', sans-serif;
   text-shadow: rgb(173, 172, 172) -1px 1px;
@@ -225,6 +221,8 @@ box-shadow: 0 0 3px 3px #1a1a1a;
   }
   table{
     table-layout: fixed;
+    margin-top:3%
+
   }
   #miTablaPersonalizada th{
     width: 130px;
@@ -483,8 +481,8 @@ footer {
 }
 /*estilo home empresa*/
 .imagenEmp{
-  margin-top: 10%;
   position:relative;
+  border-radius: 20%;
 }
 .imagenEmp a{
   position: absolute;
