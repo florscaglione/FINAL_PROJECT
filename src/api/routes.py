@@ -732,23 +732,97 @@ def get_professions_filtered():
 
 ##################
 ##  CREAR BBDD  ##
-##################  QUÉ MÁS HACER ? ES DECIR, DÓNDE SE USA ESTE ENDPOINT Y CUÁNDO?
+##################  
 
-# @api.route('/create-database', methods=['GET'])
-# def create_database():
+@api.route('/create-database', methods=['GET'])
+def create_database():
 
-#     offer5 = Offer(
-#         title = "Programador backend",
-#         remote_work = "Teletrabajo 100%, horario flexible",
-#         contract_type = "Indefinido",
-#         salary_range = "18.000€/año",
-#         requirement = "4 años de experiencia trabajando con PHP",
-#         offer_description = "Estamos buscando un perfil de Programador PHP con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales en Barcelona.",
-#         social_benefit = "Formación bonificada",
-#         company_id = "1"
-#     )
+    # offer5 = Offer(
+    #     title = "Programador backend",
+    #     remote_work = "Teletrabajo 100%, horario flexible",
+    #     contract_type = "Indefinido",
+    #     salary_range = "18.000€/año",
+    #     requirement = "4 años de experiencia trabajando con PHP",
+    #     offer_description = "Estamos buscando un perfil de Programador PHP con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales en Barcelona.",
+    #     social_benefit = "Formación bonificada",
+    #     company_id = "1"
+    # )
 
-#     db.session.add(offer5)
-#     db.session.commit()
+    # db.session.add(offer5)
+    # db.session.commit()
 
-#     return jsonify("database ok"), 200
+    # return jsonify("database ok"), 200
+
+    data = {
+        "offers": [
+            {
+                "title": "Programador backend",
+                "remote_work": "Teletrabajo 100%, horario flexible",
+                "contract_type": "Indefinido",
+                "salary_range": "18.000€/año",
+                "requirement": "4 años de experiencia trabajando con PHP",
+                "offer_description": "Buscamos un perfil de Programador con más de 4 años de experiencia para incorporarse en uno de nuestros clientes finales",
+                "social_benefit": "Formación bonificada",
+                "company_id": "1",
+            },
+            {
+                "title": "Programador frontend",
+                "remote_work": "Jornada completa, horario flexible",
+                "contract_type": "Temporal",
+                "salary_range": "15.000-18.000€/año",
+                "requirement": "Sin experiencia previa",
+                "offer_description": "Estamos buscando un programador junior con ganas de aprender y crecer en nuestra compañía",
+                "social_benefit": "",
+                "company_id": "1",
+            },
+            {
+                "title": "Programador junior full stack",
+                "remote_work": "Teletrabajo 100%, joranda completa",
+                "contract_type": "Temporal",
+                "salary_range": "15.000-20.000€/año",
+                "requirement": "Perfil junior con ganas de crecer ganas de crecer dentro de la empresa.",
+                "offer_description": "Buscamos seleccionar a un programador para una empresa que ofrece servicios tecnológicos del sector de la construcción.",
+                "social_benefit": "Formación bonificada",
+                "company_id": "1",
+            }
+        ]
+        # ,
+
+        # "hostels": [
+        #     {
+        #         "name": "Albergue de peregrinos de Gontán",
+        #         "city": "Abadín",
+        #         "photo_hostel": "http://www.turismo.gal/imaxes/mdaw/mtgw/~edisp/~extract/TURGA180658~1~staticrendition/tg_carrusel_cabecera_grande.jpg",
+        #         "phone_number": "+34 607 905 146"
+        #     },
+        #     {
+        #         "name": "Albergue de peregrinos de Ribadiso",
+        #         "city": "Arzúa",
+        #         "photo_hostel": "http://www.turismo.gal/imaxes/mdaw/mtux/~edisp/~extract/TURGA151370~1~staticrendition/tg_carrusel_cabecera_grande.jpg",
+        #         "phone_number": "+34981501185 "
+        #     },
+        #     {
+        #         "name": "Albergue de peregrinos do Cádavo",
+        #         "city": "Baleira",
+        #         "photo_hostel": "http://www.turismo.gal/imaxes/mdaw/mtgw/~edisp/~extract/TURGA180676~1~staticrendition/tg_carrusel_cabecera_grande.jpg",
+        #         "phone_number": "+34 636 947 117"
+        #     }
+            
+        # ]
+    
+    
+    }
+
+
+    for offer in data['offers']:
+        new_offer = Offer(title = offer['title'], remote_work = offer['remote_work'], contract_type = offer['contract_type'], salary_range = offer['salary_range'], requirement = offer['requirement'], offer_description = offer['offer_description'], social_benefit = offer['social_benefit'], company_id = offer['company_id'])
+        db.session.add(new_offer)
+
+    # for hostel in data['hostels']:
+    #     new_hostel = Hostel(city = hostel['city'], name = hostel['name'], phone_number = hostel['phone_number'], photo_hostel = hostel['photo_hostel'])
+    #     db.session.add(new_hostel)
+
+    db.session.commit()
+    
+    return jsonify({"msg": "database loaded"})
+    
