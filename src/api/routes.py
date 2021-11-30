@@ -815,9 +815,6 @@ def create_database():
                 "name": "Programador frontend"
             },
             {
-                "name": "Programador frontend (Angular)"
-            },
-            {
                 "name": "Programador full stack"
             },
             {
