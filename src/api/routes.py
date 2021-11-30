@@ -859,10 +859,6 @@ def create_database():
         new_profession = Profession(name = profession['name'])
         db.session.add(new_profession)
 
-    # for hostel in data['hostels']:
-    #     new_hostel = Hostel(city = hostel['city'], name = hostel['name'], phone_number = hostel['phone_number'], photo_hostel = hostel['photo_hostel'])
-    #     db.session.add(new_hostel)
-
     db.session.commit()
     
     return jsonify({"msg": "database loaded"})
