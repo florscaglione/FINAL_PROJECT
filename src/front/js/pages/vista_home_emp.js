@@ -68,7 +68,7 @@ export const VistaHomeEmp = () => {
 						<div className="card-home card-block col">
 							<h3 className="tituloCardEmp">Asesoramiento y orientación personalizados</h3>
 							<p className="infoEmp">
-								Sabemos que cada puesto tiene sus particularidades, por eso te aconsejaremos sobre como
+								Sabemos que cada puesto tiene sus particularidades, por eso te aconsejaremos sobre cómo
 								captar la atención del candidato perfecto para tu empresa.
 							</p>
 						</div>

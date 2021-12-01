@@ -34,7 +34,7 @@ export const HomeUsuarioSinLoguear = () => {
 						<div className="col-9 text-right mt-1">
 							<BuscadorYFiltros />
 						</div>
-						<div className="col-3 text-center d-none d-md-block">
+						<div className="col-3 text-center d-none d-md-block mt-5">
 							<SidebarUsuario />
 						</div>
 					</div>

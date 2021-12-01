@@ -52,7 +52,7 @@ export const ModalCompanyData = ({ info, id }) => {
 											aria-describedby="professionHelp"
 										/>
 										<input
-											type="date"
+											type="text"
 											className="mt-2 form-control"
 											defaultValue={info.cif}
 											name="cif"
